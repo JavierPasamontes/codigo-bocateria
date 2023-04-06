@@ -1,72 +1,57 @@
-/**
- * 
- */
 package Negocio.Departamentos;
 
-/** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author usuario_local
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
- */
+import java.util.List;
+
+import Integracion.Departamentos.DAODept;
+import Integracion.FactoriaIntegracion.FactoriaIntg;
+
 public class SADeptImp implements SADepartamento {
-	/** 
-	* (non-Javadoc)
-	* @see SADepartamento#create(TDept tDept)
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
+	
 	public int create(TDept tDept) {
-		// begin-user-code
-		// TODO Auto-generated method stub
+		DAODept daoDept;
+		int id = -1;
+		daoDept = FactoriaIntg.getInstance().generarDAODepts();
+		
+		TDept leido = daoDept.readByName(tDept.getNombre());
+		
+		if (leido == null) {
+			id = daoDept.create(tDept);
+		}
+		else{
+			if(leido.isActivo()){
+				//ya existe el departamento activo
+			}
+			else{
+				leido.setActivo(true);
+				id = daoDept.update(leido);
+			}
+		}
+		return id;
+	}
+
+	public TDept read(Integer id) {
+		
+		DAODept daoDept;
+		daoDept = FactoriaIntg.getInstance().generarDAODepts();
+		
+		return daoDept.read(id);
+	}
+
+	public List<TDept> readAll() {
+		DAODept daoDept;
+		daoDept = FactoriaIntg.getInstance().generarDAODepts();
+		
+		return daoDept.readAll();
+	}
+
+	public int update(TDept tDept) {
 		return 0;
-		// end-user-code
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see SADepartamento#read(Object id)
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public TDept read(Object id) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
-		// end-user-code
-	}
-
-	/** 
-	* (non-Javadoc)
-	* @see SADepartamento#readAll()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public Object readAll() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
-		// end-user-code
-	}
-
-	/** 
-	* (non-Javadoc)
-	* @see SADepartamento#update(TDept tDept)
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public Object update(TDept tDept) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
-		// end-user-code
-	}
-
-	/** 
-	* (non-Javadoc)
-	* @see SADepartamento#delete(Object id)
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public Object delete(Object id) {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
-		// end-user-code
+	public int delete(Integer id) {
+		DAODept daoDept;
+		daoDept = FactoriaIntg.getInstance().generarDAODepts();
+		
+		return daoDept.delete(id);
 	}
 }

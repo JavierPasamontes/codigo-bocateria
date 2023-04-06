@@ -1,13 +1,14 @@
 package Presentacion.FactoriaGUI;
 
-public abstract class FactoriaGUI {
-	private FactoriaGUI instance;
+public abstract class FactoriaGUI implements ObservadorGUI{
 	
-	public FactoriaGUI getInstance() {
-		if(this.instance == null) {
-			return new FactoriaGUIImp();
+	private static FactoriaGUI instance;
+	
+	public static FactoriaGUI getInstance() {
+		if(instance == null) {
+			instance = new FactoriaGUIImp();
 		}
-		return this.instance;
+		return instance;
 	}
 	
 	public abstract ObservadorGUI generarGUI(int evento);

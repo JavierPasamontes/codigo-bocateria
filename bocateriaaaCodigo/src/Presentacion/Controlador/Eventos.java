@@ -1,8 +1,4 @@
-/**
- * 
- */
 package Presentacion.Controlador;
-
 
 public class Eventos {
 	
@@ -12,13 +8,16 @@ public class Eventos {
 	public static final int BAJA_DEPARTAMENTO = 1020;
 
 	
-	public static final int MODFICAR_DEPT = 1030;
+	public static final int MODIFICAR_DEPARTAMENTO = 1030;
 
 	
-	public static final int MOSTRAR_DEPTS = 1040;
+	public static final int MOSTRAR_DEPARTAMENTO = 1040;
 
+	//buscar?
+	public static final int BUSCAR_DEPARTAMENTO = 1050;
 	
-	public static final int BUSCAR_DEPT = 1050;
+	
+	public static final int MOSTRAR_DEPARTAMENTOS = 1060;
 
 	
 	public static final int ALTA_DEPARTAMENTO_OK = 1011;
@@ -33,22 +32,28 @@ public class Eventos {
 	public static final int BAJA_DEPARTAMENTO_KO = 1022;
 
 	
-	public static final int MODIFICAR_DEPT_OK = 1031;
+	public static final int MODIFICAR_DEPARTAMENTO_OK = 1031;
 
 	
-	public static final int MODIFICAR_DEPT_KO = 1032;
+	public static final int MODIFICAR_DEPARTAMENTO_KO = 1032;
 
 	
-	public static final int MOSTRAR_DEPTS_OK = 1041;
+	public static final int MOSTRAR_DEPARTAMENTO_OK = 1041;
 
 	
-	public static final int MOSTRAR_DEPTS_KO = 1042;
+	public static final int MOSTRAR_DEPARTAMENTO_KO = 1042;
 
 	
-	public static final int BUSCAR_DEPT_OK = 1051;
+	public static final int BUSCAR_DEPARTAMENTO_OK = 1051;
 
 	
-	public static final int BUSCAR_DEPT_KO = 1052;
+	public static final int BUSCAR_DEPARTAMENTO_KO = 1052;
+	
+	
+	public static final int MOSTRAR_DEPARTAMENTOS_OK = 1061;
+
+	
+	public static final int MOSTRAR_DEPARTAMENTOS_KO = 1062;
 
 	
 	public static final int VISTA_DEPARTAMENTOS = 1000;

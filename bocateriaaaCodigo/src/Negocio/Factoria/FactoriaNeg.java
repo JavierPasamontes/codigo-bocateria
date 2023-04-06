@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Negocio.Factoria;
 
 import Negocio.Departamentos.SADepartamento;
@@ -12,7 +9,7 @@ public abstract class FactoriaNeg {
 	public static FactoriaNeg getInstance() {
 		
 		if(instance == null) {
-			return new FactoriaNegImp();
+			instance = new FactoriaNegImp();
 		}
 		return instance;
 		

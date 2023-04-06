@@ -1,178 +1,106 @@
-/**
- * 
- */
 package Negocio.Departamentos;
 
 import java.io.Serializable;
 
-/** 
-* <!-- begin-UML-doc -->
-* <!-- end-UML-doc -->
-* @author usuario_local
-* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-*/
 public class TDept implements Serializable {
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
+
+	private static final long serialVersionUID = 6296631122731894254L;
 	private Integer id;
-
-	public Integer getId() {
-		// begin-user-code
-		return id;
-		// end-user-code
-	}
-
-	/** 
-	* @param id the id to set
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void setId(Integer id) {
-		// begin-user-code
-		this.id = id;
-		// end-user-code
-	}
-
-	
-	private String sede;
-
-	/** 
-	* @return the sede
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public String getSede() {
-		// begin-user-code
-		return sede;
-		// end-user-code
-	}
-
-	/** 
-	* @param sede the sede to set
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void setSede(String sede) {
-		// begin-user-code
-		this.sede = sede;
-		// end-user-code
-	}
-
-	
 	private String nombre;
-
-	/** 
-	* @return the nombre
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public String getNombre() {
-		// begin-user-code
-		return nombre;
-		// end-user-code
-	}
-
-	/** 
-	* @param nombre the nombre to set
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void setNombre(String nombre) {
-		// begin-user-code
-		this.nombre = nombre;
-		// end-user-code
-	}
-
-	private String descripcion;
-
-	/** 
-	* @return the descripcion
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public String getDescripcion() {
-		// begin-user-code
-		return descripcion;
-		// end-user-code
-	}
-
-	/** 
-	* @param descripcion the descripcion to set
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void setDescripcion(String descripcion) {
-		// begin-user-code
-		this.descripcion = descripcion;
-		// end-user-code
-	}
-
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	private Boolean activo;
-
-	/** 
-	* @return the activo
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public Boolean isActivo() {
-		// begin-user-code
-		return activo;
-		// end-user-code
-	}
-
-	/** 
-	* @param activo the activo to set
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void setActivo(Boolean activo) {
-		// begin-user-code
-		this.activo = activo;
-		// end-user-code
-	}
-
+	private String sede;
 	private Integer contEmpleados;
+	private String descripcion;
+	private Boolean activo;
+	
+	
+	public TDept(Integer id, String nombre, String sede, Boolean activo, String descripcion) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.sede = sede;
+		this.contEmpleados = 0;
+		this.descripcion = descripcion;
+		this.activo = activo;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 
-	/** 
-	* @return the contEmpleados
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public Integer getContEmpleados() {
-		// begin-user-code
-		return contEmpleados;
-		// end-user-code
+	public String getSede() {
+		return sede;
+	}
+	public void setSede(String sede) {
+		this.sede = sede;
+	}
+	
+	
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
-	/** 
-	* @param contEmpleados the contEmpleados to set
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void setContEmpleados(Integer contEmpleados) {
-		// begin-user-code
-		this.contEmpleados = contEmpleados;
-		// end-user-code
+
+	public Boolean isActivo() {
+		return activo;
+	}
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
 	}
 
 	
-	public void Constructor() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public Integer getContEmpleados() {
+		return contEmpleados;
+	}
+	public void setContEmpleados(Integer contEmpleados) {
+		this.contEmpleados = contEmpleados;
 	}
 
 	
 	public void aumentarEmpleados() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+		this.contEmpleados++;
 	}
 
 	
 	public void disminuirEmpleados() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+		this.contEmpleados--;
+	}
+	
+	public String toString() {
+		return "Id: " + this.id
+		+ " ;Sede: " + this.sede
+		+ " ;Nombre: " + this.nombre
+		+ " ;activo: " + this.activo
+		+ " ;Descripcion: " + this.descripcion;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if(obj instanceof TDept) {
+			TDept dpt = (TDept) obj;
+			
+			if(this.id == dpt.id && this.nombre.equals(dpt.nombre) 
+			&& this.sede.equals(dpt.sede) && this.descripcion.equals(dpt.descripcion)
+			&& this.activo == dpt.activo) {
+				return true;
+			}
+			else return false;
+		}
+		else return false;
 	}
 }
