@@ -45,7 +45,11 @@ public class SADeptImp implements SADepartamento {
 	}
 
 	public int update(TDept tDept) {
-		return 0;
+		DAODept daoDept;
+		daoDept = FactoriaIntg.getInstance().generarDAODepts();
+		
+		
+		return daoDept.update(tDept);
 	}
 
 	public int delete(Integer id) {
