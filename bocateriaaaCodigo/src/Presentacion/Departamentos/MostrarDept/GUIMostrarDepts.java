@@ -4,10 +4,17 @@
 package Presentacion.Departamentos.MostrarDept;
 
 import javax.swing.JFrame;
+
+import java.awt.BorderLayout;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
 import javax.swing.JPanel;
+import javax.swing.JTable;
 
 /** 
 * <!-- begin-UML-doc -->
@@ -16,6 +23,79 @@ import javax.swing.JPanel;
 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 */
 public class GUIMostrarDepts extends JFrame {
+	
+	private JTable tabla;
+	private DefaultTableModel modeloTabla;
+	
+	public GUIMostrarDepts(){
+		super("Mostrar todos los departamentos");
+		initGUI();
+	}
+	
+	public void initGUI() {
+		JPanel p = new JPanel();
+		p.setLayout(new BorderLayout(10,10));
+		
+		tabla = new JTable();
+		
+		modeloTabla = new DefaultTableModel(){
+			
+			@Override
+		    public boolean isCellEditable(int row, int column) {
+		       return false;
+		    }
+			
+		};
+		
+		//esto a lo mejor no hace falta hacerlo, hay que ver como se actualiza la ventana, o si hay que poner un boton para que 
+		//aparezcan las cosas
+		modeloTabla.setColumnCount(0);
+		modeloTabla.addColumn("ID");
+		modeloTabla.addColumn("Nombre");
+		modeloTabla.addColumn("Sede");
+		modeloTabla.addColumn("Descripcion");
+		tabla.setModel(modeloTabla);
+		
+		p.add(tabla);
+		
+		//Controlador.getInstance().accion(Eventos.LISTAR_DEPS, null);
+		
+		this.setContentPane(p);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		this.setVisible(true);
+		this.pack();
+		this.setLocation(400,400);
+	}
+	
+	/*
+	public void update (ArrayList<TDepartamentos> dep){
+		 modeloTabla.setRowCount(0);
+		 for (int i = 0; i < dep.size(); i++) {
+			if (dep.get(i) instanceof TDepartamentos){
+				modeloTabla.insertRow(i, new Object[] 
+						{ i, dep.get(i).getId(), dep.get(i).getNombre(), dep.get(i).getSede(), dep.get(i).getDescripcion()});
+			}
+		}
+		 tabla.setModel(modeloTabla);
+	}
+	*/
+	
+	
+	
+	public static void main(String[] args) {
+
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				new GUIMostrarDepts();
+			}
+		});
+
+
+	}
+	
 	/** 
 	* <!-- begin-UML-doc -->
 	* <!-- end-UML-doc -->
