@@ -14,22 +14,37 @@ public class DAODeptImp implements DAODept {
 
 	private final static String _path = "resources/departamentos/dept.txt";
 
-	private static int ID = 0;
+	//private  int ID = 1;
 
 	public int create(TDept tDept) {
 		int id = -1;
+		int pointer = 1;
 		// abrir fichero en este caso un documento de texto
 		try (BufferedWriter salida = new BufferedWriter(new FileWriter(_path, true))) {
 			// el true del FileWriter es para que se solapen las cosas y no se sobrescriba
 			// el fichero
-
+			
 			if (read(tDept.getId()) == null) { // si no hay otro con ese id
-				id = ID;
+				
+				if(tDept.getId() == null || tDept.getId() < 1) { //si el departamento no tiene id, se lo asignamos
+					boolean hayID = false;
+					
+					while (hayID == false) {
+						if(read(pointer) != null) {
+							pointer++;
+						}
+						else hayID = true;
+					}
+					id = pointer;
+					tDept.setId(pointer);
+				}
+				else id = tDept.getId();
+				
 				tDept.aumentarEmpleados();
-				id++;
 				salida.write(tDept.toString());
 				salida.newLine();
 				salida.close();
+				
 			} else
 				throw new IOException("YA EXISTE ALGUIEN CON EL ID: " + tDept.getId());
 		} catch (IOException e) {
@@ -128,6 +143,9 @@ public class DAODeptImp implements DAODept {
 				if (nombre.equals(departamento.getNombre())) { // si el nombre es igual entonces lo devolvemos
 					return departamento;
 				} // para que devuelva el primero que encuentre con ese nombre
+				else {
+					departamento = null;
+				}
 			}
 			entrada.close();
 		} catch (IOException e) {
@@ -142,18 +160,14 @@ public class DAODeptImp implements DAODept {
 		List<TDept> deptList = new ArrayList<TDept>();
 
 		deptList = this.readAll();
-
-		int i = 0;
-		boolean encontrado = false;
-		while (i < deptList.size() && !encontrado) {
+		
+		for(int i = 0; i < deptList.size();i++) {
 			if (deptList.get(i).getId() == tDept.getId()) {
-				encontrado = true;
 				deptList.get(i).setNombre(tDept.getNombre());
 				deptList.get(i).setSede(tDept.getSede());
 				deptList.get(i).setDescripcion(tDept.getDescripcion());
 				deptList.get(i).setActivo(tDept.isActivo());
 			}
-			i++;
 		}
 
 		try (BufferedWriter salida = new BufferedWriter(new FileWriter(_path))) { // sobrescribimos el archivo de texto
