@@ -24,10 +24,9 @@ public class DAODeptImp implements DAODept {
 			// el fichero
 
 			if (read(tDept.getId()) == null) { // si no hay otro con ese id
-				id++;
 				id = ID;
-				tDept.setContEmpleados(tDept.getContEmpleados() + 1);
-
+				tDept.aumentarEmpleados();
+				id++;
 				salida.write(tDept.toString());
 				salida.newLine();
 				salida.close();
@@ -154,6 +153,7 @@ public class DAODeptImp implements DAODept {
 				deptList.get(i).setDescripcion(tDept.getDescripcion());
 				deptList.get(i).setActivo(tDept.isActivo());
 			}
+			i++;
 		}
 
 		try (BufferedWriter salida = new BufferedWriter(new FileWriter(_path))) { // sobrescribimos el archivo de texto

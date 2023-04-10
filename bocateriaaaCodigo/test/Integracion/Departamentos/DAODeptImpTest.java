@@ -37,8 +37,8 @@ class DAODeptImpTest {
 		
 		openFile();
 		
-		TDept p1 = new TDept(1, "sede", "Prueba1", true, "Una Descripcion");
-		TDept p2 = new TDept(2, "sede", "Prueba2", true, "Una Descripcion");
+		TDept p1 = new TDept(1, "Prueba1", "sede", true, "Una Descripcion");
+		TDept p2 = new TDept(2, "Prueba2", "sede", true, "Una Descripcion");
 		
 		int id;
 		
@@ -51,7 +51,7 @@ class DAODeptImpTest {
 		//deberian ser iguales el dept 1 y el que se manda a leer por el nombre
 		assertEquals(p1,daoDept.readByName("Prueba1"));
 		
-		TDept p3 = new TDept(3, "sede", "Prueba3", true, "Una Descripcion");
+		TDept p3 = new TDept(3, "Prueba3", "sede", true, "Una Descripcion");
 		
 		daoDept.create(p3);
 		

@@ -13,7 +13,7 @@ class TDeptTest{
 	
 	@Test
 	public void comportamientoBasico() {
-		TDept departamento = new TDept(1, "sede", "Prueba", true, "Una Descripcion");
+		TDept departamento = new TDept(1,"Prueba", "sede", true, "Una Descripcion");
 		
 		//comprobamos los getters:
 		//getter del Id
