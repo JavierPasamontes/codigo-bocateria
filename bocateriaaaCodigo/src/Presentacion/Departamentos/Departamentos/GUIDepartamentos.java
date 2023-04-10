@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -13,11 +14,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import Negocio.Departamentos.TDept;
+import Presentacion.Controlador.Eventos;
+import Presentacion.Controlador.MensajeGUI;
 import Presentacion.Departamentos.AltaDepartamentos.*;
 import Presentacion.Departamentos.BajaDepts.*;
 import Presentacion.Departamentos.ModificarDept.*;
 import Presentacion.Departamentos.MostrarDept.*;
 import Presentacion.Departamentos.MostrarUnDept.*;
+import Presentacion.FactoriaGUI.ObservadorGUI;
 
 
 
@@ -29,6 +34,11 @@ public class GUIDepartamentos extends JFrame{
 	static JButton mostrarTodoBoton;
 	static JButton mostrarPorIDBoton;
 	static JButton volverBoton;
+	private GUIAltaDepartamento GUIAltaDepartamento;
+	private GUIBajaDepts GUIBajaDepts;
+	private GUIModificarDept GUIModificarDept;
+	private GUIMostrarDepts GUIMostrarDepts;
+	private GUIMostrarUnDept GUIMostrarUnDept;
 	
 	public GUIDepartamentos() {
 		super("Departamentos");
@@ -53,7 +63,7 @@ public class GUIDepartamentos extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				GUIAltaDepartamento v=new GUIAltaDepartamento();
+				GUIAltaDepartamento =new GUIAltaDepartamento();
 			}
 			
 			
@@ -65,7 +75,7 @@ public class GUIDepartamentos extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				GUIBajaDepts v=new GUIBajaDepts();
+				GUIBajaDepts =new GUIBajaDepts();
 			}
 			
 			
@@ -77,7 +87,7 @@ public class GUIDepartamentos extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				GUIModificarDept v=new GUIModificarDept();
+				GUIModificarDept =new GUIModificarDept();
 			}
 			
 			
@@ -89,7 +99,7 @@ public class GUIDepartamentos extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				GUIMostrarDepts v=new GUIMostrarDepts();			
+				GUIMostrarDepts =new GUIMostrarDepts();			
 			}
 			
 			
@@ -101,7 +111,7 @@ public class GUIDepartamentos extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				GUIMostrarUnDept v=new GUIMostrarUnDept();
+				GUIMostrarUnDept =new GUIMostrarUnDept();
 			}
 			
 			
@@ -148,7 +158,40 @@ public class GUIDepartamentos extends JFrame{
 				new GUIDepartamentos();
 			}
 		});
+	}
 
-
+	public void actualizar(int evento, Object datos) {
+		MensajeGUI a=new MensajeGUI();
+		switch (evento) {
+		case Eventos.ALTA_DEPARTAMENTO_OK:
+			a.showMessage("Se ha dado de alta al departamento con ID: " + (int)datos,"Alta departamento", false);
+			break;
+		case Eventos.ALTA_DEPARTAMENTO_KO:
+			a.showMessage("No se ha podido dar de alta al departamento", "Alta departamento", true);
+			break;
+		case Eventos.BAJA_DEPARTAMENTO_OK:
+			a.showMessage("Se ha dado de baja al departamento con ID: "+(int)datos, "Baja departamento", false);
+			break;
+		case Eventos.BAJA_DEPARTAMENTO_KO:
+			a.showMessage("No se ha podido dar de baja al departamento con ID: "+(int)datos, "Baja departamento", true);
+			break;
+		case Eventos.MODIFICAR_DEPARTAMENTO_OK:
+			a.showMessage("Se ha modificado el departamento correctamente", "Modificar departamento", false);
+			break;
+		case Eventos.MODIFICAR_DEPARTAMENTO_KO:
+			a.showMessage("No se ha podido modificar el departamento", "Modificar departamento", true);
+			break;
+		case Eventos.MOSTRAR_DEPARTAMENTOS_OK:
+			GUIMostrarDepts.actualizar((ArrayList<TDept>)datos);
+			break;
+		case Eventos.MOSTRAR_DEPARTAMENTOS_KO:
+			a.showMessage("No se pudo mostrar la lista de departamentos", "Mostrar departamentos", true);
+			break;
+		case Eventos.MOSTRAR_DEPARTAMENTO_OK:
+			GUIMostrarUnDept.actualizar((TDept)datos);
+			break;
+		case Eventos.MOSTRAR_DEPARTAMENTO_KO:
+			a.showMessage("No se pudo mostrar el departamento especificado", "Buscar departamento", true);
+		}
 	}
 }

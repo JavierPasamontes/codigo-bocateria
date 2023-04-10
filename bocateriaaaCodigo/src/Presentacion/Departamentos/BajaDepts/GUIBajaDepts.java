@@ -14,6 +14,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import Presentacion.Controlador.Controlador;
+import Presentacion.Controlador.Eventos;
+
 import javax.swing.JPanel;
 
 /** 
@@ -63,15 +66,8 @@ public class GUIBajaDepts extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if(!campoID.getText().equalsIgnoreCase("")) {
-					/*
-					try {
-						Controlador.getInstance().accion(Eventos.BAJA_DEP, Integer.parseInt(campoID.getText()));
-					}
-					catch(Exception ex) {
-						//lanzar ventana de error
-						//ventana de error
-					}
-					*/
+					Controlador.getInstance().accion(Eventos.BAJA_DEPARTAMENTO, Integer.parseInt(campoID.getText()));
+					dispose();
 				}
 			}
 		});

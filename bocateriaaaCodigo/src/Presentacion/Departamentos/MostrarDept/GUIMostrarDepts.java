@@ -6,12 +6,17 @@ package Presentacion.Departamentos.MostrarDept;
 import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+
+import Negocio.Departamentos.TDept;
+import Presentacion.Controlador.Controlador;
+import Presentacion.Controlador.Eventos;
 
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -58,7 +63,7 @@ public class GUIMostrarDepts extends JFrame {
 		
 		p.add(tabla);
 		
-		//Controlador.getInstance().accion(Eventos.LISTAR_DEPS, null);
+		Controlador.getInstance().accion(Eventos.MOSTRAR_DEPARTAMENTOS, null);
 		
 		this.setContentPane(p);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -67,18 +72,18 @@ public class GUIMostrarDepts extends JFrame {
 		this.setLocation(400,400);
 	}
 	
-	/*
-	public void update (ArrayList<TDepartamentos> dep){
+	
+	public void actualizar (ArrayList<TDept> dep){
 		 modeloTabla.setRowCount(0);
 		 for (int i = 0; i < dep.size(); i++) {
-			if (dep.get(i) instanceof TDepartamentos){
+			if (dep.get(i) instanceof TDept){
 				modeloTabla.insertRow(i, new Object[] 
 						{ i, dep.get(i).getId(), dep.get(i).getNombre(), dep.get(i).getSede(), dep.get(i).getDescripcion()});
 			}
 		}
 		 tabla.setModel(modeloTabla);
 	}
-	*/
+	
 	
 	
 	

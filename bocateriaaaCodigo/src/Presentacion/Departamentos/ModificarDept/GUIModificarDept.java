@@ -14,6 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import Negocio.Departamentos.TDept;
+import Presentacion.Controlador.Controlador;
+import Presentacion.Controlador.Eventos;
+
 import javax.swing.JPanel;
 
 /** 
@@ -83,16 +87,9 @@ public class GUIModificarDept extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				/*
-				try {
-					Controlador.getInstance().accion(Eventos.MOD_DEP, 
-							new TDepartamento(campoNombre.getText(), campoSede.getText(), campoDesc.getText()));
-				}
-				catch(Exception ex) {
-					//lanzar ventana de error
-					//ventana de error
-				}
-				*/
+				Controlador.getInstance().accion(Eventos.MODIFICAR_DEPARTAMENTO, 
+						new TDept(Integer.parseInt(campoID.getText()), campoNombre.getText(), campoSede.getText(),true, campoDesc.getText()));
+				dispose();
 			}
 		});
 		botones.add(cancelar);

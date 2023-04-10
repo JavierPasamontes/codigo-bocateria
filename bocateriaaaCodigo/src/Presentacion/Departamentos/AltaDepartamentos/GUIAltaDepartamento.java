@@ -15,8 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import Negocio.Departamentos.TDept;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
+import Presentacion.FactoriaGUI.ObservadorGUI;
 
 /** 
 * <!-- begin-UML-doc -->
@@ -24,7 +26,7 @@ import Presentacion.Controlador.Eventos;
 * @author usuario_local
 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 */
-public class GUIAltaDepartamento extends JFrame {
+public class GUIAltaDepartamento extends JFrame{
 	
 	private JTextField campoNombre;
 	private JTextField campoSede;
@@ -83,17 +85,9 @@ public class GUIAltaDepartamento extends JFrame {
 					correcto=false;
 				}
 				if(correcto) {
-					
-					try {
-						//Controlador.getInstance().accion(Eventos.ALTA_DEPARTAMENTO, 
-								//new TDept(campoNombre.getText(), campoSede.getText(), campoDesc.getText()));
-						//cambiar y hacer el actualizar
-					}
-					catch(Exception ex) {
-						//lanzar ventana de error
-						//crear clase de ventana de error para todos los modulos
-					}
-					
+						Controlador.getInstance().accion(Eventos.ALTA_DEPARTAMENTO, 
+							new TDept(0, campoNombre.getText(), campoSede.getText(), true, campoDesc.getText()));
+						dispose();
 				}
 			}
 			
@@ -125,6 +119,8 @@ public class GUIAltaDepartamento extends JFrame {
 
 
 	}
+	
+	
 	/** 
 	* <!-- begin-UML-doc -->
 	* <!-- end-UML-doc -->
@@ -296,15 +292,10 @@ public class GUIAltaDepartamento extends JFrame {
 		// end-user-code
 	}
 
+
 	/** 
 	* <!-- begin-UML-doc -->
 	* <!-- end-UML-doc -->
 	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 	*/
-	public void actualizar() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
 }

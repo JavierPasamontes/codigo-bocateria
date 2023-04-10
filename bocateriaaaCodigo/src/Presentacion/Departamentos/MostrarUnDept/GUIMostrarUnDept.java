@@ -14,6 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import Negocio.Departamentos.TDept;
+import Presentacion.Controlador.Controlador;
+import Presentacion.Controlador.Eventos;
+
 import javax.swing.JPanel;
 
 /** 
@@ -27,6 +31,10 @@ public class GUIMostrarUnDept extends JFrame {
 	private JTextField campoID;
 	private JButton cancelar;
 	private JButton aceptar;
+	private JLabel idDep=new JLabel("ID: ");
+	private JLabel nombreDep=new JLabel("Nombre: ");
+	private JLabel sedeDep=new JLabel("Sede: ");
+	private JLabel descDep=new JLabel("Descripcion: ");
 	
 	public GUIMostrarUnDept() {
 		super("Mostrar Departamento por ID");
@@ -42,6 +50,12 @@ public class GUIMostrarUnDept extends JFrame {
 		campoID=new JTextField(12);
 		id.add(idLabel);
 		id.add(campoID);
+		
+		JPanel datos=new JPanel();
+		datos.add(idDep);
+		datos.add(nombreDep);
+		datos.add(sedeDep);
+		datos.add(descDep);
 		
 		JPanel botones=new JPanel();
 		cancelar=new JButton("Cancelar");
@@ -63,24 +77,15 @@ public class GUIMostrarUnDept extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if(!campoID.getText().equalsIgnoreCase("")) {
-					/*
-					try {
-						Controlador.getInstance().accion(Eventos.MOSTRAR_UN_DEP, Integer.parseInt(campoID.getText()));
-					}
-					catch(Exception ex) {
-						//lanzar ventana de error
-						//ventana de error
-					}
-					*/
+					Controlador.getInstance().accion(Eventos.MOSTRAR_DEPARTAMENTO, Integer.parseInt(campoID.getText()));
 				}
-				//hay que mirar si actualizamos la ventana o creamos una nueva 
-				//VentanaID v=new VentanaID(campoID.getText());
 			}
 		});
 		botones.add(cancelar);
 		botones.add(aceptar);
 		
 		p.add(id);
+		p.add(datos);
 		p.add(botones);
 		this.setContentPane(p);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -101,6 +106,14 @@ public class GUIMostrarUnDept extends JFrame {
 		});
 
 
+	}
+	
+	public void actualizar(TDept dept) {
+		idDep.setText("ID: "+dept.getId());
+		nombreDep.setText("Nombre: "+dept.getNombre());
+		sedeDep.setText("Sede: "+dept.getSede());
+		descDep.setText("Descripcion: "+dept.getDescripcion());
+		initGUI();
 	}
 	
 	/** 
