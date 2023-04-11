@@ -1,14 +1,20 @@
 package Presentacion.FactoriaGUI;
 
 
+import Presentacion.Controlador.Eventos;
 import Presentacion.Departamentos.Departamentos.GUIDepartamentos;
 
 public class FactoriaGUIImp extends FactoriaGUI {
-	private GUIDepartamentos ventanaDep=new GUIDepartamentos();
+	private GUIDepartamentos ventanaDep;
 
 	@Override
 	public ObservadorGUI generarGUI(int evento) {
-		// TODO Auto-generated method stub
+		switch(evento) {
+		case Eventos.VISTA_DEPARTAMENTOS:{
+			ventanaDep=new GUIDepartamentos();
+			break;
+		}
+		}
 		return null;
 	}
 

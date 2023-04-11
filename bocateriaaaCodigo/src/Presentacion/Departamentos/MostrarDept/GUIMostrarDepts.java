@@ -6,6 +6,8 @@ package Presentacion.Departamentos.MostrarDept;
 import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -31,6 +33,8 @@ public class GUIMostrarDepts extends JFrame {
 	
 	private JTable tabla;
 	private DefaultTableModel modeloTabla;
+	private JButton mostrar;
+	private JButton cerrar;
 	
 	public GUIMostrarDepts(){
 		super("Mostrar todos los departamentos");
@@ -40,6 +44,32 @@ public class GUIMostrarDepts extends JFrame {
 	public void initGUI() {
 		JPanel p = new JPanel();
 		p.setLayout(new BorderLayout(10,10));
+		JPanel botonPanel=new JPanel();
+		JPanel tablaPanel=new JPanel();
+		JPanel cerrarPanel=new JPanel();
+		mostrar=new JButton("Mostrar");
+		mostrar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Controlador.getInstance().accion(Eventos.MOSTRAR_DEPARTAMENTOS, null);
+			}
+			
+			
+		});
+		
+		cerrar=new JButton("Cerrar");
+		cerrar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				dispose();
+			}
+			
+			
+		});
 		
 		tabla = new JTable();
 		
@@ -52,8 +82,6 @@ public class GUIMostrarDepts extends JFrame {
 			
 		};
 		
-		//esto a lo mejor no hace falta hacerlo, hay que ver como se actualiza la ventana, o si hay que poner un boton para que 
-		//aparezcan las cosas
 		modeloTabla.setColumnCount(0);
 		modeloTabla.addColumn("ID");
 		modeloTabla.addColumn("Nombre");
@@ -61,9 +89,13 @@ public class GUIMostrarDepts extends JFrame {
 		modeloTabla.addColumn("Descripcion");
 		tabla.setModel(modeloTabla);
 		
-		p.add(tabla);
+		tablaPanel.add(tabla);
+		botonPanel.add(mostrar);
+		cerrarPanel.add(cerrar);
+		p.add(botonPanel, BorderLayout.PAGE_START);
+		p.add(tablaPanel, BorderLayout.CENTER);
+		p.add(cerrarPanel, BorderLayout.PAGE_END);
 		
-		Controlador.getInstance().accion(Eventos.MOSTRAR_DEPARTAMENTOS, null);
 		
 		this.setContentPane(p);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -74,14 +106,19 @@ public class GUIMostrarDepts extends JFrame {
 	
 	
 	public void actualizar (ArrayList<TDept> dep){
-		 modeloTabla.setRowCount(0);
-		 for (int i = 0; i < dep.size(); i++) {
+		modeloTabla.setColumnCount(0);
+		modeloTabla.addColumn("ID");
+		modeloTabla.addColumn("Nombre");
+		modeloTabla.addColumn("Sede");
+		modeloTabla.addColumn("Descripcion");
+		modeloTabla.setRowCount(0);
+		for (int i = 0; i < dep.size(); i++) {
 			if (dep.get(i) instanceof TDept){
 				modeloTabla.insertRow(i, new Object[] 
 						{ i, dep.get(i).getId(), dep.get(i).getNombre(), dep.get(i).getSede(), dep.get(i).getDescripcion()});
 			}
 		}
-		 tabla.setModel(modeloTabla);
+		tabla.setModel(modeloTabla);
 	}
 	
 	

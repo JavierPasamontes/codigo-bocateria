@@ -16,6 +16,11 @@ public class ControladorIMP extends Controlador {
 		int resultado;
 		
 		switch(evento) {
+		
+		case Eventos.VISTA_DEPARTAMENTOS:
+			FactoriaGUI.getInstance().generarGUI(evento);
+			break;
+			
 		case Eventos.ALTA_DEPARTAMENTO:
 			
 			tDept = (TDept) datos;
