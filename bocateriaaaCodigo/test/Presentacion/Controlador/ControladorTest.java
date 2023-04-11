@@ -2,7 +2,7 @@ package Presentacion.Controlador;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import Integracion.Departamentos.DAODept;
 import Integracion.FactoriaIntegracion.FactoriaIntg;

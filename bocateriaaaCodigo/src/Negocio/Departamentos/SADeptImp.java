@@ -48,6 +48,17 @@ public class SADeptImp implements SADepartamento {
 		DAODept daoDept;
 		daoDept = FactoriaIntg.getInstance().generarDAODepts();
 		
+		TDept dept = daoDept.read(tDept.getId());
+		
+		if (tDept.getNombre().isEmpty()) {
+			tDept.setNombre(dept.getNombre());
+		}
+		if (tDept.getDescripcion().isEmpty()) {
+			tDept.setDescripcion(dept.getDescripcion());
+		}
+		if (tDept.getSede().isEmpty()) {
+			tDept.setSede(dept.getSede());
+		}
 		
 		return daoDept.update(tDept);
 	}
