@@ -5,4 +5,5 @@ Id: 5 ;Sede: Madrid ;Nombre: Pepe ;activo: true ;Descripcion: el pepe
 Id: 4 ;Sede: parla ;Nombre: joselu ;activo: true ;Descripcion: es de parla
 Id: 6 ;Sede: aaa ;Nombre: aaa ;activo: true ;Descripcion: aaa
 Id: 7 ;Sede: ppp ;Nombre: ppp ;activo: true ;Descripcion: pppp
-Id: 8 ;Sede: pppppppp ;Nombre: juan alberto ;activo: true ;Descripcion: a ver
+Id: 8 ;Sede: pppppppp ;Nombre: juan ;activo: false ;Descripcion: ;Descripcion: a ver
+Id: 9 ;Sede: fuenlabrada ;Nombre: elpepe ;activo: true ;Descripcion: holaqtal
