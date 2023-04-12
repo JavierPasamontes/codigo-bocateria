@@ -22,6 +22,7 @@ public class GUIPrincipal extends JFrame{
 	private JButton productos;
 	private JButton proveedores;
 	private JButton ventas;
+	private JButton empleados;
 	private JButton volverBoton;
 	
 	
@@ -42,7 +43,11 @@ public class GUIPrincipal extends JFrame{
 		inferior.setBackground(Color.RED);
 		
 		departamentos=new JButton("Departamentos");
-		departamentos.setPreferredSize(new Dimension(150,50));
+		ImageIcon iconodep = new ImageIcon("resources/imgs/botonDep.png");
+		departamentos=new JButton(iconodep);
+		departamentos.setBorderPainted(false);
+		departamentos.setContentAreaFilled(false);
+		departamentos.setPreferredSize(new Dimension(200,100));
 		departamentos.addActionListener(new ActionListener() {
 
 			@Override
@@ -55,7 +60,11 @@ public class GUIPrincipal extends JFrame{
 			
 		});
 		marcas=new JButton("Marcas");
-		marcas.setPreferredSize(new Dimension(150,50));
+		ImageIcon iconomarc = new ImageIcon("resources/imgs/botonMarcas.png");
+		marcas=new JButton(iconomarc);
+		marcas.setBorderPainted(false);
+		marcas.setContentAreaFilled(false);
+		marcas.setPreferredSize(new Dimension(200,100));
 		marcas.addActionListener(new ActionListener() {
 
 			@Override
@@ -67,7 +76,11 @@ public class GUIPrincipal extends JFrame{
 			
 		});
 		productos=new JButton("Productos");
-		productos.setPreferredSize(new Dimension(150,50));
+		ImageIcon iconoprod = new ImageIcon("resources/imgs/botonProds.png");
+		productos=new JButton(iconoprod);
+		productos.setBorderPainted(false);
+		productos.setContentAreaFilled(false);
+		productos.setPreferredSize(new Dimension(200,100));
 		productos.addActionListener(new ActionListener() {
 
 			@Override
@@ -79,7 +92,11 @@ public class GUIPrincipal extends JFrame{
 			
 		});
 		proveedores=new JButton("Proveedores");
-		proveedores.setPreferredSize(new Dimension(150,50));
+		ImageIcon iconoprov = new ImageIcon("resources/imgs/botonProv.png");
+		proveedores=new JButton(iconoprov);
+		proveedores.setBorderPainted(false);
+		proveedores.setContentAreaFilled(false);
+		proveedores.setPreferredSize(new Dimension(200,100));
 		proveedores.addActionListener(new ActionListener() {
 
 			@Override
@@ -91,13 +108,34 @@ public class GUIPrincipal extends JFrame{
 			
 		});
 		ventas=new JButton("Ventas");
-		ventas.setPreferredSize(new Dimension(150,50));
+		ImageIcon iconovent = new ImageIcon("resources/imgs/botonVentas.png");
+		ventas=new JButton(iconovent);
+		ventas.setBorderPainted(false);
+		ventas.setContentAreaFilled(false);
+		ventas.setPreferredSize(new Dimension(200,100));
 		ventas.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				//GUIMostrarUnDept =new GUIMostrarUnDept();
+			}
+			
+			
+		});
+		
+		empleados=new JButton("Empleados");
+		ImageIcon iconoemp = new ImageIcon("resources/imgs/botonEmp.png");
+		empleados=new JButton(iconoemp);
+		empleados.setBorderPainted(false);
+		empleados.setContentAreaFilled(false);
+		empleados.setPreferredSize(new Dimension(200,100));
+		empleados.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				//GUIModificarDept =new GUIModificarDept();
 			}
 			
 			
@@ -119,6 +157,7 @@ public class GUIPrincipal extends JFrame{
 		});
 		superior.add(departamentos);
 		superior.add(marcas);
+		superior.add(empleados);
 		medio.add(productos);
 		medio.add(proveedores);
 		medio.add(ventas);
