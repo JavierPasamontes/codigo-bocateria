@@ -30,7 +30,6 @@ public class TDept implements Serializable {
 		this.id = id;
 	}
 	
-
 	public String getSede() {
 		return sede;
 	}

@@ -15,16 +15,12 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 
 import Negocio.Departamentos.TDept;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 /** 
@@ -91,11 +87,7 @@ public class GUIMostrarDepts extends JFrame {
 		modeloTabla.addColumn("Nombre");
 		modeloTabla.addColumn("Sede");
 		modeloTabla.addColumn("Descripcion");
-		
-		JScrollPane scroll = new JScrollPane();
-		scroll.setViewportView (tabla);
 		tabla.setModel(modeloTabla);
-		
 		
 		tablaPanel.add(tabla);
 		botonPanel.add(mostrar);
@@ -114,14 +106,19 @@ public class GUIMostrarDepts extends JFrame {
 	
 	
 	public void actualizar (ArrayList<TDept> dep){
+		modeloTabla.setColumnCount(0);
+		modeloTabla.addColumn("ID");
+		modeloTabla.addColumn("Nombre");
+		modeloTabla.addColumn("Sede");
+		modeloTabla.addColumn("Descripcion");
 		modeloTabla.setRowCount(0);
-		modeloTabla.insertRow(0, new String[] {"ID", "Nombre", "Sede", "Descripcion"});
 		for (int i = 0; i < dep.size(); i++) {
-				modeloTabla.insertRow(i+1, new Object[] 
-						{ dep.get(i).getId(), dep.get(i).getNombre(), dep.get(i).getSede(), dep.get(i).getDescripcion()});
+			if (dep.get(i) instanceof TDept){
+				modeloTabla.insertRow(i, new Object[] 
+						{ i, dep.get(i).getId(), dep.get(i).getNombre(), dep.get(i).getSede(), dep.get(i).getDescripcion()});
+			}
 		}
 		tabla.setModel(modeloTabla);
-		this.pack();
 	}
 	
 	

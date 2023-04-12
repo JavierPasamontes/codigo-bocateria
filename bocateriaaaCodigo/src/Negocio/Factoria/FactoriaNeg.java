@@ -1,6 +1,7 @@
 package Negocio.Factoria;
 
 import Negocio.Departamentos.SADepartamento;
+import Negocio.Proveedores.SAProv;
 
 public abstract class FactoriaNeg {
 	
@@ -15,4 +16,6 @@ public abstract class FactoriaNeg {
 		
 	}
 	public abstract SADepartamento generarSADept();
+	
+	public abstract SAProv generarSAProv();
 }
