@@ -12,9 +12,6 @@ public class Eventos {
 
 	
 	public static final int MOSTRAR_DEPARTAMENTO = 1040;
-
-	//buscar?
-	public static final int BUSCAR_DEPARTAMENTO = 1050;
 	
 	
 	public static final int MOSTRAR_DEPARTAMENTOS = 1060;
@@ -42,12 +39,6 @@ public class Eventos {
 
 	
 	public static final int MOSTRAR_DEPARTAMENTO_KO = 1042;
-
-	
-	public static final int BUSCAR_DEPARTAMENTO_OK = 1051;
-
-	
-	public static final int BUSCAR_DEPARTAMENTO_KO = 1052;
 	
 	
 	public static final int MOSTRAR_DEPARTAMENTOS_OK = 1061;
@@ -101,5 +92,61 @@ public class Eventos {
 
 	
 	public static final int MOSTRAR_PROVS_KO = 2052;
+	
+	
+	public static final int ALTA_EMPLEADO = 3010;
+
+
+	public static final int BAJA_EMPLEADO = 3020;
+
+	
+	public static final int MODIFICAR_EMPLEADO = 3030;
+
+	
+	public static final int MOSTRAR_EMPLEADO = 3040;
+	
+	
+	public static final int MOSTRAR_EMPLEADOS = 3060;
+
+	
+	public static final int ALTA_EMPLEADO_OK = 3011;
+
+	
+	public static final int ALTA_EMPLEADO_KO = 3012;
+
+	
+	public static final int BAJA_EMPLEADO_OK = 3021;
+
+	
+	public static final int BAJA_EMPLEADO_KO = 3022;
+
+	
+	public static final int MODIFICAR_EMPLEADO_OK = 3031;
+
+	
+	public static final int MODIFICAR_EMPLEADO_KO = 3032;
+
+	
+	public static final int MOSTRAR_EMPLEADO_OK = 3041;
+
+	
+	public static final int MOSTRAR_EMPLEADO_KO = 3042;
+	
+	
+	public static final int MOSTRAR_EMPLEADOS_OK = 3061;
+
+	
+	public static final int MOSTRAR_EMPLEADOS_KO = 3062;
+
+	
+	public static final int VISTA_EMPLEADOS = 3000;
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
