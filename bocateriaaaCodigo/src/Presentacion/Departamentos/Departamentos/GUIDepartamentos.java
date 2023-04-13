@@ -142,7 +142,7 @@ public class GUIDepartamentos extends JFrame{
 		p.add(inferior, BorderLayout.PAGE_END);
 		
 		this.setContentPane(p);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setVisible(true);
 		this.pack();
 		this.setLocation(400,400);

@@ -135,7 +135,7 @@ public class GUIPrincipal extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//GUIModificarDept =new GUIModificarDept();
+				Controlador.getInstance().accion(Eventos.VISTA_EMPLEADOS, null);
 			}
 			
 			
