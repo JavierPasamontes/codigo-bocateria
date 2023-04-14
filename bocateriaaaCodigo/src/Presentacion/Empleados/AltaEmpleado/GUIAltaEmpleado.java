@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import Negocio.Empleados.TransferEmpleados;
-import Negocio.Empleados.TransferEmpleadosTP;
+import Negocio.Empleados.TEmpleados;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
 import Presentacion.Marcas.AltaMarca.GUIAltaMarca;
@@ -96,7 +96,7 @@ public class GUIAltaEmpleado extends JFrame{
 		jornadaCompleta.add(checkTiempo);
 		
 		JPanel horas=new JPanel();
-		JLabel horasLabel=new JLabel("Nº de horas: ");
+		JLabel horasLabel=new JLabel("Nï¿½ de horas: ");
 		campoHoras=new JTextField(2);
 		campoHoras.setEnabled(false);
 		horas.add(horasLabel);
@@ -140,7 +140,7 @@ public class GUIAltaEmpleado extends JFrame{
 					}
 					else {
 						Controlador.getInstance().accion(Eventos.ALTA_EMPLEADO, 
-								new TransferEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),Integer.parseInt(campoJornada.getText()),Integer.parseInt(campoIDdept.getText()), true, 
+								new TEmpleados(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),Integer.parseInt(campoJornada.getText()),Integer.parseInt(campoIDdept.getText()), true, 
 										Integer.parseInt(campoHoras.getText()), Integer.parseInt(campoEurosHora.getText())));
 							dispose();
 					}

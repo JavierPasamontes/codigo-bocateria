@@ -3,82 +3,49 @@
  */
 package Integracion.Empleados;
 
-/** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author usuario_local
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
- */
+import java.util.List;
+
+import Negocio.Empleados.TEmpleados;
+
 public class DAOEmpImp implements DAOEmpleados {
-	/** 
-	* (non-Javadoc)
-	* @see DAOEmpleados#create()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void create() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	
+	private final static String _path = "resources/empleados/emp.JSON";
 
-		// end-user-code
+	@Override
+	public int create(TEmpleados tEmp) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see DAOEmpleados#read()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void read() {
-		// begin-user-code
+	@Override
+	public TEmpleados read(Integer id) {
 		// TODO Auto-generated method stub
-
-		// end-user-code
+		return null;
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see DAOEmpleados#readAll()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void readAll() {
-		// begin-user-code
+	@Override
+	public List<TEmpleados> readAll() {
 		// TODO Auto-generated method stub
-
-		// end-user-code
+		return null;
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see DAOEmpleados#update()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void update() {
-		// begin-user-code
+	@Override
+	public int update(TEmpleados tEmp) {
 		// TODO Auto-generated method stub
-
-		// end-user-code
+		return 0;
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see DAOEmpleados#delete()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void delete() {
-		// begin-user-code
+	@Override
+	public int delete(Integer id) {
 		// TODO Auto-generated method stub
-
-		// end-user-code
+		return 0;
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see DAOEmpleados#mostrarEmpPorDep()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void mostrarEmpPorDep() {
-		// begin-user-code
+	@Override
+	public void mostrarEmpPorDep(TEmpleados tEmp) {
 		// TODO Auto-generated method stub
-
-		// end-user-code
+		
 	}
+
+	
 }

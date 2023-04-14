@@ -1,9 +1,12 @@
 package Negocio.Empleados;
 
-public class TransferEmpleadosTP extends TransferEmpleados {
+public class TEmpleados extends TransferEmpleados {
+	
+	private static final long serialVersionUID = 1L;
+	
 	private int horas;
 	private int eurosHora;
-	public TransferEmpleadosTP(String nombre, String apellidos, String DNI, Integer jornada, Integer idDept, Boolean activo,int horas, int eurosHora) {
+	public TEmpleados(String nombre, String apellidos, String DNI, Integer jornada, Integer idDept, Boolean activo,int horas, int eurosHora) {
 		super(nombre, apellidos, DNI, jornada, idDept, activo);
 		this.horas = horas;
 		this.eurosHora = eurosHora;

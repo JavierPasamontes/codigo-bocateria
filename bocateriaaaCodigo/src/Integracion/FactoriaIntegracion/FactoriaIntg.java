@@ -4,6 +4,8 @@
 package Integracion.FactoriaIntegracion;
 
 import Integracion.Departamentos.DAODept;
+import Integracion.Empleados.DAOEmpleados;
+import Integracion.Marcas.DAOMarcas;
 import Integracion.Proveedores.DAOProv;
 
 public abstract class FactoriaIntg {
@@ -19,6 +21,10 @@ public abstract class FactoriaIntg {
 	}
 
 	public abstract DAODept generarDAODepts();
+	
+	public abstract DAOMarcas generarDAOMarcas();
+	
+	public abstract DAOEmpleados generarDAOEmpleados();
 	
 	public abstract DAOProv generarDAOProv();
 }

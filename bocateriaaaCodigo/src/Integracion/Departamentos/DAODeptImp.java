@@ -1,5 +1,8 @@
 package Integracion.Departamentos;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -12,25 +15,33 @@ import Negocio.Departamentos.TDept;
 
 public class DAODeptImp implements DAODept {
 
-	private final static String _path = "resources/departamentos/dept.txt";
+	private final static String _path = "resources/departamentos/dept.JSON";
 
-	//private  int ID = 1;
-
+	@Override
 	public int create(TDept tDept) {
 		int id = -1;
 		int pointer = 1;
 		// abrir fichero en este caso un documento de texto
-		try (BufferedWriter salida = new BufferedWriter(new FileWriter(_path, true))) {
-			// el true del FileWriter es para que se solapen las cosas y no se sobrescriba
-			// el fichero
+		
+		JSONObject out = new JSONObject();
+
+		List<TDept> deptList = this.readAll();
+		
+		ArrayList<Integer> ids = new ArrayList<Integer>();
+		
+		for(TDept dept :deptList) {
+			ids.add(dept.getId());
+		}
+		
+		try (BufferedWriter salida = new BufferedWriter(new FileWriter(_path))) {
 			
-			if (read(tDept.getId()) == null) { // si no hay otro con ese id
-				
-				if(tDept.getId() == null || tDept.getId() < 1) { //si el departamento no tiene id, se lo asignamos
-					boolean hayID = false;
+			if(! ids.contains(tDept.getId()) ) {
+				if(tDept.getId() == null || tDept.getId() < 1 || deptList.size() > 1) {//si el departamento no tiene id, se lo asignamos
 					
+					boolean hayID = false;
+			
 					while (hayID == false) {
-						if(read(pointer) != null) {
+						if(ids.contains(pointer)) {
 							pointer++;
 						}
 						else hayID = true;
@@ -38,125 +49,126 @@ public class DAODeptImp implements DAODept {
 					id = pointer;
 					tDept.setId(pointer);
 				}
-				else id = tDept.getId();
+				else
+					id = tDept.getId();
+
 				
 				tDept.aumentarEmpleados();
-				salida.write(tDept.toString());
-				salida.newLine();
-				salida.close();
 				
-			} else
+				deptList.add(tDept);
+			
+				JSONArray depts = new JSONArray();
+				
+				for(TDept dept :deptList) {
+					JSONObject o = new JSONObject();
+					o.put("ID", dept.getId());
+					o.put("NOMBRE", dept.getNombre());
+					o.put("SEDE", dept.getSede());
+					o.put("ACTIVO", dept.isActivo());
+					o.put("DESC", dept.getDescripcion());
+					
+					depts.put(o);
+				}
+							
+				out.put("DEPT", depts);
+				salida.write(out.toString());
+				salida.close();
+			}
+			else {
 				throw new IOException("YA EXISTE ALGUIEN CON EL ID: " + tDept.getId());
+			}
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+					
 		return id;
 	}
 
+	@Override
 	public TDept read(Integer id) {
-
+		 //al tratarse de un JSON es mas conveniente leerlo todo,
+		//convertirlo en objeto y luego trabajar con este
 		TDept departamento = null;
-
-		Integer auxId;
-		String sede;
-		String nombre;
-		String descripcion;
-		Boolean activo;
-
-		try (BufferedReader entrada = new BufferedReader(new FileReader(_path))) {// el true del FileWriter es para que
-																					// se solapen las cosas y no se
-																					// sobrescriba el fichero
-
-			String linea;
-
-			while ((linea = entrada.readLine()) != null) {
-				String[] parts = linea.split(" ");// dividimos por cada espacio la entrada
-				auxId = Integer.parseInt(parts[1]);
-
-				if (auxId == id) { // si coincide el id pasamos los datos
-					sede = parts[3];
-					nombre = parts[5];
-
-					if (parts[7].equals("true")) // se podria parsear a booleano
-						activo = true;
-					else
-						activo = false;
-
-					descripcion = parts[9];
-					// en el caso de que la descripcion sea mas de una palabra
-					if (parts.length > 9) {
-						int descSize = 10;
-						while (descSize < parts.length) {
-							descripcion += " " + parts[descSize];
-							descSize++;
-						}
-					}
-					departamento = new TDept(id, nombre, sede, activo, descripcion);
-				}
+		
+		List<TDept> deptList = new ArrayList<TDept>();
+		
+		deptList = this.readAll();
+		
+		int i = 0;
+		boolean salida = false;
+		
+		while (salida == false && i < deptList.size()) {
+			if(deptList.get(i).getId() == id) {
+				departamento = deptList.get(i);
+				salida = true;
 			}
-			entrada.close();
-		} catch (IOException e) {
-			e.printStackTrace();
+			i++;
 		}
 
 		return departamento;
 	}
 
-	public List<TDept> readAll() {
+	@Override
+	public List<TDept> readAll() { //funcion principal de lectura
 		List<TDept> deptList = new ArrayList<TDept>();
-
+		
 		try (BufferedReader entrada = new BufferedReader(new FileReader(_path))) {
-			String linea;
-			int auxId;
-
-			while ((linea = entrada.readLine()) != null) {
-				String[] parts = linea.split(" ");// dividimos por cada espacio la entrada
-				auxId = Integer.parseInt(parts[1]);
-
-				TDept departamento = this.read(auxId);
-				// leemos el id y lo insertamos en la lista
-				deptList.add(departamento);
+			
+			String line = entrada.readLine();
+			
+			if(line != null ) {
+				JSONObject jsonInput = new JSONObject(line);
+		
+				JSONArray depts= jsonInput.getJSONArray("DEPT");
+			
+				for(int i = 0; i< depts.length(); i++) {
+					JSONObject in = depts.getJSONObject(i);
+					
+					Integer auxId = in.getInt("ID");;
+					String nombre = in.getString("NOMBRE");
+					String sede = in.getString("SEDE");
+					String descripcion =  in.getString("DESC");;
+					Boolean activo = in.getBoolean("ACTIVO");
+					
+					TDept departamento = new TDept(auxId, nombre, sede, activo, descripcion);
+					// leemos el id y lo insertamos en la lista
+					deptList.add(departamento);
+				}
+			
 			}
 			entrada.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		} 
 
 		return deptList;
 	}
 
+	@Override
 	public TDept readByName(String nombre) {
-
 		TDept departamento = null;
 
-		try (BufferedReader entrada = new BufferedReader(new FileReader(_path))) {
-			String linea;
-			int auxId;
-
-			while ((linea = entrada.readLine()) != null) {
-				String[] parts = linea.split(" ");// dividimos por cada espacio la entrada
-				auxId = Integer.parseInt(parts[1]);
-
-				departamento = this.read(auxId);
-
-				if (nombre.equals(departamento.getNombre())) { // si el nombre es igual entonces lo devolvemos
-					return departamento;
-				} // para que devuelva el primero que encuentre con ese nombre
-				else {
-					departamento = null;
-				}
+		List<TDept> deptList = new ArrayList<TDept>();
+		
+		deptList = this.readAll();
+		
+		int i = 0;
+		boolean salida = false;
+		
+		while (salida == false && i < deptList.size()) {
+			if(deptList.get(i).getNombre().equals(nombre)) {
+				departamento = deptList.get(i);
+				salida = true;
 			}
-			entrada.close();
-		} catch (IOException e) {
-			e.printStackTrace();
+			i++;
 		}
 
 		return departamento;
 	}
 
+	@Override
 	public int update(TDept tDept) {
-
 		List<TDept> deptList = new ArrayList<TDept>();
 
 		deptList = this.readAll();
@@ -181,19 +193,27 @@ public class DAODeptImp implements DAODept {
 		return tDept.getId();
 	}
 
+	@Override
 	public int delete(Integer id) {
 		int r =-1;
-		//ya se puede borrar por lectura, cambiar
+
 		
+	
 		TDept eliminado = read(id);
 		
+		/* Para modificar y poner el activo a false
+		eliminado.setActivo(false);
+		
+		this.update(eliminado);
+		*/
+		
+		// Para eliminar
 		if (eliminado != null) {
 			List<TDept> deptList = new ArrayList<TDept>();
 			
 			deptList = this.readAll();
 		
 			deptList.remove(eliminado);
-			r=id;
 					
 			try(BufferedWriter salida = new BufferedWriter(new FileWriter(_path)))
 			{ //sobrescribimos el archivo de texto
@@ -206,6 +226,6 @@ public class DAODeptImp implements DAODept {
 			}
 		}
 								
-		return r;
+		return id;
 	}
 }

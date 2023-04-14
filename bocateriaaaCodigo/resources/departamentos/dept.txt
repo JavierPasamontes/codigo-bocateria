@@ -1,9 +1,1 @@
-Id: 1 ;Sede: sede ;Nombre: Prueba1 ;activo: true ;Descripcion: Una Descripcion
-Id: 3 ;Sede: nuevaSede ;Nombre: ABC ;activo: true ;Descripcion: Una Descripcion
-Id: 2 ;Sede: Zaragoza ;Nombre: Luis ;activo: true ;Descripcion: LMAO
-Id: 5 ;Sede: Madrid ;Nombre: Pepe ;activo: true ;Descripcion: el pepe
-Id: 4 ;Sede: parla ;Nombre: joselu ;activo: true ;Descripcion: es de parla
-Id: 6 ;Sede: aaa ;Nombre: aaa ;activo: true ;Descripcion: aaa
-Id: 7 ;Sede: ppp ;Nombre: ppp ;activo: true ;Descripcion: pppp
-Id: 8 ;Sede: pppppppp ;Nombre: juan ;activo: false ;Descripcion: ;Descripcion: a ver
-Id: 9 ;Sede: hola ;Nombre: Agapito ;activo: true ;Descripcion: dawda
+{"DEPT":[{"ACTIVO":true,"SEDE":"Zaragoza","ID":1,"NOMBRE":"El Pepe ","DESC":"El pepe"},{"ACTIVO":true,"SEDE":"Bolivia","ID":3,"NOMBRE":"Juan Alberto","DESC":"es Juan Alberto"},{"ACTIVO":true,"SEDE":"madrid","ID":2,"NOMBRE":"Juan","DESC":"asfasdfasfwf"},{"ACTIVO":true,"SEDE":"Portugal","ID":4,"NOMBRE":"Luis","DESC":"Es Luis"},{"ACTIVO":true,"SEDE":"Chile","ID":5,"NOMBRE":"Germán Garmendia","DESC":"Es Germán (Garmendia) "},{"ACTIVO":true,"SEDE":"Cordoba","ID":6,"NOMBRE":"Rube Sánchez","DESC":"No se"},{"ACTIVO":true,"SEDE":"El Salvador","ID":7,"NOMBRE":"Fernando","DESC":"Chorizo"},{"ACTIVO":true,"SEDE":"España","ID":8,"NOMBRE":"Mauricio","DESC":"Tiri tiri tiri"},{"ACTIVO":true,"SEDE":"Cuba","ID":9,"NOMBRE":"Jose","DESC":"hola buenas"},{"ACTIVO":true,"SEDE":"sede","ID":10,"NOMBRE":"Prueba1","DESC":"una descripcion"}]}

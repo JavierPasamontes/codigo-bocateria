@@ -21,10 +21,12 @@ import Negocio.Departamentos.TDept;
 
 class DAODeptImpTest {
 	
-	private final static String _path = "resources/departamentos/dept.txt";
+	private final static String _path = "resources/departamentos/dept.JSON";
 	
 	public void openFile() {
-		try(BufferedWriter salida = new BufferedWriter(new FileWriter(_path))){ salida.close();}
+		try(BufferedWriter salida = new BufferedWriter(new FileWriter(_path))){
+			salida.close();
+			}
 		catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -86,7 +88,7 @@ class DAODeptImpTest {
 		
 		TDept p1 = new TDept(1, "sede", "Prueba1", true, "Una Descripcion");
 		
-		daoDept.create(p1);
+		int id = daoDept.create(p1);
 		
 		/* mirar
 		//comprobamos que no pueda crear otro departamento con el mismo id y lanzamos una excepcion

@@ -19,12 +19,7 @@ import Negocio.Departamentos.TDept;
 import Negocio.Proveedores.TProvComunitario;
 import Negocio.Proveedores.TProveedores;
 
-/** 
-* <!-- begin-UML-doc -->
-* <!-- end-UML-doc -->
-* @author pedro
-* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-*/
+
 public class DAOProvImp implements DAOProv {
 	
 	private static final String archivo = "proveedores.txt";
@@ -51,13 +46,7 @@ public class DAOProvImp implements DAOProv {
 		
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see DAOProv#read(Integer id)
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	* 
-	* No modifica los datos
-	*/
+
 	public TProveedores read(Integer id) {
 		
 		try(FileInputStream file = new FileInputStream(archivo); Scanner scn = new Scanner(file) ) {
@@ -88,11 +77,7 @@ public class DAOProvImp implements DAOProv {
 		
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see DAOProv#readAll()
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
+
 	public List<TProveedores> readAll() {
 		List<TProveedores> proveedores = new ArrayList<TProveedores>();
 		
@@ -122,11 +107,7 @@ public class DAOProvImp implements DAOProv {
 
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see DAOProv#update(TProveedores prov)
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
+
 	public Integer update(TProveedores prov) {
 		
 		TProveedores aux = readByName(prov.getNombre());
@@ -161,13 +142,7 @@ public class DAOProvImp implements DAOProv {
 		// end-user-code
 	}
 
-	/** 
-	* (non-Javadoc)
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
-	* @see DAOProv#readByName(String nombre)
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
+	
 	public TProveedores readByName(String nombre) {
 		
 		
@@ -195,11 +170,7 @@ public class DAOProvImp implements DAOProv {
 		return null;
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see DAOProv#delete(Integer id)
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
+
 	public int delete(Integer id) {
 		
 		TProveedores prov = read(id);

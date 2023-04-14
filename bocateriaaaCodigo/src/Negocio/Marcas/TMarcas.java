@@ -1,91 +1,81 @@
-/**
- * 
- */
 package Negocio.Marcas;
 
 import java.io.Serializable;
 
-/** 
-* <!-- begin-UML-doc -->
-* <!-- end-UML-doc -->
-* @author usuario_local
-* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-*/
+import Negocio.Departamentos.TDept;
+
+
 public class TMarcas implements Serializable {
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
+	
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	private String nombre;
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	private Boolean activa;
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	private Integer contProductos;
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @return
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
+	public TMarcas(Integer id, String nombre, Boolean activa, Integer contProductos) {
+		this.id = id;
+		this.nombre = nombre;
+		this.activa = activa;
+		this.contProductos = contProductos;
+	}
+	
 	public Integer getID() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
-		// end-user-code
+		return this.id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @return
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	public String getNombre() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
-		// end-user-code
+		return this.nombre;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @return
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	public Boolean getActiva() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
-		// end-user-code
+		return this.activa;
+	}
+	
+	public void setActivo(Boolean activo) {
+		this.activa = activo;
 	}
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @return
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	public Integer getCont() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
-		// end-user-code
+		return this.contProductos;
 	}
+	
+	public void setCont(Integer cont) {
+		this.contProductos = cont;
+	}
+	
+	public void aumentarEmpleados() {
+		this.contProductos++;
+	}
+
+	public void disminuirEmpleados() {
+		this.contProductos--;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if(obj instanceof TMarcas) {
+			TMarcas mrc = (TMarcas) obj;
+			
+			if(this.id == mrc.id && this.nombre.equals(mrc.nombre) 
+			&& this.activa.equals(mrc.activa) && this.contProductos.equals(mrc.contProductos)
+			) {
+				return true;
+			}
+			else return false;
+		}
+		else return false;
+	}
+	
+
 }

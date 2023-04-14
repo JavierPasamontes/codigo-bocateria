@@ -3,72 +3,205 @@
  */
 package Integracion.Marcas;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import Negocio.Departamentos.TDept;
 import Negocio.Marcas.TMarcas;
 
-/** 
-* <!-- begin-UML-doc -->
-* <!-- end-UML-doc -->
-* @author usuario_local
-* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-*/
+
 public class DAOMarcasImp implements DAOMarcas {
-	/** 
-	* (non-Javadoc)
-	* @see DAOMarcas#create()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public Integer create() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
-		// end-user-code
+	
+	private final static String _path = "resources/marcas/marcas.JSON";
+
+	@Override
+	public int create(TMarcas tMarca) {
+		int id = -1;
+		int pointer = 1;
+		// abrir fichero en este caso un documento de texto
+		
+		JSONObject out = new JSONObject();
+
+		List<TMarcas> marcaList = this.readAll();
+		
+		ArrayList<Integer> ids = new ArrayList<Integer>();
+		
+		for(TMarcas marca :marcaList) {
+			ids.add(marca.getID());
+		}
+		
+		try (BufferedWriter salida = new BufferedWriter(new FileWriter(_path))) {
+			
+			if(! ids.contains(tMarca.getID()) ) {
+				if(tMarca.getID() == null || tMarca.getID() < 1 || marcaList.size() > 1) {//si el departamento no tiene id, se lo asignamos
+					
+					boolean hayID = false;
+			
+					while (hayID == false) {
+						if(ids.contains(pointer)) {
+							pointer++;
+						}
+						else hayID = true;
+					}
+					id = pointer;
+					tMarca.setId(pointer);
+				}
+				else
+					id = tMarca.getID();
+
+				
+				tMarca.aumentarEmpleados();
+				
+				marcaList.add(tMarca);
+			
+				JSONArray marcs = new JSONArray();
+				
+				for(TMarcas marca :marcaList) {
+					JSONObject o = new JSONObject();
+					o.put("ID", marca.getID());
+					o.put("NOMBRE", marca.getNombre());
+					o.put("PRODUCTOS", marca.getCont());
+					o.put("ACTIVO", marca.getActiva());
+					
+					marcs.put(o);
+				}
+							
+				out.put("MARCAS", marcs);
+				salida.write(out.toString());
+				salida.close();
+			}
+			else {
+				throw new IOException("YA EXISTE UNA MARCA CON EL ID: " + tMarca.getID());
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+					
+		return id;
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see DAOMarcas#read()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public TMarcas read() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
-		// end-user-code
+	@Override
+	public TMarcas read(Integer id) {
+		TMarcas marca = null;
+		
+		List<TMarcas> marcaList = new ArrayList<TMarcas>();
+		
+		marcaList = this.readAll();
+		
+		int i = 0;
+		boolean salida = false;
+		
+		while (salida == false && i < marcaList.size()) {
+			if(marcaList.get(i).getID() == id) {
+				marca = marcaList.get(i);
+				salida = true;
+			}
+			i++;
+		}
+
+		return marca;
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see DAOMarcas#readAll()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void readAll() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	@Override
+	public List<TMarcas> readAll() {
+		List<TMarcas> marcaList = new ArrayList<TMarcas>();
+		
+		try (BufferedReader entrada = new BufferedReader(new FileReader(_path))) {
+			
+			String line = entrada.readLine();
+			
+			if(line != null ) {
+				JSONObject jsonInput = new JSONObject(line);
+		
+				JSONArray marcs= jsonInput.getJSONArray("MARCAS");
+			
+				for(int i = 0; i< marcs.length(); i++) {
+					JSONObject in = marcs.getJSONObject(i);
+					
+					Integer auxId = in.getInt("ID");;
+					String nombre = in.getString("NOMBRE");
+					Integer numProd = in.getInt("PRODUCTOS");
+					Boolean activo = in.getBoolean("ACTIVO");
+					
+					TMarcas marca = new TMarcas(auxId, nombre, activo, numProd);
+					// leemos el id y lo insertamos en la lista
+					marcaList.add(marca);
+				}
+			
+			}
+			entrada.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
 
-		// end-user-code
+		return marcaList;
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see DAOMarcas#update()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public Integer update() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
-		// end-user-code
+	@Override
+	public int update(TMarcas tMarca) {
+		List<TMarcas> marcaList = new ArrayList<TMarcas>();
+
+		marcaList = this.readAll();
+		
+		for(int i = 0; i < marcaList.size();i++) {
+			if (marcaList.get(i).getID() == tMarca.getID()) {
+				marcaList.get(i).setNombre(tMarca.getNombre());
+				marcaList.get(i).setActivo(tMarca.getActiva());
+				marcaList.get(i).setCont(tMarca.getCont());
+				}
+		}
+
+		try (BufferedWriter salida = new BufferedWriter(new FileWriter(_path))) { // sobrescribimos el archivo de texto
+			for (TMarcas marca : marcaList) {
+				this.create(marca);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return tMarca.getID();
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see DAOMarcas#delete()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public Integer delete() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
-		// end-user-code
+	@Override
+	public int delete(Integer id) {		
+		TMarcas eliminado = read(id);
+		
+		/* Para modificar y poner el activo a false
+		eliminado.setActivo(false);
+		
+		this.update(eliminado);
+		*/
+		
+		// Para eliminar
+		if (eliminado != null) {
+			List<TMarcas> marcaList = new ArrayList<TMarcas>();
+			
+			marcaList = this.readAll();
+		
+			marcaList.remove(eliminado);
+					
+			try(BufferedWriter salida = new BufferedWriter(new FileWriter(_path)))
+			{ //sobrescribimos el archivo de texto
+				for(TMarcas marca : marcaList) {
+					this.create(marca);
+				}
+			}
+			catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+								
+		return id;
 	}
+	
+	
 }
