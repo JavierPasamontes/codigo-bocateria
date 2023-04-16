@@ -1,36 +1,34 @@
-/**
- * 
- */
 package Integracion.Empleados;
 
 import java.util.List;
 
-import Negocio.Empleados.TEmpleados;
+import Negocio.Empleados.TEmpleadosTP;
+import Negocio.Empleados.TransferEmpleados;
 
 public class DAOEmpImp implements DAOEmpleados {
 	
 	private final static String _path = "resources/empleados/emp.JSON";
 
 	@Override
-	public int create(TEmpleados tEmp) {
+	public int create(TransferEmpleados tEmp) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public TEmpleados read(Integer id) {
+	public TEmpleadosTP read(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<TEmpleados> readAll() {
+	public List<TransferEmpleados> readAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int update(TEmpleados tEmp) {
+	public int update(TransferEmpleados tEmp) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -42,9 +40,15 @@ public class DAOEmpImp implements DAOEmpleados {
 	}
 
 	@Override
-	public void mostrarEmpPorDep(TEmpleados tEmp) {
+	public void mostrarEmpPorDep(TransferEmpleados tEmp) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public TransferEmpleados readByDNI(String dni) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

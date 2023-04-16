@@ -1,13 +1,13 @@
 package Negocio.Empleados;
 
-public class TEmpleados extends TransferEmpleados {
+public class TEmpleadosTP extends TransferEmpleados {
 	
 	private static final long serialVersionUID = 1L;
 	
 	private int horas;
 	private int eurosHora;
-	public TEmpleados(String nombre, String apellidos, String DNI, Integer jornada, Integer idDept, Boolean activo,int horas, int eurosHora) {
-		super(nombre, apellidos, DNI, jornada, idDept, activo);
+	public TEmpleadosTP(String nombre, String apellidos, String DNI, Integer jornada, Integer idDept, Boolean activo,int horas, int eurosHora) {
+		super(nombre, apellidos, DNI, -1, jornada, idDept, activo);
 		this.horas = horas;
 		this.eurosHora = eurosHora;
 	}
@@ -23,5 +23,8 @@ public class TEmpleados extends TransferEmpleados {
 	public void setEurosHora(int eurosHora) {
 		this.eurosHora = eurosHora;
 	}
-	
+	@Override 
+	public int calcularSalario(){
+		return this.eurosHora * this.horas;
+	}
 }

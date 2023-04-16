@@ -16,6 +16,7 @@ public class SADeptImp implements SADepartamento {
 		
 		if (leido == null) {
 			id = daoDept.create(tDept);
+			
 		}
 		else{
 			if(leido.isActivo()){
@@ -47,19 +48,21 @@ public class SADeptImp implements SADepartamento {
 	public int update(TDept tDept) {
 		DAODept daoDept;
 		daoDept = FactoriaIntg.getInstance().generarDAODepts();
-		
+
 		TDept dept = daoDept.read(tDept.getId());
-		
-		if (tDept.getNombre().isEmpty()) {
-			tDept.setNombre(dept.getNombre());
+
+		if (dept.isActivo()) {
+			if (tDept.getNombre().isEmpty())
+				tDept.setNombre(dept.getNombre());
+			if (tDept.getDescripcion().isEmpty())
+				tDept.setDescripcion(dept.getDescripcion());
+			if (tDept.getSede().isEmpty())
+				tDept.setSede(dept.getSede());
 		}
-		if (tDept.getDescripcion().isEmpty()) {
-			tDept.setDescripcion(dept.getDescripcion());
+		else {
+			return -1;
 		}
-		if (tDept.getSede().isEmpty()) {
-			tDept.setSede(dept.getSede());
-		}
-		
+
 		return daoDept.update(tDept);
 	}
 
@@ -67,6 +70,9 @@ public class SADeptImp implements SADepartamento {
 		DAODept daoDept;
 		daoDept = FactoriaIntg.getInstance().generarDAODepts();
 		
-		return daoDept.delete(id);
+		if(daoDept.read(id).getContEmpleados() == 0)
+			return daoDept.delete(id);
+		else
+			return -1;
 	}
 }

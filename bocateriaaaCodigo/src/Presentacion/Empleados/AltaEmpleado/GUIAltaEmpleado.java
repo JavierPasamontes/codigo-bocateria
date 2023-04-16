@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import Negocio.Empleados.TransferEmpleados;
-import Negocio.Empleados.TEmpleados;
+import Negocio.Empleados.TEmpleadosTP;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
 import Presentacion.Marcas.AltaMarca.GUIAltaMarca;
@@ -135,12 +135,12 @@ public class GUIAltaEmpleado extends JFrame{
 				if(correcto) {
 					if(tCompleto=true) {
 						Controlador.getInstance().accion(Eventos.ALTA_EMPLEADO, 
-							new TransferEmpleados(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),Integer.parseInt(campoJornada.getText()),Integer.parseInt(campoIDdept.getText()), true));
+							new TransferEmpleados(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),-1,Integer.parseInt(campoJornada.getText()),Integer.parseInt(campoIDdept.getText()), true));
 						dispose();
 					}
 					else {
 						Controlador.getInstance().accion(Eventos.ALTA_EMPLEADO, 
-								new TEmpleados(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),Integer.parseInt(campoJornada.getText()),Integer.parseInt(campoIDdept.getText()), true, 
+								new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),Integer.parseInt(campoJornada.getText()),Integer.parseInt(campoIDdept.getText()), true, 
 										Integer.parseInt(campoHoras.getText()), Integer.parseInt(campoEurosHora.getText())));
 							dispose();
 					}

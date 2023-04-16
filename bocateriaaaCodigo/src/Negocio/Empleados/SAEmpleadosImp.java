@@ -1,72 +1,101 @@
-/**
- * 
- */
 package Negocio.Empleados;
 
-/** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author usuario_local
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
- */
+import java.util.List;
+
+import Integracion.Departamentos.DAODept;
+import Integracion.Empleados.DAOEmpleados;
+import Integracion.FactoriaIntegracion.FactoriaIntg;
+import Negocio.Departamentos.TDept;
+
 public class SAEmpleadosImp implements SAEmpleados {
-	/** 
-	* (non-Javadoc)
-	* @see SAEmpleados#create()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void create() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	
+	public int create(TransferEmpleados tEmp) {
+		int id = -1;	
+		
+		DAOEmpleados daoEmp = FactoriaIntg.getInstance().generarDAOEmpleados();
+		DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
+		
+		TransferEmpleados empleado = daoEmp.readByDNI(tEmp.getDNI());
+		TDept leidoDept = daoDept.read(tEmp.getIdDept());
+		
+		if (empleado == null) {
+			if (leidoDept != null && leidoDept.isActivo()){
+				id = daoEmp.create(tEmp);
+				leidoDept.aumentarEmpleados();
+				daoDept.update(leidoDept);
+			}
+		}
+		else{
+			if(!empleado.getActivo() && leidoDept.isActivo()){
+				empleado.setActivo(true);
+				leidoDept.aumentarEmpleados();
+				daoDept.update(leidoDept);
+			}	
+		}
+		return id;
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see SAEmpleados#read()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void read() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public TransferEmpleados read(int id) {
+		DAOEmpleados daoEmp = FactoriaIntg.getInstance().generarDAOEmpleados();
+		return daoEmp.read(id);
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see SAEmpleados#readAll()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void readAll() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public List<TransferEmpleados> readAll() {
+		return FactoriaIntg.getInstance().generarDAOEmpleados().readAll();
+	}
+	
+	public int update(TransferEmpleados tEmp) {
+		
+		DAOEmpleados daoEmp = FactoriaIntg.getInstance().generarDAOEmpleados();
+		
+		TransferEmpleados empleado = daoEmp.read(tEmp.getId());
+		
+		if(empleado.getActivo()){
+			if (tEmp.getNombre().isEmpty())
+				tEmp.setNombre(empleado.getNombre());
+			
+			if (tEmp.getApellidos().isEmpty())
+				tEmp.setApellidos(empleado.getApellidos());
+			
+			if (tEmp.getDNI().isEmpty())
+				tEmp.setDNI(empleado.getDNI());
+			
+			if (tEmp.getIdDept() == null) {
+				tEmp.setIdDept(empleado.getIdDept());
+			}
+			else {
+				DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
+				TDept viejo = daoDept.read(empleado.getIdDept());
+				TDept nuevo = daoDept.read(tEmp.getIdDept());
+			
+				if(nuevo.isActivo()){
+					viejo.disminuirEmpleados();
+					daoDept.update(viejo);
+					nuevo.aumentarEmpleados();
+					daoDept.update(nuevo);
+				}
+				else
+					return -1;
+			}
+					
+			//PREGUNTAR SEÑOR COMO CAMBIAR LOS PARAMETROS Q ESTAN DISTINTOS POR TRANSFER
+			
+			if(empleado.getJornada() == 0) {//tiempo parcial
+				
+			}
+			else{ //tiempo completo
+					
+			}
+		}
+		
+		
+		return tEmp.getId();
+	
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see SAEmpleados#update()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void update() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
-	}
-
-	/** 
-	* (non-Javadoc)
-	* @see SAEmpleados#delete()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void delete() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-
-		// end-user-code
+	public int delete(int dni) {
+		return dni;
+		//NO LO PODEMOS HACER AÚN
+		//disminuir contador de empleados en el dept
 	}
 }

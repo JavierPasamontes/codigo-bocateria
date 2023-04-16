@@ -5,7 +5,8 @@ package Integracion.Empleados;
 
 import java.util.List;
 
-import Negocio.Empleados.TEmpleados;
+import Negocio.Empleados.TEmpleadosTP;
+import Negocio.Empleados.TransferEmpleados;
 
 public interface DAOEmpleados {
 
@@ -13,15 +14,17 @@ public interface DAOEmpleados {
 
 	DAOEmpleados dAOEmpleados2 = null;
 
-	public int create(TEmpleados tEmp);
+	public int create(TransferEmpleados tEmp);
 
-	public TEmpleados read(Integer id);
+	public TEmpleadosTP read(Integer id);
 
-	public List<TEmpleados> readAll();
+	public List<TransferEmpleados> readAll();
 
-	public int update(TEmpleados tEmp);
+	public int update(TransferEmpleados tEmp);
 
 	public int delete(Integer id);
 
-	public void mostrarEmpPorDep(TEmpleados tEmp);
+	public void mostrarEmpPorDep(TransferEmpleados tEmp);
+
+	public TransferEmpleados readByDNI(String dni);
 }

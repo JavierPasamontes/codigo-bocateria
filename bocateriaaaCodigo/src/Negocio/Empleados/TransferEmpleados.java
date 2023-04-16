@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Negocio.Empleados;
 
 import java.io.Serializable;
@@ -13,21 +10,34 @@ public class TransferEmpleados implements Serializable {
 	
 	private String DNI;
 	
+	private Integer id;
+	
 	private Integer jornada;
 	
 	private Integer idDept;
 	
+	private Integer contVentas;
+	
 	private Boolean activo;
 	
 	
-	public TransferEmpleados(String nombre, String apellidos, String DNI, Integer jornada, Integer idDept,
-			Boolean activo) {
+	public TransferEmpleados(String nombre, String apellidos, String DNI, Integer id,Integer jornada, Integer idDept, Boolean activo) {
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.DNI = DNI;
+		this.id = id;
 		this.jornada = jornada;
 		this.idDept = idDept;
+		this.contVentas = 0;
 		this.activo = activo;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -66,6 +76,14 @@ public class TransferEmpleados implements Serializable {
 		return idDept;
 	}
 
+	public Integer getContVentas() {
+		return contVentas;
+	}
+
+	public void setContVentas(Integer contVentas) {
+		this.contVentas = contVentas;
+	}
+
 	public void setIdDept(Integer idDept) {
 		this.idDept = idDept;
 	}
@@ -77,12 +95,18 @@ public class TransferEmpleados implements Serializable {
 	public void setActivo(Boolean activo) {
 		this.activo = activo;
 	}
+	
+	public void aumentarVentas(){
+		this.contVentas++;
+	}
+	
+	public void disminuirVentas(){
+		this.contVentas--;
+	}
 
 	public int calcularSalario() {
 		return 0;
-		
 	}
-	
 	
 
 }

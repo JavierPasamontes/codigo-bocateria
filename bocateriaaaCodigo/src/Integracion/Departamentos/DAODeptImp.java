@@ -179,6 +179,7 @@ public class DAODeptImp implements DAODept {
 				deptList.get(i).setSede(tDept.getSede());
 				deptList.get(i).setDescripcion(tDept.getDescripcion());
 				deptList.get(i).setActivo(tDept.isActivo());
+				deptList.get(i).setContEmpleados(tDept.getContEmpleados());
 			}
 		}
 
