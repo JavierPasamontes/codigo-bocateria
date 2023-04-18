@@ -74,9 +74,10 @@ class DAODeptImpTest {
 		id = daoDept.delete(2);
 		assertEquals(2, id); //devuelve el id que ha borrado
 		//actualizamos la lista y comprobamos que se ha borrado
+		
 		deptList = daoDept.readAll();
-		assertTrue(deptList.size() == 2); //el tamaño de la lista disminuye
-			
+		assertTrue(deptList.size() == 3); //el tamaño de la lista no disminuye
+		assertTrue(deptList.get(1).isActivo() == false);	
 	}
 	
 	@Test

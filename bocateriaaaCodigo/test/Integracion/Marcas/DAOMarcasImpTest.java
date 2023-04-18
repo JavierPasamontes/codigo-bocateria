@@ -69,8 +69,8 @@ private final static String _path = "resources/marcas/marcas.JSON";
 		assertEquals(2, id); //devuelve el id que ha borrado
 		//actualizamos la lista y comprobamos que se ha borrado
 		marcaList = daoMarca.readAll();
-		assertTrue(marcaList.size() == 2); //el tamaño de la lista disminuye
-			
+		assertTrue(marcaList.size() == 3); //el tamaño de la lista no disminuye
+		assertTrue(marcaList.get(1).getActiva() == false);	
 	}
 	
 	@Test

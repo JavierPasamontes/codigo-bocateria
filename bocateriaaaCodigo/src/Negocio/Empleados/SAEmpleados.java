@@ -13,13 +13,13 @@ import java.util.List;
  */
 public interface SAEmpleados {
 	
-	public int create(TransferEmpleados tEmp);
+	public int create(TEmpleados tEmp);
 
-	public TransferEmpleados read(int id);
+	public TEmpleados read(int id);
 
-	public List<TransferEmpleados> readAll();
+	public List<TEmpleados> readAll();
 
-	public int update(TransferEmpleados tEmp);
+	public int update(TEmpleados tEmp);
 
 	public int delete(int id);
 }

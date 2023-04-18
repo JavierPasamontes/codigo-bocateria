@@ -3,22 +3,20 @@
  */
 package Integracion.Proveedores;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Collection;
+import java.util.List;
 
 import Negocio.Proveedores.TProveedores;
 
 
 public interface DAOProv {
 
-	public Integer create(TProveedores prov);
+	public Integer create(TProveedores tProv);
 
 	public TProveedores read(Integer id);
 
-	public Collection<TProveedores> readAll();
+	public List<TProveedores> readAll();
 
-	public Integer update(TProveedores prov);
+	public Integer update(TProveedores tProv);
 
 	public TProveedores readByName(String nombre);
 

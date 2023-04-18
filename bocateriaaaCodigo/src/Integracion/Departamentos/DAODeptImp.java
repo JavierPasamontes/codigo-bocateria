@@ -70,7 +70,7 @@ public class DAODeptImp implements DAODept {
 					depts.put(o);
 				}
 							
-				out.put("DEPT", depts);
+				out.put("DEPARTAMENTOS", depts);
 				salida.write(out.toString());
 				salida.close();
 			}
@@ -108,6 +108,28 @@ public class DAODeptImp implements DAODept {
 
 		return departamento;
 	}
+	
+	@Override
+	public TDept readByName(String nombre) {
+		TDept departamento = null;
+
+		List<TDept> deptList = new ArrayList<TDept>();
+		
+		deptList = this.readAll();
+		
+		int i = 0;
+		boolean salida = false;
+		
+		while (salida == false && i < deptList.size()) {
+			if(deptList.get(i).getNombre().equals(nombre)) {
+				departamento = deptList.get(i);
+				salida = true;
+			}
+			i++;
+		}
+
+		return departamento;
+	}
 
 	@Override
 	public List<TDept> readAll() { //funcion principal de lectura
@@ -120,7 +142,7 @@ public class DAODeptImp implements DAODept {
 			if(line != null ) {
 				JSONObject jsonInput = new JSONObject(line);
 		
-				JSONArray depts= jsonInput.getJSONArray("DEPT");
+				JSONArray depts= jsonInput.getJSONArray("DEPARTAMENTOS");
 			
 				for(int i = 0; i< depts.length(); i++) {
 					JSONObject in = depts.getJSONObject(i);
@@ -145,27 +167,7 @@ public class DAODeptImp implements DAODept {
 		return deptList;
 	}
 
-	@Override
-	public TDept readByName(String nombre) {
-		TDept departamento = null;
 
-		List<TDept> deptList = new ArrayList<TDept>();
-		
-		deptList = this.readAll();
-		
-		int i = 0;
-		boolean salida = false;
-		
-		while (salida == false && i < deptList.size()) {
-			if(deptList.get(i).getNombre().equals(nombre)) {
-				departamento = deptList.get(i);
-				salida = true;
-			}
-			i++;
-		}
-
-		return departamento;
-	}
 
 	@Override
 	public int update(TDept tDept) {
@@ -196,19 +198,17 @@ public class DAODeptImp implements DAODept {
 
 	@Override
 	public int delete(Integer id) {
-		int r =-1;
-
-		
 	
 		TDept eliminado = read(id);
 		
-		/* Para modificar y poner el activo a false
+		//Para modificar y poner el activo a false
 		eliminado.setActivo(false);
 		
 		this.update(eliminado);
-		*/
-		
+
+		/*
 		// Para eliminar
+	
 		if (eliminado != null) {
 			List<TDept> deptList = new ArrayList<TDept>();
 			
@@ -226,7 +226,7 @@ public class DAODeptImp implements DAODept {
 				e.printStackTrace();
 			}
 		}
-								
+		 */		
 		return id;
 	}
 }

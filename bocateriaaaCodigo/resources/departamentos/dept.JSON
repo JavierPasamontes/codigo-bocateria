@@ -1,1 +1,1 @@
-{"DEPT":[{"ACTIVO":true,"SEDE":"Bucaramanga de la mala","ID":1,"NOMBRE":"Jose Luis","DESC":"Hola buenas tardes texto de ejemplo"}]}
+{"DEPARTAMENTOS":[{"ACTIVO":true,"SEDE":"sede","ID":1,"NOMBRE":"Prueba1","DESC":"Una Descripcion"},{"ACTIVO":false,"SEDE":"sede","ID":2,"NOMBRE":"Prueba2","DESC":"Una Descripcion"},{"ACTIVO":true,"SEDE":"nuevaSede","ID":3,"NOMBRE":"ABC","DESC":"Una Descripcion"},{"ACTIVO":false,"SEDE":"Madrid","ID":4,"NOMBRE":"Juan Alberto","DESC":"Es Juan Alberto "}]}

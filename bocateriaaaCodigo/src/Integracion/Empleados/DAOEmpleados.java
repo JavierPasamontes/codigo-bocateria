@@ -6,7 +6,7 @@ package Integracion.Empleados;
 import java.util.List;
 
 import Negocio.Empleados.TEmpleadosTP;
-import Negocio.Empleados.TransferEmpleados;
+import Negocio.Empleados.TEmpleados;
 
 public interface DAOEmpleados {
 
@@ -14,17 +14,17 @@ public interface DAOEmpleados {
 
 	DAOEmpleados dAOEmpleados2 = null;
 
-	public int create(TransferEmpleados tEmp);
+	public int create(TEmpleados tEmp);
 
-	public TEmpleadosTP read(Integer id);
+	public TEmpleados read(Integer id);
 
-	public List<TransferEmpleados> readAll();
+	public List<TEmpleados> readAll();
 
-	public int update(TransferEmpleados tEmp);
+	public int update(TEmpleados tEmp);
 
 	public int delete(Integer id);
 
-	public void mostrarEmpPorDep(TransferEmpleados tEmp);
+	//public void mostrarEmpPorDep(TEmpleados tEmp); //yo creo que el DAO no puede hacer esto
 
-	public TransferEmpleados readByDNI(String dni);
+	public TEmpleados readByDNI(String dni);
 }

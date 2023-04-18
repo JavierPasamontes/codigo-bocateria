@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-import Negocio.Empleados.TransferEmpleados;
+import Negocio.Empleados.TEmpleados;
 import Negocio.Empleados.TEmpleadosTP;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
@@ -135,7 +135,7 @@ public class GUIAltaEmpleado extends JFrame{
 				if(correcto) {
 					if(tCompleto=true) {
 						Controlador.getInstance().accion(Eventos.ALTA_EMPLEADO, 
-							new TransferEmpleados(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),-1,Integer.parseInt(campoJornada.getText()),Integer.parseInt(campoIDdept.getText()), true));
+							new TEmpleados(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),-1,Integer.parseInt(campoJornada.getText()),Integer.parseInt(campoIDdept.getText()), true));
 						dispose();
 					}
 					else {

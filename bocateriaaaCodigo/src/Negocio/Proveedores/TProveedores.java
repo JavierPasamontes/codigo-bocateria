@@ -5,80 +5,38 @@ package Negocio.Proveedores;
 
 import java.io.Serializable;
 
-/** 
-* <!-- begin-UML-doc -->
-* <!-- end-UML-doc -->
-* @author pedro
-* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-*/
 public class TProveedores implements Serializable {
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
+
+	
 	protected Integer id;
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	protected String nombre;
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	protected Boolean activo;
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	protected Integer contMarcas;
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	protected Character tipo;
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @return
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
+	
+	public TProveedores(Integer id, String nombre, Integer contMarcas, boolean activo) {
+		this.id = id;
+		this.nombre = nombre;
+		if(contMarcas > 0)
+			this.contMarcas = contMarcas;
+		else 
+			this.contMarcas = 0;
+		this.activo = activo;
+	}
+	
 	public Integer getID() {
 		return this.id;
 	}
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @return
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	public String getNombre() {
 		return this.nombre;
 	}
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @return
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	public String getOrigen() {
 		return null;
 	}
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @return
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	public Boolean getActivo() {
 		return this.activo;
 	}
@@ -87,12 +45,6 @@ public class TProveedores implements Serializable {
 		this.contMarcas = i;
 	}
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @return
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	public Integer getCont() {
 		return this.contMarcas;
 	}
@@ -106,30 +58,15 @@ public class TProveedores implements Serializable {
 		this.nombre = nombre;
 	}
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @param activo
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	public void setActivo(Boolean activo) {
 		this.activo = activo;
 	}
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	public void incrementarMarcas() {
 		this.contMarcas++;
 	}
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
+
 	public void decrementarMarcas() {
 		this.contMarcas--;
 	}
@@ -149,6 +86,8 @@ public class TProveedores implements Serializable {
 				
 	}
 	
+	
+	/*
 	public static TProveedores parseProv(String[] aux) {
 		if(aux[2].equals("N")) {
 			TProveedores prov = new TProvNacional(aux[3]);
@@ -171,5 +110,6 @@ public class TProveedores implements Serializable {
 			return prov;
 		}
 	}
+	*/
 
 }

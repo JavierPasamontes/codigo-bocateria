@@ -175,12 +175,11 @@ public class DAOMarcasImp implements DAOMarcas {
 	public int delete(Integer id) {		
 		TMarcas eliminado = read(id);
 		
-		/* Para modificar y poner el activo a false
+		//Para modificar y poner el activo a false
 		eliminado.setActivo(false);
 		
 		this.update(eliminado);
-		*/
-		
+		/*
 		// Para eliminar
 		if (eliminado != null) {
 			List<TMarcas> marcaList = new ArrayList<TMarcas>();
@@ -199,7 +198,7 @@ public class DAOMarcasImp implements DAOMarcas {
 				e.printStackTrace();
 			}
 		}
-								
+		*/					
 		return id;
 	}
 	

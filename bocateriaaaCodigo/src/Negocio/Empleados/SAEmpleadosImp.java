@@ -9,13 +9,13 @@ import Negocio.Departamentos.TDept;
 
 public class SAEmpleadosImp implements SAEmpleados {
 	
-	public int create(TransferEmpleados tEmp) {
+	public int create(TEmpleados tEmp) {
 		int id = -1;	
 		
 		DAOEmpleados daoEmp = FactoriaIntg.getInstance().generarDAOEmpleados();
 		DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
 		
-		TransferEmpleados empleado = daoEmp.readByDNI(tEmp.getDNI());
+		TEmpleados empleado = daoEmp.readByDNI(tEmp.getDNI());
 		TDept leidoDept = daoDept.read(tEmp.getIdDept());
 		
 		if (empleado == null) {
@@ -35,20 +35,20 @@ public class SAEmpleadosImp implements SAEmpleados {
 		return id;
 	}
 
-	public TransferEmpleados read(int id) {
+	public TEmpleados read(int id) {
 		DAOEmpleados daoEmp = FactoriaIntg.getInstance().generarDAOEmpleados();
 		return daoEmp.read(id);
 	}
 
-	public List<TransferEmpleados> readAll() {
+	public List<TEmpleados> readAll() {
 		return FactoriaIntg.getInstance().generarDAOEmpleados().readAll();
 	}
 	
-	public int update(TransferEmpleados tEmp) {
+	public int update(TEmpleados tEmp) {
 		
 		DAOEmpleados daoEmp = FactoriaIntg.getInstance().generarDAOEmpleados();
 		
-		TransferEmpleados empleado = daoEmp.read(tEmp.getId());
+		TEmpleados empleado = daoEmp.read(tEmp.getId());
 		
 		if(empleado.getActivo()){
 			if (tEmp.getNombre().isEmpty())
@@ -78,7 +78,7 @@ public class SAEmpleadosImp implements SAEmpleados {
 					return -1;
 			}
 					
-			//PREGUNTAR SEÑOR COMO CAMBIAR LOS PARAMETROS Q ESTAN DISTINTOS POR TRANSFER
+			//PREGUNTAR SEï¿½OR COMO CAMBIAR LOS PARAMETROS Q ESTAN DISTINTOS POR TRANSFER
 			
 			if(empleado.getJornada() == 0) {//tiempo parcial
 				
@@ -95,7 +95,7 @@ public class SAEmpleadosImp implements SAEmpleados {
 
 	public int delete(int dni) {
 		return dni;
-		//NO LO PODEMOS HACER AÚN
+		//NO LO PODEMOS HACER Aï¿½N
 		//disminuir contador de empleados en el dept
 	}
 }

@@ -2,26 +2,19 @@ package Negocio.Empleados;
 
 import java.io.Serializable;
 
-public class TransferEmpleados implements Serializable {
+public class TEmpleados implements Serializable {
 	
 	private String nombre;
-	
 	private String apellidos;
-	
 	private String DNI;
-	
 	private Integer id;
-	
 	private Integer jornada;
-	
-	private Integer idDept;
-	
+	private Integer idDept;	
 	private Integer contVentas;
-	
 	private Boolean activo;
+		
 	
-	
-	public TransferEmpleados(String nombre, String apellidos, String DNI, Integer id,Integer jornada, Integer idDept, Boolean activo) {
+	public TEmpleados(String nombre, String apellidos, String DNI, Integer id,Integer jornada, Integer idDept, Boolean activo) {
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.DNI = DNI;
