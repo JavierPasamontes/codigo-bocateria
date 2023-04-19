@@ -52,6 +52,7 @@ public class GUIMostrarUnDept extends JFrame {
 		id.add(campoID);
 		
 		JPanel datos=new JPanel();
+		datos.setLayout(new BoxLayout(datos, BoxLayout.Y_AXIS));
 		datos.add(idDep);
 		datos.add(nombreDep);
 		datos.add(sedeDep);

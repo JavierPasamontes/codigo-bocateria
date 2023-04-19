@@ -19,6 +19,7 @@ import Negocio.Empleados.TEmpleadosTC;
 import Negocio.Empleados.TEmpleadosTP;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
+import Presentacion.Controlador.MensajeGUI;
 import Presentacion.Marcas.AltaMarca.GUIAltaMarca;
 
 public class GUIAltaEmpleado extends JFrame{
@@ -28,7 +29,7 @@ public class GUIAltaEmpleado extends JFrame{
 	private JTextField campoSalario;
 	private JTextField campoIDdept;
 	private JCheckBox checkTiempo;
-	private boolean tCompleto=false;
+	private boolean tParcial=false;
 	private JTextField campoHoras;
 	private JTextField campoEurosHora;
 	private JButton cancelar;
@@ -63,13 +64,13 @@ public class GUIAltaEmpleado extends JFrame{
 		
 		JPanel jornada=new JPanel();
 		JLabel jornadaLabel=new JLabel("Salario: ");
-		campoSalario=new JTextField(1);
+		campoSalario=new JTextField(4);
 		jornada.add(jornadaLabel);
 		jornada.add(campoSalario);
 		
 		JPanel iddept=new JPanel();
 		JLabel iddeptLabel=new JLabel("ID del departamento: ");
-		campoIDdept=new JTextField(2);
+		campoIDdept=new JTextField(4);
 		iddept.add(iddeptLabel);
 		iddept.add(campoIDdept);
 		
@@ -80,14 +81,14 @@ public class GUIAltaEmpleado extends JFrame{
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				// TODO Auto-generated method stub
-				if(tCompleto==false) {
-					tCompleto=true;
+				if(tParcial==false) {
+					tParcial=true;
 					campoSalario.setEnabled(false);
 					campoHoras.setEnabled(true);
 					campoEurosHora.setEnabled(true);
 				}
 				else {
-					tCompleto=false;
+					tParcial=false;
 					campoSalario.setEnabled(true);
 					campoHoras.setEnabled(false);
 					campoEurosHora.setEnabled(false);
@@ -132,21 +133,35 @@ public class GUIAltaEmpleado extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				boolean correcto=true;
-				if(campoNombre.getText().equalsIgnoreCase("")||campoApellidos.getText().equalsIgnoreCase("")||campoDNI.getText().equalsIgnoreCase("")||campoSalario.getText().equalsIgnoreCase("")||campoIDdept.getText().equalsIgnoreCase("")) {
+				if(campoNombre.getText().equalsIgnoreCase("")||campoApellidos.getText().equalsIgnoreCase("")||campoDNI.getText().equalsIgnoreCase("")||campoIDdept.getText().equalsIgnoreCase("")) {
 					correcto=false;
 				}
 				if(correcto) {
-					if(tCompleto=true) {
-						Controlador.getInstance().accion(Eventos.ALTA_EMPLEADO, 
-							new TEmpleadosTC(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),0,1,Integer.parseInt(campoIDdept.getText()), true,Integer.parseInt(campoSalario.getText())));
-						dispose();
+					if(tParcial==false) {
+						if(campoSalario.getText().equalsIgnoreCase("")) {
+							correcto=false;
+						}
+						else {
+							Controlador.getInstance().accion(Eventos.ALTA_EMPLEADO, 
+									new TEmpleadosTC(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),0,1,Integer.parseInt(campoIDdept.getText()), true,Integer.parseInt(campoSalario.getText())));
+								dispose();
+						}
 					}
 					else {
-						Controlador.getInstance().accion(Eventos.ALTA_EMPLEADO, 
-								new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),0,0,Integer.parseInt(campoIDdept.getText()), true, 
-										Integer.parseInt(campoHoras.getText()), Integer.parseInt(campoEurosHora.getText())));
-							dispose();
+						if(campoHoras.getText().equalsIgnoreCase("")||campoEurosHora.getText().equalsIgnoreCase("")) {
+							correcto=false;
+						}
+						else {
+							Controlador.getInstance().accion(Eventos.ALTA_EMPLEADO, 
+									new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),0,0,Integer.parseInt(campoIDdept.getText()), true, 
+											Integer.parseInt(campoHoras.getText()), Integer.parseInt(campoEurosHora.getText())));
+								dispose();
+						}
 					}
+				}
+				if(correcto==false) {
+					MensajeGUI a=new MensajeGUI();
+					a.showMessage("Faltan datos para el tipo de empleado deseado", "Alta empleado", true);
 				}
 			}
 			

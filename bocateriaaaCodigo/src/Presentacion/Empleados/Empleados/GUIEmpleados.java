@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import Negocio.Departamentos.TDept;
+import Negocio.Empleados.TEmpleados;
 import Presentacion.Controlador.Eventos;
 import Presentacion.Controlador.MensajeGUI;
 import Presentacion.Departamentos.AltaDepartamentos.GUIAltaDepartamento;
@@ -205,7 +206,7 @@ public class GUIEmpleados extends JFrame{
 			a.showMessage("No se pudo mostrar la lista de empleados", "Mostrar empleados", true);
 			break;
 		case Eventos.MOSTRAR_EMPLEADO_OK:
-			//GUIMostrarUnEmpleado.actualizar((TDept)datos);
+			GUIMostrarUnEmp.actualizar((TEmpleados)datos);
 			break;
 		case Eventos.MOSTRAR_EMPLEADO_KO:
 			a.showMessage("No se pudo mostrar el empleado especificado", "Buscar empleado", true);
