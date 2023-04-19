@@ -28,6 +28,7 @@ import Presentacion.Empleados.AltaEmpleado.GUIAltaEmpleado;
 import Presentacion.Empleados.BajaEmpleado.*;
 import Presentacion.Empleados.ModificarEmp.*;
 import Presentacion.Empleados.MostrarUnEmp.*;
+import Presentacion.Empleados.MostraEmps.*;
 
 
 public class GUIEmpleados extends JFrame{
@@ -41,7 +42,7 @@ public class GUIEmpleados extends JFrame{
 	private GUIAltaEmpleado GUIAltaEmpleado;
 	private GUIBajaEmpleado GUIBajaEmpleado;
 	private GUIModificarEmp GUIModificarEmp;
-	//private GUIMostrarEmps GUIMostrarEmps;
+	private GUIMostrarEmps GUIMostrarEmps;
 	private GUIMostrarUnEmp GUIMostrarUnEmp;
 	//private GUIMostrarEmpDeUnDep GUIMostrarEmpDeUnDep;
 	
@@ -104,7 +105,7 @@ public class GUIEmpleados extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				//GUIMostrarEmps =new GUIMostrarEmps();			
+				GUIMostrarEmps =new GUIMostrarEmps();			
 			}
 			
 			
@@ -200,7 +201,7 @@ public class GUIEmpleados extends JFrame{
 			a.showMessage("No se ha podido modificar el empleado", "Modificar empleado", true);
 			break;
 		case Eventos.MOSTRAR_EMPLEADOS_OK:
-			//GUIMostrarEmpleados.actualizar((ArrayList<TDept>)datos);
+			GUIMostrarEmps.actualizar((ArrayList<TEmpleados>)datos);
 			break;
 		case Eventos.MOSTRAR_EMPLEADOS_KO:
 			a.showMessage("No se pudo mostrar la lista de empleados", "Mostrar empleados", true);
