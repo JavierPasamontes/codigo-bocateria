@@ -4,6 +4,8 @@ import java.util.List;
 
 import Negocio.Departamentos.SADepartamento;
 import Negocio.Departamentos.TDept;
+import Negocio.Empleados.SAEmpleados;
+import Negocio.Empleados.TEmpleados;
 import Negocio.Factoria.FactoriaNeg;
 import Presentacion.FactoriaGUI.FactoriaGUI;
 
@@ -14,6 +16,8 @@ public class ControladorIMP extends Controlador {
 		TDept tDept;
 		SADepartamento saDept;
 		int resultado;
+		TEmpleados tEmp;
+		SAEmpleados saEmp;
 
 		switch (evento) {
 
@@ -98,11 +102,11 @@ public class ControladorIMP extends Controlador {
 
 		case Eventos.ALTA_EMPLEADO:
 
-			tDept = (TDept) datos;
+			tEmp = (TEmpleados) datos;
 
-			saDept = FactoriaNeg.getInstance().generarSADept();
+			saEmp = FactoriaNeg.getInstance().generarSAEmp();
 
-			resultado = saDept.create(tDept);
+			resultado = saEmp.create(tEmp);
 
 			if (resultado >= 0) {
 				FactoriaGUI.getInstance().actualizar(Eventos.ALTA_EMPLEADO_OK, resultado);
@@ -113,9 +117,9 @@ public class ControladorIMP extends Controlador {
 
 		case Eventos.BAJA_EMPLEADO:
 
-			saDept = FactoriaNeg.getInstance().generarSADept();
+			saEmp = FactoriaNeg.getInstance().generarSAEmp();
 
-			resultado = saDept.delete((Integer) datos);
+			resultado =  saEmp.delete((Integer) datos);
 
 			if (resultado >= 0) {
 				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_EMPLEADO_OK, datos);
@@ -125,23 +129,23 @@ public class ControladorIMP extends Controlador {
 			break;
 		case Eventos.MODIFICAR_EMPLEADO:
 
-			tDept = (TDept) datos;
+			tEmp = (TEmpleados) datos;
 
-			saDept = FactoriaNeg.getInstance().generarSADept();
-
-			resultado = saDept.update(tDept);
+			saEmp = FactoriaNeg.getInstance().generarSAEmp();
+			
+			resultado = saEmp.update(tEmp);
 
 			if (resultado >= 0) {
-				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_EMPLEADO_OK, tDept);
+				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_EMPLEADO_OK, tEmp);
 			} else {
-				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_EMPLEADO_KO, tDept);
+				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_EMPLEADO_KO, tEmp);
 			}
 			break;
 		case Eventos.MOSTRAR_EMPLEADO:
 
-			saDept = FactoriaNeg.getInstance().generarSADept();
+			saEmp = FactoriaNeg.getInstance().generarSAEmp();
 
-			TDept tResultado1 = saDept.read((Integer) datos);
+			TEmpleados tResultado1 = saEmp.read((Integer) datos);
 
 			if (tResultado1 != null) {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADO_OK, tResultado1);
@@ -152,12 +156,24 @@ public class ControladorIMP extends Controlador {
 
 		case Eventos.MOSTRAR_EMPLEADOS:
 
-			saDept = FactoriaNeg.getInstance().generarSADept();
+			saEmp = FactoriaNeg.getInstance().generarSAEmp();
 
-			List<TDept> ltResultado1 = saDept.readAll();
+			List<TEmpleados> ltResultado1 = saEmp.readAll();
 
 			if (ltResultado1.size() > 0) {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_OK, ltResultado1);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_KO, null);
+			}
+			break;
+		case Eventos.MOSTRAR_EMPLEADOS_POR_DEPARTAMENTO:
+
+			saEmp = FactoriaNeg.getInstance().generarSAEmp();
+
+			List<TEmpleados> ltResultado2 = saEmp.readAll();
+
+			if (ltResultado2 != null) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_OK, ltResultado2);
 			} else {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_KO, null);
 			}

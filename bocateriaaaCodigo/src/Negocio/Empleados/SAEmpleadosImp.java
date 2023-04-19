@@ -128,6 +128,10 @@ public class SAEmpleadosImp implements SAEmpleados {
 		
 		DAOEmpleados daoEmp = FactoriaIntg.getInstance().generarDAOEmpleados();
 		
+		if(daoEmp.read(idDept) == null) {
+			return null;
+		}
+		
 		List<TEmpleados> empDept = new ArrayList<TEmpleados>(); 
 		
 		List<TEmpleados> listaEmpleados = daoEmp.readAll();

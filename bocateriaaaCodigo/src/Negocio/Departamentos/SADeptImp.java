@@ -20,7 +20,7 @@ public class SADeptImp implements SADepartamento {
 		}
 		else{
 			if(leido.isActivo()){
-				//ya existe el departamento activo
+				return -1;
 			}
 			else{
 				leido.setActivo(true);

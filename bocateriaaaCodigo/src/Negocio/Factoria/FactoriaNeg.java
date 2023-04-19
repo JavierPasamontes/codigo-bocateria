@@ -20,7 +20,7 @@ public abstract class FactoriaNeg {
 	
 	public abstract SAProv generarSAProv();
 	
-	public abstract SAEmpleados generarSAEmpleados();
+	public abstract SAEmpleados generarSAEmp();
 	
 	
 }

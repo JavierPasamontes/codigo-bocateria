@@ -84,6 +84,7 @@ public class Eventos {
 
 	
 	public static final int BUSCAR_PROV_KO = 2042;
+	
 
 	public static final int MOSTRAR_PROVS = 2050;
 
@@ -107,6 +108,9 @@ public class Eventos {
 	
 	
 	public static final int MOSTRAR_EMPLEADOS = 3060;
+	
+	
+	public static final int MOSTRAR_EMPLEADOS_POR_DEPARTAMENTO = 3050;
 
 	
 	public static final int ALTA_EMPLEADO_OK = 3011;
@@ -137,6 +141,12 @@ public class Eventos {
 
 	
 	public static final int MOSTRAR_EMPLEADOS_KO = 3062;
+	
+	
+	public static final int MOSTRAR_EMPLEADOS_POR_DEPARTAMENTO_OK = 3051;
+	
+	
+	public static final int MOSTRAR_EMPLEADOS_POR_DEPARTAMENTO_KO = 3052;
 
 	
 	public static final int VISTA_EMPLEADOS = 3000;

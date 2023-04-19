@@ -20,7 +20,7 @@ public class FactoriaNegImp extends FactoriaNeg {
 	}
 
 	@Override
-	public SAEmpleados generarSAEmpleados() {
+	public SAEmpleados generarSAEmp() {
 		return new SAEmpleadosImp();
 	}
 }
