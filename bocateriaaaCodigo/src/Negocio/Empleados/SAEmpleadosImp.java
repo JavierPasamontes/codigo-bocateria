@@ -1,5 +1,6 @@
 package Negocio.Empleados;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Integracion.Departamentos.DAODept;
@@ -105,8 +106,39 @@ public class SAEmpleadosImp implements SAEmpleados {
 	
 	}
 
-	public int delete(int dni) {
-		return dni;
+	public int delete(int id) {
+		
+		DAOEmpleados daoEmp = FactoriaIntg.getInstance().generarDAOEmpleados();
+		TEmpleados empleado = daoEmp.read(id);
+		
+		DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
+		TDept leidoDept = daoDept.read(empleado.getIdDept());
+		
+		daoEmp.delete(id);
+		
+		leidoDept.disminuirEmpleados();
+		daoDept.update(leidoDept);
+		
+		return id;
+	}
+	
+	
+	
+	public List<TEmpleados> readEmpleadosDeDepartamento(int idDept){
+		
+		DAOEmpleados daoEmp = FactoriaIntg.getInstance().generarDAOEmpleados();
+		
+		List<TEmpleados> empDept = new ArrayList<TEmpleados>(); 
+		
+		List<TEmpleados> listaEmpleados = daoEmp.readAll();
+		
+		for(TEmpleados emp: listaEmpleados) {
+			if (emp.getIdDept()== idDept) {
+				empDept.add(emp);
+			}
+		}
+		
+		return empDept;
 		
 	}
 }

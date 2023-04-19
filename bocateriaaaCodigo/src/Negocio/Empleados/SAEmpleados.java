@@ -22,4 +22,6 @@ public interface SAEmpleados {
 	public int update(TEmpleados tEmp);
 
 	public int delete(int id);
+	
+	public List<TEmpleados> readEmpleadosDeDepartamento(int idDept);
 }

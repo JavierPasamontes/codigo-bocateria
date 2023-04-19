@@ -2,6 +2,8 @@ package Negocio.Departamentos;
 
 import java.util.List;
 
+import Negocio.Empleados.TEmpleados;
+
 public interface SADepartamento {
 	
 	public int create(TDept tDept);
@@ -13,4 +15,5 @@ public interface SADepartamento {
 	public int update(TDept tDept);
 
 	public int delete(Integer id);
+	
 }
