@@ -24,6 +24,9 @@ import Presentacion.Departamentos.ModificarDept.GUIModificarDept;
 import Presentacion.Departamentos.MostrarDept.GUIMostrarDepts;
 import Presentacion.Departamentos.MostrarUnDept.GUIMostrarUnDept;
 import Presentacion.Empleados.AltaEmpleado.GUIAltaEmpleado;
+import Presentacion.Empleados.BajaEmpleado.*;
+import Presentacion.Empleados.ModificarEmp.*;
+import Presentacion.Empleados.MostrarUnEmp.*;
 
 
 public class GUIEmpleados extends JFrame{
@@ -32,15 +35,17 @@ public class GUIEmpleados extends JFrame{
 	static JButton modBoton;
 	static JButton mostrarTodoBoton;
 	static JButton mostrarPorIDBoton;
+	static JButton mostrarEmpDeUnDep;
 	static JButton volverBoton;
 	private GUIAltaEmpleado GUIAltaEmpleado;
-	//private GUIBajaEmpleado GUIBajaEmpleado;
-	//private GUIModificarEmp GUIModificarEmp;
+	private GUIBajaEmpleado GUIBajaEmpleado;
+	private GUIModificarEmp GUIModificarEmp;
 	//private GUIMostrarEmps GUIMostrarEmps;
-	//private GUIMostrarUnEmp GUIMostrarUnEmp;
+	private GUIMostrarUnEmp GUIMostrarUnEmp;
+	//private GUIMostrarEmpDeUnDep GUIMostrarEmpDeUnDep;
 	
 	public GUIEmpleados() {
-		super("Departamentos");
+		super("Empleados");
 		initGUI();
 	}
 	
@@ -74,7 +79,7 @@ public class GUIEmpleados extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//GUIBajaEmpleado =new GUIBajaEmpleado();
+				GUIBajaEmpleado =new GUIBajaEmpleado();
 			}
 			
 			
@@ -86,7 +91,7 @@ public class GUIEmpleados extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//GUIModificarEmp =new GUIModificarEmp();
+				GUIModificarEmp =new GUIModificarEmp();
 			}
 			
 			
@@ -110,7 +115,19 @@ public class GUIEmpleados extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//GUIMostrarUnEmp =new GUIMostrarUnEmp();
+				GUIMostrarUnEmp =new GUIMostrarUnEmp();
+			}
+			
+			
+		});
+		mostrarEmpDeUnDep=new JButton("Mostrar empleados de un departamento");
+		mostrarEmpDeUnDep.setPreferredSize(new Dimension(150,50));
+		mostrarEmpDeUnDep.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				//GUIMostrarEmpDeUnDep =new GUIMostrarEmpDeUnDep();
 			}
 			
 			
@@ -132,6 +149,7 @@ public class GUIEmpleados extends JFrame{
 		});
 		superior.add(altaBoton);
 		superior.add(bajaBoton);
+		superior.add(mostrarEmpDeUnDep);
 		medio.add(modBoton);
 		medio.add(mostrarTodoBoton);
 		medio.add(mostrarPorIDBoton);

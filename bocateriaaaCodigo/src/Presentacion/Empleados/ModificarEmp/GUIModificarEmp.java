@@ -1,4 +1,4 @@
-package Presentacion.Empleados.AltaEmpleado;
+package Presentacion.Empleados.ModificarEmp;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,14 +14,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-import Negocio.Empleados.TEmpleados;
 import Negocio.Empleados.TEmpleadosTC;
 import Negocio.Empleados.TEmpleadosTP;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
-import Presentacion.Marcas.AltaMarca.GUIAltaMarca;
+import Presentacion.Empleados.AltaEmpleado.GUIAltaEmpleado;
 
-public class GUIAltaEmpleado extends JFrame{
+public class GUIModificarEmp extends JFrame{
 	private JTextField campoNombre;
 	private JTextField campoApellidos;
 	private JTextField campoDNI;
@@ -34,8 +33,8 @@ public class GUIAltaEmpleado extends JFrame{
 	private JButton cancelar;
 	private JButton aceptar;
 	
-	public GUIAltaEmpleado() {
-		super("Alta Empleado");
+	public GUIModificarEmp() {
+		super("Modificar Empleado");
 		initGUI();
 	}
 	
@@ -137,15 +136,38 @@ public class GUIAltaEmpleado extends JFrame{
 				}
 				if(correcto) {
 					if(tCompleto=true) {
-						Controlador.getInstance().accion(Eventos.ALTA_EMPLEADO, 
-							new TEmpleadosTC(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),0,1,Integer.parseInt(campoIDdept.getText()), true,Integer.parseInt(campoSalario.getText())));
-						dispose();
+						if(campoIDdept.getText().equalsIgnoreCase("")) {
+							Controlador.getInstance().accion(Eventos.MODIFICAR_EMPLEADO, 
+									new TEmpleadosTC(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),0,1,null, true,Integer.parseInt(campoSalario.getText())));
+								dispose();
+						}
+						else {
+							Controlador.getInstance().accion(Eventos.MODIFICAR_EMPLEADO, 
+									new TEmpleadosTC(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),0,1,Integer.parseInt(campoIDdept.getText()), true,Integer.parseInt(campoSalario.getText())));
+								dispose();
+						}
 					}
 					else {
-						Controlador.getInstance().accion(Eventos.ALTA_EMPLEADO, 
-								new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),0,0,Integer.parseInt(campoIDdept.getText()), true, 
-										Integer.parseInt(campoHoras.getText()), Integer.parseInt(campoEurosHora.getText())));
-							dispose();
+						if(campoHoras.getText().equalsIgnoreCase("")) {
+							Controlador.getInstance().accion(Eventos.MODIFICAR_EMPLEADO, 
+									new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),0,0,Integer.parseInt(campoIDdept.getText()), true, 
+											0, Integer.parseInt(campoEurosHora.getText())));
+								dispose();
+						}
+						else {
+							if(campoEurosHora.getText().equalsIgnoreCase("")) {
+								Controlador.getInstance().accion(Eventos.MODIFICAR_EMPLEADO, 
+										new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),0,0,Integer.parseInt(campoIDdept.getText()), true, 
+												Integer.parseInt(campoHoras.getText()), 0));
+									dispose();
+							}
+							else {
+								Controlador.getInstance().accion(Eventos.MODIFICAR_EMPLEADO, 
+										new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),0,0,Integer.parseInt(campoIDdept.getText()), true, 
+												Integer.parseInt(campoHoras.getText()), Integer.parseInt(campoEurosHora.getText())));
+									dispose();
+							}
+						}
 					}
 				}
 			}
@@ -177,7 +199,7 @@ public class GUIAltaEmpleado extends JFrame{
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				new GUIAltaEmpleado();
+				new GUIModificarEmp();
 			}
 		});
 

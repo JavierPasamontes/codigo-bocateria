@@ -33,7 +33,7 @@ public class FactoriaGUIImp extends FactoriaGUI {
 			ventanaDep.actualizar(evento, datos);
 		}
 		if(evento>3000&&evento<4000) {
-			ventanaMarcas.actualizar(evento, datos);
+			ventanaEmp.actualizar(evento, datos);
 		}
 	}
 
