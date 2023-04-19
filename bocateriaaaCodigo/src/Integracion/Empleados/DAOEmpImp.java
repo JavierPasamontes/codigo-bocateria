@@ -73,11 +73,11 @@ public class DAOEmpImp implements DAOEmpleados {
 					o.put("DEPT", emp.getIdDept());
 					o.put("ACTIVO", emp.getActivo());
 					
-					if(emp instanceof TEmpleadosTP ) { // si es un empleado a tiempo parcial
+					if(emp.getJornada() == 0 ) { // si es un empleado a tiempo parcial
 						o.put("HORAS", ((TEmpleadosTP) emp).getHoras());
 						o.put("EUROS/HORA",((TEmpleadosTP) emp).getEurosHora());
 					}
-					else if (emp instanceof TEmpleadosTC ){ // si es un empleado a tiempo Completo
+					else if (emp.getJornada() == 1){ // si es un empleado a tiempo Completo
 						o.put("SALARIO",((TEmpleadosTC) emp).getSalario());
 					}
 				
@@ -212,11 +212,11 @@ public class DAOEmpImp implements DAOEmpleados {
 				emptList.get(i).setActivo(tEmp.getActivo());
 				emptList.get(i).setJornada(tEmp.getJornada());
 				//si es un empleado a tiempo parcial
-				if(emptList.get(i) instanceof TEmpleadosTP ) {
+				if(emptList.get(i).getJornada() == 0  ) {
 					((TEmpleadosTP) emptList.get(i)).setHoras(((TEmpleadosTP)tEmp).getHoras());;
 					((TEmpleadosTP) emptList.get(i)).setHoras(((TEmpleadosTP)tEmp).getEurosHora());
 				}
-				else if (emptList.get(i) instanceof TEmpleadosTC ) {
+				else if (emptList.get(i).getJornada() == 1 ) {
 					((TEmpleadosTC) emptList.get(i)).setSalario(((TEmpleadosTC)tEmp).getSalario());
 				} //muchos cast's, pero espero que funciones
 				

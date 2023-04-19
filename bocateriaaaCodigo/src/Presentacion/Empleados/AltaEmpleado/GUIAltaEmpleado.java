@@ -140,7 +140,7 @@ public class GUIAltaEmpleado extends JFrame{
 					}
 					else {
 						Controlador.getInstance().accion(Eventos.ALTA_EMPLEADO, 
-								new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),Integer.parseInt(campoJornada.getText()),Integer.parseInt(campoIDdept.getText()), true, 
+								new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),0,Integer.parseInt(campoJornada.getText()),Integer.parseInt(campoIDdept.getText()), true, 
 										Integer.parseInt(campoHoras.getText()), Integer.parseInt(campoEurosHora.getText())));
 							dispose();
 					}

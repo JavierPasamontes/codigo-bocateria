@@ -78,13 +78,25 @@ public class SAEmpleadosImp implements SAEmpleados {
 					return -1;
 			}
 					
-			//PREGUNTAR SE�OR COMO CAMBIAR LOS PARAMETROS Q ESTAN DISTINTOS POR TRANSFER
+			
 			
 			if(empleado.getJornada() == 0) {//tiempo parcial
-				
+				TEmpleadosTP tTP = (TEmpleadosTP) tEmp;
+				TEmpleadosTP empleadoTP = (TEmpleadosTP) empleado;
+				if (tTP.getEurosHora() == 0) {
+					tTP.setEurosHora(empleadoTP.getEurosHora());
+				}
+				if (tTP.getHoras() == 0) {
+					tTP.setEurosHora(empleadoTP.getHoras());
+				}
 			}
 			else{ //tiempo completo
-					
+				TEmpleadosTC tTC = (TEmpleadosTC) tEmp;
+				TEmpleadosTC empleadoTC = (TEmpleadosTC) empleado;
+				if (tTC.getSalario() == 0) {
+					tTC.setSalario(empleadoTC.getSalario());
+				}
+				
 			}
 		}
 		
@@ -95,7 +107,6 @@ public class SAEmpleadosImp implements SAEmpleados {
 
 	public int delete(int dni) {
 		return dni;
-		//NO LO PODEMOS HACER A�N
-		//disminuir contador de empleados en el dept
+		
 	}
 }
