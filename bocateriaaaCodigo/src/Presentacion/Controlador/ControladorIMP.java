@@ -173,9 +173,9 @@ public class ControladorIMP extends Controlador {
 			List<TEmpleados> ltResultado2 = saEmp.readAll();
 
 			if (ltResultado2 != null) {
-				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_OK, ltResultado2);
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_POR_DEPARTAMENTO_OK, ltResultado2);
 			} else {
-				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_KO, null);
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_POR_DEPARTAMENTO_KO, null);
 			}
 			break;
 		

@@ -29,6 +29,7 @@ import Presentacion.Empleados.BajaEmpleado.*;
 import Presentacion.Empleados.ModificarEmp.*;
 import Presentacion.Empleados.MostrarUnEmp.*;
 import Presentacion.Empleados.MostraEmps.*;
+import Presentacion.Empleados.MostrarEmpDeUnDep.*;
 
 
 public class GUIEmpleados extends JFrame{
@@ -44,7 +45,7 @@ public class GUIEmpleados extends JFrame{
 	private GUIModificarEmp GUIModificarEmp;
 	private GUIMostrarEmps GUIMostrarEmps;
 	private GUIMostrarUnEmp GUIMostrarUnEmp;
-	//private GUIMostrarEmpDeUnDep GUIMostrarEmpDeUnDep;
+	private GUIMostrarEmpDeUnDep GUIMostrarEmpDeUnDep;
 	
 	public GUIEmpleados() {
 		super("Empleados");
@@ -129,7 +130,7 @@ public class GUIEmpleados extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//GUIMostrarEmpDeUnDep =new GUIMostrarEmpDeUnDep();
+				GUIMostrarEmpDeUnDep =new GUIMostrarEmpDeUnDep();
 			}
 			
 			
@@ -211,6 +212,12 @@ public class GUIEmpleados extends JFrame{
 			break;
 		case Eventos.MOSTRAR_EMPLEADO_KO:
 			a.showMessage("No se pudo mostrar el empleado especificado", "Buscar empleado", true);
+			break;
+		case Eventos.MOSTRAR_EMPLEADOS_POR_DEPARTAMENTO_OK:
+			GUIMostrarEmpDeUnDep.actualizar((ArrayList<TEmpleados>) datos);
+			break;
+		case Eventos.MOSTRAR_EMPLEADOS_POR_DEPARTAMENTO_KO:
+		a.showMessage("No se ha podido mostrar la lista de empleados especificada", "Mostrar empleados de un departamento", true);
 		}
 	}
 }
