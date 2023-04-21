@@ -1,6 +1,7 @@
 package Presentacion.Controlador;
 
 public class Eventos {
+	//Departamentos
 	
 	public static final int ALTA_DEPARTAMENTO = 1010;
 
@@ -48,15 +49,16 @@ public class Eventos {
 
 	
 	public static final int VISTA_DEPARTAMENTOS = 1000;
-
 	
+	
+	//Proveedores
 	public static final int ALTA_PROV = 2010;
 
 	
 	public static final int ALTA_PROV_OK = 2011;
 
 	
-	public static final int ALTA_PROV_KO = 2022;
+	public static final int ALTA_PROV_KO = 2012;
 
 	
 	public static final int BAJA_PROV = 2020;
@@ -95,6 +97,37 @@ public class Eventos {
 	public static final int MOSTRAR_PROVS_KO = 2052;
 	
 	
+	public static final int VISTA_PROV = 2000;
+	
+	
+	public static final int VINCULAR_MARCA = 2060;
+	
+	
+	public static final int VINCULAR_MARCA_OK = 2061;
+	
+	
+	public static final int VINCULAR_MARCA_KO = 2062;
+	
+	
+	public static final int DESVINCULAR_MARCA = 2070;
+	
+	
+	public static final int DESVINCULAR_MARCA_OK = 2071;
+	
+	
+	public static final int DESVINCULAR_MARCA_KO = 2072;
+	
+	
+	public static final int MOSTRAR_M_DE_P = 2080;
+	
+			
+	public static final int MOSTRAR_M_DE_P_OK = 2081;
+	
+	
+	public static final int MOSTRAR_M_DE_P_KO = 2082;
+	
+	
+	//Empleados
 	public static final int ALTA_EMPLEADO = 3010;
 
 

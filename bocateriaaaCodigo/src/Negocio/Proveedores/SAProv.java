@@ -3,7 +3,7 @@
  */
 package Negocio.Proveedores;
 
-import java.util.Collection;
+import java.util.List;
 
 import Integracion.MarcasProv.TMarcasProv;
 
@@ -15,81 +15,20 @@ import Integracion.MarcasProv.TMarcasProv;
 * @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 */
 public interface SAProv {
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @param prov
-	* @return
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
+
 	public int create(TProveedores prov);
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @param id
-	* @return
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	public TProveedores read(Integer id);
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	 * @return 
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public Collection<TProveedores> readAll();
+	public List<TProveedores> readAll();
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @param prov
-	* @return
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public Integer update(TProveedores prov);
+	public Integer update(TProveedores prov, boolean vinculado);
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @param id
-	* @return
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
 	public Integer delete(Integer id);
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @param relacion
-	* @return
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public default Integer vincularMarca(TMarcasProv relacion) {
-		
-		return null;
-	}
+	public Integer vincularMarca(TMarcasProv relacion);
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @param relacion
-	* @return
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public default Integer desvincularMarca(TMarcasProv relacion){
-		
-		
-		return null;
-	}
-	
+	public Integer desvincularMarca(TMarcasProv relacion);
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @param prov
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public  Collection<String> mostrarMarcasdeProv(String prov);
+	public  List<String> mostrarMarcasdeProv(Integer prov);
 }

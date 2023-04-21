@@ -62,7 +62,7 @@ public class DAOProvImp implements DAOProv {
 					id = tProv.getID();
 
 				
-				tProv.incrementarMarcas();
+				//tProv.incrementarMarcas();
 				
 				provList.add(tProv);
 					
@@ -70,7 +70,7 @@ public class DAOProvImp implements DAOProv {
 				
 				for(TProveedores prov :provList) {
 					JSONObject o = new JSONObject();
-					//Independientemente del horario agragamos los datos comunes
+					//Anadimos los datos
 					o.put("ID", prov.getID());
 					o.put("NOMBRE", prov.getNombre());
 					o.put("CONTMARCAS", prov.getCont());
@@ -174,10 +174,12 @@ public class DAOProvImp implements DAOProv {
 					if(in.has("PAIS")) { //si es un proveedor comunitario
 						String pais = in.getString("PAIS");
 						proveedor = new TProvComunitario(auxId,nombre,contMarcas,activo,pais);
+						proveedor.setTipo('C');
 						
 					}else {//si es un proveedor nacional
 						String comunidad = in.getString("COMUNIDAD");
 						proveedor = new TProvNacional(auxId,nombre,contMarcas,activo,comunidad);
+						proveedor.setTipo('N');
 					}
 
 				provList.add(proveedor);

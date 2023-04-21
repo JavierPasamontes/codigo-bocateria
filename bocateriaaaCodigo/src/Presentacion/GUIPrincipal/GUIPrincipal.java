@@ -52,9 +52,9 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+
 				Controlador.getInstance().accion(Eventos.VISTA_DEPARTAMENTOS, null);
-				//GUIAltaDepartamento =new GUIAltaDepartamento();
+
 			}
 			
 			
@@ -101,8 +101,7 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				//GUIMostrarDepts =new GUIMostrarDepts();			
+				Controlador.getInstance().accion(Eventos.VISTA_PROV, null);	
 			}
 			
 			
@@ -134,7 +133,6 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				Controlador.getInstance().accion(Eventos.VISTA_EMPLEADOS, null);
 			}
 			
@@ -149,7 +147,7 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+
 				System.exit(0);
 			}
 			
@@ -179,7 +177,6 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 		public void run() {
-			// TODO Auto-generated method stub
 			new GUIPrincipal();
 			}
 		});

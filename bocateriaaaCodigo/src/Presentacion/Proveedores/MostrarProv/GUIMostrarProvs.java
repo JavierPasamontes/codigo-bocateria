@@ -1,36 +1,29 @@
 /**
  * 
  */
-package Presentacion.Proveedores.MostrarMarcasdeProv;
+package Presentacion.Proveedores.MostrarProv;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTable;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 import Negocio.Departamentos.TDept;
-import Negocio.Empleados.TEmpleados;
-import Negocio.Empleados.TEmpleadosTC;
-import Negocio.Empleados.TEmpleadosTP;
+import Negocio.Proveedores.TProveedores;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
-import Presentacion.Controlador.MensajeGUI;
-import Presentacion.Empleados.ModificarEmp.GUIModificarEmp;
-import Presentacion.Empleados.MostrarUnEmp.GUIMostrarUnEmp;
+import Presentacion.Departamentos.MostrarDept.GUIMostrarDepts;
+
+import javax.swing.JPanel;
+import javax.swing.JTable;
 
 /** 
 * <!-- begin-UML-doc -->
@@ -38,30 +31,21 @@ import Presentacion.Empleados.MostrarUnEmp.GUIMostrarUnEmp;
 * @author pedro
 * @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 */
-public class GUIMostrarMdeP extends JFrame {
+public class GUIMostrarProvs extends JFrame {
 	private JTable tabla;
 	private DefaultTableModel modeloTabla;
 	private JButton mostrar;
 	private JButton cerrar;
 	
-	public GUIMostrarMdeP() {
-		super("Mostrar Marcas de un Proveedor");
+	public GUIMostrarProvs(){
+		super("Mostrar todos los proveedores");
 		initGUI();
 	}
 	
 	public void initGUI() {
 		JPanel p = new JPanel();
 		p.setLayout(new BorderLayout(10,10));
-		JPanel top = new JPanel();
-		JLabel idLabel = new JLabel("ID Proveedor: ");
-		JTextField id = new JTextField(7);
-		
-		top.add(idLabel);
-		top.add(id);
-		
-		
-		
-		
+		JPanel botonPanel=new JPanel();
 		JPanel tablaPanel=new JPanel();
 		JPanel cerrarPanel=new JPanel();
 		mostrar=new JButton("Mostrar");
@@ -69,15 +53,7 @@ public class GUIMostrarMdeP extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				try {
-				Controlador.getInstance().accion(Eventos.MOSTRAR_M_DE_P, Integer.parseInt( (id.getText()))) ;
-				}
-				catch(Exception o){
-					MensajeGUI a = new MensajeGUI();
-					a.showMessage("Algo fue mal..." + o.getMessage(), "Mostrar Marcas de un Proveedor", true);
-				}
+				Controlador.getInstance().accion(Eventos.MOSTRAR_PROVS, null);
 			}
 			
 			
@@ -106,12 +82,17 @@ public class GUIMostrarMdeP extends JFrame {
 		};
 		
 		modeloTabla.setColumnCount(0);
-		modeloTabla.addColumn("Marca");
+		modeloTabla.addColumn("ID");
+		modeloTabla.addColumn("Nombre");
+		modeloTabla.addColumn("Tipo");
+		modeloTabla.addColumn("Origen");
+		modeloTabla.addColumn("Marcas");
 		tabla.setModel(modeloTabla);
-		top.add(mostrar);
+		
 		tablaPanel.add(tabla);
+		botonPanel.add(mostrar);
 		cerrarPanel.add(cerrar);
-		p.add(top,BorderLayout.PAGE_START);
+		p.add(botonPanel, BorderLayout.PAGE_START);
 		p.add(tablaPanel, BorderLayout.CENTER);
 		p.add(cerrarPanel, BorderLayout.PAGE_END);
 		
@@ -123,32 +104,39 @@ public class GUIMostrarMdeP extends JFrame {
 		this.setLocation(400,400);
 	}
 	
-	public static void main(String[] args) {
-
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				new GUIMostrarMdeP();
-			}
-		});
-
-
-	}
 	
-	public void actualizar (ArrayList<String> marca){
+	public void actualizar (ArrayList<TProveedores> prov){
 		modeloTabla.setColumnCount(0);
-		modeloTabla.addColumn("Marca");
+		modeloTabla.addColumn("ID");
+		modeloTabla.addColumn("Nombre");
+		modeloTabla.addColumn("Tipo");
+		modeloTabla.addColumn("Origen");
+		modeloTabla.addColumn("Marcas");
 		modeloTabla.setRowCount(0);
-		modeloTabla.insertRow(0, new String[]{"Marca"});
-		for (int i = 0; i < marca.size(); i++) {
-			if (marca.get(i) instanceof String){
+		modeloTabla.insertRow(0, new String[]{"ID", "Nombre", "Tipo", "Origen", "Marcas"});
+		for (int i = 0; i < prov.size(); i++) {
+			if (prov.get(i) instanceof TProveedores){
 				modeloTabla.insertRow(i+1, new Object[] 
-						{ marca.get(i).toString()});
+						{ prov.get(i).getID(), prov.get(i).getNombre(), prov.get(i).getTipo(), prov.get(i).getOrigen(), prov.get(i).getCont()});
 			}
 		}
 		tabla.setModel(modeloTabla);
 		this.pack();
 	}
 	
+	
+	
+	
+	public static void main(String[] args) {
+
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				new GUIMostrarProvs();
+			}
+		});
+
+
+	}
 }

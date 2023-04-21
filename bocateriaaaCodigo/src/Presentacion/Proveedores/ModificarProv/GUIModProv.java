@@ -4,77 +4,152 @@
 package Presentacion.Proveedores.ModificarProv;
 
 import javax.swing.JFrame;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.BoxLayout;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
-/** 
-* <!-- begin-UML-doc -->
-* <!-- end-UML-doc -->
-* @author pedro
-* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-*/
+import Negocio.Proveedores.TProvComunitario;
+import Negocio.Proveedores.TProvNacional;
+import Negocio.Proveedores.TProveedores;
+import Presentacion.Controlador.Controlador;
+import Presentacion.Controlador.Eventos;
+import Presentacion.Proveedores.AltaProv.GUIAltaProv;
+
 public class GUIModProv extends JFrame {
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	private JButton jButton;
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	private JLabel jLabel;
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	private JPanel jPanel;
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	private JTextField jTextField;
-
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
+	private JTextField campoNombre;
+	private JTextField campoOrigen;
+	private JTextField campoID;
+	private JButton cancelar;
+	private JButton aceptar;
+	private List<String> tipoProvs;
+	
+	public GUIModProv() {
+		super("Modificar Proveedor");
+		tipoProvs = new ArrayList<String>();
+		tipoProvs.add("Comunitario");
+		tipoProvs.add("Nacionales");
+		initGUI();
+	}
+	
 	public void initGUI() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+		JPanel p = new JPanel();
+		p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
+		
+		JPanel id = new JPanel();
+		JLabel idLabel = new JLabel("ID: ");
+		campoID=new JTextField(2);
+		id.add(idLabel);
+		id.add(campoID);
+		
+		JPanel nombre=new JPanel();
+		JLabel nombreLabel=new JLabel("Nombre: ");
+		campoNombre=new JTextField(12);
+		nombre.add(nombreLabel);
+		nombre.add(campoNombre);
+		
+		DefaultComboBoxModel<String> modeloProvs = new DefaultComboBoxModel<>();	
+		
+		for(String o : tipoProvs)
+			modeloProvs.addElement(o);
+			
+		JComboBox<String> elegir = new JComboBox<String>(modeloProvs);
+		
+		
+		
+		JPanel origen=new JPanel();
+		JLabel origenLabel=new JLabel("Origen:");
+		campoOrigen=new JTextField(12);
+		origen.add(origenLabel);
+		origen.add(campoOrigen);
+		
+		JPanel tipo = new JPanel();
+		JLabel tipoLabel = new JLabel("Tipo Proveedor: ");
+		tipo.add(tipoLabel);
+		tipo.add(elegir);
+		
+		
+		
+		
+		
+		JPanel botones=new JPanel();
+		cancelar=new JButton("Cancelar");
+		cancelar.addActionListener(new ActionListener() {
 
-		// end-user-code
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				
+			}
+			
+			
+		});
+		aceptar=new JButton("Aceptar");
+		aceptar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		
+				boolean correcto=true;
+				if(campoNombre.getText().equalsIgnoreCase("")||campoOrigen.getText().equalsIgnoreCase("")) {
+					correcto=false;
+				}
+				if(correcto) {
+					if(((String)elegir.getSelectedItem()).equals("Nacionales")) {
+						TProveedores prov = new TProvNacional(Integer.parseInt(campoID.getText()), campoNombre.getText(),0, true, campoOrigen.getText());
+						prov.setTipo('N');
+						
+						Controlador.getInstance().accion(Eventos.MODIFICAR_PROV, prov);
+						dispose();
+					}
+					else {
+						TProveedores prov = new TProvComunitario(Integer.parseInt(campoID.getText()), campoNombre.getText(),0, true, campoOrigen.getText());
+						prov.setTipo('C');
+						
+						Controlador.getInstance().accion(Eventos.MODIFICAR_PROV, prov);
+						dispose();
+					}
+				}
+			}
+			
+		});
+		botones.add(cancelar);
+		botones.add(aceptar);
+		
+		p.add(id);
+		p.add(nombre);
+		p.add(origen);
+		p.add(tipo);
+		p.add(botones);
+		this.setContentPane(p);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		this.setVisible(true);
+		this.pack();
+		this.setLocation(400,400);
 	}
+	
+	public static void main(String[] args) {
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void resetGUI() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+		SwingUtilities.invokeLater(new Runnable() {
 
-		// end-user-code
-	}
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				new GUIModProv();
+			}
+		});
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @param evento
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void actualizar(Integer evento) {
-		// begin-user-code
-		// TODO Auto-generated method stub
 
-		// end-user-code
 	}
 }

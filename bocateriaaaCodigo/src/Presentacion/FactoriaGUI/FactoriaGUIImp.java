@@ -5,11 +5,13 @@ import Presentacion.Controlador.Eventos;
 import Presentacion.Departamentos.Departamentos.GUIDepartamentos;
 import Presentacion.Empleados.Empleados.GUIEmpleados;
 import Presentacion.Marcas.Marcas.GUIMarcas;
+import Presentacion.Proveedores.Proveedores.GUIProveedores;
 
 public class FactoriaGUIImp extends FactoriaGUI {
 	private GUIDepartamentos ventanaDep;
 	private GUIEmpleados ventanaEmp;
 	private GUIMarcas ventanaMarcas;
+	private GUIProveedores ventanaProv;
 
 	@Override
 	public ObservadorGUI generarGUI(int evento) {
@@ -22,18 +24,23 @@ public class FactoriaGUIImp extends FactoriaGUI {
 			ventanaEmp=new GUIEmpleados();
 			break;
 		}
+		case Eventos.VISTA_PROV:{
+			ventanaProv = new GUIProveedores();
+		}
 		}
 		return null;
 	}
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		// TODO Auto-generated method stub
 		if(evento>1000&&evento<2000) {
 			ventanaDep.actualizar(evento, datos);
 		}
 		if(evento>3000&&evento<4000) {
 			ventanaEmp.actualizar(evento, datos);
+		}
+		if(evento>2000 && evento < 3000) {
+			ventanaProv.actualizar(evento, datos);
 		}
 	}
 
