@@ -23,6 +23,7 @@ import Presentacion.Marcas.Marcas.GUIMarcas;
 import Presentacion.Marcas.ModificarMarca.GUIModificarMarca;
 import Presentacion.Marcas.MostrarMarcas.GUIMostrarMarcas;
 import Presentacion.Marcas.MostrarUnaMarca.GUIMostrarUnaMarca;
+import Presentacion.Marcas.MostrarProductosDeMarcas.*;
 
 public class GUIMarcas extends JFrame{
 	static JButton altaBoton;
@@ -31,11 +32,13 @@ public class GUIMarcas extends JFrame{
 	static JButton mostrarTodoBoton;
 	static JButton mostrarPorIDBoton;
 	static JButton volverBoton;
-	//private GUIAltaMarca GUIAltaMarca;
-	//private GUIBajaMarca GUIBajaMarca;
-	//private GUIModificarMarca GUIModificarMarca;
-	//private GUIMostrarMarcas GUIMostrarMarcas;
-	//private GUIMostrarUnaMarca GUIMostrarUnaMarca;
+	static JButton prodDeMarcBoton;
+	private GUIAltaMarca GUIAltaMarca;
+	private GUIBajaMarca GUIBajaMarca;
+	private GUIModificarMarca GUIModificarMarca;
+	private GUIMostrarMarcas GUIMostrarMarcas;
+	private GUIMostrarUnaMarca GUIMostrarUnaMarca;
+	private GUIMostrarProdDeMarc GUIMostrarProdDeMarc;
 	
 	public GUIMarcas() {
 		super("Marcas");
@@ -60,7 +63,7 @@ public class GUIMarcas extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//GUIAltaMarca =new GUIAltaMarca();
+				GUIAltaMarca =new GUIAltaMarca();
 			}
 			
 			
@@ -72,7 +75,7 @@ public class GUIMarcas extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//GUIBajaMarca =new GUIBajaMarca();
+				GUIBajaMarca =new GUIBajaMarca();
 			}
 			
 			
@@ -84,7 +87,7 @@ public class GUIMarcas extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//GUIModificarMarca =new GUIModificarMarca();
+				GUIModificarMarca =new GUIModificarMarca();
 			}
 			
 			
@@ -96,7 +99,7 @@ public class GUIMarcas extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				//GUIMostrarMarcas =new GUIMostrarMarcas();			
+				GUIMostrarMarcas =new GUIMostrarMarcas();			
 			}
 			
 			
@@ -108,7 +111,20 @@ public class GUIMarcas extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//GUIMostrarUnaMarca =new GUIMostrarUnaMarca();
+				GUIMostrarUnaMarca =new GUIMostrarUnaMarca();
+			}
+			
+			
+		});
+		
+		prodDeMarcBoton=new JButton("Productos de una marca");
+		prodDeMarcBoton.setPreferredSize(new Dimension(150,50));
+		prodDeMarcBoton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				GUIMostrarProdDeMarc =new GUIMostrarProdDeMarc();
 			}
 			
 			
@@ -130,6 +146,7 @@ public class GUIMarcas extends JFrame{
 		});
 		superior.add(altaBoton);
 		superior.add(bajaBoton);
+		superior.add(prodDeMarcBoton);
 		medio.add(modBoton);
 		medio.add(mostrarTodoBoton);
 		medio.add(mostrarPorIDBoton);
@@ -190,6 +207,13 @@ public class GUIMarcas extends JFrame{
 			break;
 		case Eventos.MOSTRAR_MARCA_KO:
 			a.showMessage("No se pudo mostrar la marca especificada", "Buscar marca", true);
+			break;
+		case Eventos.MOSTRAR_PROD_DE_MARCA_OK:
+			GUIMostrarProdDeMarc.actualizar((String)datos);
+			break;
+		case Eventos.MOSTRAR_PROD_DE_MARCA_KO:
+			a.showMessage("No se han podido mostrar los productos de la marca especificada", "Mostrar Productos de una Marca", true);
+			break;
 			
 			puede que falte algun evento
 		}
