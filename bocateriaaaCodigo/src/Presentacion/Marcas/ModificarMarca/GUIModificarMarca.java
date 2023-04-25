@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import Negocio.Departamentos.TDept;
+import Negocio.Marcas.TMarcas;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
 import Presentacion.Departamentos.ModificarDept.GUIModificarDept;
@@ -19,7 +20,7 @@ import Presentacion.Departamentos.ModificarDept.GUIModificarDept;
 public class GUIModificarMarca extends JFrame{
 	private JTextField campoID;
 	private JTextField campoNombre;
-	private JTextField campoDesc;
+	private JTextField campoPais;
 	private JButton cancelar;
 	private JButton aceptar;
 	
@@ -44,11 +45,11 @@ public class GUIModificarMarca extends JFrame{
 		nombre.add(nombreLabel);
 		nombre.add(campoNombre);
 		
-		JPanel desc=new JPanel();
-		JLabel descLabel=new JLabel("Descripcion: ");
-		campoDesc=new JTextField(36);
-		desc.add(descLabel);
-		desc.add(campoDesc);
+		JPanel pais=new JPanel();
+		JLabel paisLabel=new JLabel("Pais: ");
+		campoPais=new JTextField(36);
+		pais.add(paisLabel);
+		pais.add(campoPais);
 		
 		JPanel botones=new JPanel();
 		cancelar=new JButton("Cancelar");
@@ -69,8 +70,8 @@ public class GUIModificarMarca extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//Controlador.getInstance().accion(Eventos.MODIFICAR_MARCA, 
-						//new TDept(Integer.parseInt(campoID.getText()), campoNombre.getText(),true, campoDesc.getText()));
+				Controlador.getInstance().accion(Eventos.MODIFICAR_MARCAS, 
+						new TMarcas(Integer.parseInt(campoID.getText()), campoNombre.getText(),true, 0, campoPais.getText()));
 				dispose();
 			}
 		});
@@ -79,7 +80,7 @@ public class GUIModificarMarca extends JFrame{
 		
 		p.add(id);
 		p.add(nombre);
-		p.add(desc);
+		p.add(pais);
 		p.add(botones);
 		this.setContentPane(p);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

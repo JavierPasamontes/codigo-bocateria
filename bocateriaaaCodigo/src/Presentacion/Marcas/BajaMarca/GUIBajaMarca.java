@@ -55,7 +55,7 @@ public class GUIBajaMarca extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if(!campoID.getText().equalsIgnoreCase("")) {
-					//Controlador.getInstance().accion(Eventos.BAJA_MARCA, Integer.parseInt(campoID.getText()));
+					Controlador.getInstance().accion(Eventos.BAJA_MARCAS, Integer.parseInt(campoID.getText()));
 					dispose();
 				}
 			}

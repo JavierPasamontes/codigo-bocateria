@@ -12,13 +12,14 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import Negocio.Departamentos.TDept;
+import Negocio.Marcas.TMarcas;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
 import Presentacion.Departamentos.AltaDepartamentos.GUIAltaDepartamento;
 
 public class GUIAltaMarca extends JFrame{
 	private JTextField campoNombre;
-	private JTextField campoDesc;
+	private JTextField campoPais;
 	private JButton cancelar;
 	private JButton aceptar;
 	
@@ -37,11 +38,11 @@ public class GUIAltaMarca extends JFrame{
 		nombre.add(nombreLabel);
 		nombre.add(campoNombre);
 		
-		JPanel desc=new JPanel();
-		JLabel descLabel=new JLabel("Descripcion: ");
-		campoDesc=new JTextField(36);
-		desc.add(descLabel);
-		desc.add(campoDesc);
+		JPanel pais=new JPanel();
+		JLabel paisLabel=new JLabel("Pais: ");
+		campoPais=new JTextField(36);
+		pais.add(paisLabel);
+		pais.add(campoPais);
 		
 		JPanel botones=new JPanel();
 		cancelar=new JButton("Cancelar");
@@ -63,12 +64,12 @@ public class GUIAltaMarca extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				boolean correcto=true;
-				if(campoNombre.getText().equalsIgnoreCase("")||campoDesc.getText().equalsIgnoreCase("")) {
+				if(campoNombre.getText().equalsIgnoreCase("")||campoPais.getText().equalsIgnoreCase("")) {
 					correcto=false;
 				}
 				if(correcto) {
-						//Controlador.getInstance().accion(Eventos.ALTA_MARCA, 
-							//new TDept(0, campoNombre.getText(), true, campoDesc.getText()));
+						Controlador.getInstance().accion(Eventos.ALTA_MARCAS, 
+							new TMarcas(0, campoNombre.getText(), true, 0, campoPais.getText()));
 						dispose();
 				}
 			}
@@ -78,7 +79,7 @@ public class GUIAltaMarca extends JFrame{
 		botones.add(aceptar);
 		
 		p.add(nombre);
-		p.add(desc);
+		p.add(pais);
 		p.add(botones);
 		this.setContentPane(p);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

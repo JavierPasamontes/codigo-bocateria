@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import Negocio.Departamentos.TDept;
+import Negocio.Marcas.TMarcas;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
 import Presentacion.Departamentos.MostrarUnDept.GUIMostrarUnDept;
@@ -20,9 +21,10 @@ public class GUIMostrarUnaMarca extends JFrame{
 	private JTextField campoID;
 	private JButton cancelar;
 	private JButton aceptar;
-	private JLabel idDep=new JLabel("ID: ");
-	private JLabel nombreDep=new JLabel("Nombre: ");
-	private JLabel descDep=new JLabel("Descripcion: ");
+	private JLabel idMar=new JLabel("ID: ");
+	private JLabel nombreMar=new JLabel("Nombre: ");
+	private JLabel paisMar=new JLabel("Pais: ");
+	private JLabel numPMar=new JLabel("Num. de productos: ");
 	
 	public GUIMostrarUnaMarca() {
 		super("Mostrar marca por ID");
@@ -40,9 +42,11 @@ public class GUIMostrarUnaMarca extends JFrame{
 		id.add(campoID);
 		
 		JPanel datos=new JPanel();
-		datos.add(idDep);
-		datos.add(nombreDep);
-		datos.add(descDep);
+		datos.setLayout(new BoxLayout(datos, BoxLayout.Y_AXIS));
+		datos.add(idMar);
+		datos.add(nombreMar);
+		datos.add(paisMar);
+		datos.add(numPMar);
 		
 		JPanel botones=new JPanel();
 		cancelar=new JButton("Cancelar");
@@ -64,7 +68,7 @@ public class GUIMostrarUnaMarca extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if(!campoID.getText().equalsIgnoreCase("")) {
-					//Controlador.getInstance().accion(Eventos.MOSTRAR_MARCA, Integer.parseInt(campoID.getText()));
+					Controlador.getInstance().accion(Eventos.MOSTRAR_MARCA, Integer.parseInt(campoID.getText()));
 				}
 			}
 		});
@@ -95,10 +99,11 @@ public class GUIMostrarUnaMarca extends JFrame{
 
 	}
 	
-	public void actualizar(TDept dept) {
-		idDep.setText("ID: "+dept.getId());
-		nombreDep.setText("Nombre: "+dept.getNombre());
-		descDep.setText("Descripcion: "+dept.getDescripcion());
+	public void actualizar(TMarcas mar) {
+		idMar.setText("ID: "+mar.getID());
+		nombreMar.setText("Nombre: "+mar.getNombre());
+		paisMar.setText("Pais: "+mar.getPais());
+		numPMar.setText("Num. de productos: "+mar.getCont());
 		initGUI();
 	}
 }

@@ -14,6 +14,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 import Negocio.Departamentos.TDept;
+import Negocio.Marcas.TMarcas;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
 import Presentacion.Departamentos.MostrarDept.GUIMostrarDepts;
@@ -41,7 +42,7 @@ public class GUIMostrarMarcas extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//Controlador.getInstance().accion(Eventos.MOSTRAR_MARCAS, null);
+				Controlador.getInstance().accion(Eventos.MOSTRAR_MARCAS, null);
 			}
 			
 			
@@ -73,7 +74,8 @@ public class GUIMostrarMarcas extends JFrame{
 		modeloTabla.setColumnCount(0);
 		modeloTabla.addColumn("ID");
 		modeloTabla.addColumn("Nombre");
-		modeloTabla.addColumn("Descripcion");
+		modeloTabla.addColumn("Pais");
+		modeloTabla.addColumn("Num. de productos");
 		
 		JScrollPane scroll = new JScrollPane();
 		scroll.setViewportView (tabla);
@@ -95,18 +97,18 @@ public class GUIMostrarMarcas extends JFrame{
 		this.setLocation(400,400);
 	}
 	
-	/*
-	public void actualizar (ArrayList<TMarca> mar){
+	
+	public void actualizar (ArrayList<TMarcas> mar){
 		modeloTabla.setRowCount(0);
-		modeloTabla.insertRow(0, new String[] {"ID", "Nombre", "Descripcion"});
+		modeloTabla.insertRow(0, new String[] {"ID", "Nombre", "Pais", "Num. de productos"});
 		for (int i = 0; i < mar.size(); i++) {
 				modeloTabla.insertRow(i+1, new Object[] 
-						{ mar.get(i).getId(), mar.get(i).getNombre(), mar.get(i).getDescripcion()});
+						{ mar.get(i).getID(), mar.get(i).getNombre(), mar.get(i).getPais(), mar.get(i).getCont()});
 		}
 		tabla.setModel(modeloTabla);
 		this.pack();
 	}
-	*/
+	
 	
 	
 	

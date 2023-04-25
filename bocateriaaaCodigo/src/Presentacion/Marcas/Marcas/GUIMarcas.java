@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import Negocio.Marcas.TMarcas;
 //import Negocio.Departamentos.TMarca;
 import Presentacion.Controlador.Eventos;
 import Presentacion.Controlador.MensajeGUI;
@@ -32,13 +33,13 @@ public class GUIMarcas extends JFrame{
 	static JButton mostrarTodoBoton;
 	static JButton mostrarPorIDBoton;
 	static JButton volverBoton;
-	static JButton prodDeMarcBoton;
+	//static JButton prodDeMarcBoton;
 	private GUIAltaMarca GUIAltaMarca;
 	private GUIBajaMarca GUIBajaMarca;
 	private GUIModificarMarca GUIModificarMarca;
 	private GUIMostrarMarcas GUIMostrarMarcas;
 	private GUIMostrarUnaMarca GUIMostrarUnaMarca;
-	private GUIMostrarProdDeMarc GUIMostrarProdDeMarc;
+	//private GUIMostrarProdDeMarc GUIMostrarProdDeMarc;
 	
 	public GUIMarcas() {
 		super("Marcas");
@@ -116,7 +117,7 @@ public class GUIMarcas extends JFrame{
 			
 			
 		});
-		
+		/*
 		prodDeMarcBoton=new JButton("Productos de una marca");
 		prodDeMarcBoton.setPreferredSize(new Dimension(150,50));
 		prodDeMarcBoton.addActionListener(new ActionListener() {
@@ -129,6 +130,7 @@ public class GUIMarcas extends JFrame{
 			
 			
 		});
+		*/
 		ImageIcon icono = new ImageIcon("resources/imgs/volver.png");
 		volverBoton=new JButton(icono);
 		volverBoton.setBorderPainted(false);
@@ -146,7 +148,7 @@ public class GUIMarcas extends JFrame{
 		});
 		superior.add(altaBoton);
 		superior.add(bajaBoton);
-		superior.add(prodDeMarcBoton);
+		//superior.add(prodDeMarcBoton);
 		medio.add(modBoton);
 		medio.add(mostrarTodoBoton);
 		medio.add(mostrarPorIDBoton);
@@ -175,48 +177,48 @@ public class GUIMarcas extends JFrame{
 	}
 
 	public void actualizar(int evento, Object datos) {
-		/*
+		
 		MensajeGUI a=new MensajeGUI();
 		switch (evento) {
-		case Eventos.ALTA_MARCA_OK:
+		case Eventos.ALTA_MARCAS_OK:
 			a.showMessage("Se ha dado de alta la marca con ID: " + (int)datos,"Alta marca", false);
 			break;
-		case Eventos.ALTA_MARCA_KO:
+		case Eventos.ALTA_MARCAS_KO:
 			a.showMessage("No se ha podido dar de alta la marca", "Alta marca", true);
 			break;
-		case Eventos.BAJA_MARCA_OK:
+		case Eventos.BAJA_MARCAS_OK:
 			a.showMessage("Se ha dado de baja la marca con ID: "+(int)datos, "Baja marca", false);
 			break;
-		case Eventos.BAJA_MARCA_KO:
+		case Eventos.BAJA_MARCAS_KO:
 			a.showMessage("No se ha podido dar de baja la marca con ID: "+(int)datos, "Baja marca", true);
 			break;
-		case Eventos.MODIFICAR_MARCA_OK:
+		case Eventos.MODIFICAR_MARCAS_OK:
 			a.showMessage("Se ha modificado la marca correctamente", "Modificar marca", false);
 			break;
-		case Eventos.MODIFICAR_MARCA_KO:
+		case Eventos.MODIFICAR_MARCAS_KO:
 			a.showMessage("No se ha podido modificar la marca", "Modificar marca", true);
 			break;
 		case Eventos.MOSTRAR_MARCAS_OK:
-			GUIMostrarMarcas.actualizar((ArrayList<TMarca>)datos);
+			GUIMostrarMarcas.actualizar((ArrayList<TMarcas>)datos);
 			break;
 		case Eventos.MOSTRAR_MARCAS_KO:
 			a.showMessage("No se pudo mostrar la lista de marcas", "Mostrar marcas", true);
 			break;
 		case Eventos.MOSTRAR_MARCA_OK:
-			GUIMostrarUnaMarca.actualizar((TMarca)datos);
+			GUIMostrarUnaMarca.actualizar((TMarcas)datos);
 			break;
 		case Eventos.MOSTRAR_MARCA_KO:
 			a.showMessage("No se pudo mostrar la marca especificada", "Buscar marca", true);
 			break;
+			/*
 		case Eventos.MOSTRAR_PROD_DE_MARCA_OK:
 			GUIMostrarProdDeMarc.actualizar((String)datos);
 			break;
 		case Eventos.MOSTRAR_PROD_DE_MARCA_KO:
 			a.showMessage("No se han podido mostrar los productos de la marca especificada", "Mostrar Productos de una Marca", true);
 			break;
-			
-			puede que falte algun evento
+			*/
 		}
-		*/
+		
 	}
 }
