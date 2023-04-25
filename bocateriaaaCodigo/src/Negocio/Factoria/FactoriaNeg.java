@@ -2,6 +2,8 @@ package Negocio.Factoria;
 
 import Negocio.Departamentos.SADepartamento;
 import Negocio.Empleados.SAEmpleados;
+import Negocio.Marcas.SAMarcas;
+import Negocio.Marcas.SAMarcasImp;
 import Negocio.Proveedores.SAProv;
 
 public abstract class FactoriaNeg {
@@ -21,6 +23,8 @@ public abstract class FactoriaNeg {
 	public abstract SAProv generarSAProv();
 	
 	public abstract SAEmpleados generarSAEmp();
+	
+	public abstract SAMarcas generarSAMarcas();
 	
 	
 }

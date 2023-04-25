@@ -70,7 +70,7 @@ private final static String _path = "resources/marcas/marcas.JSON";
 		//actualizamos la lista y comprobamos que se ha borrado
 		marcaList = daoMarca.readAll();
 		assertTrue(marcaList.size() == 3); //el tamaño de la lista no disminuye
-		assertTrue(marcaList.get(1).getActiva() == false);	
+		assertTrue(marcaList.get(1).getActivo() == false);	
 	}
 	
 	@Test

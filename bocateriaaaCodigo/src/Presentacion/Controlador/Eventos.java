@@ -185,7 +185,54 @@ public class Eventos {
 	public static final int VISTA_EMPLEADOS = 3000;
 	
 	
+	//MARCAS
 	
+	public static final int ALTA_MARCAS = 4010;
+
+
+	public static final int BAJA_MARCAS = 4020;
+
+	
+	public static final int MODIFICAR_MARCAS = 4030;
+
+	
+	public static final int MOSTRAR_MARCA = 4040;
+	
+	
+	public static final int MOSTRAR_MARCAS = 4060;
+
+	
+	public static final int ALTA_MARCAS_OK = 4011;
+
+	
+	public static final int ALTA_MARCAS_KO = 4012;
+
+	
+	public static final int BAJA_MARCAS_OK = 4021;
+
+	
+	public static final int BAJA_MARCAS_KO = 4022;
+
+	
+	public static final int MODIFICAR_MARCAS_OK = 4031;
+
+	
+	public static final int MODIFICAR_MARCAS_KO = 4032;
+
+	
+	public static final int MOSTRAR_MARCA_OK = 4041;
+
+	
+	public static final int MOSTRAR_MARCA_KO = 4042;
+	
+	
+	public static final int MOSTRAR_MARCAS_OK = 4061;
+
+	
+	public static final int MOSTRAR_MARCAS_KO = 4062;
+
+	
+	public static final int VISTA_MARCAS = 4000;
 	
 	
 	

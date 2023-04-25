@@ -69,7 +69,7 @@ public class DAOMarcasImp implements DAOMarcas {
 					o.put("ID", marca.getID());
 					o.put("NOMBRE", marca.getNombre());
 					o.put("PRODUCTOS", marca.getCont());
-					o.put("ACTIVO", marca.getActiva());
+					o.put("ACTIVO", marca.getActivo());
 					
 					marcs.put(o);
 				}
@@ -132,7 +132,7 @@ public class DAOMarcasImp implements DAOMarcas {
 					Integer numProd = in.getInt("PRODUCTOS");
 					Boolean activo = in.getBoolean("ACTIVO");
 					
-					TMarcas marca = new TMarcas(auxId, nombre, activo, numProd);
+					TMarcas marca = new TMarcas(auxId, nombre, activo, numProd,"JUAN");
 					// leemos el id y lo insertamos en la lista
 					marcaList.add(marca);
 				}
@@ -155,7 +155,7 @@ public class DAOMarcasImp implements DAOMarcas {
 		for(int i = 0; i < marcaList.size();i++) {
 			if (marcaList.get(i).getID() == tMarca.getID()) {
 				marcaList.get(i).setNombre(tMarca.getNombre());
-				marcaList.get(i).setActivo(tMarca.getActiva());
+				marcaList.get(i).setActivo(tMarca.getActivo());
 				marcaList.get(i).setCont(tMarca.getCont());
 				}
 		}
@@ -200,6 +200,12 @@ public class DAOMarcasImp implements DAOMarcas {
 		}
 		*/					
 		return id;
+	}
+
+	@Override
+	public TMarcas readByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

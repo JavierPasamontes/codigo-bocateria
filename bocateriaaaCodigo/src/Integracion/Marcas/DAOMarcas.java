@@ -13,6 +13,8 @@ public interface DAOMarcas {
 	public int create(TMarcas tMarca);
 
 	public TMarcas read(Integer id);
+	
+	public TMarcas readByName(String name);
 
 	public List<TMarcas> readAll();
 

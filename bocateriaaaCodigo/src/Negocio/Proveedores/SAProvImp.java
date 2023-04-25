@@ -153,7 +153,7 @@ public class SAProvImp implements SAProv {
 		TProveedores tProv = FactoriaIntg.getInstance().generarDAOProv().read(prov);
 		TMarcas  tMarca =  FactoriaIntg.getInstance().generarDAOMarcas().read(marca);
 		if( tProv != null && tMarca != null) {
-			if(!tProv.getActivo() || !tMarca.getActiva())
+			if(!tProv.getActivo() || !tMarca.getActivo())
 				return -1;
 			
 			if(FactoriaIntg.getInstance().generarDAOProvMarcas().vinculado(prov, marca))
@@ -182,7 +182,7 @@ public class SAProvImp implements SAProv {
 		TMarcas  tMarca =  FactoriaIntg.getInstance().generarDAOMarcas().read(marca);
 		
 		if( tProv != null && tMarca != null) {
-			if(!tProv.getActivo() || !tMarca.getActiva())
+			if(!tProv.getActivo() || !tMarca.getActivo())
 				return -1;
 			
 			if(!FactoriaIntg.getInstance().generarDAOProvMarcas().vinculado(prov, marca))

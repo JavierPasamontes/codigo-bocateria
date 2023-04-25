@@ -1,1 +1,1 @@
-{"PROVEEDORES":[{"ACTIVO":true,"CONTMARCAS":1,"COMUNIDAD":"Huelva","ID":1,"NOMBRE":"Pedro"},{"ACTIVO":false,"CONTMARCAS":0,"ID":2,"NOMBRE":"Luis","PAIS":"Protaugal"},{"ACTIVO":true,"CONTMARCAS":0,"COMUNIDAD":"Sevilla","ID":3,"NOMBRE":"Paco"}]}
+{"PROVEEDORES":[{"ACTIVO":true,"CONTMARCAS":1,"COMUNIDAD":"Huelva","ID":1,"NOMBRE":"Pedro"},{"ACTIVO":false,"CONTMARCAS":0,"ID":2,"NOMBRE":"Luis","PAIS":"Protaugal"},{"ACTIVO":true,"CONTMARCAS":0,"COMUNIDAD":"Sevilla","ID":3,"NOMBRE":"Paco"},{"ACTIVO":true,"CONTMARCAS":0,"ID":4,"NOMBRE":"Juan","PAIS":"Madrid"}]}

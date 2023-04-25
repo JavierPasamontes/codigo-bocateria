@@ -2,6 +2,7 @@ package Negocio.Empleados;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class TEmpleados implements Serializable {
 	
 	private String nombre;

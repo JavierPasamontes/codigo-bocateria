@@ -3,70 +3,83 @@
  */
 package Negocio.Marcas;
 
-/** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author usuario_local
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
- */
+import java.util.List;
+
+import Integracion.Departamentos.DAODept;
+import Integracion.FactoriaIntegracion.FactoriaIntg;
+import Integracion.Marcas.DAOMarcas;
+import Negocio.Departamentos.TDept;
+
 public class SAMarcasImp implements SAMarcas {
-	/** 
-	* (non-Javadoc)
-	* @see SAMarcas#create()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public TMarcas create() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
-		// end-user-code
+
+	public Integer create(TMarcas tMarca) {
+
+		int id = -1;
+
+		DAOMarcas daoMarca = FactoriaIntg.getInstance().generarDAOMarcas();
+
+		TMarcas leido = daoMarca.readByName(tMarca.getNombre());
+
+		if (leido == null) {
+			daoMarca.create(tMarca);
+		} else {
+			if (leido.getActivo()) {
+
+				return -1;
+			} else {
+				leido.setActivo(true);
+				tMarca.setId(leido.getID());
+				id = daoMarca.update(tMarca);
+			}
+		}
+
+		return id;
+
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see SAMarcas#read()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public TMarcas read() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
-		// end-user-code
+	public TMarcas read(Integer id) {
+
+		DAOMarcas daoMarca = FactoriaIntg.getInstance().generarDAOMarcas();
+
+		return daoMarca.read(id);
+
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see SAMarcas#readAll()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void readAll() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	public List<TMarcas> readAll() {
 
-		// end-user-code
+		DAOMarcas daoMarca = FactoriaIntg.getInstance().generarDAOMarcas();
+
+		return daoMarca.readAll();
+
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see SAMarcas#update()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public Integer update() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
-		// end-user-code
+	public Integer update(TMarcas tMarca) {
+		
+		DAOMarcas daoMarca = FactoriaIntg.getInstance().generarDAOMarcas();
+
+		TMarcas marca = daoMarca.readByName(tMarca.getNombre());
+
+		if (marca.getActivo()) {
+			if (tMarca.getNombre().isEmpty())
+				tMarca.setNombre(marca.getNombre());
+			if (tMarca.getPais().isEmpty())
+				tMarca.setPais(marca.getPais());
+		}
+		else {
+			return -1;
+		}
+
+		return daoMarca.update(tMarca);
+
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see SAMarcas#delete()
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public Integer delete() {
-		// begin-user-code
-		// TODO Auto-generated method stub
-		return null;
-		// end-user-code
+	public Integer delete(Integer id) {
+		DAOMarcas daoMarca = FactoriaIntg.getInstance().generarDAOMarcas();
+		
+		if(daoMarca.read(id).getCont() == 0)
+			return daoMarca.delete(id);
+		else
+			return -1;
+
 	}
 }

@@ -27,6 +27,9 @@ public class FactoriaGUIImp extends FactoriaGUI {
 		case Eventos.VISTA_PROV:{
 			ventanaProv = new GUIProveedores();
 		}
+		case Eventos.VISTA_MARCAS:{
+			ventanaMarcas = new GUIMarcas();
+		}
 		}
 		return null;
 	}
@@ -41,6 +44,9 @@ public class FactoriaGUIImp extends FactoriaGUI {
 		}
 		if(evento>2000 && evento < 3000) {
 			ventanaProv.actualizar(evento, datos);
+		}
+		if(evento>4000 && evento < 5000) {
+			ventanaMarcas.actualizar(evento, datos);
 		}
 	}
 

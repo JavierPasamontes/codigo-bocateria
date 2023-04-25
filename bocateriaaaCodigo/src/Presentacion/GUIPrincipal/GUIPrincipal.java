@@ -69,8 +69,7 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				//GUIBajaDepts =new GUIBajaDepts();
+				Controlador.getInstance().accion(Eventos.VISTA_MARCAS, null);	
 			}
 			
 			

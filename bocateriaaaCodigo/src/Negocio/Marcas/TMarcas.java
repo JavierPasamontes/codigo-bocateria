@@ -2,8 +2,6 @@ package Negocio.Marcas;
 
 import java.io.Serializable;
 
-import Negocio.Departamentos.TDept;
-
 
 public class TMarcas implements Serializable {
 	
@@ -11,16 +9,26 @@ public class TMarcas implements Serializable {
 	
 	private Integer id;
 	private String nombre;
-	private Boolean activa;
+	private Boolean activo;
 	private Integer contProductos;
+	private String pais;
 
-	public TMarcas(Integer id, String nombre, Boolean activa, Integer contProductos) {
+	public TMarcas(Integer id, String nombre, Boolean activa, Integer contProductos,String pais) {
 		this.id = id;
 		this.nombre = nombre;
-		this.activa = activa;
+		this.activo = activa;
 		this.contProductos = contProductos;
+		this.pais = pais;
 	}
 	
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+
 	public Integer getID() {
 		return this.id;
 	}
@@ -37,12 +45,12 @@ public class TMarcas implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public Boolean getActiva() {
-		return this.activa;
+	public Boolean getActivo() {
+		return this.activo;
 	}
 	
 	public void setActivo(Boolean activo) {
-		this.activa = activo;
+		this.activo = activo;
 	}
 
 	public Integer getCont() {
@@ -68,7 +76,7 @@ public class TMarcas implements Serializable {
 			TMarcas mrc = (TMarcas) obj;
 			
 			if(this.id == mrc.id && this.nombre.equals(mrc.nombre) 
-			&& this.activa.equals(mrc.activa) && this.contProductos.equals(mrc.contProductos)
+			&& this.activo.equals(mrc.activo) && this.contProductos.equals(mrc.contProductos)
 			) {
 				return true;
 			}

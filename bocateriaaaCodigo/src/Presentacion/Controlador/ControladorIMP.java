@@ -8,6 +8,8 @@ import Negocio.Departamentos.TDept;
 import Negocio.Empleados.SAEmpleados;
 import Negocio.Empleados.TEmpleados;
 import Negocio.Factoria.FactoriaNeg;
+import Negocio.Marcas.SAMarcas;
+import Negocio.Marcas.TMarcas;
 import Negocio.Proveedores.SAProv;
 import Negocio.Proveedores.TProveedores;
 import Presentacion.FactoriaGUI.FactoriaGUI;
@@ -23,6 +25,8 @@ public class ControladorIMP extends Controlador {
 		SAProv saProv;
 		TEmpleados tEmp;
 		SAEmpleados saEmp;
+		SAMarcas saMarcas;
+		TMarcas tMarcas;
 
 		switch (evento) {
 
@@ -301,6 +305,84 @@ public class ControladorIMP extends Controlador {
 			}
 			break;
 		
+			
+			
+			
+		//MARCAS
+			
+		case Eventos.VISTA_MARCAS:
+			FactoriaGUI.getInstance().generarGUI(evento);
+			break;
+
+		case Eventos.ALTA_MARCAS:
+
+			tMarcas = (TMarcas) datos;
+
+			saMarcas = FactoriaNeg.getInstance().generarSAMarcas();
+
+			resultado = saMarcas.create(tMarcas);
+
+			if (resultado >= 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.ALTA_MARCAS_OK, resultado);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.ALTA_MARCAS_KO, null);
+			}
+			break;
+
+		case Eventos.BAJA_MARCAS:
+
+			saMarcas = FactoriaNeg.getInstance().generarSAMarcas();
+
+			resultado = saMarcas.delete((Integer) datos);
+
+			if (resultado >= 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_MARCAS_OK, datos);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_MARCAS_KO, datos);
+			}
+			break;
+		case Eventos.MODIFICAR_MARCAS:
+
+			tMarcas = (TMarcas) datos;
+
+			saMarcas = FactoriaNeg.getInstance().generarSAMarcas();
+
+			resultado = saMarcas.update(tMarcas);
+
+			if (resultado >= 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_MARCAS_OK, tMarcas);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_MARCAS_KO, tMarcas);
+			}
+			break;
+		case Eventos.MOSTRAR_MARCA:
+
+			saMarcas = FactoriaNeg.getInstance().generarSAMarcas();
+
+			TMarcas tResultadoM = saMarcas.read((Integer) datos);
+
+			if (tResultadoM != null) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_MARCA_OK, tResultadoM);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_MARCA_KO, datos);
+			}
+			break;
+
+		case Eventos.MOSTRAR_MARCAS:
+
+			saMarcas = FactoriaNeg.getInstance().generarSAMarcas();
+
+			List<TMarcas> ltResultadoM = saMarcas.readAll();
+
+			if (ltResultadoM.size() > 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_MARCAS_OK, ltResultadoM);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_MARCAS_KO, null);
+			}
+			break;
+			
+			
+			
 		}
 		
 	}

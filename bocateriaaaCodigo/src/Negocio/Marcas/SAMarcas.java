@@ -3,49 +3,17 @@
  */
 package Negocio.Marcas;
 
-/** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author usuario_local
- * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
- */
+import java.util.List;
+
 public interface SAMarcas {
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @return
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public TMarcas create();
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @return
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public TMarcas read();
+	public Integer create(TMarcas tMarc);
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void readAll();
+	public TMarcas read(Integer id);
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @return
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public Integer update();
+	public List<TMarcas> readAll();
 
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @return
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public Integer delete();
+	public Integer update(TMarcas tMarca);
+
+	public Integer delete(Integer id);
 }
