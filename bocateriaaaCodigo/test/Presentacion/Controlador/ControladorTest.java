@@ -2,6 +2,10 @@ package Presentacion.Controlador;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import org.junit.jupiter.api.Test;
 
 import Integracion.Departamentos.DAODept;
@@ -10,10 +14,22 @@ import Negocio.Departamentos.TDept;
 
 class ControladorTest {
 	
+	private final static String _path = "resources/departamentos/dept.JSON";
+	
+	public void openFile() {
+		try(BufferedWriter salida = new BufferedWriter(new FileWriter(_path))){
+			salida.close();
+			}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@Test
 	void departamentos() {
 		Controlador controlador = Controlador.getInstance();
+		
+		openFile();
 		
 		controlador.accion(Eventos.ALTA_DEPARTAMENTO,new TDept(1, "Alimentos", "Caceres", true, "Descripccion") );
 		

@@ -1,1 +1,1 @@
-{"MARCAS":[{"ACTIVO":true,"PRODUCTOS":3,"ID":1,"NOMBRE":"Prueba1"},{"ACTIVO":true,"PRODUCTOS":3,"ID":3,"NOMBRE":"ABC"}]}
+{"MARCAS":[{"ACTIVO":true,"PRODUCTOS":3,"ID":1,"NOMBRE":"Prueba1","PAIS":"Italia"},{"ACTIVO":false,"PRODUCTOS":3,"ID":2,"NOMBRE":"Prueba2","PAIS":"Suiza"},{"ACTIVO":true,"PRODUCTOS":3,"ID":3,"NOMBRE":"ABC","PAIS":"Eslovenia"}]}

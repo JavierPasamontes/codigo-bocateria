@@ -35,8 +35,8 @@ private final static String _path = "resources/marcas/marcas.JSON";
 		
 		openFile();
 		
-		TMarcas p1 = new TMarcas(1, "Prueba1", true, 0);
-		TMarcas p2 = new TMarcas(2, "Prueba2", true, 0);		
+		TMarcas p1 = new TMarcas(1, "Prueba1", true, 0,"Italia");
+		TMarcas p2 = new TMarcas(2, "Prueba2", true, 0,"Suiza");		
 		int id;
 		
 		//comprobamos que devuelva el id correcto
@@ -48,7 +48,7 @@ private final static String _path = "resources/marcas/marcas.JSON";
 		//deberian ser iguales el dept 1 y el que se manda a leer por el nombre
 		//assertEquals(p1,daoMarca.readByName("Prueba1"));
 		
-		TMarcas p3 = new TMarcas(3, "Prueba3", true, 0);		
+		TMarcas p3 = new TMarcas(3, "Prueba3", true, 0,"Eslovenia");		
 		
 		daoMarca.create(p3);
 		
@@ -80,7 +80,7 @@ private final static String _path = "resources/marcas/marcas.JSON";
 		
 		openFile();
 		
-		TMarcas p1 = new TMarcas(1, "Prueba1", true, 0);
+		TMarcas p1 = new TMarcas(1, "Prueba1", true, 0,"a");
 		int id;
 		
 		//comprobamos que devuelva el id correcto

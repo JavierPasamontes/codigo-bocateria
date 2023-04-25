@@ -70,6 +70,7 @@ public class DAOMarcasImp implements DAOMarcas {
 					o.put("NOMBRE", marca.getNombre());
 					o.put("PRODUCTOS", marca.getCont());
 					o.put("ACTIVO", marca.getActivo());
+					o.put("PAIS", marca.getPais());
 					
 					marcs.put(o);
 				}
@@ -110,6 +111,30 @@ public class DAOMarcasImp implements DAOMarcas {
 
 		return marca;
 	}
+	
+	
+	@Override
+	public TMarcas readByName(String name) {
+		TMarcas marca = null;
+		
+		List<TMarcas> marcaList = new ArrayList<TMarcas>();
+		
+		marcaList = this.readAll();
+		
+		int i = 0;
+		boolean salida = false;
+		
+		while (salida == false && i < marcaList.size()) {
+			if(marcaList.get(i).getNombre() == name) {
+				marca = marcaList.get(i);
+				salida = true;
+			}
+			i++;
+		}
+
+		return marca;
+	}
+	
 
 	@Override
 	public List<TMarcas> readAll() {
@@ -131,8 +156,9 @@ public class DAOMarcasImp implements DAOMarcas {
 					String nombre = in.getString("NOMBRE");
 					Integer numProd = in.getInt("PRODUCTOS");
 					Boolean activo = in.getBoolean("ACTIVO");
+					String pais = in.getString("PAIS");
 					
-					TMarcas marca = new TMarcas(auxId, nombre, activo, numProd,"JUAN");
+					TMarcas marca = new TMarcas(auxId, nombre, activo, numProd,pais);
 					// leemos el id y lo insertamos en la lista
 					marcaList.add(marca);
 				}
@@ -179,34 +205,8 @@ public class DAOMarcasImp implements DAOMarcas {
 		eliminado.setActivo(false);
 		
 		this.update(eliminado);
-		/*
-		// Para eliminar
-		if (eliminado != null) {
-			List<TMarcas> marcaList = new ArrayList<TMarcas>();
-			
-			marcaList = this.readAll();
 		
-			marcaList.remove(eliminado);
-					
-			try(BufferedWriter salida = new BufferedWriter(new FileWriter(_path)))
-			{ //sobrescribimos el archivo de texto
-				for(TMarcas marca : marcaList) {
-					this.create(marca);
-				}
-			}
-			catch(IOException e) {
-				e.printStackTrace();
-			}
-		}
-		*/					
 		return id;
-	}
-
-	@Override
-	public TMarcas readByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+	}	
 	
 }
