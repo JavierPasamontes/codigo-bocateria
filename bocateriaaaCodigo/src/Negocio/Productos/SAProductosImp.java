@@ -1,72 +1,66 @@
-/**
- * 
- */
+
 package Negocio.Productos;
 
-/** 
- * <!-- begin-UML-doc -->
- * <!-- end-UML-doc -->
- * @author nitro
- * @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
- */
+import java.util.List;
+
+import Integracion.Departamentos.DAODept;
+import Integracion.Empleados.DAOEmpleados;
+import Integracion.FactoriaIntegracion.FactoriaIntg;
+import Integracion.Marcas.DAOMarcas;
+import Integracion.Productos.DAOProductos;
+import Negocio.Departamentos.TDept;
+import Negocio.Empleados.TEmpleados;
+
 public class SAProductosImp implements SAProductos {
-	/** 
-	* (non-Javadoc)
-	* @see SAProductos#create()
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void create() {
-		// begin-user-code
-		// TODO Auto-generated method stub
 
-		// end-user-code
+	@Override
+	public int create(TProductos tProd) {
+		int id = -1;
+
+		DAOProductos daoProd = FactoriaIntg.getInstance().generarDAOProv();
+		DAOMarcas daoMarcas = FactoriaIntg.getInstance().generarDAODepts();
+
+		TEmpleados empleado = daoEmp.readByDNI(tEmp.getDNI());
+		TDept leidoDept = daoDept.read(tEmp.getIdDept());
+
+		if (empleado == null) {
+			if (leidoDept != null && leidoDept.isActivo()) {
+				id = daoEmp.create(tEmp);
+				leidoDept.aumentarEmpleados();
+				daoDept.update(leidoDept);
+			}
+		} else {
+			if (!empleado.getActivo() && leidoDept.isActivo()) {
+				empleado.setActivo(true);
+				leidoDept.aumentarEmpleados();
+				daoDept.update(leidoDept);
+			}
+		}
+		return id;
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see SAProductos#read()
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void read() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	@Override
+	public TProductos read(int id) {
 
-		// end-user-code
+		return null;
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see SAProductos#readAll()
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void readAll() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	@Override
+	public List<TProductos> readAll() {
 
-		// end-user-code
+		return null;
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see SAProductos#update()
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void update() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	@Override
+	public int update(TProductos tProd) {
 
-		// end-user-code
+		return 0;
 	}
 
-	/** 
-	* (non-Javadoc)
-	* @see SAProductos#delete()
-	* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void delete() {
-		// begin-user-code
-		// TODO Auto-generated method stub
+	@Override
+	public int delete(int id) {
 
-		// end-user-code
+		return 0;
 	}
+
 }

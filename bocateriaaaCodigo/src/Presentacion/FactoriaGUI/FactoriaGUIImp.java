@@ -26,9 +26,11 @@ public class FactoriaGUIImp extends FactoriaGUI {
 		}
 		case Eventos.VISTA_PROV:{
 			ventanaProv = new GUIProveedores();
+			break;
 		}
 		case Eventos.VISTA_MARCAS:{
 			ventanaMarcas = new GUIMarcas();
+			break;
 		}
 		}
 		return null;

@@ -6,6 +6,8 @@ import Negocio.Empleados.SAEmpleados;
 import Negocio.Empleados.SAEmpleadosImp;
 import Negocio.Marcas.SAMarcas;
 import Negocio.Marcas.SAMarcasImp;
+import Negocio.Productos.SAProductos;
+import Negocio.Productos.SAProductosImp;
 import Negocio.Proveedores.SAProv;
 import Negocio.Proveedores.SAProvImp;
 
@@ -29,6 +31,11 @@ public class FactoriaNegImp extends FactoriaNeg {
 	@Override
 	public SAMarcas generarSAMarcas() {
 		return new SAMarcasImp();
+	}
+
+	@Override
+	public SAProductos generarSAProductos() {
+		return new SAProductosImp();
 	}
 	
 }
