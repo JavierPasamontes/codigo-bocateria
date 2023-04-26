@@ -56,9 +56,6 @@ public class DAOMarcasImp implements DAOMarcas {
 				}
 				else
 					id = tMarca.getID();
-
-				
-				tMarca.aumentarEmpleados();
 				
 				marcaList.add(tMarca);
 			
@@ -125,7 +122,7 @@ public class DAOMarcasImp implements DAOMarcas {
 		boolean salida = false;
 		
 		while (salida == false && i < marcaList.size()) {
-			if(marcaList.get(i).getNombre() == name) {
+			if(marcaList.get(i).getNombre().equals(name) ) {
 				marca = marcaList.get(i);
 				salida = true;
 			}

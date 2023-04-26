@@ -21,7 +21,7 @@ public class SAMarcasImp implements SAMarcas {
 		TMarcas leido = daoMarca.readByName(tMarca.getNombre());
 
 		if (leido == null) {
-			daoMarca.create(tMarca);
+			id = daoMarca.create(tMarca);
 		} else {
 			if (leido.getActivo()) {
 
@@ -57,7 +57,7 @@ public class SAMarcasImp implements SAMarcas {
 		
 		DAOMarcas daoMarca = FactoriaIntg.getInstance().generarDAOMarcas();
 
-		TMarcas marca = daoMarca.readByName(tMarca.getNombre());
+		TMarcas marca = daoMarca.read(tMarca.getID());
 
 		if (marca.getActivo()) {
 			if (tMarca.getNombre().isEmpty())
