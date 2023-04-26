@@ -1,11 +1,10 @@
-package Presentacion.Productos.Productos;
+package Presentacion.Ventas.Ventas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -14,40 +13,35 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import Negocio.Departamentos.TDept;
-import Presentacion.Controlador.Eventos;
-import Presentacion.Controlador.MensajeGUI;
-import Presentacion.Departamentos.AltaDepartamentos.GUIAltaDepartamento;
-import Presentacion.Departamentos.BajaDepts.GUIBajaDepts;
-import Presentacion.Departamentos.Departamentos.GUIDepartamentos;
-import Presentacion.Departamentos.ModificarDept.GUIModificarDept;
-import Presentacion.Departamentos.MostrarDept.GUIMostrarDepts;
-import Presentacion.Departamentos.MostrarUnDept.GUIMostrarUnDept;
+import Presentacion.Productos.AltaProductos.GUIAltaProductos;
+import Presentacion.Productos.BajaProductos.GUIBajaProductos;
+import Presentacion.Productos.ModificarProducto.GUIModificarProducto;
+import Presentacion.Productos.MostrarProdDeMarca.GUIMostrarProdDeMarca;
+import Presentacion.Productos.MostrarProductos.GUIMostrarProductos;
+import Presentacion.Productos.MostrarUnProductos.GUIMostrarUnProd;
+import Presentacion.Productos.Productos.GUIProductos;
 
-import Presentacion.Productos.AltaProductos.*;
-import Presentacion.Productos.BajaProductos.*;
-import Presentacion.Productos.ModificarProducto.*;
-import Presentacion.Productos.MostrarProductos.*;
-import Presentacion.Productos.MostrarUnProductos.*;
-import Presentacion.Productos.MostrarProdDeMarca.*;
-
-public class GUIProductos extends JFrame{
+public class GUIVentas extends JFrame{
 	static JButton altaBoton;
-	static JButton bajaBoton;
+	static JButton cerrarBoton;
 	static JButton modBoton;
 	static JButton mostrarTodoBoton;
 	static JButton mostrarPorIDBoton;
-	static JButton mostrarProdDeMarca;
+	static JButton mostrarVentasEmp;
+	static JButton mostrarProdDeVenta;
+	static JButton anadirQuitarProd;
 	static JButton volverBoton;
-	private GUIAltaProductos GUIAltaProductos;
-	private GUIBajaProductos GUIBajaProductos;
-	private GUIModificarProducto GUIModificarProducto;
-	private GUIMostrarProductos GUIMostrarProductos;
-	private GUIMostrarUnProd GUIMostrarUnProd;
-	private GUIMostrarProdDeMarca GUIMostrarProdDeMarca;
+	//private GUIAltaVenta GUIAltaVenta;
+	//private GUICerrarVenta GUICerrarVenta;
+	//private GUIModificarVenta GUIModificarVenta;
+	//private GUIMostrarVentas GUIMostrarVentas;
+	//private GUIMostrarUnaVenta GUIMostrarUnaVenta;
+	//private GUIMostrarVentasEmp GUIMostrarVentasEmp;
+	//private GUIMostrarProdDeVenta GUIMostrarProdDeVenta;
+	//private GUIAnadirQuitarProd GUIAnadirQuitarProd;
 	
-	public GUIProductos() {
-		super("Productos");
+	public GUIVentas() {
+		super("Ventas");
 		initGUI();
 	}
 	
@@ -69,19 +63,19 @@ public class GUIProductos extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				GUIAltaProductos =new GUIAltaProductos();
+				//GUIAltaVenta =new GUIAltaVenta();
 			}
 			
 			
 		});
-		bajaBoton=new JButton("Baja");
-		bajaBoton.setPreferredSize(new Dimension(150,50));
-		bajaBoton.addActionListener(new ActionListener() {
+		cerrarBoton=new JButton("Baja");
+		cerrarBoton.setPreferredSize(new Dimension(150,50));
+		cerrarBoton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				GUIBajaProductos =new GUIBajaProductos();
+				//GUICerrarVenta =new GUICerrarVenta();
 			}
 			
 			
@@ -93,7 +87,7 @@ public class GUIProductos extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				GUIModificarProducto =new GUIModificarProducto();
+				//GUIModificarVenta =new GUIModificarVenta();
 			}
 			
 			
@@ -105,7 +99,7 @@ public class GUIProductos extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				GUIMostrarProductos =new GUIMostrarProductos();			
+				//GUIMostrarVentas =new GUIMostrarVentas();			
 			}
 			
 			
@@ -117,7 +111,7 @@ public class GUIProductos extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				GUIMostrarUnProd =new GUIMostrarUnProd();
+				GUIMostrarUnaVenta =new GUIMostrarUnaVenta();
 			}
 			
 			
@@ -175,7 +169,7 @@ public class GUIProductos extends JFrame{
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				new GUIProductos();
+				new GUIVentas();
 			}
 		});
 	}
