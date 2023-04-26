@@ -44,12 +44,14 @@ class DAODeptImpTest {
 		
 		int id;
 		
+		//PRUEBA DE CREATE()
 		//comprobamos que devuelva el id correcto
 		id = daoDept.create(p1);
 		assertEquals(1,id,"No ha devuelto el id que acaba de crear");
 	
 		id = daoDept.create(p2);
 		
+		//PRUEBA DE READBYNAME()
 		//deberian ser iguales el dept 1 y el que se manda a leer por el nombre
 		assertEquals(p1,daoDept.readByName("Prueba1"));
 		
@@ -60,6 +62,7 @@ class DAODeptImpTest {
 		p3.setNombre("ABC");
 		p3.setSede("nuevaSede");
 		
+		//PRUEBA DE UPDATE()
 		daoDept.update(p3);
 		//comprobamos que funciona el update
 		assertEquals("ABC", daoDept.read(3).getNombre());
@@ -67,17 +70,19 @@ class DAODeptImpTest {
 		
 		List<TDept> deptList = new ArrayList<TDept>();
 		
+		//PRUEBA DE READALL()
 		deptList = daoDept.readAll();
 		//comprobamos que lee bien el fichero
 		assertTrue(deptList.size() == 3); //comprobamos que lea todo bien
 		
+		//PRUEBA DE DELETE()
 		id = daoDept.delete(2);
 		assertEquals(2, id); //devuelve el id que ha borrado
 		//actualizamos la lista y comprobamos que se ha borrado
 		
 		deptList = daoDept.readAll();
 		assertTrue(deptList.size() == 3); //el tamaño de la lista no disminuye
-		assertTrue(deptList.get(1).isActivo() == false);	
+		assertTrue(deptList.get(1).isActivo() == false);//el departamento seleccionado 
 	}
 	
 	@Test
