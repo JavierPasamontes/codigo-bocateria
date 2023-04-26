@@ -50,14 +50,16 @@ public class GUIVentas extends JFrame{
 		JPanel p = new JPanel();
 		p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
 		JPanel superior = new JPanel();
-		superior.setBackground(Color.YELLOW);
+		superior.setBackground(Color.PINK);
 		JPanel medio = new JPanel();
-		medio.setBackground(Color.YELLOW);
+		medio.setBackground(Color.PINK);
+		JPanel medio2 = new JPanel();
+		medio2.setBackground(Color.PINK);
 		JPanel inferior = new JPanel();
-		inferior.setBackground(Color.YELLOW);
+		inferior.setBackground(Color.PINK);
 		
 		altaBoton=new JButton("Alta");
-		altaBoton.setPreferredSize(new Dimension(150,50));
+		altaBoton.setPreferredSize(new Dimension(200,50));
 		altaBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -68,8 +70,8 @@ public class GUIVentas extends JFrame{
 			
 			
 		});
-		cerrarBoton=new JButton("Baja");
-		cerrarBoton.setPreferredSize(new Dimension(150,50));
+		cerrarBoton=new JButton("Cerrar Venta");
+		cerrarBoton.setPreferredSize(new Dimension(200,50));
 		cerrarBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -81,7 +83,7 @@ public class GUIVentas extends JFrame{
 			
 		});
 		modBoton=new JButton("Modificar");
-		modBoton.setPreferredSize(new Dimension(150,50));
+		modBoton.setPreferredSize(new Dimension(200,50));
 		modBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -93,7 +95,7 @@ public class GUIVentas extends JFrame{
 			
 		});
 		mostrarTodoBoton=new JButton("Mostrar todo");
-		mostrarTodoBoton.setPreferredSize(new Dimension(150,50));
+		mostrarTodoBoton.setPreferredSize(new Dimension(200,50));
 		mostrarTodoBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -105,30 +107,57 @@ public class GUIVentas extends JFrame{
 			
 		});
 		mostrarPorIDBoton=new JButton("Mostrar por ID");
-		mostrarPorIDBoton.setPreferredSize(new Dimension(150,50));
+		mostrarPorIDBoton.setPreferredSize(new Dimension(200,50));
 		mostrarPorIDBoton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				GUIMostrarUnaVenta =new GUIMostrarUnaVenta();
+				//GUIMostrarUnaVenta =new GUIMostrarUnaVenta();
 			}
 			
 			
 		});
 		
-		mostrarProdDeMarca=new JButton("Mostrar Prod. de Marca");
-		mostrarProdDeMarca.setPreferredSize(new Dimension(150,50));
-		mostrarProdDeMarca.addActionListener(new ActionListener() {
+		mostrarVentasEmp=new JButton("Mostrar Ventas de Empleados");
+		mostrarVentasEmp.setPreferredSize(new Dimension(200,50));
+		mostrarVentasEmp.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				GUIMostrarProdDeMarca =new GUIMostrarProdDeMarca();
+				//GUIMostrarVentasEmp =new GUIMostrarVentasEmp();
 			}
 			
 			
 		});
+		
+		mostrarProdDeVenta=new JButton("Mostrar Productos de Una venta");
+		mostrarProdDeVenta.setPreferredSize(new Dimension(200,50));
+		mostrarProdDeVenta.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				//GUIMostrarProdDeVenta =new GUIMostrarProdDeVenta();
+			}
+			
+			
+		});
+		
+		anadirQuitarProd=new JButton("Añadir/Quitar productos");
+		anadirQuitarProd.setPreferredSize(new Dimension(200,50));
+		anadirQuitarProd.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				//GUIAnadirQuitarProd =new GUIAnadirQuitarProd();
+			}
+			
+			
+		});
+		
 		ImageIcon icono = new ImageIcon("resources/imgs/volver.png");
 		volverBoton=new JButton(icono);
 		volverBoton.setBorderPainted(false);
@@ -145,14 +174,17 @@ public class GUIVentas extends JFrame{
 			
 		});
 		superior.add(altaBoton);
-		superior.add(bajaBoton);
-		superior.add(mostrarProdDeMarca);
+		superior.add(cerrarBoton);
+		superior.add(mostrarVentasEmp);
 		medio.add(modBoton);
 		medio.add(mostrarTodoBoton);
 		medio.add(mostrarPorIDBoton);
+		medio2.add(mostrarProdDeVenta);
+		medio2.add(anadirQuitarProd);
 		inferior.add(volverBoton);
 		p.add(superior, BorderLayout.PAGE_START);
 		p.add(medio, BorderLayout.CENTER);
+		p.add(medio2, BorderLayout.CENTER);
 		p.add(inferior, BorderLayout.PAGE_END);
 		
 		this.setContentPane(p);

@@ -24,7 +24,6 @@ import Presentacion.Marcas.Marcas.GUIMarcas;
 import Presentacion.Marcas.ModificarMarca.GUIModificarMarca;
 import Presentacion.Marcas.MostrarMarcas.GUIMostrarMarcas;
 import Presentacion.Marcas.MostrarUnaMarca.GUIMostrarUnaMarca;
-import Presentacion.Marcas.MostrarProductosDeMarcas.*;
 
 public class GUIMarcas extends JFrame{
 	static JButton altaBoton;
@@ -33,13 +32,11 @@ public class GUIMarcas extends JFrame{
 	static JButton mostrarTodoBoton;
 	static JButton mostrarPorIDBoton;
 	static JButton volverBoton;
-	//static JButton prodDeMarcBoton;
 	private GUIAltaMarca GUIAltaMarca;
 	private GUIBajaMarca GUIBajaMarca;
 	private GUIModificarMarca GUIModificarMarca;
 	private GUIMostrarMarcas GUIMostrarMarcas;
 	private GUIMostrarUnaMarca GUIMostrarUnaMarca;
-	//private GUIMostrarProdDeMarc GUIMostrarProdDeMarc;
 	
 	public GUIMarcas() {
 		super("Marcas");
@@ -58,7 +55,7 @@ public class GUIMarcas extends JFrame{
 		inferior.setBackground(Color.GREEN);
 		
 		altaBoton=new JButton("Alta");
-		altaBoton.setPreferredSize(new Dimension(150,50));
+		altaBoton.setPreferredSize(new Dimension(200,50));
 		altaBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -70,7 +67,7 @@ public class GUIMarcas extends JFrame{
 			
 		});
 		bajaBoton=new JButton("Baja");
-		bajaBoton.setPreferredSize(new Dimension(150,50));
+		bajaBoton.setPreferredSize(new Dimension(200,50));
 		bajaBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -82,7 +79,7 @@ public class GUIMarcas extends JFrame{
 			
 		});
 		modBoton=new JButton("Modificar");
-		modBoton.setPreferredSize(new Dimension(150,50));
+		modBoton.setPreferredSize(new Dimension(200,50));
 		modBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -94,7 +91,7 @@ public class GUIMarcas extends JFrame{
 			
 		});
 		mostrarTodoBoton=new JButton("Mostrar todo");
-		mostrarTodoBoton.setPreferredSize(new Dimension(150,50));
+		mostrarTodoBoton.setPreferredSize(new Dimension(200,50));
 		mostrarTodoBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -106,7 +103,7 @@ public class GUIMarcas extends JFrame{
 			
 		});
 		mostrarPorIDBoton=new JButton("Mostrar por ID");
-		mostrarPorIDBoton.setPreferredSize(new Dimension(150,50));
+		mostrarPorIDBoton.setPreferredSize(new Dimension(200,50));
 		mostrarPorIDBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -117,20 +114,7 @@ public class GUIMarcas extends JFrame{
 			
 			
 		});
-		/*
-		prodDeMarcBoton=new JButton("Productos de una marca");
-		prodDeMarcBoton.setPreferredSize(new Dimension(150,50));
-		prodDeMarcBoton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				GUIMostrarProdDeMarc =new GUIMostrarProdDeMarc();
-			}
-			
-			
-		});
-		*/
+		
 		ImageIcon icono = new ImageIcon("resources/imgs/volver.png");
 		volverBoton=new JButton(icono);
 		volverBoton.setBorderPainted(false);
@@ -210,14 +194,6 @@ public class GUIMarcas extends JFrame{
 		case Eventos.MOSTRAR_MARCA_KO:
 			a.showMessage("No se pudo mostrar la marca especificada", "Buscar marca", true);
 			break;
-			/*
-		case Eventos.MOSTRAR_PROD_DE_MARCA_OK:
-			GUIMostrarProdDeMarc.actualizar((String)datos);
-			break;
-		case Eventos.MOSTRAR_PROD_DE_MARCA_KO:
-			a.showMessage("No se han podido mostrar los productos de la marca especificada", "Mostrar Productos de una Marca", true);
-			break;
-			*/
 		}
 		
 	}

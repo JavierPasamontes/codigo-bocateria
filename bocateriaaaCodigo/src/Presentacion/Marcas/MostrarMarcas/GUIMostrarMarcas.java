@@ -76,7 +76,7 @@ public class GUIMostrarMarcas extends JFrame{
 		modeloTabla.addColumn("Nombre");
 		modeloTabla.addColumn("Pais");
 		modeloTabla.addColumn("Num. de productos");
-		
+		modeloTabla.addColumn("Activa");
 		JScrollPane scroll = new JScrollPane();
 		scroll.setViewportView (tabla);
 		tabla.setModel(modeloTabla);
@@ -100,10 +100,10 @@ public class GUIMostrarMarcas extends JFrame{
 	
 	public void actualizar (ArrayList<TMarcas> mar){
 		modeloTabla.setRowCount(0);
-		modeloTabla.insertRow(0, new String[] {"ID", "Nombre", "Pais", "Num. de productos"});
+		modeloTabla.insertRow(0, new String[] {"ID", "Nombre", "Pais", "Num. de productos", "Activa"});
 		for (int i = 0; i < mar.size(); i++) {
 				modeloTabla.insertRow(i+1, new Object[] 
-						{ mar.get(i).getID(), mar.get(i).getNombre(), mar.get(i).getPais(), mar.get(i).getCont()});
+						{ mar.get(i).getID(), mar.get(i).getNombre(), mar.get(i).getPais(), mar.get(i).getCont(), mar.get(i).getActivo()});
 		}
 		tabla.setModel(modeloTabla);
 		this.pack();

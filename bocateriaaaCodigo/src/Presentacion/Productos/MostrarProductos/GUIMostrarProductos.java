@@ -76,7 +76,7 @@ public class GUIMostrarProductos extends JFrame{
 		modeloTabla.addColumn("Cantidad");
 		modeloTabla.addColumn("Precio");
 		modeloTabla.addColumn("Marca");
-		
+		modeloTabla.addColumn("Activo");
 		JScrollPane scroll = new JScrollPane();
 		scroll.setViewportView (tabla);
 		tabla.setModel(modeloTabla);
@@ -100,10 +100,10 @@ public class GUIMostrarProductos extends JFrame{
 	/*
 	public void actualizar (ArrayList<TProductos> prod){
 		modeloTabla.setRowCount(0);
-		modeloTabla.insertRow(0, new String[] {"ID", "Nombre", "Cantidad", "Precio", "Marca"});
+		modeloTabla.insertRow(0, new String[] {"ID", "Nombre", "Cantidad", "Precio", "Marca", "Activo"});
 		for (int i = 0; i < prod.size(); i++) {
 				modeloTabla.insertRow(i+1, new Object[] 
-						{ prod.get(i).getID(), prod.get(i).getNombre(), prod.get(i).getCantidad(), prod.get(i).getPrecio(), prod.get(i).getMarca()});
+						{ prod.get(i).getID(), prod.get(i).getNombre(), prod.get(i).getCantidad(), prod.get(i).getPrecio(), prod.get(i).getMarca(), prod.get(i).getActivo()});
 		}
 		tabla.setModel(modeloTabla);
 		this.pack();

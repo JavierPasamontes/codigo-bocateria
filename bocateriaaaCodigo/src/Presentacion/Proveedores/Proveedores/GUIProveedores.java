@@ -58,7 +58,7 @@ public class GUIProveedores extends JFrame{
 		bajo.setBackground(Color.GRAY );
 		
 		altaBoton=new JButton("Alta");
-		altaBoton.setPreferredSize(new Dimension(150,50));
+		altaBoton.setPreferredSize(new Dimension(200,50));
 		altaBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -70,7 +70,7 @@ public class GUIProveedores extends JFrame{
 			
 		});
 		bajaBoton=new JButton("Baja");
-		bajaBoton.setPreferredSize(new Dimension(150,50));
+		bajaBoton.setPreferredSize(new Dimension(200,50));
 		bajaBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -81,7 +81,7 @@ public class GUIProveedores extends JFrame{
 			
 		});
 		modBoton=new JButton("Modificar");
-		modBoton.setPreferredSize(new Dimension(150,50));
+		modBoton.setPreferredSize(new Dimension(200,50));
 		modBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -92,7 +92,7 @@ public class GUIProveedores extends JFrame{
 			
 		});
 		mostrarTodoBoton=new JButton("Mostrar todo");
-		mostrarTodoBoton.setPreferredSize(new Dimension(150,50));
+		mostrarTodoBoton.setPreferredSize(new Dimension(200,50));
 		mostrarTodoBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -104,7 +104,7 @@ public class GUIProveedores extends JFrame{
 			
 		});
 		mostrarPorIDBoton=new JButton("Mostrar por ID");
-		mostrarPorIDBoton.setPreferredSize(new Dimension(150,50));
+		mostrarPorIDBoton.setPreferredSize(new Dimension(200,50));
 		mostrarPorIDBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -116,7 +116,7 @@ public class GUIProveedores extends JFrame{
 		});
 		
 		vincularBoton=new JButton("Vincular marca por ID");
-		vincularBoton.setPreferredSize(new Dimension(150,50));
+		vincularBoton.setPreferredSize(new Dimension(200,50));
 		vincularBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -128,7 +128,7 @@ public class GUIProveedores extends JFrame{
 		});
 		
 		desvincularBoton=new JButton("Desvincular marca por ID");
-		desvincularBoton.setPreferredSize(new Dimension(150,50));
+		desvincularBoton.setPreferredSize(new Dimension(200,50));
 		desvincularBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -140,7 +140,7 @@ public class GUIProveedores extends JFrame{
 		});
 		
 		mostrarMdePBoton =new JButton("Mostrar marcas de proveedor");
-		mostrarMdePBoton.setPreferredSize(new Dimension(150,50));
+		mostrarMdePBoton.setPreferredSize(new Dimension(200,50));
 		mostrarMdePBoton.addActionListener(new ActionListener() {
 
 			@Override

@@ -87,6 +87,7 @@ public class GUIMostrarProvs extends JFrame {
 		modeloTabla.addColumn("Tipo");
 		modeloTabla.addColumn("Origen");
 		modeloTabla.addColumn("Marcas");
+		modeloTabla.addColumn("Activo");
 		tabla.setModel(modeloTabla);
 		
 		tablaPanel.add(tabla);
@@ -112,12 +113,13 @@ public class GUIMostrarProvs extends JFrame {
 		modeloTabla.addColumn("Tipo");
 		modeloTabla.addColumn("Origen");
 		modeloTabla.addColumn("Marcas");
+		modeloTabla.addColumn("Activo");
 		modeloTabla.setRowCount(0);
-		modeloTabla.insertRow(0, new String[]{"ID", "Nombre", "Tipo", "Origen", "Marcas"});
+		modeloTabla.insertRow(0, new String[]{"ID", "Nombre", "Tipo", "Origen", "Marcas", "Activo"});
 		for (int i = 0; i < prov.size(); i++) {
 			if (prov.get(i) instanceof TProveedores){
 				modeloTabla.insertRow(i+1, new Object[] 
-						{ prov.get(i).getID(), prov.get(i).getNombre(), prov.get(i).getTipo(), prov.get(i).getOrigen(), prov.get(i).getCont()});
+						{ prov.get(i).getID(), prov.get(i).getNombre(), prov.get(i).getTipo(), prov.get(i).getOrigen(), prov.get(i).getCont(), prov.get(i).getActivo()});
 			}
 		}
 		tabla.setModel(modeloTabla);

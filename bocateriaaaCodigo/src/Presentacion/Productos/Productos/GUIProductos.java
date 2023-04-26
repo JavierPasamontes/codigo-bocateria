@@ -56,14 +56,14 @@ public class GUIProductos extends JFrame{
 		JPanel p = new JPanel();
 		p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
 		JPanel superior = new JPanel();
-		superior.setBackground(Color.YELLOW);
+		superior.setBackground(Color.CYAN);
 		JPanel medio = new JPanel();
-		medio.setBackground(Color.YELLOW);
+		medio.setBackground(Color.CYAN);
 		JPanel inferior = new JPanel();
-		inferior.setBackground(Color.YELLOW);
+		inferior.setBackground(Color.CYAN);
 		
 		altaBoton=new JButton("Alta");
-		altaBoton.setPreferredSize(new Dimension(150,50));
+		altaBoton.setPreferredSize(new Dimension(200,50));
 		altaBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -75,7 +75,7 @@ public class GUIProductos extends JFrame{
 			
 		});
 		bajaBoton=new JButton("Baja");
-		bajaBoton.setPreferredSize(new Dimension(150,50));
+		bajaBoton.setPreferredSize(new Dimension(200,50));
 		bajaBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -87,7 +87,7 @@ public class GUIProductos extends JFrame{
 			
 		});
 		modBoton=new JButton("Modificar");
-		modBoton.setPreferredSize(new Dimension(150,50));
+		modBoton.setPreferredSize(new Dimension(200,50));
 		modBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -99,7 +99,7 @@ public class GUIProductos extends JFrame{
 			
 		});
 		mostrarTodoBoton=new JButton("Mostrar todo");
-		mostrarTodoBoton.setPreferredSize(new Dimension(150,50));
+		mostrarTodoBoton.setPreferredSize(new Dimension(200,50));
 		mostrarTodoBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -111,7 +111,7 @@ public class GUIProductos extends JFrame{
 			
 		});
 		mostrarPorIDBoton=new JButton("Mostrar por ID");
-		mostrarPorIDBoton.setPreferredSize(new Dimension(150,50));
+		mostrarPorIDBoton.setPreferredSize(new Dimension(200,50));
 		mostrarPorIDBoton.addActionListener(new ActionListener() {
 
 			@Override
@@ -124,7 +124,7 @@ public class GUIProductos extends JFrame{
 		});
 		
 		mostrarProdDeMarca=new JButton("Mostrar Prod. de Marca");
-		mostrarProdDeMarca.setPreferredSize(new Dimension(150,50));
+		mostrarProdDeMarca.setPreferredSize(new Dimension(200,50));
 		mostrarProdDeMarca.addActionListener(new ActionListener() {
 
 			@Override

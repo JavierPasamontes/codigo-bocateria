@@ -87,6 +87,7 @@ public class GUIMostrarDepts extends JFrame {
 		modeloTabla.addColumn("Nombre");
 		modeloTabla.addColumn("Sede");
 		modeloTabla.addColumn("Descripcion");
+		modeloTabla.addColumn("Activo");
 		tabla.setModel(modeloTabla);
 		
 		tablaPanel.add(tabla);
@@ -111,11 +112,12 @@ public class GUIMostrarDepts extends JFrame {
 		modeloTabla.addColumn("Nombre");
 		modeloTabla.addColumn("Sede");
 		modeloTabla.addColumn("Descripcion");
+		modeloTabla.addColumn("Activo");
 		modeloTabla.setRowCount(0);
-		modeloTabla.insertRow(0, new String[]{"ID", "Nombre", "Sede", "Descripcion"});
+		modeloTabla.insertRow(0, new String[]{"ID", "Nombre", "Sede", "Descripcion", "Activo"});
 		for (int i = 0; i < dep.size(); i++) {
 				modeloTabla.insertRow(i+1, new Object[] 
-						{ dep.get(i).getId(), dep.get(i).getNombre(), dep.get(i).getSede(), dep.get(i).getDescripcion()});
+						{ dep.get(i).getId(), dep.get(i).getNombre(), dep.get(i).getSede(), dep.get(i).getDescripcion(), dep.get(i).isActivo()});
 		}
 		tabla.setModel(modeloTabla);
 		tabla.getColumnModel().getColumn(3).setPreferredWidth(200);

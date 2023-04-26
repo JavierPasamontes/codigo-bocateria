@@ -81,6 +81,7 @@ public class GUIMostrarEmps extends JFrame{
 		modeloTabla.addColumn("Salario");
 		modeloTabla.addColumn("Horas");
 		modeloTabla.addColumn("Euros/Hora");
+		modeloTabla.addColumn("Activo");
 		tabla.setModel(modeloTabla);
 		
 		tablaPanel.add(tabla);
@@ -109,18 +110,19 @@ public class GUIMostrarEmps extends JFrame{
 		modeloTabla.addColumn("Salario");
 		modeloTabla.addColumn("Horas");
 		modeloTabla.addColumn("Euros/Hora");
+		modeloTabla.addColumn("Activo");
 		modeloTabla.setRowCount(0);
-		modeloTabla.insertRow(0, new String[]{"ID", "Nombre", "Apellidos", "DNI",  "ID dept.", "Salario", "Horas", "Euros/Hora"});
+		modeloTabla.insertRow(0, new String[]{"ID", "Nombre", "Apellidos", "DNI",  "ID dept.", "Salario", "Horas", "Euros/Hora", "Activo"});
 		for (int i = 0; i < emp.size(); i++) {
 			if(emp.get(i).getJornada()==1) {
 				modeloTabla.insertRow(i+1, new Object[] 
 						{ emp.get(i).getId(), emp.get(i).getNombre(), emp.get(i).getApellidos(), emp.get(i).getDNI(), emp.get(i).getIdDept(), ((TEmpleadosTC) emp.get(i)).getSalario()
-								, "N/A", "N/A"});
+								, "N/A", "N/A", emp.get(i).getActivo()});
 			}
 			else {
 				modeloTabla.insertRow(i+1, new Object[] 
 						{ emp.get(i).getId(), emp.get(i).getNombre(), emp.get(i).getApellidos(), emp.get(i).getDNI(), emp.get(i).getIdDept(), "N/A"
-								, ((TEmpleadosTP) emp.get(i)).getHoras(), ((TEmpleadosTP) emp.get(i)).getEurosHora()});
+								, ((TEmpleadosTP) emp.get(i)).getHoras(), ((TEmpleadosTP) emp.get(i)).getEurosHora(), emp.get(i).getActivo()});
 			}
 		}
 		tabla.setModel(modeloTabla);
