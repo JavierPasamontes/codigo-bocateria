@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -14,16 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import Negocio.Departamentos.TDept;
-import Presentacion.Controlador.Eventos;
-import Presentacion.Controlador.MensajeGUI;
-import Presentacion.Departamentos.AltaDepartamentos.GUIAltaDepartamento;
-import Presentacion.Departamentos.BajaDepts.GUIBajaDepts;
-import Presentacion.Departamentos.Departamentos.GUIDepartamentos;
-import Presentacion.Departamentos.ModificarDept.GUIModificarDept;
-import Presentacion.Departamentos.MostrarDept.GUIMostrarDepts;
-import Presentacion.Departamentos.MostrarUnDept.GUIMostrarUnDept;
-
 import Presentacion.Productos.AltaProductos.*;
 import Presentacion.Productos.BajaProductos.*;
 import Presentacion.Productos.ModificarProducto.*;
@@ -31,6 +20,7 @@ import Presentacion.Productos.MostrarProductos.*;
 import Presentacion.Productos.MostrarUnProductos.*;
 import Presentacion.Productos.MostrarProdDeMarca.*;
 
+@SuppressWarnings("serial")
 public class GUIProductos extends JFrame{
 	static JButton altaBoton;
 	static JButton bajaBoton;
@@ -68,7 +58,6 @@ public class GUIProductos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIAltaProductos =new GUIAltaProductos();
 			}
 			
@@ -80,7 +69,6 @@ public class GUIProductos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIBajaProductos =new GUIBajaProductos();
 			}
 			
@@ -92,7 +80,6 @@ public class GUIProductos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIModificarProducto =new GUIModificarProducto();
 			}
 			
@@ -104,7 +91,6 @@ public class GUIProductos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				GUIMostrarProductos =new GUIMostrarProductos();			
 			}
 			
@@ -116,7 +102,6 @@ public class GUIProductos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIMostrarUnProd =new GUIMostrarUnProd();
 			}
 			
@@ -129,7 +114,6 @@ public class GUIProductos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIMostrarProdDeMarca =new GUIMostrarProdDeMarca();
 			}
 			
@@ -144,7 +128,6 @@ public class GUIProductos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 			}
 			
@@ -174,7 +157,6 @@ public class GUIProductos extends JFrame{
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIProductos();
 			}
 		});

@@ -18,14 +18,15 @@ import Negocio.Empleados.TEmpleadosTC;
 import Negocio.Empleados.TEmpleadosTP;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
-import Presentacion.Empleados.AltaEmpleado.GUIAltaEmpleado;
 
+@SuppressWarnings("serial")
 public class GUIModificarEmp extends JFrame{
 	private JTextField campoNombre;
 	private JTextField campoApellidos;
 	private JTextField campoDNI;
 	private JTextField campoSalario;
 	private JTextField campoIDdept;
+	@SuppressWarnings("unused")
 	private JCheckBox checkTiempo;
 	private boolean tCompleto=false;
 	private JTextField campoHoras;
@@ -78,7 +79,6 @@ public class GUIModificarEmp extends JFrame{
 
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				// TODO Auto-generated method stub
 				if(tCompleto==false) {
 					tCompleto=true;
 					campoSalario.setEnabled(false);
@@ -117,7 +117,6 @@ public class GUIModificarEmp extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 				
 			}
@@ -129,7 +128,6 @@ public class GUIModificarEmp extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				boolean correcto=true;
 				if(campoNombre.getText().equalsIgnoreCase("")||campoApellidos.getText().equalsIgnoreCase("")||campoDNI.getText().equalsIgnoreCase("")||campoSalario.getText().equalsIgnoreCase("")||campoIDdept.getText().equalsIgnoreCase("")) {
 					correcto=false;
@@ -198,7 +196,6 @@ public class GUIModificarEmp extends JFrame{
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIModificarEmp();
 			}
 		});

@@ -10,7 +10,6 @@ import javax.swing.SwingUtilities;
 
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
-import Presentacion.Departamentos.BajaDepts.GUIBajaDepts;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +24,7 @@ import javax.swing.JLabel;
 * @author pedro
 * @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 */
+@SuppressWarnings("serial")
 public class GUIBajaProv extends JFrame {
 		
 		private JTextField campoID;

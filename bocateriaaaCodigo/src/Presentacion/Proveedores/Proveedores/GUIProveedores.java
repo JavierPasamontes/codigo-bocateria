@@ -26,6 +26,7 @@ import Presentacion.Proveedores.MostrarProv.*;
 import Presentacion.Proveedores.MostrarUnProv.GUIBuscarProv;
 import Presentacion.Proveedores.VincularMarca.GUIVincularMarca;
 
+@SuppressWarnings("serial")
 public class GUIProveedores extends JFrame{
 	static JButton altaBoton;
 	static JButton bajaBoton;
@@ -63,7 +64,6 @@ public class GUIProveedores extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			
 				new GUIAltaProv();
 			}
 			
@@ -97,7 +97,6 @@ public class GUIProveedores extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				guiMostrarProvs =  new GUIMostrarProvs();			
 			}
 			

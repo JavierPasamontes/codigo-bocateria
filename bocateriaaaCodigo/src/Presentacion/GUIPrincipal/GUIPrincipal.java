@@ -16,6 +16,7 @@ import javax.swing.SwingUtilities;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
 
+@SuppressWarnings("serial")
 public class GUIPrincipal extends JFrame{
 	private JButton departamentos;
 	private JButton marcas;
@@ -52,7 +53,6 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				Controlador.getInstance().accion(Eventos.VISTA_DEPARTAMENTOS, null);
 
 			}
@@ -146,7 +146,6 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				System.exit(0);
 			}
 			

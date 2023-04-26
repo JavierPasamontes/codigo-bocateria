@@ -13,14 +13,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import Presentacion.Productos.AltaProductos.GUIAltaProductos;
-import Presentacion.Productos.BajaProductos.GUIBajaProductos;
-import Presentacion.Productos.ModificarProducto.GUIModificarProducto;
-import Presentacion.Productos.MostrarProdDeMarca.GUIMostrarProdDeMarca;
-import Presentacion.Productos.MostrarProductos.GUIMostrarProductos;
-import Presentacion.Productos.MostrarUnProductos.GUIMostrarUnProd;
-import Presentacion.Productos.Productos.GUIProductos;
+import Presentacion.Ventas.AltaVentas.*;
+import Presentacion.Ventas.CerrarVenta.*;
+import Presentacion.Ventas.ModificarVenta.*;
+import Presentacion.Ventas.MostrarVentas.*;
+import Presentacion.Ventas.MostrarUnaVenta.*;
+import Presentacion.Ventas.MostrarVentasEmp.*;
+import Presentacion.Ventas.MostrarProdDeVenta.*;
+import Presentacion.Ventas.AnadirQuitarProd.*;
 
+
+@SuppressWarnings("serial")
 public class GUIVentas extends JFrame{
 	static JButton altaBoton;
 	static JButton cerrarBoton;
@@ -31,14 +34,14 @@ public class GUIVentas extends JFrame{
 	static JButton mostrarProdDeVenta;
 	static JButton anadirQuitarProd;
 	static JButton volverBoton;
-	//private GUIAltaVenta GUIAltaVenta;
-	//private GUICerrarVenta GUICerrarVenta;
-	//private GUIModificarVenta GUIModificarVenta;
-	//private GUIMostrarVentas GUIMostrarVentas;
-	//private GUIMostrarUnaVenta GUIMostrarUnaVenta;
-	//private GUIMostrarVentasEmp GUIMostrarVentasEmp;
-	//private GUIMostrarProdDeVenta GUIMostrarProdDeVenta;
-	//private GUIAnadirQuitarProd GUIAnadirQuitarProd;
+	private GUIAltaVentas GUIAltaVentas;
+	private GUICerrarVenta GUICerrarVenta;
+	private GUIModificarVenta GUIModificarVenta;
+	private GUIMostrarVentas GUIMostrarVentas;
+	private GUIMostrarUnaVenta GUIMostrarUnaVenta;
+	private GUIMostrarVentasEmp GUIMostrarVentasEmp;
+	private GUIMostrarProdDeVenta GUIMostrarProdDeVenta;
+	private GUIAnadirQuitarProd GUIAnadirQuitarProd;
 	
 	public GUIVentas() {
 		super("Ventas");
@@ -64,8 +67,7 @@ public class GUIVentas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				//GUIAltaVenta =new GUIAltaVenta();
+				GUIAltaVentas =new GUIAltaVentas();
 			}
 			
 			
@@ -76,8 +78,7 @@ public class GUIVentas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				//GUICerrarVenta =new GUICerrarVenta();
+				GUICerrarVenta =new GUICerrarVenta();
 			}
 			
 			
@@ -88,8 +89,7 @@ public class GUIVentas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				//GUIModificarVenta =new GUIModificarVenta();
+				GUIModificarVenta =new GUIModificarVenta();
 			}
 			
 			
@@ -100,8 +100,7 @@ public class GUIVentas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				//GUIMostrarVentas =new GUIMostrarVentas();			
+				GUIMostrarVentas =new GUIMostrarVentas();			
 			}
 			
 			
@@ -112,8 +111,7 @@ public class GUIVentas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				//GUIMostrarUnaVenta =new GUIMostrarUnaVenta();
+				GUIMostrarUnaVenta =new GUIMostrarUnaVenta();
 			}
 			
 			
@@ -125,8 +123,7 @@ public class GUIVentas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				//GUIMostrarVentasEmp =new GUIMostrarVentasEmp();
+				GUIMostrarVentasEmp =new GUIMostrarVentasEmp();
 			}
 			
 			
@@ -138,8 +135,7 @@ public class GUIVentas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				//GUIMostrarProdDeVenta =new GUIMostrarProdDeVenta();
+				GUIMostrarProdDeVenta =new GUIMostrarProdDeVenta();
 			}
 			
 			
@@ -151,8 +147,7 @@ public class GUIVentas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				//GUIAnadirQuitarProd =new GUIAnadirQuitarProd();
+				GUIAnadirQuitarProd =new GUIAnadirQuitarProd();
 			}
 			
 			
@@ -167,7 +162,6 @@ public class GUIVentas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 			}
 			
@@ -200,7 +194,6 @@ public class GUIVentas extends JFrame{
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIVentas();
 			}
 		});

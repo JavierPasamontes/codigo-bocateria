@@ -9,11 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-import Negocio.Departamentos.TDept;
 import Negocio.Proveedores.TProveedores;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
-import Presentacion.Marcas.MostrarUnaMarca.GUIMostrarUnaMarca;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,6 +25,7 @@ import javax.swing.JButton;
 * @author pedro
 * @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 */
+@SuppressWarnings("serial")
 public class GUIBuscarProv extends JFrame {
 	private JTextField campoID;
 	private JButton cancelar;
@@ -65,7 +64,6 @@ public class GUIBuscarProv extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				dispose();
 				
 			}

@@ -18,7 +18,6 @@ import javax.swing.SwingUtilities;
 import Negocio.Departamentos.TDept;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
-import Presentacion.FactoriaGUI.ObservadorGUI;
 
 /** 
 * <!-- begin-UML-doc -->
@@ -26,6 +25,7 @@ import Presentacion.FactoriaGUI.ObservadorGUI;
 * @author usuario_local
 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 */
+@SuppressWarnings("serial")
 public class GUIAltaDepartamento extends JFrame{
 	
 	private JTextField campoNombre;
@@ -78,7 +78,6 @@ public class GUIAltaDepartamento extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				boolean correcto=true;
 				if(campoNombre.getText().equalsIgnoreCase("")||campoSede.getText().equalsIgnoreCase("")||campoDesc.getText().equalsIgnoreCase("")) {
 					correcto=false;
@@ -111,7 +110,6 @@ public class GUIAltaDepartamento extends JFrame{
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIAltaDepartamento();
 			}
 		});

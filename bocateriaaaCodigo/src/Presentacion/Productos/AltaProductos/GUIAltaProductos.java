@@ -11,11 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-import Negocio.Departamentos.TDept;
-import Presentacion.Controlador.Controlador;
-import Presentacion.Controlador.Eventos;
-import Presentacion.Departamentos.AltaDepartamentos.GUIAltaDepartamento;
-
+@SuppressWarnings("serial")
 public class GUIAltaProductos extends JFrame{
 	private JTextField campoNombre;
 	private JTextField campoCantidad;
@@ -74,7 +70,6 @@ public class GUIAltaProductos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				boolean correcto=true;
 				if(campoNombre.getText().equalsIgnoreCase("")||campoCantidad.getText().equalsIgnoreCase("")||campoPrecio.getText().equalsIgnoreCase("")||campoMarca.getText().equalsIgnoreCase("")) {
 					correcto=false;
@@ -108,7 +103,6 @@ public class GUIAltaProductos extends JFrame{
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIAltaProductos();
 			}
 		});

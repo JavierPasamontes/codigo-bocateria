@@ -25,6 +25,7 @@ import Presentacion.Marcas.ModificarMarca.GUIModificarMarca;
 import Presentacion.Marcas.MostrarMarcas.GUIMostrarMarcas;
 import Presentacion.Marcas.MostrarUnaMarca.GUIMostrarUnaMarca;
 
+@SuppressWarnings("serial")
 public class GUIMarcas extends JFrame{
 	static JButton altaBoton;
 	static JButton bajaBoton;
@@ -60,7 +61,6 @@ public class GUIMarcas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIAltaMarca =new GUIAltaMarca();
 			}
 			
@@ -72,7 +72,6 @@ public class GUIMarcas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIBajaMarca =new GUIBajaMarca();
 			}
 			
@@ -84,7 +83,6 @@ public class GUIMarcas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIModificarMarca =new GUIModificarMarca();
 			}
 			
@@ -96,7 +94,6 @@ public class GUIMarcas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				GUIMostrarMarcas =new GUIMostrarMarcas();			
 			}
 			
@@ -108,7 +105,6 @@ public class GUIMarcas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIMostrarUnaMarca =new GUIMostrarUnaMarca();
 			}
 			
@@ -124,7 +120,6 @@ public class GUIMarcas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 			}
 			
@@ -132,7 +127,6 @@ public class GUIMarcas extends JFrame{
 		});
 		superior.add(altaBoton);
 		superior.add(bajaBoton);
-		//superior.add(prodDeMarcBoton);
 		medio.add(modBoton);
 		medio.add(mostrarTodoBoton);
 		medio.add(mostrarPorIDBoton);
@@ -154,12 +148,12 @@ public class GUIMarcas extends JFrame{
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIMarcas();
 			}
 		});
 	}
 
+	@SuppressWarnings("unchecked")
 	public void actualizar(int evento, Object datos) {
 		
 		MensajeGUI a=new MensajeGUI();

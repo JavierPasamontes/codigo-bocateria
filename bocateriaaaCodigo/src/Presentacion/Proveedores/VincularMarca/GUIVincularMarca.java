@@ -30,6 +30,7 @@ import javax.swing.JPanel;
 * @author pedro
 * @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 */
+@SuppressWarnings("serial")
 public class GUIVincularMarca extends JFrame implements ObservadorGUI {
 	private JTextField campoProv;
 	private JTextField campoMarca;

@@ -11,26 +11,16 @@ import javax.swing.JTable;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
-import Negocio.Departamentos.TDept;
-import Negocio.Empleados.TEmpleados;
-import Negocio.Empleados.TEmpleadosTC;
-import Negocio.Empleados.TEmpleadosTP;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
 import Presentacion.Controlador.MensajeGUI;
-import Presentacion.Empleados.ModificarEmp.GUIModificarEmp;
-import Presentacion.Empleados.MostrarUnEmp.GUIMostrarUnEmp;
 
 /** 
 * <!-- begin-UML-doc -->
@@ -38,6 +28,7 @@ import Presentacion.Empleados.MostrarUnEmp.GUIMostrarUnEmp;
 * @author pedro
 * @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 */
+@SuppressWarnings("serial")
 public class GUIMostrarMdeP extends JFrame {
 	private JTable tabla;
 	private DefaultTableModel modeloTabla;
@@ -59,9 +50,6 @@ public class GUIMostrarMdeP extends JFrame {
 		top.add(idLabel);
 		top.add(id);
 		
-		
-		
-		
 		JPanel tablaPanel=new JPanel();
 		JPanel cerrarPanel=new JPanel();
 		mostrar=new JButton("Mostrar");
@@ -69,7 +57,6 @@ public class GUIMostrarMdeP extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				
 				try {
 				Controlador.getInstance().accion(Eventos.MOSTRAR_M_DE_P, Integer.parseInt( (id.getText()))) ;

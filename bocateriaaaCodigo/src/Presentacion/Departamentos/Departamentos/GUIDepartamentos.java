@@ -22,11 +22,8 @@ import Presentacion.Departamentos.BajaDepts.*;
 import Presentacion.Departamentos.ModificarDept.*;
 import Presentacion.Departamentos.MostrarDept.*;
 import Presentacion.Departamentos.MostrarUnDept.*;
-import Presentacion.FactoriaGUI.ObservadorGUI;
 
-
-
-
+@SuppressWarnings("serial")
 public class GUIDepartamentos extends JFrame{
 	static JButton altaBoton;
 	static JButton bajaBoton;
@@ -62,7 +59,6 @@ public class GUIDepartamentos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIAltaDepartamento =new GUIAltaDepartamento();
 			}
 			
@@ -74,7 +70,6 @@ public class GUIDepartamentos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIBajaDepts =new GUIBajaDepts();
 			}
 			
@@ -86,7 +81,6 @@ public class GUIDepartamentos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIModificarDept =new GUIModificarDept();
 			}
 			
@@ -98,7 +92,6 @@ public class GUIDepartamentos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				GUIMostrarDepts =new GUIMostrarDepts();			
 			}
 			
@@ -110,7 +103,6 @@ public class GUIDepartamentos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIMostrarUnDept =new GUIMostrarUnDept();
 			}
 			
@@ -125,7 +117,6 @@ public class GUIDepartamentos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 			}
 			
@@ -154,12 +145,12 @@ public class GUIDepartamentos extends JFrame{
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIDepartamentos();
 			}
 		});
 	}
 
+	@SuppressWarnings("unchecked")
 	public void actualizar(int evento, Object datos) {
 		MensajeGUI a=new MensajeGUI();
 		switch (evento) {

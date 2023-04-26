@@ -13,6 +13,7 @@ import javax.swing.SwingUtilities;
 
 import Presentacion.Productos.AltaProductos.GUIAltaProductos;
 
+@SuppressWarnings("serial")
 public class GUIModificarProducto extends JFrame{
 	private JTextField campoId;
 	private JTextField campoNombre;
@@ -78,7 +79,6 @@ public class GUIModificarProducto extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				boolean correcto=true;
 				if(campoNombre.getText().equalsIgnoreCase("")||campoCantidad.getText().equalsIgnoreCase("")||campoPrecio.getText().equalsIgnoreCase("")||campoMarca.getText().equalsIgnoreCase("")) {
 					correcto=false;
@@ -113,7 +113,6 @@ public class GUIModificarProducto extends JFrame{
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIAltaProductos();
 			}
 		});

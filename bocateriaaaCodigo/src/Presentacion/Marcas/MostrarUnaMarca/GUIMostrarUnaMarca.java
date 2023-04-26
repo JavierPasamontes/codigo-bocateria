@@ -11,12 +11,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-import Negocio.Departamentos.TDept;
 import Negocio.Marcas.TMarcas;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
-import Presentacion.Departamentos.MostrarUnDept.GUIMostrarUnDept;
 
+@SuppressWarnings("serial")
 public class GUIMostrarUnaMarca extends JFrame{
 	private JTextField campoID;
 	private JButton cancelar;
@@ -54,7 +53,6 @@ public class GUIMostrarUnaMarca extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 				
 			}
@@ -66,7 +64,6 @@ public class GUIMostrarUnaMarca extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if(!campoID.getText().equalsIgnoreCase("")) {
 					Controlador.getInstance().accion(Eventos.MOSTRAR_MARCA, Integer.parseInt(campoID.getText()));
 				}
@@ -91,7 +88,6 @@ public class GUIMostrarUnaMarca extends JFrame{
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIMostrarUnaMarca();
 			}
 		});

@@ -11,10 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-import Presentacion.Controlador.Controlador;
-import Presentacion.Controlador.Eventos;
-import Presentacion.Marcas.BajaMarca.GUIBajaMarca;
-
+@SuppressWarnings("serial")
 public class GUIBajaProductos extends JFrame{
 	private JTextField campoID;
 	private JButton cancelar;
@@ -41,7 +38,6 @@ public class GUIBajaProductos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 				
 			}
@@ -53,7 +49,6 @@ public class GUIBajaProductos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if(!campoID.getText().equalsIgnoreCase("")) {
 					//Controlador.getInstance().accion(Eventos.BAJA_PRODUCTO, Integer.parseInt(campoID.getText()));
 					dispose();
@@ -78,7 +73,6 @@ public class GUIBajaProductos extends JFrame{
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIBajaProductos();
 			}
 		});

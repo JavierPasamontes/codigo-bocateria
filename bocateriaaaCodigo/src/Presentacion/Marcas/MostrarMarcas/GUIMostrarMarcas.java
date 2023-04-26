@@ -13,12 +13,11 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
-import Negocio.Departamentos.TDept;
 import Negocio.Marcas.TMarcas;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
-import Presentacion.Departamentos.MostrarDept.GUIMostrarDepts;
 
+@SuppressWarnings("serial")
 public class GUIMostrarMarcas extends JFrame{
 	private JTable tabla;
 	private DefaultTableModel modeloTabla;
@@ -41,7 +40,6 @@ public class GUIMostrarMarcas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				Controlador.getInstance().accion(Eventos.MOSTRAR_MARCAS, null);
 			}
 			
@@ -53,7 +51,6 @@ public class GUIMostrarMarcas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 			}
 			
@@ -118,7 +115,6 @@ public class GUIMostrarMarcas extends JFrame{
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIMostrarMarcas();
 			}
 		});

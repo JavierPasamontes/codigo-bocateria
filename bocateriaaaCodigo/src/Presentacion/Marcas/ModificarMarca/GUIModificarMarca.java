@@ -11,12 +11,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-import Negocio.Departamentos.TDept;
 import Negocio.Marcas.TMarcas;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
-import Presentacion.Departamentos.ModificarDept.GUIModificarDept;
 
+@SuppressWarnings("serial")
 public class GUIModificarMarca extends JFrame{
 	private JTextField campoID;
 	private JTextField campoNombre;
@@ -57,7 +56,6 @@ public class GUIModificarMarca extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 				
 			}
@@ -69,7 +67,6 @@ public class GUIModificarMarca extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				Controlador.getInstance().accion(Eventos.MODIFICAR_MARCAS, 
 						new TMarcas(Integer.parseInt(campoID.getText()), campoNombre.getText(),true, 0, campoPais.getText()));
 				dispose();
@@ -95,7 +92,6 @@ public class GUIModificarMarca extends JFrame{
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIModificarMarca();
 			}
 		});

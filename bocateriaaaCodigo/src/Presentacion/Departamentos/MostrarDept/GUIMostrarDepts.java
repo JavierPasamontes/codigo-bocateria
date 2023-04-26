@@ -29,6 +29,7 @@ import javax.swing.JTable;
 * @author usuario_local
 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 */
+@SuppressWarnings("serial")
 public class GUIMostrarDepts extends JFrame {
 	
 	private JTable tabla;
@@ -52,7 +53,6 @@ public class GUIMostrarDepts extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				Controlador.getInstance().accion(Eventos.MOSTRAR_DEPARTAMENTOS, null);
 			}
 			
@@ -64,7 +64,6 @@ public class GUIMostrarDepts extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 			}
 			
@@ -133,7 +132,6 @@ public class GUIMostrarDepts extends JFrame {
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIMostrarDepts();
 			}
 		});
@@ -256,7 +254,6 @@ public class GUIMostrarDepts extends JFrame {
 	*/
 	public void iniGUI() {
 		// begin-user-code
-		// TODO Auto-generated method stub
 
 		// end-user-code
 	}
@@ -268,7 +265,6 @@ public class GUIMostrarDepts extends JFrame {
 	*/
 	public void resetGUI() {
 		// begin-user-code
-		// TODO Auto-generated method stub
 
 		// end-user-code
 	}

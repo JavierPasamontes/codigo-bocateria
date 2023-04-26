@@ -16,16 +16,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-
-import org.json.JSONObject;
-
-import Negocio.Departamentos.TDept;
 import Negocio.Proveedores.TProvComunitario;
 import Negocio.Proveedores.TProvNacional;
 import Negocio.Proveedores.TProveedores;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
-import Presentacion.Departamentos.AltaDepartamentos.GUIAltaDepartamento;
 import Presentacion.FactoriaGUI.ObservadorGUI;
 
 import javax.swing.JPanel;
@@ -36,6 +31,7 @@ import javax.swing.JPanel;
 * @author pedro
 * @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 */
+@SuppressWarnings("serial")
 public class GUIAltaProv extends JFrame implements ObservadorGUI {
 	private JTextField campoNombre;
 	private JTextField campoOrigen;
@@ -68,8 +64,6 @@ public class GUIAltaProv extends JFrame implements ObservadorGUI {
 			
 		JComboBox<String> elegir = new JComboBox<String>(modeloProvs);
 		
-		
-		
 		JPanel origen=new JPanel();
 		JLabel origenLabel=new JLabel("Origen:");
 		campoOrigen=new JTextField(12);
@@ -81,17 +75,12 @@ public class GUIAltaProv extends JFrame implements ObservadorGUI {
 		tipo.add(tipoLabel);
 		tipo.add(elegir);
 		
-		
-		
-		
-		
 		JPanel botones=new JPanel();
 		cancelar=new JButton("Cancelar");
 		cancelar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 				
 			}
@@ -103,7 +92,6 @@ public class GUIAltaProv extends JFrame implements ObservadorGUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				boolean correcto=true;
 				if(campoNombre.getText().equalsIgnoreCase("")||campoOrigen.getText().equalsIgnoreCase("")) {
 					correcto=false;
@@ -147,7 +135,6 @@ public class GUIAltaProv extends JFrame implements ObservadorGUI {
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIAltaProv();
 			}
 		});
@@ -157,8 +144,7 @@ public class GUIAltaProv extends JFrame implements ObservadorGUI {
 
 	@Override
 	public void actualizar(int evento, Object datos) {
-		// TODO Auto-generated method stub
-		
+
 	}
 	
 }

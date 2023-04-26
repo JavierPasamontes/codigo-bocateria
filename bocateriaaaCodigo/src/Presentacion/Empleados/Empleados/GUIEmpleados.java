@@ -14,16 +14,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import Negocio.Departamentos.TDept;
 import Negocio.Empleados.TEmpleados;
 import Presentacion.Controlador.Eventos;
 import Presentacion.Controlador.MensajeGUI;
-import Presentacion.Departamentos.AltaDepartamentos.GUIAltaDepartamento;
-import Presentacion.Departamentos.BajaDepts.GUIBajaDepts;
-import Presentacion.Departamentos.Departamentos.GUIDepartamentos;
-import Presentacion.Departamentos.ModificarDept.GUIModificarDept;
-import Presentacion.Departamentos.MostrarDept.GUIMostrarDepts;
-import Presentacion.Departamentos.MostrarUnDept.GUIMostrarUnDept;
 import Presentacion.Empleados.AltaEmpleado.GUIAltaEmpleado;
 import Presentacion.Empleados.BajaEmpleado.*;
 import Presentacion.Empleados.ModificarEmp.*;
@@ -32,6 +25,7 @@ import Presentacion.Empleados.MostraEmps.*;
 import Presentacion.Empleados.MostrarEmpDeUnDep.*;
 
 
+@SuppressWarnings("serial")
 public class GUIEmpleados extends JFrame{
 	static JButton altaBoton;
 	static JButton bajaBoton;
@@ -69,7 +63,6 @@ public class GUIEmpleados extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIAltaEmpleado =new GUIAltaEmpleado();
 			}
 			
@@ -81,7 +74,6 @@ public class GUIEmpleados extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIBajaEmpleado =new GUIBajaEmpleado();
 			}
 			
@@ -93,7 +85,6 @@ public class GUIEmpleados extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIModificarEmp =new GUIModificarEmp();
 			}
 			
@@ -105,7 +96,6 @@ public class GUIEmpleados extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				GUIMostrarEmps =new GUIMostrarEmps();			
 			}
 			
@@ -117,7 +107,6 @@ public class GUIEmpleados extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIMostrarUnEmp =new GUIMostrarUnEmp();
 			}
 			
@@ -129,7 +118,6 @@ public class GUIEmpleados extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				GUIMostrarEmpDeUnDep =new GUIMostrarEmpDeUnDep();
 			}
 			
@@ -144,7 +132,6 @@ public class GUIEmpleados extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 			}
 			
@@ -174,12 +161,12 @@ public class GUIEmpleados extends JFrame{
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIEmpleados();
 			}
 		});
 	}
 
+	@SuppressWarnings("unchecked")
 	public void actualizar(int evento, Object datos) {
 		MensajeGUI a=new MensajeGUI();
 		switch (evento) {

@@ -26,6 +26,7 @@ import javax.swing.JPanel;
 * @author usuario_local
 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 */
+@SuppressWarnings("serial")
 public class GUIMostrarUnDept extends JFrame {
 	
 	private JTextField campoID;
@@ -64,7 +65,6 @@ public class GUIMostrarUnDept extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 				
 			}
@@ -76,7 +76,6 @@ public class GUIMostrarUnDept extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if(!campoID.getText().equalsIgnoreCase("")) {
 					Controlador.getInstance().accion(Eventos.MOSTRAR_DEPARTAMENTO, Integer.parseInt(campoID.getText()));
 				}
@@ -101,7 +100,6 @@ public class GUIMostrarUnDept extends JFrame {
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIMostrarUnDept();
 			}
 		});
@@ -259,7 +257,6 @@ public class GUIMostrarUnDept extends JFrame {
 	*/
 	public void iniGUI() {
 		// begin-user-code
-		// TODO Auto-generated method stub
 
 		// end-user-code
 	}
@@ -271,7 +268,6 @@ public class GUIMostrarUnDept extends JFrame {
 	*/
 	public void resetGUI() {
 		// begin-user-code
-		// TODO Auto-generated method stub
 
 		// end-user-code
 	}

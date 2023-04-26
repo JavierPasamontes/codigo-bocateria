@@ -14,20 +14,20 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-import Negocio.Empleados.TEmpleados;
 import Negocio.Empleados.TEmpleadosTC;
 import Negocio.Empleados.TEmpleadosTP;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
 import Presentacion.Controlador.MensajeGUI;
-import Presentacion.Marcas.AltaMarca.GUIAltaMarca;
 
+@SuppressWarnings("serial")
 public class GUIAltaEmpleado extends JFrame{
 	private JTextField campoNombre;
 	private JTextField campoApellidos;
 	private JTextField campoDNI;
 	private JTextField campoSalario;
 	private JTextField campoIDdept;
+	@SuppressWarnings("unused")
 	private JCheckBox checkTiempo;
 	private boolean tParcial=false;
 	private JTextField campoHoras;
@@ -80,7 +80,6 @@ public class GUIAltaEmpleado extends JFrame{
 
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				// TODO Auto-generated method stub
 				if(tParcial==false) {
 					tParcial=true;
 					campoSalario.setEnabled(false);
@@ -119,7 +118,6 @@ public class GUIAltaEmpleado extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 				
 			}
@@ -131,7 +129,6 @@ public class GUIAltaEmpleado extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				boolean correcto=true;
 				if(campoNombre.getText().equalsIgnoreCase("")||campoApellidos.getText().equalsIgnoreCase("")||campoDNI.getText().equalsIgnoreCase("")||campoIDdept.getText().equalsIgnoreCase("")) {
 					correcto=false;
@@ -191,7 +188,6 @@ public class GUIAltaEmpleado extends JFrame{
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIAltaEmpleado();
 			}
 		});

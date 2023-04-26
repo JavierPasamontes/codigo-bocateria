@@ -29,6 +29,7 @@ import javax.swing.JPanel;
 * @author pedro
 * @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 */
+@SuppressWarnings("serial")
 public class GUIDesvincularMarca extends JFrame implements ObservadorGUI {
 	private JTextField campoProv;
 	private JTextField campoMarca;
@@ -50,18 +51,11 @@ public class GUIDesvincularMarca extends JFrame implements ObservadorGUI {
 		prov.add(nombreLabel);
 		prov.add(campoProv);
 		
-		
-		
 		JPanel marca=new JPanel();
 		JLabel origenLabel=new JLabel("ID Marca:");
 		campoMarca=new JTextField(7);
 		marca.add(origenLabel);
 		marca.add(campoMarca);
-		
-		
-		
-		
-		
 		
 		JPanel botones=new JPanel();
 		cancelar=new JButton("Cancelar");
@@ -80,7 +74,6 @@ public class GUIDesvincularMarca extends JFrame implements ObservadorGUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				boolean correcto=true;
 				if(campoProv.getText().equalsIgnoreCase("")||campoMarca.getText().equalsIgnoreCase("")) {
 					correcto=false;
@@ -95,8 +88,6 @@ public class GUIDesvincularMarca extends JFrame implements ObservadorGUI {
 						MensajeGUI a = new MensajeGUI();
 						a.showMessage("Algo fue mal..." + o.getMessage(), "Desvincular Marca", true);
 					}
-					
-					
 					
 				}
 			}

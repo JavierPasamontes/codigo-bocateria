@@ -19,8 +19,8 @@ import Negocio.Empleados.TEmpleadosTC;
 import Negocio.Empleados.TEmpleadosTP;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
-import Presentacion.Empleados.MostraEmps.GUIMostrarEmps;
 
+@SuppressWarnings("serial")
 public class GUIMostrarEmpDeUnDep extends JFrame{
 	private JTable tabla;
 	private DefaultTableModel modeloTabla;
@@ -48,7 +48,6 @@ public class GUIMostrarEmpDeUnDep extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if(!campoID.getText().equalsIgnoreCase("")) {
 					Controlador.getInstance().accion(Eventos.MOSTRAR_EMPLEADOS_POR_DEPARTAMENTO, Integer.parseInt(campoID.getText()));
 				}
@@ -60,7 +59,6 @@ public class GUIMostrarEmpDeUnDep extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 			}
 			
@@ -144,7 +142,6 @@ public class GUIMostrarEmpDeUnDep extends JFrame{
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIMostrarEmpDeUnDep();
 			}
 		});

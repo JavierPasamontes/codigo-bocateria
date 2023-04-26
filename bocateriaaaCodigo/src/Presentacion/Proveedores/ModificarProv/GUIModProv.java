@@ -24,8 +24,8 @@ import Negocio.Proveedores.TProvNacional;
 import Negocio.Proveedores.TProveedores;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
-import Presentacion.Proveedores.AltaProv.GUIAltaProv;
 
+@SuppressWarnings("serial")
 public class GUIModProv extends JFrame {
 	private JTextField campoNombre;
 	private JTextField campoOrigen;
@@ -78,17 +78,12 @@ public class GUIModProv extends JFrame {
 		tipo.add(tipoLabel);
 		tipo.add(elegir);
 		
-		
-		
-		
-		
 		JPanel botones=new JPanel();
 		cancelar=new JButton("Cancelar");
 		cancelar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				dispose();
 				
 			}
@@ -145,7 +140,6 @@ public class GUIModProv extends JFrame {
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIModProv();
 			}
 		});

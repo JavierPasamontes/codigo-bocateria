@@ -11,16 +11,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
-import Negocio.Departamentos.TDept;
 import Negocio.Proveedores.TProveedores;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
-import Presentacion.Departamentos.MostrarDept.GUIMostrarDepts;
 
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -31,6 +27,7 @@ import javax.swing.JTable;
 * @author pedro
 * @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 */
+@SuppressWarnings("serial")
 public class GUIMostrarProvs extends JFrame {
 	private JTable tabla;
 	private DefaultTableModel modeloTabla;

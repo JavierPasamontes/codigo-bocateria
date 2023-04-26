@@ -26,6 +26,7 @@ import javax.swing.JPanel;
 * @author usuario_local
 * @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
 */
+@SuppressWarnings("serial")
 public class GUIModificarDept extends JFrame {
 	
 	private JTextField campoID;
@@ -74,7 +75,6 @@ public class GUIModificarDept extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 				
 			}
@@ -86,7 +86,6 @@ public class GUIModificarDept extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				Controlador.getInstance().accion(Eventos.MODIFICAR_DEPARTAMENTO, 
 						new TDept(Integer.parseInt(campoID.getText()), campoNombre.getText(), campoSede.getText(),true, campoDesc.getText()));
 				dispose();
@@ -113,7 +112,6 @@ public class GUIModificarDept extends JFrame {
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIModificarDept();
 			}
 		});
@@ -344,7 +342,6 @@ public class GUIModificarDept extends JFrame {
 	*/
 	public void iniGUI() {
 		// begin-user-code
-		// TODO Auto-generated method stub
 
 		// end-user-code
 	}
@@ -356,7 +353,6 @@ public class GUIModificarDept extends JFrame {
 	*/
 	public void resetGUI() {
 		// begin-user-code
-		// TODO Auto-generated method stub
 
 		// end-user-code
 	}

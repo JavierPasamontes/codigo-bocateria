@@ -3,7 +3,6 @@ package Presentacion.Productos.MostrarProductos;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,11 +12,7 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
-import Negocio.Marcas.TMarcas;
-import Presentacion.Controlador.Controlador;
-import Presentacion.Controlador.Eventos;
-import Presentacion.Marcas.MostrarMarcas.GUIMostrarMarcas;
-
+@SuppressWarnings("serial")
 public class GUIMostrarProductos extends JFrame{
 	private JTable tabla;
 	private DefaultTableModel modeloTabla;
@@ -40,7 +35,6 @@ public class GUIMostrarProductos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				//Controlador.getInstance().accion(Eventos.MOSTRAR_PRODUCTOS, null);
 			}
 			
@@ -52,7 +46,6 @@ public class GUIMostrarProductos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 			}
 			
@@ -119,7 +112,6 @@ public class GUIMostrarProductos extends JFrame{
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				new GUIMostrarProductos();
 			}
 		});
