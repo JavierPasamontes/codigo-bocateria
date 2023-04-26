@@ -93,8 +93,8 @@ public class TDept implements Serializable {
 		if(obj instanceof TDept) {
 			TDept dpt = (TDept) obj;
 			
-			if(this.id == dpt.id && this.nombre.equals(dpt.nombre) 
-			&& this.sede.equals(dpt.sede) && this.descripcion.equals(dpt.descripcion)
+			if(this.id == dpt.id && this.nombre.equalsIgnoreCase(dpt.nombre) 
+			&& this.sede.equalsIgnoreCase(dpt.sede) && this.descripcion.equalsIgnoreCase(dpt.descripcion)
 			&& this.activo == dpt.activo) {
 				return true;
 			}

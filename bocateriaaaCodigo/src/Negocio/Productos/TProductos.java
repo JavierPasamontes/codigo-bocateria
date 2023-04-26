@@ -3,23 +3,19 @@ package Negocio.Productos;
 
 import java.io.Serializable;
 
+import Negocio.Empleados.TEmpleados;
+
 
 @SuppressWarnings("serial")
 public class TProductos implements Serializable {
 	
 	private Integer idProducto;
-	
-	private String nombreProducto;
-	
+	private String nombreProducto;	
 	private Integer cantidadProducto;
-	
 	private Double precioProducto;
-	
 	private Boolean activo;
-	
 	private Integer IDmarca;
 
-	
 	
 	public TProductos(Integer idProducto, String nombreProducto, Integer cantidadProducto, Double precioProducto,
 			Boolean activo, Integer iDmarca) {
@@ -28,7 +24,7 @@ public class TProductos implements Serializable {
 		this.cantidadProducto = cantidadProducto;
 		this.precioProducto = precioProducto;
 		this.activo = activo;
-		IDmarca = iDmarca;
+		this.IDmarca = iDmarca;
 	}
 
 
@@ -89,6 +85,24 @@ public class TProductos implements Serializable {
 
 	public void setIDmarca(Integer iDmarca) {
 		IDmarca = iDmarca;
+	}
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		
+		if(obj instanceof TProductos) {
+			TProductos prd = (TProductos) obj;
+			
+			if(this.idProducto == prd.idProducto && this.nombreProducto.equalsIgnoreCase(prd.nombreProducto) 
+				&& this.cantidadProducto == prd.cantidadProducto && this.precioProducto == prd.precioProducto
+				&& this.activo == prd.activo && this.IDmarca == prd.IDmarca)
+			{
+				return true;
+			}
+			else return false;
+		}
+		else return false;
 	}
 
 

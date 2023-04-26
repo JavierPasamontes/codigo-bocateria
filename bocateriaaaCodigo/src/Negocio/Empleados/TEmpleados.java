@@ -2,6 +2,8 @@ package Negocio.Empleados;
 
 import java.io.Serializable;
 
+import Negocio.Proveedores.TProveedores;
+
 @SuppressWarnings("serial")
 public class TEmpleados implements Serializable {
 	
@@ -101,6 +103,25 @@ public class TEmpleados implements Serializable {
 	public int calcularSalario() {
 		return 0;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if(obj instanceof TEmpleados) {
+			TEmpleados emp = (TEmpleados) obj;
+			
+			if(this.nombre.equalsIgnoreCase(emp.nombre) && this.apellidos.equalsIgnoreCase(emp.apellidos) 
+				&&this.DNI.equalsIgnoreCase(emp.DNI)	&& this.id == emp.id
+				&& this.jornada == emp.jornada && this.idDept == emp.idDept
+				&& this.contVentas == emp.contVentas && this.activo == emp.activo) 
+			{
+				return true;
+			}
+			else return false;
+		}
+		else return false;
+	}
+	
 	
 
 }

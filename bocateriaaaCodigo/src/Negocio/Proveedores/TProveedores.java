@@ -5,6 +5,8 @@ package Negocio.Proveedores;
 
 import java.io.Serializable;
 
+import Negocio.Marcas.TMarcas;
+
 public class TProveedores implements Serializable {
 
 	
@@ -80,11 +82,29 @@ public class TProveedores implements Serializable {
 	}
 	
 	@Override
+	public boolean equals(Object obj) {
+		
+		if(obj instanceof TProveedores) {
+			TProveedores prv = (TProveedores) obj;
+			
+			if(this.id == prv.id && this.nombre.equalsIgnoreCase(prv.nombre) 
+			&& this.activo == prv.activo && this.contMarcas == prv.contMarcas) 
+			{
+				return true;
+			}
+			else return false;
+		}
+		else return false;
+	}
+	
+	@Override
 	public String toString() {
 		return this.id.toString() + ":" + this.nombre + ":" + getTipo() + ":" + getOrigen() + ":" +getCont().toString() + ":"+ 
 	((this.activo) ? "true" : "false") + "\r\n" ; // el \r\n es para forzar utf8, sino japonés
 				
 	}
+	
+	
 	
 	
 	/*

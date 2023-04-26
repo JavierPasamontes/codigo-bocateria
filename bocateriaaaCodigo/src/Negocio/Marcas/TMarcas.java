@@ -75,8 +75,8 @@ public class TMarcas implements Serializable {
 		if(obj instanceof TMarcas) {
 			TMarcas mrc = (TMarcas) obj;
 			
-			if(this.id == mrc.id && this.nombre.equals(mrc.nombre) 
-			&& this.activo.equals(mrc.activo) && this.contProductos.equals(mrc.contProductos)
+			if(this.id == mrc.id && this.nombre.equalsIgnoreCase(mrc.nombre) 
+			&& this.activo == mrc.activo && this.contProductos ==mrc.contProductos
 			) {
 				return true;
 			}
