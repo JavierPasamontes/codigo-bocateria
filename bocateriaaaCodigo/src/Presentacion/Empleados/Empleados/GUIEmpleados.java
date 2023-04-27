@@ -34,9 +34,6 @@ public class GUIEmpleados extends JFrame{
 	static JButton mostrarPorIDBoton;
 	static JButton mostrarEmpDeUnDep;
 	static JButton volverBoton;
-	private GUIAltaEmpleado GUIAltaEmpleado;
-	private GUIBajaEmpleado GUIBajaEmpleado;
-	private GUIModificarEmp GUIModificarEmp;
 	private GUIMostrarEmps GUIMostrarEmps;
 	private GUIMostrarUnEmp GUIMostrarUnEmp;
 	private GUIMostrarEmpDeUnDep GUIMostrarEmpDeUnDep;
@@ -63,7 +60,7 @@ public class GUIEmpleados extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIAltaEmpleado =new GUIAltaEmpleado();
+				new GUIAltaEmpleado();
 			}
 			
 			
@@ -74,7 +71,7 @@ public class GUIEmpleados extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIBajaEmpleado =new GUIBajaEmpleado();
+				new GUIBajaEmpleado();
 			}
 			
 			
@@ -85,7 +82,7 @@ public class GUIEmpleados extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIModificarEmp =new GUIModificarEmp();
+				new GUIModificarEmp();
 			}
 			
 			
@@ -200,10 +197,10 @@ public class GUIEmpleados extends JFrame{
 		case Eventos.MOSTRAR_EMPLEADO_KO:
 			a.showMessage("No se pudo mostrar el empleado especificado", "Buscar empleado", true);
 			break;
-		case Eventos.MOSTRAR_EMPLEADOS_POR_DEPARTAMENTO_OK:
+		case Eventos.MOSTRAR_EMPLEADOS_DEPARTAMENTO_OK:
 			GUIMostrarEmpDeUnDep.actualizar((ArrayList<TEmpleados>) datos);
 			break;
-		case Eventos.MOSTRAR_EMPLEADOS_POR_DEPARTAMENTO_KO:
+		case Eventos.MOSTRAR_EMPLEADOS_DEPARTAMENTO_KO:
 		a.showMessage("No se ha podido mostrar la lista de empleados especificada", "Mostrar empleados de un departamento", true);
 		}
 	}

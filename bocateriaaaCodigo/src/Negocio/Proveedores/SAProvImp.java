@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Negocio.Proveedores;
 
 import java.util.ArrayList;
@@ -11,20 +8,14 @@ import Integracion.Proveedores.DAOProv;
 import Integracion.MarcasProv.TMarcasProv;
 import Negocio.Marcas.TMarcas;
 
-
-/** 
-* <!-- begin-UML-doc -->
-* <!-- end-UML-doc -->
-* @author pedro
-* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-*/
 public class SAProvImp implements SAProv {
 	
+	
 	public int create(TProveedores prov) {
+		TProveedores aux;
 		
 		DAOProv dao = FactoriaIntg.getInstance().generarDAOProv();
-		
-		TProveedores aux;
+
 		prov.setCont(0);
 		aux = dao.readByName(prov.getNombre());
 		
@@ -43,22 +34,25 @@ public class SAProvImp implements SAProv {
 				dao.update(prov);
 				return aux.getID();
 			}
-		}
-		
-		
-		
+		}	
 	}
+	
+	//------------------------------------------
 
 	@Override
 	public TProveedores read(Integer id) {
 		return FactoriaIntg.getInstance().generarDAOProv().read(id);
 		
 	}
+	
+	//------------------------------------------
 
 	@Override
 	public List<TProveedores> readAll() {
 		return FactoriaIntg.getInstance().generarDAOProv().readAll();
 	}
+	
+	//------------------------------------------
 
 	@Override
 	public Integer update(TProveedores prov, boolean vinculado) {
@@ -66,6 +60,7 @@ public class SAProvImp implements SAProv {
 		String origen;
 		Integer cont;
 		DAOProv daoProv;
+		
 		daoProv = FactoriaIntg.getInstance().generarDAOProv() ;
 		TProveedores aux =  daoProv.read(prov.getID()) ;
 		if(aux != null && aux.getActivo()) {
@@ -106,6 +101,8 @@ public class SAProvImp implements SAProv {
 		return -1;
 	}
 	
+	//------------------------------------------
+	
 	@Override
 	public Integer delete(Integer id) {
 		TProveedores aux = read(id);
@@ -119,10 +116,12 @@ public class SAProvImp implements SAProv {
 				 return 0;
 			}
 			else {
-				return -2; // -2 -> no borrable, marcas asignadas
+				return -2; // -2 -> No Borrable, marcas asignadas
 			}
 		}
 	}
+	
+	//------------------------------------------
 
 	@Override
 	public List<String> mostrarMarcasdeProv(Integer prov) {
@@ -136,14 +135,13 @@ public class SAProvImp implements SAProv {
 			marcas.add(nombre);
 		}
 		
-		
-		
 		if(marcas.isEmpty())
 			return null;
 		
-		
 		return marcas;
 	}
+	
+	//------------------------------------------
 
 	@Override
 	public Integer vincularMarca(TMarcasProv relacion) {
@@ -157,7 +155,7 @@ public class SAProvImp implements SAProv {
 				return -1;
 			
 			if(FactoriaIntg.getInstance().generarDAOProvMarcas().vinculado(prov, marca))
-				return -2;//ya esta vinculado
+				return -2;//YA ESTA VINCULADO
 			
 			FactoriaIntg.getInstance().generarDAOProvMarcas().vincularMarca(relacion);
 			
@@ -165,13 +163,13 @@ public class SAProvImp implements SAProv {
 			
 			update(tProv, true);
 			
-			
 			return 1;
 		}
-		else //no existe la marca o el prov
+		else //NO EXISTE LA MARCA O EL PROVEEDOR
 			return -1;
-		
 	}
+	
+	//------------------------------------------
 
 	@Override
 	public Integer desvincularMarca(TMarcasProv relacion) {
@@ -186,7 +184,7 @@ public class SAProvImp implements SAProv {
 				return -1;
 			
 			if(!FactoriaIntg.getInstance().generarDAOProvMarcas().vinculado(prov, marca))
-				return -2;//no esta vinculado
+				return -2;//NO ESTA VINCULADO
 			
 			FactoriaIntg.getInstance().generarDAOProvMarcas().desvincularMarca(relacion);
 			
@@ -195,11 +193,8 @@ public class SAProvImp implements SAProv {
 			update(tProv, true);
 			return 1;
 		}
-		else //no existe la marca o el prov
+		else //NO EXISTE LA MARCA O EL PROVEEDOR
 			return -1;
-		
 	}
-	
-	
 	
 }

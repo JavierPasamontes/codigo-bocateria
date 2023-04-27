@@ -4,11 +4,9 @@ package Negocio.Productos;
 import java.util.ArrayList;
 import java.util.List;
 
-import Integracion.Empleados.DAOEmpleados;
 import Integracion.FactoriaIntegracion.FactoriaIntg;
 import Integracion.Marcas.DAOMarcas;
 import Integracion.Productos.DAOProductos;
-import Negocio.Empleados.TEmpleados;
 import Negocio.Marcas.TMarcas;
 
 public class SAProductosImp implements SAProductos {
@@ -24,18 +22,18 @@ public class SAProductosImp implements SAProductos {
 		TMarcas leidoMarca = daoMarcas.read(tProd.getIDmarca());
 
 		if (producto == null) {
-			if (leidoMarca != null && leidoMarca.getActivo()) { //si no existe, lo crea
+			if (leidoMarca != null && leidoMarca.getActivo()) { //SI NO EXISTE LO CREA
 				id = daoProd.create(tProd);
 				leidoMarca.aumentarProductos();;
 				daoMarcas.update(leidoMarca);
 			}
 		} else {
-			if(!leidoMarca.getID().equals(producto.getIDmarca())) { //si existe pero con otra marca lo crea
+			if(!leidoMarca.getID().equals(producto.getIDmarca())) { //SI EXISTE CON OTRA MARCA LO CREA
 				id = daoProd.create(tProd);
 				leidoMarca.aumentarProductos();;
 				daoMarcas.update(leidoMarca);
 			}
-			else if (!producto.getActivo() && leidoMarca.getActivo()) { // si existe pero no esta activo y la marca esta activa, lo activa
+			else if (!producto.getActivo() && leidoMarca.getActivo()) { // SI EXISTE NO ACTIVO CON MARCA ACTIVA, LO ACTIVA
 				producto.setActivo(true);
 				leidoMarca.aumentarProductos();
 				daoMarcas.update(leidoMarca);
@@ -43,6 +41,8 @@ public class SAProductosImp implements SAProductos {
 		}
 		return id;
 	}
+	
+	//------------------------------------------
 
 	@Override
 	public TProductos read(int id) {
@@ -50,10 +50,14 @@ public class SAProductosImp implements SAProductos {
 		return daoProd.read(id);
 	}
 
+	//------------------------------------------
+	
 	@Override
 	public List<TProductos> readAll() {
 		return FactoriaIntg.getInstance().generarDAOProductos().readAll();
 	}
+	
+	//------------------------------------------
 
 	@Override
 	public int update(TProductos tProd) {
@@ -95,6 +99,8 @@ public class SAProductosImp implements SAProductos {
 		return tProd.getId();
 	
 	}
+	
+	//------------------------------------------
 
 	@Override
 	public int delete(int id) {
@@ -116,6 +122,8 @@ public class SAProductosImp implements SAProductos {
 			return -1;
 
 	}
+	
+	//------------------------------------------
 	
 	public List<TProductos> readProductosDeMarca(int idMarca){
 		

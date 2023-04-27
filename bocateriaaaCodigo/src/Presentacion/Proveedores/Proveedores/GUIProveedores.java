@@ -199,34 +199,34 @@ public class GUIProveedores extends JFrame{
 	public void actualizar(int evento, Object datos) {
 		MensajeGUI a=new MensajeGUI();
 		switch (evento) {
-		case Eventos.ALTA_PROV_OK:
+		case Eventos.ALTA_PROVEEDOR_OK:
 			a.showMessage("Se ha dado de alta al Prov con ID: " + (int)datos,"Alta PROV", false);
 			break;
-		case Eventos.ALTA_PROV_KO :
+		case Eventos.ALTA_PROVEEDOR_KO :
 			a.showMessage("No se ha podido dar de alta al PROV", "Alta PROV", true);
 			break;
-		case Eventos.BAJA_PROV_OK:
+		case Eventos.BAJA_PROVEEDOR_OK:
 			a.showMessage("Se ha dado de baja al PROV con ID: "+(int)datos, "Baja PROV", false);
 			break;
-		case Eventos.BAJA_PROV_KO:
+		case Eventos.BAJA_PROVEEDOR_KO:
 			a.showMessage("No se ha podido dar de baja al PROV con ID: "+(int)datos, "Baja PROV", true);
 			break;
-		case Eventos.MODIFICAR_PROV_OK:
+		case Eventos.MODIFICAR_PROVEEDOR_OK:
 			a.showMessage("Se ha modificado el PROV correctamente", "Modificar PROV", false);
 			break;
-		case Eventos.MODIFICAR_PROV_KO:
+		case Eventos.MODIFICAR_PROVEEDOR_KO:
 			a.showMessage("No se ha podido modificar el PROV", "Modificar PROV", true);
 			break;
-		case Eventos.MOSTRAR_PROVS_OK:
+		case Eventos.MOSTRAR_PROVEEDORES_OK:
 			guiMostrarProvs.actualizar((ArrayList<TProveedores>)datos);
 			break;
-		case Eventos.MOSTRAR_PROVS_KO:
+		case Eventos.MOSTRAR_PROVEEDORES_KO:
 			a.showMessage("No se pudo mostrar la lista de proveedores", "Mostrar empleados", true);
 			break;
-		case Eventos.BUSCAR_PROV_OK:
+		case Eventos.BUSCAR_PROVEEDOR_OK:
 			guiBuscarProv.actualizar((TProveedores)datos);
 			break;
-		case Eventos.BUSCAR_PROV_KO:
+		case Eventos.BUSCAR_PROVEEDOR_KO:
 			a.showMessage("No se pudo mostrar el empleado especificado", "Buscar empleado", true);
 		case Eventos.VINCULAR_MARCA_OK:
 			a.showMessage("Marca y proveedor vinculados correctamente", "Vincular Marca", false);
@@ -243,10 +243,10 @@ public class GUIProveedores extends JFrame{
 		case Eventos.DESVINCULAR_MARCA_KO:
 			a.showMessage("No se ha podido desvincular la marca con el proveedor", "Desvincular Marca", true);
 			break;
-		case Eventos.MOSTRAR_M_DE_P_OK:
+		case Eventos.MOSTRAR_MARCAS_DE_PROV_OK:
 			guiMostrarMdeP.actualizar((ArrayList<String>)datos);
 			break;
-		case Eventos.MOSTRAR_M_DE_P_KO:
+		case Eventos.MOSTRAR_MARCAS_DE_PROV_KO:
 			a.showMessage("No se pudo mostrar la lista de marcas", "Mostrar empleados", true);
 			break;
 		}

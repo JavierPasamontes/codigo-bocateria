@@ -23,7 +23,7 @@ public class ControladorIMP extends Controlador {
 		int resultado;
 		TDept tDept;
 		SADepartamento saDept;
-		TProveedores prov;
+		TProveedores tProv;
 		SAProv saProv;
 		TEmpleados tEmp;
 		SAEmpleados saEmp;
@@ -33,7 +33,11 @@ public class ControladorIMP extends Controlador {
 		SAProductos saProd;
 
 		switch (evento) {
+		
+		
+		//DEPARTAMENTOS----------------------------------------
 
+		
 		case Eventos.VISTA_DEPARTAMENTOS:
 			FactoriaGUI.getInstance().generarGUI(evento);
 			break;
@@ -83,10 +87,10 @@ public class ControladorIMP extends Controlador {
 
 			saDept = FactoriaNeg.getInstance().generarSADept();
 
-			TDept tResultado = saDept.read((Integer) datos);
+			TDept tResultadoDept = saDept.read((Integer) datos);
 
-			if (tResultado != null) {
-				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_DEPARTAMENTO_OK, tResultado);
+			if (tResultadoDept != null) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_DEPARTAMENTO_OK, tResultadoDept);
 			} else {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_DEPARTAMENTO_KO, datos);
 			}
@@ -96,88 +100,86 @@ public class ControladorIMP extends Controlador {
 
 			saDept = FactoriaNeg.getInstance().generarSADept();
 
-			List<TDept> ltResultado = saDept.readAll();
+			List<TDept> ltResultadoDept = saDept.readAll();
 
-			if (ltResultado.size() > 0) {
-				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_DEPARTAMENTOS_OK, ltResultado);
+			if (ltResultadoDept.size() > 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_DEPARTAMENTOS_OK, ltResultadoDept);
 			} else {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_DEPARTAMENTOS_KO, null);
 			}
 			break;
 
-		// Proveedores
-		case Eventos.VISTA_PROV:
+			
+		//PROVEEDORES----------------------------------------
+			
+			
+		case Eventos.VISTA_PROVEEDOR:
 			FactoriaGUI.getInstance().generarGUI(evento);
 			break;
-		case Eventos.ALTA_PROV:
-			prov = (TProveedores) datos;
-
+			
+		case Eventos.ALTA_PROVEEDOR:
+			tProv = (TProveedores) datos;
 			saProv = FactoriaNeg.getInstance().generarSAProv();
 
-			resultado = saProv.create(prov);
+			resultado = saProv.create(tProv);
 
 			if (resultado >= 0) {
-				FactoriaGUI.getInstance().actualizar(Eventos.ALTA_PROV_OK, resultado);
+				FactoriaGUI.getInstance().actualizar(Eventos.ALTA_PROVEEDOR_OK, resultado);
 			} else {
-				FactoriaGUI.getInstance().actualizar(Eventos.ALTA_PROV_KO, null);
+				FactoriaGUI.getInstance().actualizar(Eventos.ALTA_PROVEEDOR_KO, null);
 			}
 			break;
-		case Eventos.BAJA_PROV:
+			
+		case Eventos.BAJA_PROVEEDOR:
 			saProv = FactoriaNeg.getInstance().generarSAProv();
-
 			resultado = saProv.delete((Integer) datos);
 
 			if (resultado >= 0) {
-				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_PROV_OK, datos);
+				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_PROVEEDOR_OK, datos);
 			} else {
-				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_PROV_KO, datos);
+				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_PROVEEDOR_KO, datos);
 			}
 			break;
 
-		case Eventos.MODIFICAR_PROV:
-
-			prov = (TProveedores) datos;
-
+		case Eventos.MODIFICAR_PROVEEDOR:
+			tProv = (TProveedores) datos;
 			saProv = FactoriaNeg.getInstance().generarSAProv();
 
-			resultado = saProv.update(prov, false);
+			resultado = saProv.update(tProv, false);
 
 			if (resultado >= 0) {
-				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_PROV_OK, prov);
+				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_PROVEEDOR_OK, tProv);
 			} else {
-				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_PROV_KO, prov);
+				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_PROVEEDOR_KO, tProv);
 			}
 			break;
 
-		case Eventos.BUSCAR_PROV:
+		case Eventos.BUSCAR_PROVEEDOR:
 			saProv = FactoriaNeg.getInstance().generarSAProv();
+			
+			tProv = saProv.read((Integer) datos);
 
-			TProveedores tResultadoP = saProv.read((Integer) datos);
-
-			if (tResultadoP != null) {
-				FactoriaGUI.getInstance().actualizar(Eventos.BUSCAR_PROV_OK, tResultadoP);
+			if (tProv != null) {
+				FactoriaGUI.getInstance().actualizar(Eventos.BUSCAR_PROVEEDOR_OK, tProv);
 			} else {
-				FactoriaGUI.getInstance().actualizar(Eventos.BUSCAR_PROV_KO, datos);
+				FactoriaGUI.getInstance().actualizar(Eventos.BUSCAR_PROVEEDOR_KO, datos);
 			}
 			break;
 
-		case Eventos.MOSTRAR_PROVS:
-
+		case Eventos.MOSTRAR_PROVEEDORES:
 			saProv = FactoriaNeg.getInstance().generarSAProv();
 
-			List<TProveedores> ltResultado3 = saProv.readAll();
+			List<TProveedores> ltResultadoProv = saProv.readAll();
 
-			if (ltResultado3.size() > 0) {
-				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PROVS_OK, ltResultado3);
+			if (ltResultadoProv.size() > 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PROVEEDORES_OK, ltResultadoProv);
 			} else {
-				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PROVS_KO, null);
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PROVEEDORES_KO, null);
 			}
 			break;
 
 		case Eventos.VINCULAR_MARCA:
-
 			TMarcasProv rel = (TMarcasProv) datos;
-
 			saProv = FactoriaNeg.getInstance().generarSAProv();
 
 			resultado = saProv.vincularMarca(rel);
@@ -191,7 +193,6 @@ public class ControladorIMP extends Controlador {
 
 		case Eventos.DESVINCULAR_MARCA:
 			TMarcasProv rel1 = (TMarcasProv) datos;
-
 			saProv = FactoriaNeg.getInstance().generarSAProv();
 
 			resultado = saProv.desvincularMarca(rel1);
@@ -203,31 +204,30 @@ public class ControladorIMP extends Controlador {
 			}
 			break;
 
-		case Eventos.MOSTRAR_M_DE_P:
-
+		case Eventos.MOSTRAR_MARCAS_DE_PROV:
 			Integer id = (Integer) datos;
 
 			saProv = FactoriaNeg.getInstance().generarSAProv();
 
-			List<String> resultadoMP = saProv.mostrarMarcasdeProv(id);
+			List<String> resultadoMarcasProv = saProv.mostrarMarcasdeProv(id);
 
-			if (resultadoMP.size() > 0) {
-				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_M_DE_P_OK, resultadoMP);
+			if (resultadoMarcasProv.size() > 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_MARCAS_DE_PROV_OK, resultadoMarcasProv);
 			} else {
-				FactoriaGUI.getInstance().actualizar(Eventos.VINCULAR_MARCA_KO, resultadoMP);
+				FactoriaGUI.getInstance().actualizar(Eventos.VINCULAR_MARCA_KO, resultadoMarcasProv);
 			}
-
 			break;
 
-		// Parte de empleados del switch
+			
+		//EMPLEADOS----------------------------------------
+			
+			
 		case Eventos.VISTA_EMPLEADOS:
 			FactoriaGUI.getInstance().generarGUI(evento);
 			break;
 
 		case Eventos.ALTA_EMPLEADO:
-
 			tEmp = (TEmpleados) datos;
-
 			saEmp = FactoriaNeg.getInstance().generarSAEmp();
 
 			resultado = saEmp.create(tEmp);
@@ -240,7 +240,6 @@ public class ControladorIMP extends Controlador {
 			break;
 
 		case Eventos.BAJA_EMPLEADO:
-
 			saEmp = FactoriaNeg.getInstance().generarSAEmp();
 
 			resultado = saEmp.delete((Integer) datos);
@@ -251,10 +250,9 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_EMPLEADO_KO, datos);
 			}
 			break;
+			
 		case Eventos.MODIFICAR_EMPLEADO:
-
 			tEmp = (TEmpleados) datos;
-
 			saEmp = FactoriaNeg.getInstance().generarSAEmp();
 
 			resultado = saEmp.update(tEmp);
@@ -265,8 +263,8 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_EMPLEADO_KO, tEmp);
 			}
 			break;
+			
 		case Eventos.MOSTRAR_EMPLEADO:
-
 			saEmp = FactoriaNeg.getInstance().generarSAEmp();
 
 			TEmpleados tResultado1 = saEmp.read((Integer) datos);
@@ -279,40 +277,39 @@ public class ControladorIMP extends Controlador {
 			break;
 
 		case Eventos.MOSTRAR_EMPLEADOS:
-
 			saEmp = FactoriaNeg.getInstance().generarSAEmp();
 
-			List<TEmpleados> ltResultado1 = saEmp.readAll();
+			List<TEmpleados> ltResultadoEmp = saEmp.readAll();
 
-			if (ltResultado1.size() > 0) {
-				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_OK, ltResultado1);
+			if (ltResultadoEmp.size() > 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_OK, ltResultadoEmp);
 			} else {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_KO, null);
 			}
 			break;
-		case Eventos.MOSTRAR_EMPLEADOS_POR_DEPARTAMENTO:
-
+			
+		case Eventos.MOSTRAR_EMPLEADOS_DEPARTAMENTO:
 			saEmp = FactoriaNeg.getInstance().generarSAEmp();
 
-			List<TEmpleados> ltResultado2 = saEmp.readEmpleadosDeDepartamento(resultado);
+			List<TEmpleados> ltResultadoEmp1 = saEmp.readEmpleadosDeDepartamento((Integer) datos);
 
-			if (ltResultado2 != null) {
-				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_POR_DEPARTAMENTO_OK, ltResultado2);
+			if (ltResultadoEmp1 != null) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_DEPARTAMENTO_OK, ltResultadoEmp1);
 			} else {
-				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_POR_DEPARTAMENTO_KO, null);
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_DEPARTAMENTO_KO, null);
 			}
 			break;
 
-		// MARCAS
+			
+		//MARCAS----------------------------------------
+			
 
 		case Eventos.VISTA_MARCAS:
 			FactoriaGUI.getInstance().generarGUI(evento);
 			break;
 
 		case Eventos.ALTA_MARCAS:
-
 			tMarcas = (TMarcas) datos;
-
 			saMarcas = FactoriaNeg.getInstance().generarSAMarcas();
 
 			resultado = saMarcas.create(tMarcas);
@@ -325,7 +322,6 @@ public class ControladorIMP extends Controlador {
 			break;
 
 		case Eventos.BAJA_MARCAS:
-
 			saMarcas = FactoriaNeg.getInstance().generarSAMarcas();
 
 			resultado = saMarcas.delete((Integer) datos);
@@ -336,10 +332,9 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_MARCAS_KO, datos);
 			}
 			break;
+			
 		case Eventos.MODIFICAR_MARCAS:
-
 			tMarcas = (TMarcas) datos;
-
 			saMarcas = FactoriaNeg.getInstance().generarSAMarcas();
 
 			resultado = saMarcas.update(tMarcas);
@@ -350,8 +345,8 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_MARCAS_KO, tMarcas);
 			}
 			break;
+			
 		case Eventos.MOSTRAR_MARCA:
-
 			saMarcas = FactoriaNeg.getInstance().generarSAMarcas();
 
 			TMarcas tResultadoM = saMarcas.read((Integer) datos);
@@ -364,28 +359,27 @@ public class ControladorIMP extends Controlador {
 			break;
 
 		case Eventos.MOSTRAR_MARCAS:
-
 			saMarcas = FactoriaNeg.getInstance().generarSAMarcas();
 
-			List<TMarcas> ltResultadoM = saMarcas.readAll();
+			List<TMarcas> ltResultadoMarca = saMarcas.readAll();
 
-			if (ltResultadoM.size() > 0) {
-				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_MARCAS_OK, ltResultadoM);
+			if (ltResultadoMarca.size() > 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_MARCAS_OK, ltResultadoMarca);
 			} else {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_MARCAS_KO, null);
 			}
 			break;
 
-		// Parte de productos del switch
+			
+		//PRODUCTOS----------------------------------------
 
+			
 		case Eventos.VISTA_PRODUCTOS:
 			FactoriaGUI.getInstance().generarGUI(evento);
 			break;
 
 		case Eventos.ALTA_PRODUCTO:
-
 			tProd = (TProductos) datos;
-
 			saProd = FactoriaNeg.getInstance().generarSAProductos();
 
 			resultado = saProd.create(tProd);
@@ -398,10 +392,9 @@ public class ControladorIMP extends Controlador {
 			break;
 
 		case Eventos.BAJA_PRODUCTO:
+			saProd = FactoriaNeg.getInstance().generarSAProductos();
 
-			saEmp = FactoriaNeg.getInstance().generarSAEmp();
-
-			resultado = saEmp.delete((Integer) datos);
+			resultado = saProd.delete((Integer) datos);
 
 			if (resultado >= 0) {
 				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_PRODUCTO_OK, datos);
@@ -409,53 +402,51 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_PRODUCTO_KO, datos);
 			}
 			break;
+			
 		case Eventos.MODIFICAR_PRODUCTO:
+			tProd = (TProductos) datos;
+			saProd = FactoriaNeg.getInstance().generarSAProductos();
 
-			tEmp = (TEmpleados) datos;
-
-			saEmp = FactoriaNeg.getInstance().generarSAEmp();
-
-			resultado = saEmp.update(tEmp);
+			resultado = saProd.update(tProd);
 
 			if (resultado >= 0) {
-				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_PRODUCTO_OK, tEmp);
+				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_PRODUCTO_OK, tProd);
 			} else {
-				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_PRODUCTO_KO, tEmp);
+				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_PRODUCTO_KO, tProd);
 			}
 			break;
+			
 		case Eventos.MOSTRAR_PRODUCTO:
+			saProd = FactoriaNeg.getInstance().generarSAProductos();
 
-			saEmp = FactoriaNeg.getInstance().generarSAEmp();
+			TProductos tResultadoProd = saProd.read((Integer) datos);
 
-			TEmpleados tResultado2 = saEmp.read((Integer) datos);
-
-			if (tResultado1 != null) {
-				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTO_OK, tResultado1);
+			if (tResultadoProd != null) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTO_OK, tResultadoProd);
 			} else {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTO_KO, datos);
 			}
 			break;
 
 		case Eventos.MOSTRAR_PRODUCTOS:
+			saProd = FactoriaNeg.getInstance().generarSAProductos();
 
-			saEmp = FactoriaNeg.getInstance().generarSAEmp();
+			List<TProductos> ltResultadoProd = saProd.readAll();
 
-			List<TEmpleados> ltResultado = saEmp.readAll();
-
-			if (ltResultado1.size() > 0) {
-				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_OK, ltResultado1);
+			if (ltResultadoProd.size() > 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_OK, ltResultadoProd);
 			} else {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_KO, null);
 			}
 			break;
+			
 		case Eventos.MOSTRAR_PRODUCTOS_MARCA:
+			saProd = FactoriaNeg.getInstance().generarSAProductos();
 
-			saEmp = FactoriaNeg.getInstance().generarSAEmp();
+			List<TProductos> ltResultadoProd1 = saProd.readProductosDeMarca((Integer) datos);
 
-			List<TEmpleados> ltResultado2 = saEmp.readAll();
-
-			if (ltResultado2 != null) {
-				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_MARCA_OK, ltResultado2);
+			if (ltResultadoProd1 != null) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_MARCA_OK, ltResultadoProd1);
 			} else {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_MARCA_KO, null);
 			}

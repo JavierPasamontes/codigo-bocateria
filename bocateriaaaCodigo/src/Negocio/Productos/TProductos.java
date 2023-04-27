@@ -1,10 +1,6 @@
-
 package Negocio.Productos;
 
 import java.io.Serializable;
-
-import Negocio.Empleados.TEmpleados;
-
 
 @SuppressWarnings("serial")
 public class TProductos implements Serializable {
@@ -26,62 +22,51 @@ public class TProductos implements Serializable {
 		this.activo = activo;
 		this.IDmarca = iDmarca;
 	}
-
+	
 
 	public Boolean getActivo() {
 		return activo;
 	}
 
-
 	public void setActivo(Boolean activo) {
 		this.activo = activo;
 	}
-
 
 	public Integer getId() {
 		return id;
 	}
 
-
 	public void setId(Integer idProducto) {
 		this.id = idProducto;
 	}
-
 
 	public String getNombre() {
 		return nombre;
 	}
 
-
 	public void setNombre(String nombreProducto) {
 		this.nombre = nombreProducto;
 	}
-
 
 	public Integer getCantidad() {
 		return cantidad;
 	}
 
-
 	public void setCantidad(Integer cantidadProducto) {
 		this.cantidad = cantidadProducto;
 	}
-
 
 	public Double getPrecio() {
 		return precio;
 	}
 
-
 	public void setPrecio(Double precioProducto) {
 		this.precio = precioProducto;
 	}
 
-
 	public Integer getIDmarca() {
 		return IDmarca;
 	}
-
 
 	public void setIDmarca(Integer iDmarca) {
 		IDmarca = iDmarca;
@@ -97,7 +82,6 @@ public class TProductos implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		
 		if(obj instanceof TProductos) {
 			TProductos prd = (TProductos) obj;
 			

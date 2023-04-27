@@ -105,14 +105,14 @@ public class GUIModProv extends JFrame {
 						TProveedores prov = new TProvNacional(Integer.parseInt(campoID.getText()), campoNombre.getText(),0, true, campoOrigen.getText());
 						prov.setTipo('N');
 						
-						Controlador.getInstance().accion(Eventos.MODIFICAR_PROV, prov);
+						Controlador.getInstance().accion(Eventos.MODIFICAR_PROVEEDOR, prov);
 						dispose();
 					}
 					else {
 						TProveedores prov = new TProvComunitario(Integer.parseInt(campoID.getText()), campoNombre.getText(),0, true, campoOrigen.getText());
 						prov.setTipo('C');
 						
-						Controlador.getInstance().accion(Eventos.MODIFICAR_PROV, prov);
+						Controlador.getInstance().accion(Eventos.MODIFICAR_PROVEEDOR, prov);
 						dispose();
 					}
 				}

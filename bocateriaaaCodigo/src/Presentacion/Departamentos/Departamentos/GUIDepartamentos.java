@@ -31,9 +31,6 @@ public class GUIDepartamentos extends JFrame{
 	static JButton mostrarTodoBoton;
 	static JButton mostrarPorIDBoton;
 	static JButton volverBoton;
-	private GUIAltaDepartamento GUIAltaDepartamento;
-	private GUIBajaDepts GUIBajaDepts;
-	private GUIModificarDept GUIModificarDept;
 	private GUIMostrarDepts GUIMostrarDepts;
 	private GUIMostrarUnDept GUIMostrarUnDept;
 	
@@ -59,7 +56,7 @@ public class GUIDepartamentos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIAltaDepartamento =new GUIAltaDepartamento();
+				new GUIAltaDepartamento();
 			}
 			
 			
@@ -70,7 +67,7 @@ public class GUIDepartamentos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIBajaDepts =new GUIBajaDepts();
+				new GUIBajaDepts();
 			}
 			
 			
@@ -81,7 +78,7 @@ public class GUIDepartamentos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIModificarDept =new GUIModificarDept();
+				new GUIModificarDept();
 			}
 			
 			

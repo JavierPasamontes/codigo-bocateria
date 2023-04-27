@@ -11,9 +11,6 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import Negocio.Empleados.TEmpleados;
-import Negocio.Proveedores.TProveedores;
-
 
 public class DAOProv_MarcasImp implements DAOProv_Marcas{
 	

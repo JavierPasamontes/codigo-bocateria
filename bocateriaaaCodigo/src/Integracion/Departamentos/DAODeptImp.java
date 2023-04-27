@@ -64,7 +64,7 @@ public class DAODeptImp implements DAODept {
 					o.put("ID", dept.getId());
 					o.put("NOMBRE", dept.getNombre());
 					o.put("SEDE", dept.getSede());
-					o.put("ACTIVO", dept.isActivo());
+					o.put("ACTIVO", dept.getActivo());
 					o.put("DESC", dept.getDescripcion());
 					
 					depts.put(o);
@@ -180,7 +180,7 @@ public class DAODeptImp implements DAODept {
 				deptList.get(i).setNombre(tDept.getNombre());
 				deptList.get(i).setSede(tDept.getSede());
 				deptList.get(i).setDescripcion(tDept.getDescripcion());
-				deptList.get(i).setActivo(tDept.isActivo());
+				deptList.get(i).setActivo(tDept.getActivo());
 				deptList.get(i).setContEmpleados(tDept.getContEmpleados());
 			}
 		}

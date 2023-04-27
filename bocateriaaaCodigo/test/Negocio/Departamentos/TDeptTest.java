@@ -25,7 +25,7 @@ class TDeptTest{
 		//getter de la descripcion
 		assertEquals("Una Descripcion",departamento.getDescripcion());
 		//segun el constructor el activo deberia ser true
-		assertTrue(departamento.isActivo()); 
+		assertTrue(departamento.getActivo()); 
 		
 		departamento.aumentarEmpleados();
 		//comprobamos el aumento de empleados

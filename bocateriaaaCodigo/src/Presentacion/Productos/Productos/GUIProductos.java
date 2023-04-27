@@ -33,9 +33,6 @@ public class GUIProductos extends JFrame{
 	static JButton mostrarPorIDBoton;
 	static JButton mostrarProdDeMarca;
 	static JButton volverBoton;
-	private GUIAltaProductos GUIAltaProductos;
-	private GUIBajaProductos GUIBajaProductos;
-	private GUIModificarProducto GUIModificarProducto;
 	private GUIMostrarProductos GUIMostrarProductos;
 	private GUIMostrarUnProd GUIMostrarUnProd;
 	private GUIMostrarProdDeMarca GUIMostrarProdDeMarca;
@@ -62,7 +59,7 @@ public class GUIProductos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIAltaProductos =new GUIAltaProductos();
+				new GUIAltaProductos();
 			}
 			
 			
@@ -73,7 +70,7 @@ public class GUIProductos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIBajaProductos =new GUIBajaProductos();
+				new GUIBajaProductos();
 			}
 			
 			
@@ -84,7 +81,7 @@ public class GUIProductos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIModificarProducto =new GUIModificarProducto();
+				new GUIModificarProducto();
 			}
 			
 			
@@ -166,6 +163,7 @@ public class GUIProductos extends JFrame{
 		});
 	}
 
+	@SuppressWarnings("unchecked")
 	public void actualizar(int evento, Object datos) {
 		MensajeGUI a=new MensajeGUI();
 		switch (evento) {

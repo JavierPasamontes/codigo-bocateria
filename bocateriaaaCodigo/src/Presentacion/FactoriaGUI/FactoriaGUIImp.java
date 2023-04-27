@@ -26,7 +26,7 @@ public class FactoriaGUIImp extends FactoriaGUI {
 			ventanaEmp=new GUIEmpleados();
 			break;
 		}
-		case Eventos.VISTA_PROV:{
+		case Eventos.VISTA_PROVEEDOR:{
 			ventanaProv = new GUIProveedores();
 			break;
 		}

@@ -2,16 +2,15 @@ package Negocio.Marcas;
 
 import java.io.Serializable;
 
-
+@SuppressWarnings("serial")
 public class TMarcas implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
 	private String nombre;
 	private Boolean activo;
 	private Integer contProductos;
 	private String pais;
+	
 
 	public TMarcas(Integer id, String nombre, Boolean activa, Integer contProductos,String pais) {
 		this.id = id;
@@ -20,6 +19,7 @@ public class TMarcas implements Serializable {
 		this.contProductos = contProductos;
 		this.pais = pais;
 	}
+	
 	
 	public String getPais() {
 		return pais;
@@ -85,5 +85,4 @@ public class TMarcas implements Serializable {
 		else return false;
 	}
 	
-
 }

@@ -2,8 +2,6 @@ package Negocio.Empleados;
 
 import java.io.Serializable;
 
-import Negocio.Proveedores.TProveedores;
-
 @SuppressWarnings("serial")
 public class TEmpleados implements Serializable {
 	
@@ -27,6 +25,7 @@ public class TEmpleados implements Serializable {
 		this.contVentas = 0;
 		this.activo = activo;
 	}
+	
 
 	public Integer getId() {
 		return id;
@@ -122,6 +121,4 @@ public class TEmpleados implements Serializable {
 		else return false;
 	}
 	
-	
-
 }

@@ -1,9 +1,6 @@
-/**
- * 
- */
 package Negocio.Proveedores;
 
-
+@SuppressWarnings("serial")
 public class TProvComunitario extends TProveedores {
 
 	private String pais;
@@ -13,6 +10,7 @@ public class TProvComunitario extends TProveedores {
 		super(id,nombre,contMarcas,activo);
 		this.pais = pais;
 	}
+	
 	
 	@Override
 	public String getOrigen() {

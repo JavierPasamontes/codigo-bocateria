@@ -99,7 +99,7 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controlador.getInstance().accion(Eventos.VISTA_PROV, null);	
+				Controlador.getInstance().accion(Eventos.VISTA_PROVEEDOR, null);	
 			}
 			
 			

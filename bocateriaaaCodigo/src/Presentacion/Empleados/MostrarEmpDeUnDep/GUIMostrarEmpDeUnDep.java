@@ -49,7 +49,7 @@ public class GUIMostrarEmpDeUnDep extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(!campoID.getText().equalsIgnoreCase("")) {
-					Controlador.getInstance().accion(Eventos.MOSTRAR_EMPLEADOS_POR_DEPARTAMENTO, Integer.parseInt(campoID.getText()));
+					Controlador.getInstance().accion(Eventos.MOSTRAR_EMPLEADOS_DEPARTAMENTO, Integer.parseInt(campoID.getText()));
 				}
 			}
 		});

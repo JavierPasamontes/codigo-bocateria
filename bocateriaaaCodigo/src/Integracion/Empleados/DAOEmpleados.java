@@ -5,7 +5,6 @@ package Integracion.Empleados;
 
 import java.util.List;
 
-import Negocio.Empleados.TEmpleadosTP;
 import Negocio.Empleados.TEmpleados;
 
 public interface DAOEmpleados {

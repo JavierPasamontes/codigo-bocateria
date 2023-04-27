@@ -7,20 +7,19 @@ import Integracion.FactoriaIntegracion.FactoriaIntg;
 
 public class SADeptImp implements SADepartamento {
 	
+	
 	public int create(TDept tDept) {
-		DAODept daoDept;
 		int id = -1;
-		daoDept = FactoriaIntg.getInstance().generarDAODepts();
+		
+		DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
 		
 		TDept leido = daoDept.readByName(tDept.getNombre());
 		
 		if (leido == null) {
 			id = daoDept.create(tDept);
-			
 		}
 		else{
-			if(leido.isActivo()){
-				
+			if(leido.getActivo()){
 				return -1;
 			}
 			else{
@@ -31,29 +30,31 @@ public class SADeptImp implements SADepartamento {
 		}
 		return id;
 	}
-
+	
+	//------------------------------------------
+	
 	public TDept read(Integer id) {
-		
-		DAODept daoDept;
-		daoDept = FactoriaIntg.getInstance().generarDAODepts();
+		DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
 		
 		return daoDept.read(id);
 	}
 
+	//------------------------------------------
+	
 	public List<TDept> readAll() {
-		DAODept daoDept;
-		daoDept = FactoriaIntg.getInstance().generarDAODepts();
+		DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
 		
 		return daoDept.readAll();
 	}
 
+	//------------------------------------------
+	
 	public int update(TDept tDept) {
-		DAODept daoDept;
-		daoDept = FactoriaIntg.getInstance().generarDAODepts();
+		DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
 
 		TDept dept = daoDept.read(tDept.getId());
 
-		if (dept.isActivo()) {
+		if (dept.getActivo()) {
 			if (tDept.getNombre().isEmpty())
 				tDept.setNombre(dept.getNombre());
 			if (tDept.getDescripcion().isEmpty())
@@ -68,9 +69,10 @@ public class SADeptImp implements SADepartamento {
 		return daoDept.update(tDept);
 	}
 
+	//------------------------------------------
+	
 	public int delete(Integer id) {
-		DAODept daoDept;
-		daoDept = FactoriaIntg.getInstance().generarDAODepts();
+		DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
 		
 		if(daoDept.read(id).getContEmpleados() == 0)
 			return daoDept.delete(id);

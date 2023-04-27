@@ -1,19 +1,9 @@
-/**
- * 
- */
 package Negocio.Proveedores;
 
 import java.util.List;
 
 import Integracion.MarcasProv.TMarcasProv;
 
-
-/** 
-* <!-- begin-UML-doc -->
-* <!-- end-UML-doc -->
-* @author pedro
-* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-*/
 public interface SAProv {
 
 	public int create(TProveedores prov);

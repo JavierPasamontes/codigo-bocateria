@@ -116,7 +116,7 @@ public class GUIMostrarDepts extends JFrame {
 		modeloTabla.insertRow(0, new String[]{"ID", "Nombre", "Sede", "Descripcion", "Activo"});
 		for (int i = 0; i < dep.size(); i++) {
 				modeloTabla.insertRow(i+1, new Object[] 
-						{ dep.get(i).getId(), dep.get(i).getNombre(), dep.get(i).getSede(), dep.get(i).getDescripcion(), dep.get(i).isActivo()});
+						{ dep.get(i).getId(), dep.get(i).getNombre(), dep.get(i).getSede(), dep.get(i).getDescripcion(), dep.get(i).getActivo()});
 		}
 		tabla.setModel(modeloTabla);
 		tabla.getColumnModel().getColumn(3).setPreferredWidth(200);

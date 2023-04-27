@@ -64,7 +64,7 @@ public class GUIBajaProv extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if(!campoID.getText().equalsIgnoreCase("")) {
-						Controlador.getInstance().accion(Eventos.BAJA_PROV, Integer.parseInt(campoID.getText()));
+						Controlador.getInstance().accion(Eventos.BAJA_PROVEEDOR, Integer.parseInt(campoID.getText()));
 						dispose();
 					}
 				}

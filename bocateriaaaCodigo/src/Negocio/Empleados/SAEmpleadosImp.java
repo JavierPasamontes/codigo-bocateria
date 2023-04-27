@@ -20,14 +20,14 @@ public class SAEmpleadosImp implements SAEmpleados {
 		TDept leidoDept = daoDept.read(tEmp.getIdDept());
 		
 		if (empleado == null) {
-			if (leidoDept != null && leidoDept.isActivo()){
+			if (leidoDept != null && leidoDept.getActivo()){
 				id = daoEmp.create(tEmp);
 				leidoDept.aumentarEmpleados();
 				daoDept.update(leidoDept);
 			}
 		}
 		else{
-			if(!empleado.getActivo() && leidoDept.isActivo()){
+			if(!empleado.getActivo() && leidoDept.getActivo()){
 				empleado.setActivo(true);
 				leidoDept.aumentarEmpleados();
 				daoDept.update(leidoDept);
@@ -35,15 +35,20 @@ public class SAEmpleadosImp implements SAEmpleados {
 		}
 		return id;
 	}
+	
+	//------------------------------------------
 
 	public TEmpleados read(int id) {
-		DAOEmpleados daoEmp = FactoriaIntg.getInstance().generarDAOEmpleados();
-		return daoEmp.read(id);
+		return FactoriaIntg.getInstance().generarDAOEmpleados().read(id);
 	}
+	
+	//------------------------------------------
 
 	public List<TEmpleados> readAll() {
 		return FactoriaIntg.getInstance().generarDAOEmpleados().readAll();
 	}
+	
+	//------------------------------------------
 	
 	public int update(TEmpleados tEmp) {
 		
@@ -69,7 +74,7 @@ public class SAEmpleadosImp implements SAEmpleados {
 				TDept viejo = daoDept.read(empleado.getIdDept());
 				TDept nuevo = daoDept.read(tEmp.getIdDept());
 			
-				if(nuevo.isActivo()){
+				if(nuevo.getActivo()){
 					viejo.disminuirEmpleados();
 					daoDept.update(viejo);
 					nuevo.aumentarEmpleados();
@@ -78,10 +83,8 @@ public class SAEmpleadosImp implements SAEmpleados {
 				else
 					return -1;
 			}
-					
 			
-			
-			if(empleado.getJornada() == 0) {//tiempo parcial
+			if(empleado.getJornada() == 0) { //T.PARCIAL
 				TEmpleadosTP tTP = (TEmpleadosTP) tEmp;
 				TEmpleadosTP empleadoTP = (TEmpleadosTP) empleado;
 				if (tTP.getEurosHora() == 0) {
@@ -91,21 +94,21 @@ public class SAEmpleadosImp implements SAEmpleados {
 					tTP.setEurosHora(empleadoTP.getHoras());
 				}
 			}
-			else{ //tiempo completo
+			else{ //T.COMPLETO
 				TEmpleadosTC tTC = (TEmpleadosTC) tEmp;
 				TEmpleadosTC empleadoTC = (TEmpleadosTC) empleado;
 				if (tTC.getSalario() == 0) {
 					tTC.setSalario(empleadoTC.getSalario());
 				}
-				
 			}
 		}
 		else
 			return -1;
 		
 		return tEmp.getId();
-	
 	}
+	
+	//------------------------------------------
 
 	public int delete(int id) {
 		
@@ -127,7 +130,7 @@ public class SAEmpleadosImp implements SAEmpleados {
 			return -1;
 	}
 	
-	
+	//------------------------------------------
 	
 	public List<TEmpleados> readEmpleadosDeDepartamento(int idDept){
 		
@@ -139,7 +142,6 @@ public class SAEmpleadosImp implements SAEmpleados {
 		}
 		
 		List<TEmpleados> empDept = new ArrayList<TEmpleados>(); 
-		
 		List<TEmpleados> listaEmpleados = daoEmp.readAll();
 		
 		for(TEmpleados emp: listaEmpleados) {
@@ -149,6 +151,5 @@ public class SAEmpleadosImp implements SAEmpleados {
 		}
 		
 		return empDept;
-		
 	}
 }

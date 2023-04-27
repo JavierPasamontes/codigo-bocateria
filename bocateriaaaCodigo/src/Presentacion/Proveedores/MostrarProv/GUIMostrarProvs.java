@@ -50,7 +50,7 @@ public class GUIMostrarProvs extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controlador.getInstance().accion(Eventos.MOSTRAR_PROVS, null);
+				Controlador.getInstance().accion(Eventos.MOSTRAR_PROVEEDORES, null);
 			}
 			
 			

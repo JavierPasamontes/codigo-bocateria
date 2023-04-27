@@ -23,9 +23,11 @@ public class TDept implements Serializable {
 		this.activo = activo;
 	}
 	
+	
 	public Integer getId() {
 		return id;
 	}
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -36,7 +38,6 @@ public class TDept implements Serializable {
 	public void setSede(String sede) {
 		this.sede = sede;
 	}
-	
 	
 	public String getNombre() {
 		return nombre;
@@ -49,31 +50,30 @@ public class TDept implements Serializable {
 	public String getDescripcion() {
 		return descripcion;
 	}
+	
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
-
-	public Boolean isActivo() {
+	public Boolean getActivo() {
 		return activo;
 	}
+	
 	public void setActivo(Boolean activo) {
 		this.activo = activo;
 	}
 
-	
 	public Integer getContEmpleados() {
 		return contEmpleados;
 	}
+	
 	public void setContEmpleados(Integer contEmpleados) {
 		this.contEmpleados = contEmpleados;
 	}
-
 	
 	public void aumentarEmpleados() {
 		this.contEmpleados++;
 	}
-
 	
 	public void disminuirEmpleados() {
 		this.contEmpleados--;
@@ -89,7 +89,6 @@ public class TDept implements Serializable {
 	
 	@Override
 	public boolean equals(Object obj) {
-		
 		if(obj instanceof TDept) {
 			TDept dpt = (TDept) obj;
 			

@@ -82,7 +82,7 @@ class DAODeptImpTest {
 		
 		deptList = daoDept.readAll();
 		assertTrue(deptList.size() == 3); //el tamaño de la lista no disminuye
-		assertTrue(deptList.get(1).isActivo() == false);//el departamento seleccionado 
+		assertTrue(deptList.get(1).getActivo() == false);//el departamento seleccionado 
 	}
 	
 	@Test

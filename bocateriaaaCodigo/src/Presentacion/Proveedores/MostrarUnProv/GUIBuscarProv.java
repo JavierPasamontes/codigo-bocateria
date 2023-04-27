@@ -76,7 +76,7 @@ public class GUIBuscarProv extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(!campoID.getText().equalsIgnoreCase("")) {
-					Controlador.getInstance().accion(Eventos.BUSCAR_PROV , Integer.parseInt(campoID.getText()));
+					Controlador.getInstance().accion(Eventos.BUSCAR_PROVEEDOR , Integer.parseInt(campoID.getText()));
 				}
 			}
 		});

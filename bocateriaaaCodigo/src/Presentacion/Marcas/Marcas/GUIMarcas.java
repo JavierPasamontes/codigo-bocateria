@@ -33,9 +33,6 @@ public class GUIMarcas extends JFrame{
 	static JButton mostrarTodoBoton;
 	static JButton mostrarPorIDBoton;
 	static JButton volverBoton;
-	private GUIAltaMarca GUIAltaMarca;
-	private GUIBajaMarca GUIBajaMarca;
-	private GUIModificarMarca GUIModificarMarca;
 	private GUIMostrarMarcas GUIMostrarMarcas;
 	private GUIMostrarUnaMarca GUIMostrarUnaMarca;
 	
@@ -61,7 +58,7 @@ public class GUIMarcas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIAltaMarca =new GUIAltaMarca();
+				new GUIAltaMarca();
 			}
 			
 			
@@ -72,7 +69,7 @@ public class GUIMarcas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIBajaMarca =new GUIBajaMarca();
+				new GUIBajaMarca();
 			}
 			
 			
@@ -83,7 +80,7 @@ public class GUIMarcas extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GUIModificarMarca =new GUIModificarMarca();
+				new GUIModificarMarca();
 			}
 			
 			

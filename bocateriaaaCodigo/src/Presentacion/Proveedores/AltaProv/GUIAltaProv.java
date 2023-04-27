@@ -101,14 +101,14 @@ public class GUIAltaProv extends JFrame implements ObservadorGUI {
 						TProveedores prov = new TProvNacional(0, campoNombre.getText(),0, true, campoOrigen.getText());
 						prov.setTipo('N');
 						
-						Controlador.getInstance().accion(Eventos.ALTA_PROV, prov);
+						Controlador.getInstance().accion(Eventos.ALTA_PROVEEDOR, prov);
 						dispose();
 					}
 					else {
 						TProveedores prov = new TProvComunitario(0, campoNombre.getText(),0, true, campoOrigen.getText());
 						prov.setTipo('C');
 						
-						Controlador.getInstance().accion(Eventos.ALTA_PROV, prov);
+						Controlador.getInstance().accion(Eventos.ALTA_PROVEEDOR, prov);
 						dispose();
 					}
 				}

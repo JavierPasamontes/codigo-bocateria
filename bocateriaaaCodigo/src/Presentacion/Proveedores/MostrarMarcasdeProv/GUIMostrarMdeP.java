@@ -59,7 +59,7 @@ public class GUIMostrarMdeP extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
-				Controlador.getInstance().accion(Eventos.MOSTRAR_M_DE_P, Integer.parseInt( (id.getText()))) ;
+				Controlador.getInstance().accion(Eventos.MOSTRAR_MARCAS_DE_PROV, Integer.parseInt( (id.getText()))) ;
 				}
 				catch(Exception o){
 					MensajeGUI a = new MensajeGUI();

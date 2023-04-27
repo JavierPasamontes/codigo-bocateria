@@ -5,10 +5,8 @@ package Negocio.Proveedores;
 
 import java.io.Serializable;
 
-import Negocio.Marcas.TMarcas;
-
+@SuppressWarnings("serial")
 public class TProveedores implements Serializable {
-
 	
 	protected Integer id;
 	protected String nombre;
@@ -26,6 +24,7 @@ public class TProveedores implements Serializable {
 			this.contMarcas = 0;
 		this.activo = activo;
 	}
+	
 	
 	public Integer getID() {
 		return this.id;
@@ -51,7 +50,6 @@ public class TProveedores implements Serializable {
 		return this.contMarcas;
 	}
 	
-	
 	public void setId(Integer Id) {
 		this.id = Id;
 	}
@@ -67,8 +65,7 @@ public class TProveedores implements Serializable {
 	public void incrementarMarcas() {
 		this.contMarcas++;
 	}
-
-
+	
 	public void decrementarMarcas() {
 		this.contMarcas--;
 	}
@@ -100,36 +97,8 @@ public class TProveedores implements Serializable {
 	@Override
 	public String toString() {
 		return this.id.toString() + ":" + this.nombre + ":" + getTipo() + ":" + getOrigen() + ":" +getCont().toString() + ":"+ 
-	((this.activo) ? "true" : "false") + "\r\n" ; // el \r\n es para forzar utf8, sino japonés
+	((this.activo) ? "true" : "false") + "\r\n" ;
 				
 	}
-	
-	
-	
-	
-	/*
-	public static TProveedores parseProv(String[] aux) {
-		if(aux[2].equals("N")) {
-			TProveedores prov = new TProvNacional(aux[3]);
-			prov.setId(Integer.parseInt(aux[0]));
-			prov.setNombre(aux[1]);
-			
-			prov.setTipo(aux[2].charAt(0));
-			prov.setCont(Integer.parseInt(aux[4]));
-			
-			return prov;
-		}
-		else {
-			TProveedores prov = new TProvComunitario(aux[3]);
-			prov.setId(Integer.parseInt(aux[0]));
-			prov.setNombre(aux[1]);
-			
-			prov.setTipo(aux[2].charAt(0));
-			prov.setCont(Integer.parseInt(aux[4]));
-			prov.setActivo(Boolean.parseBoolean(aux[5]));
-			return prov;
-		}
-	}
-	*/
 
 }
