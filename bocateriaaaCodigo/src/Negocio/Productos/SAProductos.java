@@ -16,4 +16,6 @@ public interface SAProductos {
 	public int update(TProductos tProd);
 
 	public int delete(int id);
+	
+	public List<TProductos> readProductosDeMarca(int idMarca);
 }

@@ -33,13 +33,13 @@ private final static String _path = "resources/productos/productos.JSON";
 		ArrayList<Integer> ids = new ArrayList<Integer>();
 		
 		for(TProductos producto :prodList) {
-			ids.add(producto.getIdProducto());
+			ids.add(producto.getId());
 		}
 		
 		try (BufferedWriter salida = new BufferedWriter(new FileWriter(_path))) {
 			
-			if(! ids.contains(tProducto.getIdProducto()) ) {
-				if(tProducto.getIdProducto() == null || tProducto.getIdProducto() < 1 || prodList.size() > 1) {//si el departamento no tiene id, se lo asignamos
+			if(! ids.contains(tProducto.getId()) ) {
+				if(tProducto.getId() == null || tProducto.getId() < 1 || prodList.size() > 1) {//si el departamento no tiene id, se lo asignamos
 					
 					boolean hayID = false;
 			
@@ -50,10 +50,10 @@ private final static String _path = "resources/productos/productos.JSON";
 						else hayID = true;
 					}
 					id = pointer;
-					tProducto.setIdProducto(pointer);
+					tProducto.setId(pointer);
 				}
 				else
-					id = tProducto.getIdProducto();
+					id = tProducto.getId();
 				
 				prodList.add(tProducto);
 			
@@ -61,10 +61,10 @@ private final static String _path = "resources/productos/productos.JSON";
 				
 				for(TProductos producto :prodList) {
 					JSONObject o = new JSONObject();
-					o.put("ID", producto.getIdProducto());
-					o.put("NOMBRE", producto.getNombreProducto());
-					o.put("CANTIDAD", producto.getCantidadProducto());
-					o.put("PRECIO", producto.getPrecioProducto());
+					o.put("ID", producto.getId());
+					o.put("NOMBRE", producto.getNombre());
+					o.put("CANTIDAD", producto.getCantidad());
+					o.put("PRECIO", producto.getPrecio());
 					o.put("ACTIVO", producto.getActivo());
 					o.put("ID MARCA", producto.getIDmarca());
 					
@@ -76,7 +76,7 @@ private final static String _path = "resources/productos/productos.JSON";
 				salida.close();
 			}
 			else {
-				throw new IOException("YA EXISTE UN PRODUCTO CON EL ID: " + tProducto.getIdProducto());
+				throw new IOException("YA EXISTE UN PRODUCTO CON EL ID: " + tProducto.getId());
 			}
 
 		} catch (IOException e) {
@@ -98,7 +98,7 @@ private final static String _path = "resources/productos/productos.JSON";
 		boolean salida = false;
 		
 		while (salida == false && i < prodList.size()) {
-			if(prodList.get(i).getIdProducto() == id) {
+			if(prodList.get(i).getId() == id) {
 				producto = prodList.get(i);
 				salida = true;
 			}
@@ -120,7 +120,7 @@ private final static String _path = "resources/productos/productos.JSON";
 		boolean salida = false;
 		
 		while (salida == false && i < prodList.size()) {
-			if(prodList.get(i).getNombreProducto().equalsIgnoreCase(nombre)) {
+			if(prodList.get(i).getNombre().equalsIgnoreCase(nombre)) {
 				producto = prodList.get(i);
 				salida = true;
 			}
@@ -175,10 +175,10 @@ private final static String _path = "resources/productos/productos.JSON";
 		prodList = this.readAll();
 		
 		for(int i = 0; i < prodList.size();i++) {
-			if (prodList.get(i).getIdProducto() == tProducto.getIdProducto()) {
-				prodList.get(i).setNombreProducto(tProducto.getNombreProducto());
-				prodList.get(i).setCantidadProducto(tProducto.getCantidadProducto());
-				prodList.get(i).setPrecioProducto(tProducto.getPrecioProducto());
+			if (prodList.get(i).getId() == tProducto.getId()) {
+				prodList.get(i).setNombre(tProducto.getNombre());
+				prodList.get(i).setCantidad(tProducto.getCantidad());
+				prodList.get(i).setPrecio(tProducto.getPrecio());
 				prodList.get(i).setActivo(tProducto.getActivo());
 				prodList.get(i).setIDmarca(tProducto.getIDmarca());
 				}
@@ -192,7 +192,7 @@ private final static String _path = "resources/productos/productos.JSON";
 			e.printStackTrace();
 		}
 
-		return tProducto.getIdProducto();
+		return tProducto.getId();
 	}
 
 

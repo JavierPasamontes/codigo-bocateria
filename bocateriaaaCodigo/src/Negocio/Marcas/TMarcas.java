@@ -61,11 +61,11 @@ public class TMarcas implements Serializable {
 		this.contProductos = cont;
 	}
 	
-	public void aumentarEmpleados() {
+	public void aumentarProductos() {
 		this.contProductos++;
 	}
 
-	public void disminuirEmpleados() {
+	public void disminuirProductos() {
 		this.contProductos--;
 	}
 	

@@ -161,11 +161,11 @@ public class Eventos {
 
 	// Productos
 
-	public static final int ALTA_PRODUCTOS = 5010;
+	public static final int ALTA_PRODUCTO = 5010;
 
-	public static final int BAJA_PRODUCTOS = 5020;
+	public static final int BAJA_PRODUCTO = 5020;
 
-	public static final int MODIFICAR_PRODUCTOS = 5030;
+	public static final int MODIFICAR_PRODUCTO = 5030;
 
 	public static final int MOSTRAR_PRODUCTO = 5040;
 
@@ -173,17 +173,17 @@ public class Eventos {
 	
 	public static final int MOSTRAR_PRODUCTOS_MARCA = 5050;
 
-	public static final int ALTA_PRODUCTOS_OK = 5011;
+	public static final int ALTA_PRODUCTO_OK = 5011;
 
-	public static final int ALTA_PRODUCTOS_KO = 5012;
+	public static final int ALTA_PRODUCTO_KO = 5012;
 
-	public static final int BAJA_PRODUCTOS_OK = 5021;
+	public static final int BAJA_PRODUCTO_OK = 5021;
 
-	public static final int BAJA_PRODUCTOS_KO = 5022;
+	public static final int BAJA_PRODUCTO_KO = 5022;
 
-	public static final int MODIFICAR_PRODUCTOS_OK = 5031;
+	public static final int MODIFICAR_PRODUCTO_OK = 5031;
 
-	public static final int MODIFICAR_PRODUCTOS_KO = 5032;
+	public static final int MODIFICAR_PRODUCTO_KO = 5032;
 
 	public static final int MOSTRAR_PRODUCTO_OK = 5041;
 

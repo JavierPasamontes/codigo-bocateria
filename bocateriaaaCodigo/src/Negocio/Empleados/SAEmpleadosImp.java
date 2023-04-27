@@ -100,7 +100,8 @@ public class SAEmpleadosImp implements SAEmpleados {
 				
 			}
 		}
-		
+		else
+			return -1;
 		
 		return tEmp.getId();
 	
@@ -111,15 +112,19 @@ public class SAEmpleadosImp implements SAEmpleados {
 		DAOEmpleados daoEmp = FactoriaIntg.getInstance().generarDAOEmpleados();
 		TEmpleados empleado = daoEmp.read(id);
 		
-		DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
-		TDept leidoDept = daoDept.read(empleado.getIdDept());
-		
-		daoEmp.delete(id);
-		
-		leidoDept.disminuirEmpleados();
-		daoDept.update(leidoDept);
-		
-		return id;
+		if(empleado != null && empleado.getActivo()) {
+			DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
+			TDept leidoDept = daoDept.read(empleado.getIdDept());
+			
+			daoEmp.delete(id);
+			
+			leidoDept.disminuirEmpleados();
+			daoDept.update(leidoDept);
+			
+			return id;
+		}
+		else
+			return -1;
 	}
 	
 	
@@ -127,8 +132,9 @@ public class SAEmpleadosImp implements SAEmpleados {
 	public List<TEmpleados> readEmpleadosDeDepartamento(int idDept){
 		
 		DAOEmpleados daoEmp = FactoriaIntg.getInstance().generarDAOEmpleados();
+		DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
 		
-		if(daoEmp.read(idDept) == null) {
+		if(daoDept.read(idDept) == null) {
 			return null;
 		}
 		

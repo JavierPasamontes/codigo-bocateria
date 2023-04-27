@@ -10,6 +10,8 @@ import Negocio.Empleados.TEmpleados;
 import Negocio.Factoria.FactoriaNeg;
 import Negocio.Marcas.SAMarcas;
 import Negocio.Marcas.TMarcas;
+import Negocio.Productos.SAProductos;
+import Negocio.Productos.TProductos;
 import Negocio.Proveedores.SAProv;
 import Negocio.Proveedores.TProveedores;
 import Presentacion.FactoriaGUI.FactoriaGUI;
@@ -18,15 +20,17 @@ public class ControladorIMP extends Controlador {
 
 	public void accion(int evento, Object datos) {
 
+		int resultado;
 		TDept tDept;
 		SADepartamento saDept;
-		int resultado;
 		TProveedores prov;
 		SAProv saProv;
 		TEmpleados tEmp;
 		SAEmpleados saEmp;
-		SAMarcas saMarcas;
 		TMarcas tMarcas;
+		SAMarcas saMarcas;
+		TProductos tProd;
+		SAProductos saProd;
 
 		switch (evento) {
 
@@ -101,127 +105,121 @@ public class ControladorIMP extends Controlador {
 			}
 			break;
 
-			
-			
-			//Proveedores
-			case Eventos.VISTA_PROV:
-				FactoriaGUI.getInstance().generarGUI(evento);
-				break;
-			case Eventos.ALTA_PROV:
-				prov = (TProveedores) datos;
-				
-				saProv = FactoriaNeg.getInstance().generarSAProv();
-				
-				resultado = saProv.create(prov);
-				
-				if (resultado >= 0) {
-					FactoriaGUI.getInstance().actualizar(Eventos.ALTA_PROV_OK, resultado);
-				} else {
-					FactoriaGUI.getInstance().actualizar(Eventos.ALTA_PROV_KO, null);
-				}
-				break;
-			case Eventos.BAJA_PROV:
-				saProv = FactoriaNeg.getInstance().generarSAProv();
+		// Proveedores
+		case Eventos.VISTA_PROV:
+			FactoriaGUI.getInstance().generarGUI(evento);
+			break;
+		case Eventos.ALTA_PROV:
+			prov = (TProveedores) datos;
 
-				resultado = saProv.delete((Integer) datos);
+			saProv = FactoriaNeg.getInstance().generarSAProv();
 
-				if (resultado >= 0) {
-					FactoriaGUI.getInstance().actualizar(Eventos.BAJA_PROV_OK, datos);
-				} else {
-					FactoriaGUI.getInstance().actualizar(Eventos.BAJA_PROV_KO, datos);
-				}
-				break;
-				
-				
-			case Eventos.MODIFICAR_PROV:
+			resultado = saProv.create(prov);
 
-				prov = (TProveedores) datos;
+			if (resultado >= 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.ALTA_PROV_OK, resultado);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.ALTA_PROV_KO, null);
+			}
+			break;
+		case Eventos.BAJA_PROV:
+			saProv = FactoriaNeg.getInstance().generarSAProv();
 
-				saProv = FactoriaNeg.getInstance().generarSAProv();
-				
-				resultado = saProv.update(prov, false);
+			resultado = saProv.delete((Integer) datos);
 
-				if (resultado >= 0) {
-					FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_PROV_OK, prov);
-				} else {
-					FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_PROV_KO, prov);
-				}
-				break;
-				
-			case Eventos.BUSCAR_PROV:
-				saProv = FactoriaNeg.getInstance().generarSAProv();
+			if (resultado >= 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_PROV_OK, datos);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_PROV_KO, datos);
+			}
+			break;
 
-				TProveedores tResultadoP = saProv.read((Integer) datos);
+		case Eventos.MODIFICAR_PROV:
 
-				if (tResultadoP != null) {
-					FactoriaGUI.getInstance().actualizar(Eventos.BUSCAR_PROV_OK, tResultadoP);
-				} else {
-					FactoriaGUI.getInstance().actualizar(Eventos.BUSCAR_PROV_KO, datos);
-				}
-				break;
-				
-			case Eventos.MOSTRAR_PROVS:
+			prov = (TProveedores) datos;
 
-				saProv = FactoriaNeg.getInstance().generarSAProv();
+			saProv = FactoriaNeg.getInstance().generarSAProv();
 
-				List<TProveedores> ltResultado3 = saProv.readAll();
+			resultado = saProv.update(prov, false);
 
-				if (ltResultado3.size() > 0) {
-					FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PROVS_OK, ltResultado3);
-				} else {
-					FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PROVS_KO, null);
-				}
-				break;
-				
-			case Eventos.VINCULAR_MARCA:
+			if (resultado >= 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_PROV_OK, prov);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_PROV_KO, prov);
+			}
+			break;
 
-				TMarcasProv rel = (TMarcasProv) datos;
-				
-				saProv = FactoriaNeg.getInstance().generarSAProv();
-				
-				resultado = saProv.vincularMarca(rel);
-				
-				if (resultado >= 0) {
-					FactoriaGUI.getInstance().actualizar(Eventos.VINCULAR_MARCA_OK, resultado);
-				} else {
-					FactoriaGUI.getInstance().actualizar(Eventos.VINCULAR_MARCA_KO, resultado);
-				}
-				break;
-				
-			case Eventos.DESVINCULAR_MARCA:
-				TMarcasProv rel1 = (TMarcasProv) datos;
-				
-				saProv = FactoriaNeg.getInstance().generarSAProv();
-				
-				resultado = saProv.desvincularMarca(rel1);
-				
-				if (resultado >= 0) {
-					FactoriaGUI.getInstance().actualizar(Eventos.DESVINCULAR_MARCA_OK, resultado);
-				} else {
-					FactoriaGUI.getInstance().actualizar(Eventos.DESVINCULAR_MARCA_KO, resultado);
-				}
-				break;
-				
-			case Eventos.MOSTRAR_M_DE_P:
-				
-				Integer id = (Integer) datos;
-				
-				saProv = FactoriaNeg.getInstance().generarSAProv();
-				
-				List <String> resultadoMP = saProv.mostrarMarcasdeProv(id);
-				
-				if (resultadoMP.size() > 0) {
-					FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_M_DE_P_OK, resultadoMP);
-				} else {
-					FactoriaGUI.getInstance().actualizar(Eventos.VINCULAR_MARCA_KO, resultadoMP);
-				}
-				
-				
-				
-				break;
-			
-				
-		//Parte de empleados del switch
+		case Eventos.BUSCAR_PROV:
+			saProv = FactoriaNeg.getInstance().generarSAProv();
+
+			TProveedores tResultadoP = saProv.read((Integer) datos);
+
+			if (tResultadoP != null) {
+				FactoriaGUI.getInstance().actualizar(Eventos.BUSCAR_PROV_OK, tResultadoP);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.BUSCAR_PROV_KO, datos);
+			}
+			break;
+
+		case Eventos.MOSTRAR_PROVS:
+
+			saProv = FactoriaNeg.getInstance().generarSAProv();
+
+			List<TProveedores> ltResultado3 = saProv.readAll();
+
+			if (ltResultado3.size() > 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PROVS_OK, ltResultado3);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PROVS_KO, null);
+			}
+			break;
+
+		case Eventos.VINCULAR_MARCA:
+
+			TMarcasProv rel = (TMarcasProv) datos;
+
+			saProv = FactoriaNeg.getInstance().generarSAProv();
+
+			resultado = saProv.vincularMarca(rel);
+
+			if (resultado >= 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.VINCULAR_MARCA_OK, resultado);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.VINCULAR_MARCA_KO, resultado);
+			}
+			break;
+
+		case Eventos.DESVINCULAR_MARCA:
+			TMarcasProv rel1 = (TMarcasProv) datos;
+
+			saProv = FactoriaNeg.getInstance().generarSAProv();
+
+			resultado = saProv.desvincularMarca(rel1);
+
+			if (resultado >= 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.DESVINCULAR_MARCA_OK, resultado);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.DESVINCULAR_MARCA_KO, resultado);
+			}
+			break;
+
+		case Eventos.MOSTRAR_M_DE_P:
+
+			Integer id = (Integer) datos;
+
+			saProv = FactoriaNeg.getInstance().generarSAProv();
+
+			List<String> resultadoMP = saProv.mostrarMarcasdeProv(id);
+
+			if (resultadoMP.size() > 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_M_DE_P_OK, resultadoMP);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.VINCULAR_MARCA_KO, resultadoMP);
+			}
+
+			break;
+
+		// Parte de empleados del switch
 		case Eventos.VISTA_EMPLEADOS:
 			FactoriaGUI.getInstance().generarGUI(evento);
 			break;
@@ -245,7 +243,7 @@ public class ControladorIMP extends Controlador {
 
 			saEmp = FactoriaNeg.getInstance().generarSAEmp();
 
-			resultado =  saEmp.delete((Integer) datos);
+			resultado = saEmp.delete((Integer) datos);
 
 			if (resultado >= 0) {
 				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_EMPLEADO_OK, datos);
@@ -258,7 +256,7 @@ public class ControladorIMP extends Controlador {
 			tEmp = (TEmpleados) datos;
 
 			saEmp = FactoriaNeg.getInstance().generarSAEmp();
-			
+
 			resultado = saEmp.update(tEmp);
 
 			if (resultado >= 0) {
@@ -304,12 +302,9 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_POR_DEPARTAMENTO_KO, null);
 			}
 			break;
-		
-			
-			
-			
-		//MARCAS
-			
+
+		// MARCAS
+
 		case Eventos.VISTA_MARCAS:
 			FactoriaGUI.getInstance().generarGUI(evento);
 			break;
@@ -380,10 +375,93 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_MARCAS_KO, null);
 			}
 			break;
-			
-			
-			
+
+		// Parte de productos del switch
+
+		case Eventos.VISTA_PRODUCTOS:
+			FactoriaGUI.getInstance().generarGUI(evento);
+			break;
+
+		case Eventos.ALTA_PRODUCTO:
+
+			tProd = (TProductos) datos;
+
+			saProd = FactoriaNeg.getInstance().generarSAProductos();
+
+			resultado = saProd.create(tProd);
+
+			if (resultado >= 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.ALTA_PRODUCTO_OK, resultado);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.ALTA_PRODUCTO_KO, null);
+			}
+			break;
+
+		case Eventos.BAJA_PRODUCTO:
+
+			saEmp = FactoriaNeg.getInstance().generarSAEmp();
+
+			resultado = saEmp.delete((Integer) datos);
+
+			if (resultado >= 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_PRODUCTO_OK, datos);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_PRODUCTO_KO, datos);
+			}
+			break;
+		case Eventos.MODIFICAR_PRODUCTO:
+
+			tEmp = (TEmpleados) datos;
+
+			saEmp = FactoriaNeg.getInstance().generarSAEmp();
+
+			resultado = saEmp.update(tEmp);
+
+			if (resultado >= 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_PRODUCTO_OK, tEmp);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_PRODUCTO_KO, tEmp);
+			}
+			break;
+		case Eventos.MOSTRAR_PRODUCTO:
+
+			saEmp = FactoriaNeg.getInstance().generarSAEmp();
+
+			TEmpleados tResultado2 = saEmp.read((Integer) datos);
+
+			if (tResultado1 != null) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTO_OK, tResultado1);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTO_KO, datos);
+			}
+			break;
+
+		case Eventos.MOSTRAR_PRODUCTOS:
+
+			saEmp = FactoriaNeg.getInstance().generarSAEmp();
+
+			List<TEmpleados> ltResultado = saEmp.readAll();
+
+			if (ltResultado1.size() > 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_OK, ltResultado1);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_KO, null);
+			}
+			break;
+		case Eventos.MOSTRAR_PRODUCTOS_MARCA:
+
+			saEmp = FactoriaNeg.getInstance().generarSAEmp();
+
+			List<TEmpleados> ltResultado2 = saEmp.readAll();
+
+			if (ltResultado2 != null) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_MARCA_OK, ltResultado2);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_MARCA_KO, null);
+			}
+			break;
+
 		}
-		
+
 	}
 }

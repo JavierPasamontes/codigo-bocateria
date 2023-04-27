@@ -60,14 +60,14 @@ private final static String _path = "resources/productos/productos.JSON";
 		
 		daoProd.create(p3);
 		
-		p3.setNombreProducto("ABC");
-		p3.setPrecioProducto(1.50);
+		p3.setNombre("ABC");
+		p3.setPrecio(1.50);
 		
 		//PRUEBA DE UPDATE()
 		daoProd.update(p3);
 		//comprobamos que funciona el update
-		assertEquals("ABC", daoProd.read(3).getNombreProducto());
-		assertEquals(1.50, daoProd.read(3).getPrecioProducto());
+		assertEquals("ABC", daoProd.read(3).getNombre());
+		assertEquals(1.50, daoProd.read(3).getPrecio());
 		
 		List<TProductos> prodList = new ArrayList<TProductos>();
 		
