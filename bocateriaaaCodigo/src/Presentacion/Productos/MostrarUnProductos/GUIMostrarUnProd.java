@@ -11,6 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import Negocio.Productos.TProductos;
+import Presentacion.Controlador.Controlador;
+import Presentacion.Controlador.Eventos;
 import Presentacion.Marcas.MostrarUnaMarca.GUIMostrarUnaMarca;
 
 @SuppressWarnings("serial")
@@ -65,7 +68,7 @@ public class GUIMostrarUnProd extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(!campoID.getText().equalsIgnoreCase("")) {
-					//Controlador.getInstance().accion(Eventos.MOSTRAR_PRODUCTO, Integer.parseInt(campoID.getText()));
+					Controlador.getInstance().accion(Eventos.MOSTRAR_PRODUCTO, Integer.parseInt(campoID.getText()));
 				}
 			}
 		});
@@ -95,14 +98,14 @@ public class GUIMostrarUnProd extends JFrame{
 
 	}
 	
-	/*
+	
 	public void actualizar(TProductos prod) {
-		idProd.setText("ID: "+prod.getID());
+		idProd.setText("ID: "+prod.getId());
 		nombreProd.setText("Nombre: "+prod.getNombre());
 		cantProd.setText("Cantidad: "+prod.getCantidad());
-		precioProd.setText("Precio: "+prod.getCont());
-		marcaProd.setText("Marca: "+prod.getMarca());
+		precioProd.setText("Precio: "+prod.getPrecio());
+		marcaProd.setText("Marca: "+prod.getIDmarca());
 		initGUI();
 	}
-	*/
+	
 }

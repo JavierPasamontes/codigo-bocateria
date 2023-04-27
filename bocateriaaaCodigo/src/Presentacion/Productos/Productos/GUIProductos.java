@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -13,6 +14,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import Negocio.Productos.TProductos;
+import Presentacion.Controlador.Eventos;
+import Presentacion.Controlador.MensajeGUI;
 import Presentacion.Productos.AltaProductos.*;
 import Presentacion.Productos.BajaProductos.*;
 import Presentacion.Productos.ModificarProducto.*;
@@ -162,7 +166,6 @@ public class GUIProductos extends JFrame{
 		});
 	}
 
-	/*
 	public void actualizar(int evento, Object datos) {
 		MensajeGUI a=new MensajeGUI();
 		switch (evento) {
@@ -185,7 +188,7 @@ public class GUIProductos extends JFrame{
 			a.showMessage("No se ha podido modificar el producto", "Modificar producto", true);
 			break;
 		case Eventos.MOSTRAR_PRODUCTOS_OK:
-			GUIMostrarProds.actualizar((ArrayList<TProductos>)datos);
+			GUIMostrarProductos.actualizar((ArrayList<TProductos>)datos);
 			break;
 		case Eventos.MOSTRAR_PRODUCTOS_KO:
 			a.showMessage("No se pudo mostrar la lista de productos", "Mostrar productos", true);
@@ -196,13 +199,12 @@ public class GUIProductos extends JFrame{
 		case Eventos.MOSTRAR_PRODUCTO_KO:
 			a.showMessage("No se pudo mostrar el producto especificado", "Buscar producto", true);
 			break;
-		case Eventos.MOSTRAR_PROD_DE_MARCA_OK:
-			GUIMostrarProdDeMarca.actualizar((String)datos);
+		case Eventos.MOSTRAR_PRODUCTOS_MARCA_OK:
+			GUIMostrarProdDeMarca.actualizar((ArrayList<String>)datos);
 			break;
-		case Eventos.MOSTRAR_PROD_DE_MARCA_KO:
+		case Eventos.MOSTRAR_PRODUCTOS_MARCA_KO:
 			a.showMessage("No se pudieron mostrar los productos de la marca especificada", "Mostrar Productos de Una Marca", true);
 			break;
 		}
 	}
-	*/
 }

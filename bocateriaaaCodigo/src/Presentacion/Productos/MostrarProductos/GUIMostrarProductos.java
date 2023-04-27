@@ -3,6 +3,7 @@ package Presentacion.Productos.MostrarProductos;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,6 +12,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+
+import Negocio.Productos.TProductos;
+import Presentacion.Controlador.Controlador;
+import Presentacion.Controlador.Eventos;
 
 @SuppressWarnings("serial")
 public class GUIMostrarProductos extends JFrame{
@@ -35,7 +40,7 @@ public class GUIMostrarProductos extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//Controlador.getInstance().accion(Eventos.MOSTRAR_PRODUCTOS, null);
+				Controlador.getInstance().accion(Eventos.MOSTRAR_PRODUCTOS, null);
 			}
 			
 			
@@ -90,18 +95,18 @@ public class GUIMostrarProductos extends JFrame{
 		this.setLocation(400,400);
 	}
 	
-	/*
+	
 	public void actualizar (ArrayList<TProductos> prod){
 		modeloTabla.setRowCount(0);
 		modeloTabla.insertRow(0, new String[] {"ID", "Nombre", "Cantidad", "Precio", "Marca", "Activo"});
 		for (int i = 0; i < prod.size(); i++) {
 				modeloTabla.insertRow(i+1, new Object[] 
-						{ prod.get(i).getID(), prod.get(i).getNombre(), prod.get(i).getCantidad(), prod.get(i).getPrecio(), prod.get(i).getMarca(), prod.get(i).getActivo()});
+						{ prod.get(i).getId(), prod.get(i).getNombre(), prod.get(i).getCantidad(), prod.get(i).getPrecio(), prod.get(i).getIDmarca(), prod.get(i).getActivo()});
 		}
 		tabla.setModel(modeloTabla);
 		this.pack();
 	}
-	*/
+	
 	
 	
 	

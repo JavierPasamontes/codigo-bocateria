@@ -294,7 +294,7 @@ public class ControladorIMP extends Controlador {
 
 			saEmp = FactoriaNeg.getInstance().generarSAEmp();
 
-			List<TEmpleados> ltResultado2 = saEmp.readAll();
+			List<TEmpleados> ltResultado2 = saEmp.readEmpleadosDeDepartamento(resultado);
 
 			if (ltResultado2 != null) {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_POR_DEPARTAMENTO_OK, ltResultado2);

@@ -11,6 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import Negocio.Productos.TProductos;
+import Presentacion.Controlador.Controlador;
+import Presentacion.Controlador.Eventos;
 import Presentacion.Productos.AltaProductos.GUIAltaProductos;
 
 @SuppressWarnings("serial")
@@ -57,7 +60,7 @@ public class GUIModificarProducto extends JFrame{
 		precio.add(campoPrecio);
 		
 		JPanel marca=new JPanel();
-		JLabel marcaLabel=new JLabel("Marca: ");
+		JLabel marcaLabel=new JLabel("Marca(ID): ");
 		campoMarca=new JTextField(12);
 		marca.add(marcaLabel);
 		marca.add(campoMarca);
@@ -84,8 +87,8 @@ public class GUIModificarProducto extends JFrame{
 					correcto=false;
 				}
 				if(correcto) {
-						//Controlador.getInstance().accion(Eventos.MODIFICAR_PRODUCTO, 
-							//new TProducto(campoId.getText(), campoNombre.getText(), campoCantidad.getText(), true, campoPrecio.getText(), campoMarca.getText()));
+						Controlador.getInstance().accion(Eventos.MODIFICAR_PRODUCTO, 
+								new TProductos(Integer.parseInt(campoId.getText()), campoNombre.getText(), Integer.parseInt(campoCantidad.getText()), Double.parseDouble(campoPrecio.getText()), true,Integer.parseInt(campoMarca.getText())));
 						dispose();
 				}
 			}

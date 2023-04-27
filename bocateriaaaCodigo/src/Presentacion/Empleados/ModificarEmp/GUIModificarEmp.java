@@ -21,6 +21,7 @@ import Presentacion.Controlador.Eventos;
 
 @SuppressWarnings("serial")
 public class GUIModificarEmp extends JFrame{
+	private JTextField campoId;
 	private JTextField campoNombre;
 	private JTextField campoApellidos;
 	private JTextField campoDNI;
@@ -42,6 +43,12 @@ public class GUIModificarEmp extends JFrame{
 	public void initGUI() {
 		JPanel p = new JPanel();
 		p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
+		
+		JPanel id=new JPanel();
+		JLabel idLabel=new JLabel("ID: ");
+		campoId=new JTextField(12);
+		id.add(idLabel);
+		id.add(campoId);
 		
 		JPanel nombre=new JPanel();
 		JLabel nombreLabel=new JLabel("Nombre: ");
@@ -155,13 +162,13 @@ public class GUIModificarEmp extends JFrame{
 						else {
 							if(campoEurosHora.getText().equalsIgnoreCase("")) {
 								Controlador.getInstance().accion(Eventos.MODIFICAR_EMPLEADO, 
-										new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),0,0,Integer.parseInt(campoIDdept.getText()), true, 
+										new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),Integer.parseInt(campoId.getText()),0,Integer.parseInt(campoIDdept.getText()), true, 
 												Integer.parseInt(campoHoras.getText()), 0));
 									dispose();
 							}
 							else {
 								Controlador.getInstance().accion(Eventos.MODIFICAR_EMPLEADO, 
-										new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),0,0,Integer.parseInt(campoIDdept.getText()), true, 
+										new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(), Integer.parseInt(campoId.getText()),0,Integer.parseInt(campoIDdept.getText()), true, 
 												Integer.parseInt(campoHoras.getText()), Integer.parseInt(campoEurosHora.getText())));
 									dispose();
 							}
@@ -174,6 +181,7 @@ public class GUIModificarEmp extends JFrame{
 		botones.add(cancelar);
 		botones.add(aceptar);
 		
+		p.add(id);
 		p.add(nombre);
 		p.add(apellidos);
 		p.add(dni);

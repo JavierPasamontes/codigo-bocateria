@@ -11,6 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import Presentacion.Controlador.Controlador;
+import Presentacion.Controlador.Eventos;
+
 @SuppressWarnings("serial")
 public class GUIBajaProductos extends JFrame{
 	private JTextField campoID;
@@ -50,7 +53,7 @@ public class GUIBajaProductos extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(!campoID.getText().equalsIgnoreCase("")) {
-					//Controlador.getInstance().accion(Eventos.BAJA_PRODUCTO, Integer.parseInt(campoID.getText()));
+					Controlador.getInstance().accion(Eventos.BAJA_PRODUCTO, Integer.parseInt(campoID.getText()));
 					dispose();
 				}
 			}

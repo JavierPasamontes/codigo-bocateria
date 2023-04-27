@@ -13,6 +13,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+
+import Presentacion.Controlador.Controlador;
+import Presentacion.Controlador.Eventos;
 import Presentacion.Controlador.MensajeGUI;
 
 @SuppressWarnings("serial")
@@ -45,7 +48,7 @@ public class GUIMostrarProdDeMarca extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-				//Controlador.getInstance().accion(Eventos.MOSTRAR_PRODS_DE_MARCA, Integer.parseInt( (id.getText()))) ;
+				Controlador.getInstance().accion(Eventos.MOSTRAR_PRODUCTOS_MARCA, Integer.parseInt(id.getText())) ;
 				}
 				catch(Exception o){
 					MensajeGUI a = new MensajeGUI();
