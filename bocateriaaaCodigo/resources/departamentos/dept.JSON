@@ -1,1 +1,1 @@
-{"DEPARTAMENTOS":[{"ACTIVO":true,"SEDE":"sede","ID":1,"NOMBRE":"Prueba1","DESC":"Una Descripcion"},{"ACTIVO":true,"SEDE":"sede","ID":2,"NOMBRE":"Prueba2","DESC":"Una Descripcion"}]}
+{"DEPARTAMENTOS":[{"ACTIVO":false,"SEDE":"sede","ID":1,"NOMBRE":"Prueba1","DESC":"Una Descripcion"},{"ACTIVO":true,"SEDE":"sede","ID":2,"NOMBRE":"Prueba2","DESC":"Una Descripcion"}]}
