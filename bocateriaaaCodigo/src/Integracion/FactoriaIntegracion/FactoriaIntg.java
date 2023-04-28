@@ -9,6 +9,7 @@ import Integracion.Marcas.DAOMarcas;
 import Integracion.MarcasProv.DAOProv_Marcas;
 import Integracion.Productos.DAOProductos;
 import Integracion.Proveedores.DAOProv;
+import Integracion.Ventas.DAOVentas;
 
 public abstract class FactoriaIntg {
 	
@@ -33,4 +34,7 @@ public abstract class FactoriaIntg {
 	public abstract DAOProv_Marcas generarDAOProvMarcas();
 	
 	public abstract DAOProductos generarDAOProductos();
+	
+	public abstract DAOVentas generarDAOVentas();
+
 }

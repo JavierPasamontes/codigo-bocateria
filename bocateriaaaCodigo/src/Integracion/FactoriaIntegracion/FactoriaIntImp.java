@@ -8,6 +8,8 @@ import Integracion.Marcas.DAOMarcas;
 import Integracion.Marcas.DAOMarcasImp;
 import Integracion.Proveedores.DAOProv;
 import Integracion.Proveedores.DAOProvImp;
+import Integracion.Ventas.DAOVentas;
+import Integracion.Ventas.DAOVentasImp;
 import Integracion.MarcasProv.*;
 import Integracion.Productos.DAOProductoImp;
 import Integracion.Productos.DAOProductos;
@@ -16,7 +18,6 @@ public class FactoriaIntImp extends FactoriaIntg {
 
 	@Override
 	public DAODept generarDAODepts() {
-		
 		return new DAODeptImp();
 	}
 
@@ -43,6 +44,11 @@ public class FactoriaIntImp extends FactoriaIntg {
 	@Override
 	public DAOProductos generarDAOProductos() {
 		return new DAOProductoImp();
+	}
+
+	@Override
+	public DAOVentas generarDAOVentas() {
+		return new DAOVentasImp();
 	}
 	
 	
