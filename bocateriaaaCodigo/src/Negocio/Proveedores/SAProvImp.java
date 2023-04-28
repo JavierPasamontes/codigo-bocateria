@@ -111,7 +111,7 @@ public class SAProvImp implements SAProv {
 			return -1;
 		}
 		else {
-			if(aux.getCont() == 0) {
+			if(aux.getCont() == 0 && aux.getActivo()) {
 				 FactoriaIntg.getInstance().generarDAOProv().delete(id);
 				 return 0;
 			}

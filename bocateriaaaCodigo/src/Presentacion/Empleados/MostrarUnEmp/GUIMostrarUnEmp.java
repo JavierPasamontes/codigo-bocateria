@@ -112,7 +112,7 @@ public class GUIMostrarUnEmp extends JFrame{
 		dniEmp.setText("DNI: "+emp.getDNI());
 		idDepEmp.setText("ID de su departamento: "+emp.getIdDept());
 		if(emp.getJornada()==1) {
-			salarioEmp.setText("Salario: "+((TEmpleadosTC) emp).getSalario());
+			salarioEmp.setText("Salario: "+((TEmpleadosTC) emp).calcularSalario());
 			horasEmp.setText("Horas: No aplicable");
 			eurosHoraEmp.setText("Euros por hora: No aplicable");
 		}

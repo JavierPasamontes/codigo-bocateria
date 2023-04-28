@@ -74,7 +74,9 @@ public class SADeptImp implements SADepartamento {
 	public int delete(Integer id) {
 		DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
 		
-		if(daoDept.read(id).getContEmpleados() == 0)
+		TDept dept = daoDept.read(id);
+		
+		if(dept.getContEmpleados() == 0 && dept.getActivo() )
 			return daoDept.delete(id);
 		else
 			return -1;

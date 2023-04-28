@@ -172,7 +172,7 @@ public class DAOEmpImp implements DAOEmpleados {
 					TEmpleados empleado = new TEmpleados(nombre, apellidos, dni, auxId, jornada, dept, activo);
 					
 					if(in.has("SALARIO")) { //si es un empleado a tiempo completo 
-						Integer salario = in.getInt("DEPT");
+						Integer salario = in.getInt("SALARIO");
 						empleado = new TEmpleadosTC(nombre, apellidos, dni,auxId,
 								jornada, dept, activo, salario);
 						
