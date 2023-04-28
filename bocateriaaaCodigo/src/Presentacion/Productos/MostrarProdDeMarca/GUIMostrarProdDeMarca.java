@@ -9,11 +9,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
+import Negocio.Productos.TProductos;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
 import Presentacion.Controlador.MensajeGUI;
@@ -24,6 +26,7 @@ public class GUIMostrarProdDeMarca extends JFrame{
 	private DefaultTableModel modeloTabla;
 	private JButton mostrar;
 	private JButton cerrar;
+	private JTextField id;
 	
 	public GUIMostrarProdDeMarca() {
 		super("Mostrar Productos De Una Marca");
@@ -35,7 +38,7 @@ public class GUIMostrarProdDeMarca extends JFrame{
 		p.setLayout(new BorderLayout(10,10));
 		JPanel top = new JPanel();
 		JLabel idLabel = new JLabel("ID Marca: ");
-		JTextField id = new JTextField(7);
+		id = new JTextField(7);
 		
 		top.add(idLabel);
 		top.add(id);
@@ -82,7 +85,14 @@ public class GUIMostrarProdDeMarca extends JFrame{
 		};
 		
 		modeloTabla.setColumnCount(0);
+		modeloTabla.addColumn("ID");
+		modeloTabla.addColumn("Nombre");
+		modeloTabla.addColumn("Cantidad");
+		modeloTabla.addColumn("Precio");
 		modeloTabla.addColumn("Marca");
+		modeloTabla.addColumn("Activo");
+		JScrollPane scroll = new JScrollPane();
+		scroll.setViewportView (tabla);
 		tabla.setModel(modeloTabla);
 		top.add(mostrar);
 		tablaPanel.add(tabla);
@@ -112,16 +122,12 @@ public class GUIMostrarProdDeMarca extends JFrame{
 
 	}
 	
-	public void actualizar (ArrayList<String> prod){
-		modeloTabla.setColumnCount(0);
-		modeloTabla.addColumn("Producto");
+	public void actualizar (ArrayList<TProductos> prod){
 		modeloTabla.setRowCount(0);
-		modeloTabla.insertRow(0, new String[]{"Producto"});
+		modeloTabla.insertRow(0, new String[] {"ID", "Nombre", "Cantidad", "Precio", "Marca", "Activo"});
 		for (int i = 0; i < prod.size(); i++) {
-			if (prod.get(i) instanceof String){
 				modeloTabla.insertRow(i+1, new Object[] 
-						{ prod.get(i).toString()});
-			}
+						{ prod.get(i).getId(), prod.get(i).getNombre(), prod.get(i).getCantidad(), prod.get(i).getPrecio(), prod.get(i).getIDmarca(), prod.get(i).getActivo()});
 		}
 		tabla.setModel(modeloTabla);
 		this.pack();

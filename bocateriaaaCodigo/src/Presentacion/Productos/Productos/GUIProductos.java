@@ -198,7 +198,7 @@ public class GUIProductos extends JFrame{
 			a.showMessage("No se pudo mostrar el producto especificado", "Buscar producto", true);
 			break;
 		case Eventos.MOSTRAR_PRODUCTOS_MARCA_OK:
-			GUIMostrarProdDeMarca.actualizar((ArrayList<String>)datos);
+			GUIMostrarProdDeMarca.actualizar((ArrayList<TProductos>)datos);
 			break;
 		case Eventos.MOSTRAR_PRODUCTOS_MARCA_KO:
 			a.showMessage("No se pudieron mostrar los productos de la marca especificada", "Mostrar Productos de Una Marca", true);
