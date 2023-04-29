@@ -83,7 +83,7 @@ public class GUIModificarProducto extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				boolean correcto=true;
-				if(campoNombre.getText().equalsIgnoreCase("")||campoCantidad.getText().equalsIgnoreCase("")||campoPrecio.getText().equalsIgnoreCase("")||campoMarca.getText().equalsIgnoreCase("")) {
+				if(campoId.getText().equalsIgnoreCase("")) {
 					correcto=false;
 				}
 				if(correcto) {

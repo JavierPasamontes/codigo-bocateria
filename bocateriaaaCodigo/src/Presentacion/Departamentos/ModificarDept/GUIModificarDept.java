@@ -86,9 +86,11 @@ public class GUIModificarDept extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controlador.getInstance().accion(Eventos.MODIFICAR_DEPARTAMENTO, 
-						new TDept(Integer.parseInt(campoID.getText()), campoNombre.getText(), campoSede.getText(),true, campoDesc.getText()));
-				dispose();
+				if(!campoID.getText().equalsIgnoreCase("")) {
+					Controlador.getInstance().accion(Eventos.MODIFICAR_DEPARTAMENTO, 
+							new TDept(Integer.parseInt(campoID.getText()), campoNombre.getText(), campoSede.getText(),true, campoDesc.getText()));
+					dispose();
+				}
 			}
 		});
 		botones.add(cancelar);

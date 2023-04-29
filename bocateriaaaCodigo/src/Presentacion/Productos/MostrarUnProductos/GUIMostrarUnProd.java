@@ -25,7 +25,7 @@ public class GUIMostrarUnProd extends JFrame{
 	private JLabel nombreProd=new JLabel("Nombre: ");
 	private JLabel cantProd=new JLabel("Cantidad: ");
 	private JLabel precioProd=new JLabel("Precio: ");
-	private JLabel marcaProd=new JLabel("Marca: ");
+	private JLabel marcaProd=new JLabel("ID Marca: ");
 	
 	public GUIMostrarUnProd() {
 		super("Mostrar producto por ID");
@@ -104,7 +104,7 @@ public class GUIMostrarUnProd extends JFrame{
 		nombreProd.setText("Nombre: "+prod.getNombre());
 		cantProd.setText("Cantidad: "+prod.getCantidad());
 		precioProd.setText("Precio: "+prod.getPrecio());
-		marcaProd.setText("Marca: "+prod.getIDmarca());
+		marcaProd.setText("ID Marca: "+prod.getIDmarca());
 		initGUI();
 	}
 	

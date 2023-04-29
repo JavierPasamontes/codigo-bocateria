@@ -22,6 +22,7 @@ public class GUIMostrarUnEmp extends JFrame{
 	private JTextField campoID;
 	private JButton cancelar;
 	private JButton aceptar;
+	private JLabel tipoEmp=new JLabel("Tipo: ");
 	private JLabel idEmp=new JLabel("ID: ");
 	private JLabel nombreEmp=new JLabel("Nombre: ");
 	private JLabel apellidoEmp=new JLabel("Apellidos: ");
@@ -48,6 +49,7 @@ public class GUIMostrarUnEmp extends JFrame{
 		
 		JPanel datos=new JPanel();
 		datos.setLayout(new BoxLayout(datos, BoxLayout.Y_AXIS));
+		datos.add(tipoEmp);
 		datos.add(idEmp);
 		datos.add(nombreEmp);
 		datos.add(apellidoEmp);
@@ -112,11 +114,13 @@ public class GUIMostrarUnEmp extends JFrame{
 		dniEmp.setText("DNI: "+emp.getDNI());
 		idDepEmp.setText("ID de su departamento: "+emp.getIdDept());
 		if(emp.getJornada()==1) {
+			tipoEmp.setText("Tipo: Tiempo Completo");
 			salarioEmp.setText("Salario: "+((TEmpleadosTC) emp).calcularSalario());
 			horasEmp.setText("Horas: No aplicable");
 			eurosHoraEmp.setText("Euros por hora: No aplicable");
 		}
 		else {
+			tipoEmp.setText("Tipo: Tiempo Parcial");
 			salarioEmp.setText("Salario: No aplicable");
 			horasEmp.setText("Horas: "+((TEmpleadosTP) emp).getHoras());
 			eurosHoraEmp.setText("Horas: "+((TEmpleadosTP) emp).getEurosHora());

@@ -97,7 +97,7 @@ public class GUIModProv extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 		
 				boolean correcto=true;
-				if(campoNombre.getText().equalsIgnoreCase("")||campoOrigen.getText().equalsIgnoreCase("")) {
+				if(campoID.getText().equalsIgnoreCase("")) {
 					correcto=false;
 				}
 				if(correcto) {

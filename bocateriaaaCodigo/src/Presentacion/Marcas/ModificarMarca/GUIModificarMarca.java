@@ -67,9 +67,11 @@ public class GUIModificarMarca extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controlador.getInstance().accion(Eventos.MODIFICAR_MARCAS, 
-						new TMarcas(Integer.parseInt(campoID.getText()), campoNombre.getText(),true, 0, campoPais.getText()));
-				dispose();
+				if(!campoID.getText().equalsIgnoreCase("")) {
+					Controlador.getInstance().accion(Eventos.MODIFICAR_MARCAS, 
+							new TMarcas(Integer.parseInt(campoID.getText()), campoNombre.getText(),true, 0, campoPais.getText()));
+					dispose();
+				}
 			}
 		});
 		botones.add(cancelar);
