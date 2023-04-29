@@ -85,7 +85,7 @@ public class TProveedores implements Serializable {
 			TProveedores prv = (TProveedores) obj;
 			
 			if(this.id == prv.id && this.nombre.equalsIgnoreCase(prv.nombre) 
-			&& this.activo == prv.activo && this.contMarcas == prv.contMarcas) 
+			&& this.activo == prv.activo && this.contMarcas.equals(prv.contMarcas)) 
 			{
 				return true;
 			}

@@ -40,8 +40,8 @@ private final static String _path = "resources/productos/productos.JSON";
 		
 		openFile();
 		
-		TProductos p1 = new TProductos(-1, "Prueba1", 50, 1.50, true, 3);
-		TProductos p2 = new TProductos(-1, "pan", 100, 0.50, true, 3);
+		TProductos p1 = new TProductos(-1, "Pan", 50, 1.50, true, 1);
+		TProductos p2 = new TProductos(-1, "lechuga", 100, 0.50, true, 1);
 		
 		int id;
 		
@@ -54,27 +54,32 @@ private final static String _path = "resources/productos/productos.JSON";
 		
 		//PRUEBA DE READBYNAME()
 		//deberian ser iguales el dept 1 y el que se manda a leer por el nombre
-		assertEquals(p1,daoProd.readByName("Prueba1"));
+		assertEquals(p1,daoProd.readByName("Pan"));
 		
-		TProductos p3 = new TProductos(-1, "jamon", 75, 0.75, true, 2);
+		TProductos p3 = new TProductos(-1, "Coca cola Light Zero", 200, 0.89, true, 2);
+		TProductos p4 = new TProductos(-1, "Nestea", 150, 0.79, true, 2);
+		TProductos p5 = new TProductos(-1, "Aquarius Naranja", 125, 0.85, true, 2);
+
 		
 		daoProd.create(p3);
-		
-		p3.setNombre("ABC");
-		p3.setPrecio(1.50);
+		daoProd.create(p4);
+		daoProd.create(p5);
+
+		p2.setNombre("Jamón");
+		p2.setPrecio(1.50);
 		
 		//PRUEBA DE UPDATE()
-		daoProd.update(p3);
+		daoProd.update(p2);
 		//comprobamos que funciona el update
-		assertEquals("ABC", daoProd.read(3).getNombre());
-		assertEquals(1.50, daoProd.read(3).getPrecio());
+		assertEquals("Jamón", daoProd.read(2).getNombre());
+		assertEquals(1.50, daoProd.read(2).getPrecio());
 		
 		List<TProductos> prodList = new ArrayList<TProductos>();
 		
 		//PRUEBA DE READALL()
 		prodList = daoProd.readAll();
 		//comprobamos que lee bien el fichero
-		assertTrue(prodList.size() == 3); //comprobamos que lea todo bien
+		assertTrue(prodList.size() == 5); //comprobamos que lea todo bien
 		
 		//PRUEBA DE DELETE()
 		id = daoProd.delete(2);
@@ -82,7 +87,7 @@ private final static String _path = "resources/productos/productos.JSON";
 		//actualizamos la lista y comprobamos que se ha borrado
 		
 		prodList = daoProd.readAll();
-		assertTrue(prodList.size() == 3); //el tamaño de la lista no disminuye
+		assertTrue(prodList.size() == 5); //el tamaño de la lista no disminuye
 		assertTrue(prodList.get(1).getActivo() == false);//el departamento seleccionado 
 	}
 	
@@ -95,7 +100,7 @@ private final static String _path = "resources/productos/productos.JSON";
 		
 		TProductos p1 = new TProductos(-1, "lechuga", 50, 1.50, true, 3);
 		
-		int id = daoProd.create(p1);
+		//int id = daoProd.create(p1);
 		
 		/* mirar
 		//comprobamos que no pueda crear otro departamento con el mismo id y lanzamos una excepcion

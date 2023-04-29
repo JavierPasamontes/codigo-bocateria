@@ -159,7 +159,7 @@ private final static String _path = "resources/productos/productos.JSON";
 			}
 			entrada.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		} 
 
 		return prodList;
@@ -186,7 +186,7 @@ private final static String _path = "resources/productos/productos.JSON";
 				this.create(producto);
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 		return tProducto.getId();

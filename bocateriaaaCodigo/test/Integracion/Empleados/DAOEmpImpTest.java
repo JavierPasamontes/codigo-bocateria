@@ -47,8 +47,8 @@ class DAOEmpImpTest{
 		//jornada == 0 -> Empleado a Tiempo Parcial
 		//jornada == 1-> Empleado a Tiempo Completo
 
-		TEmpleados p1 = new TEmpleadosTC ("Prueba", "numero1", "123X", -1, 1, 1, true, 800);
-		TEmpleados p2 = new TEmpleadosTP ("Prueba", "numero2", "321X", -1, 0, 1, true,4 ,20 );		
+		TEmpleados p1 = new TEmpleadosTC ("Juan Alberto", "García Pradilla", "34234576N", -1, 1, 1, true, 800);
+		TEmpleados p2 = new TEmpleadosTP ("José Luis", "Perales Gutiérrez", "24563187L", -1, 0, 1, true,4 ,20 );		
 		int id;
 		
 		//comprobamos que devuelva el id correcto
@@ -60,7 +60,7 @@ class DAOEmpImpTest{
 		//deberian ser iguales el dept 1 y el que se manda a leer por el nombre
 		//assertEquals(p1,daoMarca.readByName("Prueba1"));
 		
-		TEmpleados p3 = new TEmpleadosTC ("Prueba", "numero3", "132X", -1, 1, 1, true, 1000);
+		TEmpleados p3 = new TEmpleadosTC ("Laura", "Pérez Muñoz", "43662196P", -1, 1, 2, true, 1000);
 		
 		daoEmp.create(p3);
 		

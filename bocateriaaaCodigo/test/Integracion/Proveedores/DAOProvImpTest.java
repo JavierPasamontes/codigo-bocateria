@@ -47,8 +47,8 @@ class DAOProvImpTest {
 		
 		openFile();
 
-		TProveedores p1 = new TProvComunitario (-1, "Prueba1", 0, true, "Italia");
-		TProveedores p2 = new TProvNacional (-1, "Prueba2", 0, true, "Huelva");
+		TProveedores p1 = new TProvComunitario (-1, "Prueba1", 2, true, "Italia");
+		TProveedores p2 = new TProvNacional (-1, "Prueba2", 1, true, "Huelva");
 		int id;
 		
 		//comprobamos que devuelva el id correcto
@@ -60,7 +60,7 @@ class DAOProvImpTest {
 		//deberian ser iguales el dept 1 y el que se manda a leer por el nombre
 		//assertEquals(p1,daoMarca.readByName("Prueba1"));
 		
-		TProveedores p3 = new TProvComunitario (-1, "Prueba3", 0, true, "Alemania");
+		TProveedores p3 = new TProvComunitario (-1, "Prueba3", 3, true, "Alemania");
 		
 		daoProv.create(p3);
 		

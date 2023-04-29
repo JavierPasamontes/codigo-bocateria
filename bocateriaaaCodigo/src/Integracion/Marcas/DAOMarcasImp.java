@@ -80,7 +80,7 @@ public class DAOMarcasImp implements DAOMarcas {
 			}
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 					
 		return id;
@@ -162,7 +162,7 @@ public class DAOMarcasImp implements DAOMarcas {
 			}
 			entrada.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		} 
 
 		return marcaList;
@@ -188,7 +188,7 @@ public class DAOMarcasImp implements DAOMarcas {
 				this.create(marca);
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 		return tMarca.getID();

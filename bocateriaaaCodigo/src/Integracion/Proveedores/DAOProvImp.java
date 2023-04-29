@@ -95,7 +95,7 @@ public class DAOProvImp implements DAOProv {
 			}
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 					
 		return id;
@@ -188,7 +188,7 @@ public class DAOProvImp implements DAOProv {
 			}
 			entrada.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		} 
 
 		return provList;
@@ -223,7 +223,7 @@ public class DAOProvImp implements DAOProv {
 				this.create(proveedor);
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 		return tProv.getID();

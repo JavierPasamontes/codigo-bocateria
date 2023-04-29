@@ -94,7 +94,7 @@ public class DAOVentasImp implements DAOVentas {
 			}
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 					
 		return id;
@@ -158,7 +158,7 @@ public class DAOVentasImp implements DAOVentas {
 						
 						TProductos producto = new TProductos(prodId, nombre, numProd, precio, activo, marcaId);
 						// leemos el id y lo insertamos en la lista
-						prodList.add(producto);
+						prodList.add(producto); 
 					}
 					
 					
@@ -170,11 +170,10 @@ public class DAOVentasImp implements DAOVentas {
 			}
 			entrada.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		} 
 
 		return ventList;
-
 	}
 
 	@Override
@@ -189,6 +188,7 @@ public class DAOVentasImp implements DAOVentas {
 				ventList.get(i).setFechaVenta(tVenta.getFechaVenta());
 				ventList.get(i).setPrecioFinal(tVenta.getPrecioFinal());
 				ventList.get(i).setListaProductos(tVenta.getListaProductos());
+				ventList.get(i).setAbierto(tVenta.getAbierto());
 				}
 		}
 
@@ -206,16 +206,27 @@ public class DAOVentasImp implements DAOVentas {
 
 	@Override
 	public int delete(int id) {
-
-	TVentas eliminado = read(id);
+		TVentas eliminado = read(id);
 		
-		//Para modificar y poner el activo a false
-		//eliminado.setActivo(false);
+		// Para eliminar
+		if (eliminado != null) {
+			List<TVentas> ventList = this.readAll();
+			
 		
-		this.update(eliminado);
+			ventList.remove(eliminado);
+					
+			try(BufferedWriter salida = new BufferedWriter(new FileWriter(_path)))
+			{ //sobrescribimos el archivo de texto
+				for(TVentas venta : ventList) {
+					this.create(venta);
+				}
+			}
+			catch(IOException e) {
+				//e.printStackTrace();
+			}
+		}
 		
 		return id;
-
 	}
 
 

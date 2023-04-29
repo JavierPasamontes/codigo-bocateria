@@ -86,8 +86,8 @@ public class TProductos implements Serializable {
 			TProductos prd = (TProductos) obj;
 			
 			if(this.id == prd.id && this.nombre.equalsIgnoreCase(prd.nombre) 
-				&& this.cantidad == prd.cantidad && this.precio == prd.precio
-				&& this.activo == prd.activo && this.IDmarca == prd.IDmarca)
+				&& this.cantidad.equals(prd.cantidad) && this.precio.equals(prd.precio)
+				&& this.activo == prd.activo && this.IDmarca.equals(prd.IDmarca))
 			{
 				return true;
 			}

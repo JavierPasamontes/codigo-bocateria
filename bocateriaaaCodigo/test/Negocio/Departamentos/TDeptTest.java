@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Negocio.Departamentos;
 
 import static org.junit.Assert.assertTrue;

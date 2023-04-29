@@ -35,8 +35,8 @@ private final static String _path = "resources/marcas/marcas.JSON";
 		
 		openFile();
 		
-		TMarcas p1 = new TMarcas(1, "Prueba1", true, 0,"Italia");
-		TMarcas p2 = new TMarcas(2, "Prueba2", true, 0,"Suiza");		
+		TMarcas p1 = new TMarcas(-1, "Hacendado", true, 0,"España");
+		TMarcas p2 = new TMarcas(-1, "Coca-Cola", true, 0,"España");		
 		int id;
 		
 		//comprobamos que devuelva el id correcto
@@ -48,15 +48,15 @@ private final static String _path = "resources/marcas/marcas.JSON";
 		//deberian ser iguales el dept 1 y el que se manda a leer por el nombre
 		//assertEquals(p1,daoMarca.readByName("Prueba1"));
 		
-		TMarcas p3 = new TMarcas(3, "Prueba3", true, 0,"Eslovenia");		
+		TMarcas p3 = new TMarcas(3, "El Pozo", true, 0,"España");		
 		
 		daoMarca.create(p3);
 		
-		p3.setNombre("ABC");
+		p3.setNombre("Pepsi");
 		
 		daoMarca.update(p3);
 		//comprobamos que funciona el update
-		assertEquals("ABC", daoMarca.read(3).getNombre());
+		assertEquals("Pepsi", daoMarca.read(3).getNombre());
 	//	assertEquals("nuevaSede", daoMarca.read(3).getSede());
 		
 		List<TMarcas> marcaList = new ArrayList<TMarcas>();

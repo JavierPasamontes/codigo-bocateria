@@ -50,7 +50,7 @@ public class DAOProv_MarcasImp implements DAOProv_Marcas{
 			salida.close();
 		} catch (IOException e) {
 
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return 1;
 	}
@@ -87,7 +87,7 @@ public class DAOProv_MarcasImp implements DAOProv_Marcas{
 			salida.write(out.toString());
 			salida.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
 		return 0;
@@ -123,7 +123,7 @@ public class DAOProv_MarcasImp implements DAOProv_Marcas{
 			}
 			entrada.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		} 
 		return relacion;
 	}

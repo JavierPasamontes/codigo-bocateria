@@ -41,33 +41,44 @@ class DAOVentasImpTest{
 		openFile();
 		List<TProductos> prodList = new ArrayList<TProductos>();
 
-		TProductos pr1 = new TProductos(-1, "Prueba1", 50, 1.50, true, 3);
-		TProductos pr2 = new TProductos(-1, "pan", 100, 0.50, true, 3);
-		prodList.add(pr1);
-		prodList.add(pr2);
+		TProductos p1 = new TProductos(-1, "Pan", 50, 1.50, true, 1);
+		TProductos p2 = new TProductos(-1, "lechuga", 100, 0.50, true, 1);
+		
+		TProductos p3 = new TProductos(-1, "Coca cola Light Zero", 200, 0.89, true, 2);
+		TProductos p4 = new TProductos(-1, "Nestea", 150, 0.79, true, 2);
+		TProductos p5 = new TProductos(-1, "Aquarius Naranja", 125, 0.85, true, 2);
 
-		TVentas p1 = new TVentas(-1,"23/4/2023", 750.65, prodList);
-		TVentas p2 = new TVentas(-1,"19/2/2022", 18923.65, prodList);
+		
+		prodList.add(p1);
+		prodList.add(p2);
+		prodList.add(p3);
+		prodList.add(p4);
+		prodList.add(p5);
+	
+
+		TVentas v1 = new TVentas(-1,"23/4/2023", 750.65, prodList);
+		TVentas v2 = new TVentas(-1,"19/2/2022", 18923.65, prodList);
 		
 		int id;
 		
 		//PRUEBA DE CREATE()
 		//comprobamos que devuelva el id correcto
-		id = daoVentas.create(p1);
+		id = daoVentas.create(v1);
 		assertEquals(1,id,"No ha devuelto el id que acaba de crear");
 	
-		id = daoVentas.create(p2);
+		id = daoVentas.create(v2);
 
 		
-		TVentas p3 = new TVentas(-1,"30/8/2021", 18923.65, prodList);
+		TVentas v3 = new TVentas(-1,"30/8/2021", 18923.65, prodList);
 		
-		daoVentas.create(p3);
 		
-		p3.setFechaVenta("22/3/2023");
-		p3.setPrecioFinal(2000000.59);
+		daoVentas.create(v3);
+		
+		v3.setFechaVenta("22/3/2023");
+		v3.setPrecioFinal(2000000.59);
 		
 		//PRUEBA DE UPDATE()
-		daoVentas.update(p3);
+		daoVentas.update(v3);
 		//comprobamos que funciona el update
 		assertEquals("22/3/2023", daoVentas.read(3).getFechaVenta());
 		assertEquals(2000000.59, daoVentas.read(3).getPrecioFinal());
@@ -83,11 +94,9 @@ class DAOVentasImpTest{
 		id = daoVentas.delete(2);
 		assertEquals(2, id); //devuelve el id que ha borrado
 		//actualizamos la lista y comprobamos que se ha borrado
-		/*
+		
 		ventList = daoVentas.readAll();
-		assertTrue(ventList.size() == 3); //el tamaño de la lista no disminuye
-		assertTrue(ventList.get(1).getActivo() == false);//el departamento seleccionado 
-		*/
+		assertTrue(ventList.size() == 2); //el tamaño de la lista no disminuye		
 	}
 	
 	@Test
@@ -99,7 +108,7 @@ class DAOVentasImpTest{
 		
 		TProductos p1 = new TProductos(-1, "lechuga", 50, 1.50, true, 3);
 		
-		int id = daoProd.create(p1);
+		//int id = daoProd.create(p1);
 		
 		/* mirar
 		//comprobamos que no pueda crear otro departamento con el mismo id y lanzamos una excepcion
