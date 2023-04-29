@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import Negocio.Departamentos.TDept;
@@ -51,9 +52,6 @@ public class DAODeptImp implements DAODept {
 				}
 				else
 					id = tDept.getId();
-
-				
-				tDept.aumentarEmpleados();
 				
 				deptList.add(tDept);
 			
@@ -66,6 +64,7 @@ public class DAODeptImp implements DAODept {
 					o.put("SEDE", dept.getSede());
 					o.put("ACTIVO", dept.getActivo());
 					o.put("DESC", dept.getDescripcion());
+					o.put("NUMEMP", dept.getContEmpleados());
 					
 					depts.put(o);
 				}
@@ -78,8 +77,8 @@ public class DAODeptImp implements DAODept {
 				throw new IOException("YA EXISTE ALGUIEN CON EL ID: " + tDept.getId());
 			}
 
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("Base de datos de departamentos creada");
 		}
 					
 		return id;
@@ -152,8 +151,10 @@ public class DAODeptImp implements DAODept {
 					String sede = in.getString("SEDE");
 					String descripcion =  in.getString("DESC");;
 					Boolean activo = in.getBoolean("ACTIVO");
+					Integer numEmp = in.getInt("NUMEMP");
 					
 					TDept departamento = new TDept(auxId, nombre, sede, activo, descripcion);
+					departamento.setContEmpleados(numEmp);
 					// leemos el id y lo insertamos en la lista
 					deptList.add(departamento);
 				}

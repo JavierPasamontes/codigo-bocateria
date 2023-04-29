@@ -93,4 +93,10 @@ public class TVentas implements Serializable {
 		else return false;
 	}
 
+
+	public void setListaProductos(List<TProductos> listaProductos2) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

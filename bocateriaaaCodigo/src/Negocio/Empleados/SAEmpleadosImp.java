@@ -55,54 +55,59 @@ public class SAEmpleadosImp implements SAEmpleados {
 		DAOEmpleados daoEmp = FactoriaIntg.getInstance().generarDAOEmpleados();
 		
 		TEmpleados empleado = daoEmp.read(tEmp.getId());
-		
-		if(empleado.getActivo()){
-			if (!tEmp.getNombre().isEmpty())
-				empleado.setNombre(tEmp.getNombre());
-			
-			if (!tEmp.getApellidos().isEmpty())
-				empleado.setApellidos(tEmp.getApellidos());
-			
-			if (!tEmp.getDNI().isEmpty())
-				empleado.setDNI(tEmp.getDNI());
-			
-			if (tEmp.getIdDept() != null) {
-				empleado.setIdDept(tEmp.getIdDept());
+		if(empleado != null)
+		{
+			if(empleado.getActivo()){
+				if (!tEmp.getNombre().isEmpty())
+					empleado.setNombre(tEmp.getNombre());
 				
-				DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
-				TDept viejo = daoDept.read(empleado.getIdDept());
-				TDept nuevo = daoDept.read(tEmp.getIdDept());
-			
-				if(nuevo.getActivo()){
-					viejo.disminuirEmpleados();
-					daoDept.update(viejo);
-					nuevo.aumentarEmpleados();
-					daoDept.update(nuevo);
+				if (!tEmp.getApellidos().isEmpty())
+					empleado.setApellidos(tEmp.getApellidos());
+				
+				if (!tEmp.getDNI().isEmpty())
+					empleado.setDNI(tEmp.getDNI());
+				
+				if (tEmp.getIdDept() != null) {
+					empleado.setIdDept(tEmp.getIdDept());
+					
+					DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
+					TDept viejo = daoDept.read(empleado.getIdDept());
+					TDept nuevo = daoDept.read(tEmp.getIdDept());
+				
+					if(nuevo.getActivo()){
+						viejo.disminuirEmpleados();
+						daoDept.update(viejo);
+						nuevo.aumentarEmpleados();
+						daoDept.update(nuevo);
+					}
+					else
+						return -1;
 				}
-				else
-					return -1;
+				
+				if(empleado.getJornada() == 0) { //T.PARCIAL
+					TEmpleadosTP tTP = (TEmpleadosTP) tEmp;
+					TEmpleadosTP empleadoTP = (TEmpleadosTP) empleado;
+					if (tTP.getEurosHora() != 0) {
+						empleadoTP.setEurosHora(tTP.getEurosHora());
+					}
+					if (tTP.getHoras() != 0) {
+						empleadoTP.setEurosHora(tTP.getHoras());
+					}
+				}
+				else{ //T.COMPLETO
+					TEmpleadosTC tTC = (TEmpleadosTC) tEmp;
+					TEmpleadosTC empleadoTC = (TEmpleadosTC) empleado;
+					if (tTC.getSalario() != 0) {
+						empleadoTC.setSalario(tTC.getSalario());
+					}
+				}
 			}
-			
-			if(empleado.getJornada() == 0) { //T.PARCIAL
-				TEmpleadosTP tTP = (TEmpleadosTP) tEmp;
-				TEmpleadosTP empleadoTP = (TEmpleadosTP) empleado;
-				if (tTP.getEurosHora() != 0) {
-					empleadoTP.setEurosHora(tTP.getEurosHora());
-				}
-				if (tTP.getHoras() != 0) {
-					empleadoTP.setEurosHora(tTP.getHoras());
-				}
-			}
-			else{ //T.COMPLETO
-				TEmpleadosTC tTC = (TEmpleadosTC) tEmp;
-				TEmpleadosTC empleadoTC = (TEmpleadosTC) empleado;
-				if (tTC.getSalario() != 0) {
-					empleadoTC.setSalario(tTC.getSalario());
-				}
-			}
+			else
+				return -1;
 		}
 		else
 			return -1;
+		
 		
 		return daoEmp.update(empleado);
 	}

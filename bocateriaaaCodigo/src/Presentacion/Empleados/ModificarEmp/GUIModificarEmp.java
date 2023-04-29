@@ -136,7 +136,7 @@ public class GUIModificarEmp extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				boolean correcto=true;
-				if(campoNombre.getText().equalsIgnoreCase("")||campoApellidos.getText().equalsIgnoreCase("")||campoDNI.getText().equalsIgnoreCase("")||campoSalario.getText().equalsIgnoreCase("")||campoIDdept.getText().equalsIgnoreCase("")) {
+				if(campoId.getText().equalsIgnoreCase("")) {
 					correcto=false;
 				}
 				if(correcto) {
@@ -198,16 +198,4 @@ public class GUIModificarEmp extends JFrame{
 		this.setLocation(400,400);
 	}
 	
-	public static void main(String[] args) {
-
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				new GUIModificarEmp();
-			}
-		});
-
-
-	}
 }

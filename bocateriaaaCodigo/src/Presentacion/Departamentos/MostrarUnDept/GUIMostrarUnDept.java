@@ -36,6 +36,7 @@ public class GUIMostrarUnDept extends JFrame {
 	private JLabel nombreDep=new JLabel("Nombre: ");
 	private JLabel sedeDep=new JLabel("Sede: ");
 	private JLabel descDep=new JLabel("Descripcion: ");
+	private JLabel numEmp=new JLabel("Numero de empleados: ");
 	
 	public GUIMostrarUnDept() {
 		super("Mostrar Departamento por ID");
@@ -58,6 +59,7 @@ public class GUIMostrarUnDept extends JFrame {
 		datos.add(nombreDep);
 		datos.add(sedeDep);
 		datos.add(descDep);
+		datos.add(numEmp);
 		
 		JPanel botones=new JPanel();
 		cancelar=new JButton("Cancelar");
@@ -94,181 +96,13 @@ public class GUIMostrarUnDept extends JFrame {
 		this.setLocation(400,400);
 	}
 	
-	public static void main(String[] args) {
-
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				new GUIMostrarUnDept();
-			}
-		});
-
-
-	}
-	
 	public void actualizar(TDept dept) {
 		idDep.setText("ID: "+dept.getId());
 		nombreDep.setText("Nombre: "+dept.getNombre());
 		sedeDep.setText("Sede: "+dept.getSede());
 		descDep.setText("Descripcion: "+dept.getDescripcion());
+		numEmp.setText("Numero de empleados: "+ dept.getContEmpleados() );
 		initGUI();
 	}
 	
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	private Object id;
-
-	/** 
-	* @return the id
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public Object getId() {
-		// begin-user-code
-		return id;
-		// end-user-code
-	}
-
-	/** 
-	* @param id the id to set
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void setId(Object id) {
-		// begin-user-code
-		this.id = id;
-		// end-user-code
-	}
-
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	private JButton jButton;
-
-	/** 
-	* @return the jButton
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public JButton getjButton() {
-		// begin-user-code
-		return jButton;
-		// end-user-code
-	}
-
-	/** 
-	* @param jButton the jButton to set
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void setjButton(JButton jButton) {
-		// begin-user-code
-		this.jButton = jButton;
-		// end-user-code
-	}
-
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	private JLabel jLabel;
-
-	/** 
-	* @return the jLabel
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public JLabel getjLabel() {
-		// begin-user-code
-		return jLabel;
-		// end-user-code
-	}
-
-	/** 
-	* @param jLabel the jLabel to set
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void setjLabel(JLabel jLabel) {
-		// begin-user-code
-		this.jLabel = jLabel;
-		// end-user-code
-	}
-
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	private JTextField jTextField;
-
-	/** 
-	* @return the jTextField
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public JTextField getjTextField() {
-		// begin-user-code
-		return jTextField;
-		// end-user-code
-	}
-
-	/** 
-	* @param jTextField the jTextField to set
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void setjTextField(JTextField jTextField) {
-		// begin-user-code
-		this.jTextField = jTextField;
-		// end-user-code
-	}
-
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	private JPanel jPanel;
-
-	/** 
-	* @return the jPanel
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public JPanel getjPanel() {
-		// begin-user-code
-		return jPanel;
-		// end-user-code
-	}
-
-	/** 
-	* @param jPanel the jPanel to set
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void setjPanel(JPanel jPanel) {
-		// begin-user-code
-		this.jPanel = jPanel;
-		// end-user-code
-	}
-
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void iniGUI() {
-		// begin-user-code
-
-		// end-user-code
-	}
-
-	/** 
-	* <!-- begin-UML-doc -->
-	* <!-- end-UML-doc -->
-	* @generated "UML to Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-	*/
-	public void resetGUI() {
-		// begin-user-code
-
-		// end-user-code
-	}
 }
