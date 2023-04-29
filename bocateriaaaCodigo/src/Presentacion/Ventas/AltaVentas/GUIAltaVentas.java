@@ -56,7 +56,7 @@ public class GUIAltaVentas extends JFrame{
 				if(correcto) {
 					Date date = new Date();
 						//Controlador.getInstance().accion(Eventos.ALTA_VENTAS, 
-							//new TVentas(0, campoIdEmp.getText(), date.toString(), 0,null));
+							//new TVentas(0, campoIdEmp.getText(), "", 0,null));
 						dispose();
 				}
 			}
