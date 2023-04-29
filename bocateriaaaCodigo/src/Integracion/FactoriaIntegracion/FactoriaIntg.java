@@ -36,4 +36,8 @@ public abstract class FactoriaIntg {
 	public abstract DAOProductos generarDAOProductos();
 	
 	public abstract DAOVentas generarDAOVentas();
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/JavierPasamontes/codigo-bocateria.git
 }

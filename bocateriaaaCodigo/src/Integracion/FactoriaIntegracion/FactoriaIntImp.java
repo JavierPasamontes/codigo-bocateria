@@ -18,7 +18,6 @@ public class FactoriaIntImp extends FactoriaIntg {
 
 	@Override
 	public DAODept generarDAODepts() {
-		
 		return new DAODeptImp();
 	}
 
