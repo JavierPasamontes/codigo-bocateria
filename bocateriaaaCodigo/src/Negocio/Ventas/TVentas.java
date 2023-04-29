@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Negocio.Ventas;
 
 import java.io.Serializable;
@@ -8,12 +5,16 @@ import java.util.List;
 
 import Negocio.Productos.TProductos;
 
+@SuppressWarnings("serial")
 public class TVentas implements Serializable {
 
 	private int id;
+	private int idEmpleado;
 	private String fechaVenta;
 	private double precioFinal;
 	private List<TProductos> listaProductos;
+	private Boolean abierto;
+	
 	
 	public TVentas(int id, String fecha, double precio, List<TProductos> listaProductos){
 		this.id = id;
@@ -39,7 +40,6 @@ public class TVentas implements Serializable {
 		this.fechaVenta = fechaVenta;
 	}
 
-
 	public Double getPrecioFinal() {
 		return precioFinal;
 	}
@@ -48,13 +48,32 @@ public class TVentas implements Serializable {
 		this.precioFinal = precioFinal;
 	}
 
-
 	public List<TProductos> getListaProductos() {
 		return listaProductos;
 	}
+	
+	public Boolean getAbierto() {
+		return abierto;
+	}
 
-	public void setListaProductos(List<TProductos> listaProductos) {
-		this.listaProductos = listaProductos;
+	public void setAbierto(Boolean abierto) {
+		this.abierto = abierto;
+	}
+	
+	public int getIdEmpleado() {
+		return idEmpleado;
+	}
+
+	public void setIdEmpleado(int idEmpleado) {
+		this.idEmpleado = idEmpleado;
+	}
+	
+	public void agregarProducto(TProductos prod) {
+		listaProductos.add(prod);
+	}
+	
+	public void eliminarProducto(TProductos prod) {
+		listaProductos.remove(prod);
 	}
 	
 	@Override
@@ -73,7 +92,7 @@ public class TVentas implements Serializable {
 		else return false;
 	}
 
-	
+
 
 
 }

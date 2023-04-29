@@ -1,17 +1,30 @@
-/**
- * 
- */
 package Negocio.Ventas;
+
+import java.util.List;
+import java.util.Map;
+
+import Negocio.Productos.TProductos;
 
 public interface SAVentas {
 
-	public void create();
+	public Integer create(TVentas tVenta);
 
-	public void read();
+	public TVentas read(Integer id);
 
-	public void readAll();
+	public List<TVentas> readAll();
 
-	public void update();
+	public Integer update(TVentas tVenta);
 
-	public void delete();
+	public Integer delete(Integer id);
+	
+	public Integer agregarProd(Map<Integer, List<TProductos>> datos);
+	
+	public Integer eliminarProd(Map<Integer, List<TProductos>> datos);
+	
+	public Integer cerrar(Integer id);
+	
+	public List<TVentas> mostrarVentasEmp(Integer idEmp);
+	
+	public List<TProductos> mostrarProductosVenta(Integer idVenta);
+	
 }

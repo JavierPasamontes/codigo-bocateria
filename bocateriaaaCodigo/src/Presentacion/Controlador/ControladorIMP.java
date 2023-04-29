@@ -1,6 +1,7 @@
 package Presentacion.Controlador;
 
 import java.util.List;
+import java.util.Map;
 
 import Integracion.MarcasProv.TMarcasProv;
 import Negocio.Departamentos.SADepartamento;
@@ -14,6 +15,8 @@ import Negocio.Productos.SAProductos;
 import Negocio.Productos.TProductos;
 import Negocio.Proveedores.SAProv;
 import Negocio.Proveedores.TProveedores;
+import Negocio.Ventas.SAVentas;
+import Negocio.Ventas.TVentas;
 import Presentacion.FactoriaGUI.FactoriaGUI;
 
 public class ControladorIMP extends Controlador {
@@ -31,13 +34,13 @@ public class ControladorIMP extends Controlador {
 		SAMarcas saMarcas;
 		TProductos tProd;
 		SAProductos saProd;
+		TVentas tVentas;
+		SAVentas saVentas;
 
 		switch (evento) {
-		
-		
-		//DEPARTAMENTOS----------------------------------------
 
-		
+		// DEPARTAMENTOS----------------------------------------
+
 		case Eventos.VISTA_DEPARTAMENTOS:
 			FactoriaGUI.getInstance().generarGUI(evento);
 			break;
@@ -109,14 +112,12 @@ public class ControladorIMP extends Controlador {
 			}
 			break;
 
-			
-		//PROVEEDORES----------------------------------------
-			
-			
+		// PROVEEDORES----------------------------------------
+
 		case Eventos.VISTA_PROVEEDOR:
 			FactoriaGUI.getInstance().generarGUI(evento);
 			break;
-			
+
 		case Eventos.ALTA_PROVEEDOR:
 			tProv = (TProveedores) datos;
 			saProv = FactoriaNeg.getInstance().generarSAProv();
@@ -129,7 +130,7 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.ALTA_PROVEEDOR_KO, null);
 			}
 			break;
-			
+
 		case Eventos.BAJA_PROVEEDOR:
 			saProv = FactoriaNeg.getInstance().generarSAProv();
 			resultado = saProv.delete((Integer) datos);
@@ -156,7 +157,7 @@ public class ControladorIMP extends Controlador {
 
 		case Eventos.BUSCAR_PROVEEDOR:
 			saProv = FactoriaNeg.getInstance().generarSAProv();
-			
+
 			tProv = saProv.read((Integer) datos);
 
 			if (tProv != null) {
@@ -218,10 +219,8 @@ public class ControladorIMP extends Controlador {
 			}
 			break;
 
-			
-		//EMPLEADOS----------------------------------------
-			
-			
+		// EMPLEADOS----------------------------------------
+
 		case Eventos.VISTA_EMPLEADOS:
 			FactoriaGUI.getInstance().generarGUI(evento);
 			break;
@@ -250,7 +249,7 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_EMPLEADO_KO, datos);
 			}
 			break;
-			
+
 		case Eventos.MODIFICAR_EMPLEADO:
 			tEmp = (TEmpleados) datos;
 			saEmp = FactoriaNeg.getInstance().generarSAEmp();
@@ -263,7 +262,7 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_EMPLEADO_KO, tEmp);
 			}
 			break;
-			
+
 		case Eventos.MOSTRAR_EMPLEADO:
 			saEmp = FactoriaNeg.getInstance().generarSAEmp();
 
@@ -287,7 +286,7 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_EMPLEADOS_KO, null);
 			}
 			break;
-			
+
 		case Eventos.MOSTRAR_EMPLEADOS_DEPARTAMENTO:
 			saEmp = FactoriaNeg.getInstance().generarSAEmp();
 
@@ -300,9 +299,7 @@ public class ControladorIMP extends Controlador {
 			}
 			break;
 
-			
-		//MARCAS----------------------------------------
-			
+		// MARCAS----------------------------------------
 
 		case Eventos.VISTA_MARCAS:
 			FactoriaGUI.getInstance().generarGUI(evento);
@@ -332,7 +329,7 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_MARCAS_KO, datos);
 			}
 			break;
-			
+
 		case Eventos.MODIFICAR_MARCAS:
 			tMarcas = (TMarcas) datos;
 			saMarcas = FactoriaNeg.getInstance().generarSAMarcas();
@@ -345,7 +342,7 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_MARCAS_KO, tMarcas);
 			}
 			break;
-			
+
 		case Eventos.MOSTRAR_MARCA:
 			saMarcas = FactoriaNeg.getInstance().generarSAMarcas();
 
@@ -370,10 +367,8 @@ public class ControladorIMP extends Controlador {
 			}
 			break;
 
-			
-		//PRODUCTOS----------------------------------------
+		// PRODUCTOS----------------------------------------
 
-			
 		case Eventos.VISTA_PRODUCTOS:
 			FactoriaGUI.getInstance().generarGUI(evento);
 			break;
@@ -402,7 +397,7 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_PRODUCTO_KO, datos);
 			}
 			break;
-			
+
 		case Eventos.MODIFICAR_PRODUCTO:
 			tProd = (TProductos) datos;
 			saProd = FactoriaNeg.getInstance().generarSAProductos();
@@ -415,7 +410,7 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_PRODUCTO_KO, tProd);
 			}
 			break;
-			
+
 		case Eventos.MOSTRAR_PRODUCTO:
 			saProd = FactoriaNeg.getInstance().generarSAProductos();
 
@@ -439,7 +434,7 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_KO, null);
 			}
 			break;
-			
+
 		case Eventos.MOSTRAR_PRODUCTOS_MARCA:
 			saProd = FactoriaNeg.getInstance().generarSAProductos();
 
@@ -449,6 +444,139 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_MARCA_OK, ltResultadoProd1);
 			} else {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_MARCA_KO, null);
+			}
+			break;
+
+		// VENTAS----------------------------------------
+
+		case Eventos.VISTA_VENTAS:
+			FactoriaGUI.getInstance().generarGUI(evento);
+			break;
+
+		case Eventos.ALTA_VENTA:
+			tVentas = (TVentas) datos;
+			saVentas = FactoriaNeg.getInstance().generarSAVentas();
+
+			resultado = saVentas.create(tVentas);
+
+			if (resultado >= 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.ALTA_VENTA_OK, resultado);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.ALTA_VENTA_KO, null);
+			}
+			break;
+
+		case Eventos.BAJA_VENTA:// FALTA IMPLEMENTAR EL DELETE EN SAVENTAS PORQUE NO EXISTE EN EL DAOVENTAS
+			saVentas = FactoriaNeg.getInstance().generarSAVentas();
+
+			resultado = saVentas.delete((Integer) datos);
+
+			if (resultado >= 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_VENTA_OK, datos);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.BAJA_VENTA_KO, datos);
+			}
+			break;
+
+		case Eventos.CERRAR_VENTA:
+			saVentas = FactoriaNeg.getInstance().generarSAVentas();
+
+			resultado = saVentas.cerrar((Integer) datos);
+
+			if (resultado >= 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.CERRAR_VENTA_OK, datos);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.CERRAR_VENTA_KO, datos);
+			}
+			break;
+
+		case Eventos.MODIFICAR_VENTA:
+			tVentas = (TVentas) datos;
+			saVentas = FactoriaNeg.getInstance().generarSAVentas();
+
+			resultado = saVentas.update(tVentas);
+
+			if (resultado >= 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_VENTA_OK, tVentas);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.MODIFICAR_VENTA_KO, tVentas);
+			}
+			break;
+
+		case Eventos.AGREGAR_PRODUCTO_VENTA:
+			saVentas = FactoriaNeg.getInstance().generarSAVentas();
+
+			Map<Integer, List<TProductos>> mapaVentas = (Map<Integer, List<TProductos>>) datos;
+
+			resultado = saVentas.agregarProd(mapaVentas);
+
+			if (resultado >= 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.AGREGAR_PRODUCTO_VENTA_OK, resultado);// QUE PARAMETRO ENVIA??
+			} 
+			else {
+				FactoriaGUI.getInstance().actualizar(Eventos.AGREGAR_PRODUCTO_VENTA_KO, null);
+			}
+			break;
+
+		case Eventos.ELIMINAR_PRODUCTO_VENTA:
+			saVentas = FactoriaNeg.getInstance().generarSAVentas();
+
+			Map<Integer, List<TProductos>> mapaVentas1 = (Map<Integer, List<TProductos>>) datos;
+
+			resultado = saVentas.eliminarProd(mapaVentas1);
+
+			if (resultado >= 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.ELIMINAR_PRODUCTO_VENTA_OK, resultado);// QUE PARAMETRO ENVIA??
+			} 
+			else {
+				FactoriaGUI.getInstance().actualizar(Eventos.ELIMINAR_PRODUCTO_VENTA_KO, null);
+			}
+			break;
+
+		case Eventos.MOSTRAR_VENTA:
+			saVentas = FactoriaNeg.getInstance().generarSAVentas();
+
+			TVentas tResultadoVentas = saVentas.read((Integer) datos);
+
+			if (tResultadoVentas != null) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_VENTA_OK, tResultadoVentas);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_VENTA_KO, datos);
+			}
+			break;
+
+		case Eventos.MOSTRAR_VENTAS:
+			saVentas = FactoriaNeg.getInstance().generarSAVentas();
+
+			List<TVentas> ltResultadoVentas = saVentas.readAll();
+
+			if (ltResultadoVentas.size() > 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_VENTAS_OK, ltResultadoVentas);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_VENTAS_KO, null);
+			}
+			break;
+
+		case Eventos.MOSTRAR_VENTAS_EMPLEADO:
+			saVentas = FactoriaNeg.getInstance().generarSAVentas();
+
+			List<TVentas> ltResultadoVentas1 = saVentas.mostrarVentasEmp((Integer) datos);
+
+			if (ltResultadoVentas1 != null) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_VENTAS_EMPLEADO_OK, ltResultadoVentas1);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_VENTAS_EMPLEADO_KO, null);
+			}
+			break;
+
+		case Eventos.MOSTRAR_PRODUCTOS_VENTA:
+			saVentas = FactoriaNeg.getInstance().generarSAVentas();
+			
+			List<TProductos> ltProductosVenta = saVentas.mostrarProductosVenta((Integer) datos);
+			if (ltProductosVenta != null) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_VENTA_OK, ltProductosVenta);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_VENTA_KO, null);
 			}
 			break;
 

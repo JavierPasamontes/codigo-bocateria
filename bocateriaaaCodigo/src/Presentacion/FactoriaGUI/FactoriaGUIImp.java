@@ -7,6 +7,7 @@ import Presentacion.Empleados.Empleados.GUIEmpleados;
 import Presentacion.Marcas.Marcas.GUIMarcas;
 import Presentacion.Productos.Productos.GUIProductos;
 import Presentacion.Proveedores.Proveedores.GUIProveedores;
+import Presentacion.Ventas.Ventas.GUIVentas;
 
 public class FactoriaGUIImp extends FactoriaGUI {
 	private GUIDepartamentos ventanaDep;
@@ -14,6 +15,7 @@ public class FactoriaGUIImp extends FactoriaGUI {
 	private GUIMarcas ventanaMarcas;
 	private GUIProveedores ventanaProv;
 	private GUIProductos ventanaProductos;
+	private GUIVentas ventanaVentas;
 
 	@Override
 	public ObservadorGUI generarGUI(int evento) {
@@ -35,7 +37,11 @@ public class FactoriaGUIImp extends FactoriaGUI {
 			break;
 		}
 		case Eventos.VISTA_PRODUCTOS:{
-			ventanaProductos=new GUIProductos();
+			ventanaProductos = new GUIProductos();
+			break;
+		}
+		case Eventos.VISTA_VENTAS:{
+			ventanaVentas = new GUIVentas();
 			break;
 		}
 		}
@@ -58,6 +64,9 @@ public class FactoriaGUIImp extends FactoriaGUI {
 		}
 		if(evento>5000 && evento < 6000) {
 			ventanaProductos.actualizar(evento, datos);
+		}
+		if(evento>6000 && evento < 7000) {
+			//ventanaVentas.actualizar(evento, datos);
 		}
 	}
 

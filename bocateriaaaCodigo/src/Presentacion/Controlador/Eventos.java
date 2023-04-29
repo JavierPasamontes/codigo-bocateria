@@ -1,11 +1,11 @@
 package Presentacion.Controlador;
 
 public class Eventos {
-	
+
 	// DEPARTAMENTOS---------------------------------
 
 	public static final int VISTA_DEPARTAMENTOS = 1000;
-	
+
 	public static final int ALTA_DEPARTAMENTO = 1010;
 
 	public static final int BAJA_DEPARTAMENTO = 1020;
@@ -36,26 +36,26 @@ public class Eventos {
 
 	public static final int MOSTRAR_DEPARTAMENTOS_KO = 1052;
 
-	//PROVEEDORES---------------------------------
-	
+	// PROVEEDORES---------------------------------
+
 	public static final int VISTA_PROVEEDOR = 2000;
-	
+
 	public static final int ALTA_PROVEEDOR = 2010;
 
 	public static final int BAJA_PROVEEDOR = 2020;
-	
+
 	public static final int MODIFICAR_PROVEEDOR = 2030;
-	
+
 	public static final int BUSCAR_PROVEEDOR = 2040;
-	
+
 	public static final int MOSTRAR_PROVEEDORES = 2050;
-	
+
 	public static final int VINCULAR_MARCA = 2060;
-	
+
 	public static final int DESVINCULAR_MARCA = 2070;
-	
+
 	public static final int MOSTRAR_MARCAS_DE_PROV = 2080;
-	
+
 	public static final int ALTA_PROVEEDOR_OK = 2011;
 
 	public static final int ALTA_PROVEEDOR_KO = 2012;
@@ -88,10 +88,10 @@ public class Eventos {
 
 	public static final int MOSTRAR_MARCAS_DE_PROV_KO = 2082;
 
-	//EMPLEADOS---------------------------------
-	
+	// EMPLEADOS---------------------------------
+
 	public static final int VISTA_EMPLEADOS = 3000;
-	
+
 	public static final int ALTA_EMPLEADO = 3010;
 
 	public static final int BAJA_EMPLEADO = 3020;
@@ -128,10 +128,10 @@ public class Eventos {
 
 	public static final int MOSTRAR_EMPLEADOS_DEPARTAMENTO_KO = 3062;
 
-	//MARCAS---------------------------------
+	// MARCAS---------------------------------
 
 	public static final int VISTA_MARCAS = 4000;
-	
+
 	public static final int ALTA_MARCAS = 4010;
 
 	public static final int BAJA_MARCAS = 4020;
@@ -162,10 +162,10 @@ public class Eventos {
 
 	public static final int MOSTRAR_MARCAS_KO = 4052;
 
-	//PRODUCTOS---------------------------------
+	// PRODUCTOS---------------------------------
 
 	public static final int VISTA_PRODUCTOS = 5000;
-	
+
 	public static final int ALTA_PRODUCTO = 5010;
 
 	public static final int BAJA_PRODUCTO = 5020;
@@ -175,7 +175,7 @@ public class Eventos {
 	public static final int MOSTRAR_PRODUCTO = 5040;
 
 	public static final int MOSTRAR_PRODUCTOS = 5050;
-	
+
 	public static final int MOSTRAR_PRODUCTOS_MARCA = 5060;
 
 	public static final int ALTA_PRODUCTO_OK = 5011;
@@ -197,9 +197,73 @@ public class Eventos {
 	public static final int MOSTRAR_PRODUCTOS_OK = 5051;
 
 	public static final int MOSTRAR_PRODUCTOS_KO = 5052;
-	
+
 	public static final int MOSTRAR_PRODUCTOS_MARCA_OK = 5061;
 
 	public static final int MOSTRAR_PRODUCTOS_MARCA_KO = 5062;
+
+	//VENTAS---------------------------------
+
+	public static final int VISTA_VENTAS = 6000;
+
+	public static final int ALTA_VENTA = 6010;
+
+	public static final int BAJA_VENTA = 6020;
+	
+	public static final int CERRAR_VENTA = 6030;
+
+	public static final int MODIFICAR_VENTA = 6040;
+	
+	public static final int AGREGAR_PRODUCTO_VENTA = 6050;
+	
+	public static final int ELIMINAR_PRODUCTO_VENTA = 6060;
+
+	public static final int MOSTRAR_VENTA = 6070;
+
+	public static final int MOSTRAR_VENTAS = 6080;
+
+	public static final int MOSTRAR_VENTAS_EMPLEADO = 6090;
+	
+	public static final int MOSTRAR_PRODUCTOS_VENTA = 6100;
+
+	public static final int ALTA_VENTA_OK = 6011;
+	
+	public static final int ALTA_VENTA_KO = 6012;
+
+	public static final int BAJA_VENTA_OK = 6021;
+	
+	public static final int BAJA_VENTA_KO = 6022;
+	
+	public static final int CERRAR_VENTA_OK = 6031;
+	
+	public static final int CERRAR_VENTA_KO = 6032;
+
+	public static final int MODIFICAR_VENTA_OK = 6041;
+	
+	public static final int MODIFICAR_VENTA_KO = 6042;
+	
+	public static final int AGREGAR_PRODUCTO_VENTA_OK = 6051;
+	
+	public static final int AGREGAR_PRODUCTO_VENTA_KO = 6052;
+	
+	public static final int ELIMINAR_PRODUCTO_VENTA_OK = 6061;
+	
+	public static final int ELIMINAR_PRODUCTO_VENTA_KO = 6062;
+
+	public static final int MOSTRAR_VENTA_OK = 6071;
+	
+	public static final int MOSTRAR_VENTA_KO = 6072;
+
+	public static final int MOSTRAR_VENTAS_OK = 6081;
+	
+	public static final int MOSTRAR_VENTAS_KO = 6082;
+
+	public static final int MOSTRAR_VENTAS_EMPLEADO_OK = 6091;
+	
+	public static final int MOSTRAR_VENTAS_EMPLEADO_KO = 6092;
+	
+	public static final int MOSTRAR_PRODUCTOS_VENTA_OK = 6101;
+	
+	public static final int MOSTRAR_PRODUCTOS_VENTA_KO = 6102;
 
 }

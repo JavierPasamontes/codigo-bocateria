@@ -55,18 +55,18 @@ public class SADeptImp implements SADepartamento {
 		TDept dept = daoDept.read(tDept.getId());
 
 		if (dept.getActivo()) {
-			if (tDept.getNombre().isEmpty())
-				tDept.setNombre(dept.getNombre());
-			if (tDept.getDescripcion().isEmpty())
-				tDept.setDescripcion(dept.getDescripcion());
-			if (tDept.getSede().isEmpty())
-				tDept.setSede(dept.getSede());
+			if (!tDept.getNombre().isEmpty())
+				dept.setNombre(tDept.getNombre());
+			if (!tDept.getDescripcion().isEmpty())
+				dept.setDescripcion(tDept.getDescripcion());
+			if (!tDept.getSede().isEmpty())
+				dept.setSede(tDept.getSede());
 		}
 		else {
 			return -1;
 		}
 
-		return daoDept.update(tDept);
+		return daoDept.update(dept);
 	}
 
 	//------------------------------------------
