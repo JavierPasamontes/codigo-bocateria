@@ -29,7 +29,7 @@ public class GUIModificarEmp extends JFrame{
 	private JTextField campoIDdept;
 	@SuppressWarnings("unused")
 	private JCheckBox checkTiempo;
-	private boolean tCompleto=false;
+	private boolean tCompleto=true;
 	private JTextField campoHoras;
 	private JTextField campoEurosHora;
 	private JButton cancelar;
@@ -88,15 +88,17 @@ public class GUIModificarEmp extends JFrame{
 			public void itemStateChanged(ItemEvent e) {
 				if(tCompleto==false) {
 					tCompleto=true;
-					campoSalario.setEnabled(false);
-					campoHoras.setEnabled(true);
-					campoEurosHora.setEnabled(true);
-				}
-				else {
-					tCompleto=false;
+
 					campoSalario.setEnabled(true);
 					campoHoras.setEnabled(false);
 					campoEurosHora.setEnabled(false);
+				}
+				else {
+					tCompleto=false;
+					
+					campoSalario.setEnabled(false);
+					campoHoras.setEnabled(true);
+					campoEurosHora.setEnabled(true);
 				}
 			}
 			
@@ -140,22 +142,22 @@ public class GUIModificarEmp extends JFrame{
 					correcto=false;
 				}
 				if(correcto) {
-					if(tCompleto=true) {
+					if(tCompleto == true) {
 						if(campoIDdept.getText().equalsIgnoreCase("")) {
 							Controlador.getInstance().accion(Eventos.MODIFICAR_EMPLEADO, 
-									new TEmpleadosTC(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),0,1,null, true,Integer.parseInt(campoSalario.getText())));
+									new TEmpleadosTC(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),Integer.parseInt(campoId.getText()),1,null, true,Integer.parseInt(campoSalario.getText())));
 								dispose();
 						}
 						else {
 							Controlador.getInstance().accion(Eventos.MODIFICAR_EMPLEADO, 
-									new TEmpleadosTC(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),0,1,Integer.parseInt(campoIDdept.getText()), true,Integer.parseInt(campoSalario.getText())));
+									new TEmpleadosTC(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),Integer.parseInt(campoId.getText()),1,Integer.parseInt(campoIDdept.getText()), true,Integer.parseInt(campoSalario.getText())));
 								dispose();
 						}
 					}
 					else {
 						if(campoHoras.getText().equalsIgnoreCase("")) {
 							Controlador.getInstance().accion(Eventos.MODIFICAR_EMPLEADO, 
-									new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),0,0,Integer.parseInt(campoIDdept.getText()), true, 
+									new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),Integer.parseInt(campoId.getText()),0,Integer.parseInt(campoIDdept.getText()), true, 
 											0, Integer.parseInt(campoEurosHora.getText())));
 								dispose();
 						}

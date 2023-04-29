@@ -205,21 +205,22 @@ public class DAOEmpImp implements DAOEmpleados {
 		
 		
 		for(int i = 0; i < emptList.size();i++) {
-			if (emptList.get(i).getId() == tEmp.getId()) {
-				emptList.get(i).setNombre(tEmp.getNombre());
-				emptList.get(i).setApellidos(tEmp.getApellidos());
-				emptList.get(i).setDNI(tEmp.getDNI());
-				emptList.get(i).setActivo(tEmp.getActivo());
-				emptList.get(i).setJornada(tEmp.getJornada());
+			TEmpleados empleado = emptList.get(i);
+			
+			if (empleado.getId() == tEmp.getId()) {
+				empleado.setNombre(tEmp.getNombre());
+				empleado.setApellidos(tEmp.getApellidos());
+				empleado.setDNI(tEmp.getDNI());
+				empleado.setActivo(tEmp.getActivo());
+				empleado.setJornada(tEmp.getJornada());
 				//si es un empleado a tiempo parcial
-				if(emptList.get(i).getJornada() == 0  ) {
-					((TEmpleadosTP) emptList.get(i)).setHoras(((TEmpleadosTP)tEmp).getHoras());;
-					((TEmpleadosTP) emptList.get(i)).setHoras(((TEmpleadosTP)tEmp).getEurosHora());
+				if(empleado.getJornada() == 0  ) {
+					((TEmpleadosTP) empleado).setHoras(((TEmpleadosTP)tEmp).getHoras());;
+					((TEmpleadosTP) empleado).setEurosHora(((TEmpleadosTP)tEmp).getEurosHora());
 				}
-				else if (emptList.get(i).getJornada() == 1 ) {
-					((TEmpleadosTC) emptList.get(i)).setSalario(((TEmpleadosTC)tEmp).getSalario());
+				else if (empleado.getJornada() == 1 ) {
+					((TEmpleadosTC) empleado).setSalario(((TEmpleadosTC)tEmp).getSalario());
 				} //muchos cast's, pero espero que funciones
-				
 			}
 		}
 
