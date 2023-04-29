@@ -5,6 +5,7 @@ import Negocio.Empleados.SAEmpleados;
 import Negocio.Marcas.SAMarcas;
 import Negocio.Productos.SAProductos;
 import Negocio.Proveedores.SAProv;
+import Negocio.Ventas.SAVentas;
 
 public abstract class FactoriaNeg {
 	
@@ -27,5 +28,7 @@ public abstract class FactoriaNeg {
 	public abstract SAMarcas generarSAMarcas();
 	
 	public abstract SAProductos generarSAProductos();
+	
+	public abstract SAVentas generarSAVentas();
 	
 }

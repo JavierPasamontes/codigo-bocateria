@@ -10,6 +10,8 @@ import Negocio.Productos.SAProductos;
 import Negocio.Productos.SAProductosImp;
 import Negocio.Proveedores.SAProv;
 import Negocio.Proveedores.SAProvImp;
+import Negocio.Ventas.SAVentas;
+import Negocio.Ventas.SAVentasImp;
 
 public class FactoriaNegImp extends FactoriaNeg {
 
@@ -36,6 +38,11 @@ public class FactoriaNegImp extends FactoriaNeg {
 	@Override
 	public SAProductos generarSAProductos() {
 		return new SAProductosImp();
+	}
+
+	@Override
+	public SAVentas generarSAVentas() {
+		return new SAVentasImp();
 	}
 	
 }

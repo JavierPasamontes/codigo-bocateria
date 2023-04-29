@@ -1,25 +1,29 @@
-/**
- * 
- */
+
 package Negocio.Ventas;
 
 import java.io.Serializable;
+import java.util.List;
 
+import Negocio.Productos.TProductos;
 
 @SuppressWarnings("serial")
 public class TVentas implements Serializable {
 
-	public TVentas(Integer id, String fechaVenta, Double precioFinal, Object listaProductos) {
-		super();
+	private int id;
+	private int idEmpleado;
+	private String fechaVenta;
+	private double precioFinal;
+	private List<TProductos> listaProductos;
+	private Boolean abierto;
+	
+	
+	public TVentas(int id, String fecha, double precio, List<TProductos> listaProductos){
 		this.id = id;
-		this.fechaVenta = fechaVenta;
-		this.precioFinal = precioFinal;
+		this.fechaVenta= fecha;
+		this.precioFinal = precio;
 		this.listaProductos = listaProductos;
 	}
-	
-	private Integer id;
 
-	private String fechaVenta;
 
 	public Integer getId() {
 		return id;
@@ -45,17 +49,48 @@ public class TVentas implements Serializable {
 		this.precioFinal = precioFinal;
 	}
 
-	public Object getListaProductos() {
+	public List<TProductos> getListaProductos() {
 		return listaProductos;
 	}
-
-	public void setListaProductos(Object listaProductos) {
-		this.listaProductos = listaProductos;
+	
+	public Boolean getAbierto() {
+		return abierto;
 	}
 
-	private Double precioFinal;
-
-	private Object listaProductos;
-
+	public void setAbierto(Boolean abierto) {
+		this.abierto = abierto;
+	}
 	
+	public int getIdEmpleado() {
+		return idEmpleado;
+	}
+
+	public void setIdEmpleado(int idEmpleado) {
+		this.idEmpleado = idEmpleado;
+	}
+	
+	public void agregarProducto(TProductos prod) {
+		listaProductos.add(prod);
+	}
+	
+	public void eliminarProducto(TProductos prod) {
+		listaProductos.remove(prod);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if(obj instanceof TVentas) {
+			TVentas vts = (TVentas) obj;
+			
+			if(this.id == vts.id && this.fechaVenta.equalsIgnoreCase(vts.fechaVenta) 
+			&& this.precioFinal == vts.precioFinal && this.listaProductos.equals(vts.listaProductos)) 
+			{
+				return true;
+			}
+			else return false;
+		}
+		else return false;
+	}
+
 }

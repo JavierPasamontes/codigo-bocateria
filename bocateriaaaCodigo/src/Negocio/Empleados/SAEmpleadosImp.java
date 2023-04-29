@@ -57,19 +57,18 @@ public class SAEmpleadosImp implements SAEmpleados {
 		TEmpleados empleado = daoEmp.read(tEmp.getId());
 		
 		if(empleado.getActivo()){
-			if (tEmp.getNombre().isEmpty())
-				tEmp.setNombre(empleado.getNombre());
+			if (!tEmp.getNombre().isEmpty())
+				empleado.setNombre(tEmp.getNombre());
 			
-			if (tEmp.getApellidos().isEmpty())
-				tEmp.setApellidos(empleado.getApellidos());
+			if (!tEmp.getApellidos().isEmpty())
+				empleado.setApellidos(tEmp.getApellidos());
 			
-			if (tEmp.getDNI().isEmpty())
-				tEmp.setDNI(empleado.getDNI());
+			if (!tEmp.getDNI().isEmpty())
+				empleado.setDNI(tEmp.getDNI());
 			
-			if (tEmp.getIdDept() == null) {
-				tEmp.setIdDept(empleado.getIdDept());
-			}
-			else {
+			if (tEmp.getIdDept() != null) {
+				empleado.setIdDept(tEmp.getIdDept());
+				
 				DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
 				TDept viejo = daoDept.read(empleado.getIdDept());
 				TDept nuevo = daoDept.read(tEmp.getIdDept());
@@ -87,25 +86,25 @@ public class SAEmpleadosImp implements SAEmpleados {
 			if(empleado.getJornada() == 0) { //T.PARCIAL
 				TEmpleadosTP tTP = (TEmpleadosTP) tEmp;
 				TEmpleadosTP empleadoTP = (TEmpleadosTP) empleado;
-				if (tTP.getEurosHora() == 0) {
-					tTP.setEurosHora(empleadoTP.getEurosHora());
+				if (tTP.getEurosHora() != 0) {
+					empleadoTP.setEurosHora(tTP.getEurosHora());
 				}
-				if (tTP.getHoras() == 0) {
-					tTP.setEurosHora(empleadoTP.getHoras());
+				if (tTP.getHoras() != 0) {
+					empleadoTP.setEurosHora(tTP.getHoras());
 				}
 			}
 			else{ //T.COMPLETO
 				TEmpleadosTC tTC = (TEmpleadosTC) tEmp;
 				TEmpleadosTC empleadoTC = (TEmpleadosTC) empleado;
-				if (tTC.getSalario() == 0) {
-					tTC.setSalario(empleadoTC.getSalario());
+				if (tTC.getSalario() != 0) {
+					empleadoTC.setSalario(tTC.getSalario());
 				}
 			}
 		}
 		else
 			return -1;
 		
-		return tEmp.getId();
+		return daoEmp.update(empleado);
 	}
 	
 	//------------------------------------------

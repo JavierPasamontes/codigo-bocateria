@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"DEPARTAMENTOS":[{"ACTIVO":false,"SEDE":"sede","ID":1,"NOMBRE":"Prueba1","DESC":"Una Descripcion"},{"ACTIVO":true,"SEDE":"sede","ID":2,"NOMBRE":"Prueba2","DESC":"Una Descripcion"}]}
+=======
+{"DEPARTAMENTOS":[{"ACTIVO":true,"SEDE":"Guatemala","ID":1,"NOMBRE":"HR","DESC":"siuuuuuuuuuuuuu"},{"ACTIVO":true,"SEDE":"Murcia","ID":2,"NOMBRE":"Compras","DESC":"UwU"},{"ACTIVO":true,"SEDE":"Madrid","ID":3,"NOMBRE":"Finanzas","DESC":"aAaAaAaA"},{"ACTIVO":false,"SEDE":"UK","ID":4,"NOMBRE":"Marketing","DESC":"FiuFiu"}]}
+>>>>>>> branch 'master' of https://github.com/JavierPasamontes/codigo-bocateria

@@ -177,6 +177,7 @@ public class DAOMarcasImp implements DAOMarcas {
 		for(int i = 0; i < marcaList.size();i++) {
 			if (marcaList.get(i).getID() == tMarca.getID()) {
 				marcaList.get(i).setNombre(tMarca.getNombre());
+				marcaList.get(i).setPais(tMarca.getPais());
 				marcaList.get(i).setActivo(tMarca.getActivo());
 				marcaList.get(i).setCont(tMarca.getCont());
 				}

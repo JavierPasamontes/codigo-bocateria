@@ -53,16 +53,16 @@ public class SAMarcasImp implements SAMarcas {
 		TMarcas marca = daoMarca.read(tMarca.getID());
 
 		if (marca.getActivo()) {
-			if (tMarca.getNombre().isEmpty())
-				tMarca.setNombre(marca.getNombre());
-			if (tMarca.getPais().isEmpty())
-				tMarca.setPais(marca.getPais());
+			if (!tMarca.getNombre().isEmpty())
+				marca.setNombre(tMarca.getNombre());
+			if (!tMarca.getPais().isEmpty())
+				marca.setPais(tMarca.getPais());
 		}
 		else {
 			return -1;
 		}
 		
-		return daoMarca.update(tMarca);
+		return daoMarca.update(marca);
 	}
 	
 	//------------------------------------------
@@ -71,7 +71,9 @@ public class SAMarcasImp implements SAMarcas {
 		
 		DAOMarcas daoMarca = FactoriaIntg.getInstance().generarDAOMarcas();
 		
-		if(daoMarca.read(id).getCont() == 0)
+		TMarcas tMarca = daoMarca.read(id);
+		
+		if(tMarca.getCont() == 0 && tMarca.getActivo())
 			return daoMarca.delete(id);
 		else
 			return -1;
