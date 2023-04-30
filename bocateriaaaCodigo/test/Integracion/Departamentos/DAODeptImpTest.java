@@ -40,7 +40,7 @@ class DAODeptImpTest {
 		openFile();//Funcion que vuelve a crear la Base de Datos
 		
 		TDept d1 = new TDept(-1, "Cocina", "Madrid,Getafe", true, "Departamento de Cocina");
-		TDept d2 = new TDept(-1, "El bocatín", "Sevilla", true, "El bocatín de Sevilla");
+		TDept d2 = new TDept(-1, "El bocatin", "Sevilla", true, "El bocatin de Sevilla");
 		
 		//PRUEBA DE CREATE()
 		resultado = daoDept.create(d1);
@@ -53,7 +53,7 @@ class DAODeptImpTest {
 		assertEquals(d1,daoDept.readByName("Cocina"));
 		//deberian ser iguales el dept 1 y el que se manda a leer por el nombre
 
-		TDept p3 = new TDept(-1, "El bocatín Almería", "Almería", true, "El bocatín de Almería");
+		TDept p3 = new TDept(-1, "El bocatín Almeria", "Almeria", true, "El bocatín de Almeria");
 
 		resultado = daoDept.create(p3);
 		assertEquals(3,resultado,"No ha devuelto el id que acaba de crear");

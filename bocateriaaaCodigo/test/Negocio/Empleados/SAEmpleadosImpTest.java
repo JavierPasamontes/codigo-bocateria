@@ -41,8 +41,8 @@ private final static String _path = "resources/empleados/emp.JSON";
 		//jornada == 0 -> Empleado a Tiempo Parcial
 		//jornada == 1-> Empleado a Tiempo Completo
 
-		TEmpleados e1 = new TEmpleadosTC ("Juan Alberto", "García Pradilla", "34234576N", -1, 1, 1, true, 800);
-		TEmpleados e2 = new TEmpleadosTP ("José Luis", "Perales Gutiérrez", "24563187L", -1, 0, 1, true,4 ,20 );		
+		TEmpleados e1 = new TEmpleadosTC ("Juan Alberto", "Garcia Pradilla", "34234576N", -1, 1, 1, true, 800);
+		TEmpleados e2 = new TEmpleadosTP ("Jose Luis", "Perales Gutierrez", "24563187L", -1, 0, 1, true,4 ,20 );		
 		
 		//PRUEBA DE CREATE()
 		resultado = saEmp.create(e1);	
@@ -60,13 +60,13 @@ private final static String _path = "resources/empleados/emp.JSON";
 		
 		//PRUEBA DE UPDATE()
 		e3.setNombre("Carmen");
-		e3.setApellidos("Jiménez López");
+		e3.setApellidos("Jimenez Lopez");
 		e3.setDNI("56742456D");
 		
 		resultado = saEmp.update(e3);
 		//comprobamos que funciona el update
 		assertEquals("Carmen", saEmp.read(3).getNombre());
-		assertEquals("Jiménez López", saEmp.read(3).getApellidos());
+		assertEquals("Jimenez Lopez", saEmp.read(3).getApellidos());
 		assertEquals("56742456D", saEmp.read(3).getDNI());
 		assertEquals(3,resultado,"No ha devuelto el id del empleado que acaba de actualizar");
 		

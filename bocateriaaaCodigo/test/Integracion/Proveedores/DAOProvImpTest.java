@@ -46,7 +46,7 @@ class DAOProvImpTest {
 		
 		openFile();
 
-		TProveedores p1 = new TProvComunitario (-1, "pane di qualità p.A", 2, true, "Italia");
+		TProveedores p1 = new TProvComunitario (-1, "pane di qualita p.A", 2, true, "Italia");
 		TProveedores p2 = new TProvNacional (-1, "Verduras Huerta S.A", 1, true, "Huelva");
 		
 		//PRUEBA DE CREATE()

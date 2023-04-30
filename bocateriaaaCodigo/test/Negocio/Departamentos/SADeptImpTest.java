@@ -37,7 +37,7 @@ class SADeptImpTest {
 		openFile();
 		
 		TDept d1 = new TDept(-1, "Cocina", "Madrid,Getafe", true, "Departamento de Cocina");
-		TDept d2 = new TDept(-1, "El bocatín", "Sevilla", true, "El bocatín de Sevilla");
+		TDept d2 = new TDept(-1, "El bocatin", "Sevilla", true, "El bocatin de Sevilla");
 		
 		//PRUEBA DE CREATE()
 		resultado = saDept.create(d1);
@@ -46,7 +46,7 @@ class SADeptImpTest {
 		resultado = saDept.create(d2);
 		assertEquals(2,resultado,"No ha devuelto el id que acaba de crear");
 		
-		TDept d3 = new TDept(3, "El bocatin Almería", "Almería", true, "El bocatín de Almería");
+		TDept d3 = new TDept(3, "El bocatin Almeria", "Almeria", true, "El bocatin de Almeria");
 		
 		resultado = saDept.create(d3);
 		assertEquals(3,resultado,"No ha devuelto el id que acaba de crear");

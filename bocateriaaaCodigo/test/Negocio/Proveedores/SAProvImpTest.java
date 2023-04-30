@@ -37,7 +37,7 @@ public class SAProvImpTest {
 		
 		openFile();
 
-		TProveedores p1 = new TProvComunitario (-1, "pane di qualità p.A", 1, true, "Italia");
+		TProveedores p1 = new TProvComunitario (-1, "pane di qualita p.A", 1, true, "Italia");
 		p1.setTipo('C');
 		TProveedores p2 = new TProvNacional (-1, "Verduras Huerta S.A", 1, true, "Huelva");
 		p2.setTipo('N');

@@ -63,12 +63,12 @@ public class SAProductosImpTest{
 
 		
 		//PRUEBA DE UPDATE()
-		p2.setNombre("Jamón");
+		p2.setNombre("Jamon");
 		p2.setPrecio(1.50);
 		
 		resultado = saProd.update(p2);
 		//comprobamos que funciona el update
-		assertEquals("Jamón", saProd.read(2).getNombre());
+		assertEquals("Jamon", saProd.read(2).getNombre());
 		assertEquals(1.50, saProd.read(2).getPrecio());
 		assertEquals(2,resultado,"No ha devuelto el id del producto que acaba de actualizar");
 		

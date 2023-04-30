@@ -35,8 +35,8 @@ private final static String _path = "resources/marcas/marcas.JSON";
 		
 		openFile();
 		
-		TMarcas m1 = new TMarcas(-1, "Hacendado", true, 0,"España");
-		TMarcas m2 = new TMarcas(-1, "Coca-Cola", true, 0,"España");		
+		TMarcas m1 = new TMarcas(-1, "Hacendado", true, 0,"Espana");
+		TMarcas m2 = new TMarcas(-1, "Coca-Cola", true, 0,"Espana");		
 		
 		
 		//PRUEBA DE CREATE()
@@ -47,7 +47,7 @@ private final static String _path = "resources/marcas/marcas.JSON";
 		assertEquals(2,resultado,"No ha devuelto el id que acaba de crear");
 		
 		
-		TMarcas m3 = new TMarcas(3, "El Pozo", true, 0,"España");		
+		TMarcas m3 = new TMarcas(3, "El Pozo", true, 0,"Espana");		
 		
 		resultado = daoMarca.create(m3);
 		assertEquals(3,resultado,"No ha devuelto el id que acaba de crear");

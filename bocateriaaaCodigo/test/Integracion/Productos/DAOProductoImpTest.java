@@ -70,12 +70,12 @@ class DAOProductoImpTest {
 
 		
 		//PRUEBA DE UPDATE()
-		p2.setNombre("Jamón");
+		p2.setNombre("Jamon");
 		p2.setPrecio(1.50);
 		
 		resultado = daoProd.update(p2);
 		//comprobamos que funciona el update
-		assertEquals("Jamón", daoProd.read(2).getNombre());
+		assertEquals("Jamon", daoProd.read(2).getNombre());
 		assertEquals(1.50, daoProd.read(2).getPrecio());
 		assertEquals(2,resultado,"No ha devuelto el id del producto que acaba de actualizar");
 		

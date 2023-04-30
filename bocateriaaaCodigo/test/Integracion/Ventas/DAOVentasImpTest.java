@@ -58,9 +58,7 @@ class DAOVentasImpTest{
 	
 		//CREACION DE LAS VENTAS
 		TVentas v1 = new TVentas(-1,1,"23/4/2023", 750.65, prodList);
-		v1.setAbierto(true);
 		TVentas v2 = new TVentas(-1,3,"19/2/2022", 18923.65, prodList);
-		v2.setAbierto(true);
 		
 		
 		//PRUEBA DE CREATE()
@@ -72,7 +70,6 @@ class DAOVentasImpTest{
 
 		
 		TVentas v3 = new TVentas(-1,3,"30/8/2021", 18923.65, prodList);
-		v3.setAbierto(true);
 
 		resultado = daoVentas.create(v3);
 		assertEquals(3,resultado,"No ha devuelto el id que acaba de crear");

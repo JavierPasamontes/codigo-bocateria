@@ -46,8 +46,8 @@ class DAOEmpImpTest{
 		//jornada == 0 -> Empleado a Tiempo Parcial
 		//jornada == 1-> Empleado a Tiempo Completo
 
-		TEmpleados e1 = new TEmpleadosTC ("Juan Alberto", "García Pradilla", "34234576N", -1, 1, 1, true, 800);
-		TEmpleados e2 = new TEmpleadosTP ("José Luis", "Perales Gutiérrez", "24563187L", -1, 0, 1, true,4 ,20 );		
+		TEmpleados e1 = new TEmpleadosTC ("Juan Alberto", "Garcia Pradilla", "34234576N", -1, 1, 1, true, 800);
+		TEmpleados e2 = new TEmpleadosTP ("Jose Luis", "Perales Gutierrez", "24563187L", -1, 0, 1, true,4 ,20 );		
 		
 		//PRUEBA DE CREATE()
 		resultado = daoEmp.create(e1);	
@@ -56,20 +56,20 @@ class DAOEmpImpTest{
 		resultado = daoEmp.create(e2);
 		assertEquals(2,resultado,"No ha devuelto el id que acaba de crear");
 		
-		TEmpleados e3 = new TEmpleadosTC ("Laura", "Pérez Muñoz", "43662196P", -1, 1, 3, true, 1000);
+		TEmpleados e3 = new TEmpleadosTC ("Laura", "Perez Munoz", "43662196P", -1, 1, 3, true, 1000);
 		
 		resultado = daoEmp.create(e3);
 		assertEquals(3,resultado,"No ha devuelto el id que acaba de crear");
 		
 		e3.setNombre("Carmen");
-		e3.setApellidos("Jiménez López");
+		e3.setApellidos("Jimenez Lopez");
 		e3.setDNI("56742456D");
 		
 		//PRUEBA DE UPDATE()
 		resultado = daoEmp.update(e3);
 		//comprobamos que funciona el update
 		assertEquals("Carmen", daoEmp.read(3).getNombre());
-		assertEquals("Jiménez López", daoEmp.read(3).getApellidos());
+		assertEquals("Jimenez Lopez", daoEmp.read(3).getApellidos());
 		assertEquals("56742456D", daoEmp.read(3).getDNI());
 		assertEquals(3,resultado,"No ha devuelto el id del empleado que acaba de actualizar");
 
