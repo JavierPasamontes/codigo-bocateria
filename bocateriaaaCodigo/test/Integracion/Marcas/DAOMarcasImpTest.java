@@ -30,68 +30,52 @@ private final static String _path = "resources/marcas/marcas.JSON";
 	
 	@Test
 	public void comportamientoBasico() {
-		FactoriaIntg factoriaIntegracion = FactoriaIntg.getInstance();
-		DAOMarcas daoMarca = factoriaIntegracion.generarDAOMarcas();
+		int resultado;
+		DAOMarcas daoMarca = FactoriaIntg.getInstance().generarDAOMarcas();
 		
 		openFile();
 		
-		TMarcas p1 = new TMarcas(-1, "Hacendado", true, 0,"España");
-		TMarcas p2 = new TMarcas(-1, "Coca-Cola", true, 0,"España");		
-		int id;
+		TMarcas m1 = new TMarcas(-1, "Hacendado", true, 0,"España");
+		TMarcas m2 = new TMarcas(-1, "Coca-Cola", true, 0,"España");		
 		
+		
+		//PRUEBA DE CREATE()
+		resultado = daoMarca.create(m1);
+		assertEquals(1,resultado,"No ha devuelto el id que acaba de crear");
 		//comprobamos que devuelva el id correcto
-		id = daoMarca.create(p1);
-		assertEquals(1,id,"No ha devuelto el id que acaba de crear");
-	
-		id = daoMarca.create(p2);
+		resultado = daoMarca.create(m2);
+		assertEquals(2,resultado,"No ha devuelto el id que acaba de crear");
 		
-		//deberian ser iguales el dept 1 y el que se manda a leer por el nombre
-		//assertEquals(p1,daoMarca.readByName("Prueba1"));
 		
-		TMarcas p3 = new TMarcas(3, "El Pozo", true, 0,"España");		
+		TMarcas m3 = new TMarcas(3, "El Pozo", true, 0,"España");		
 		
-		daoMarca.create(p3);
+		resultado = daoMarca.create(m3);
+		assertEquals(3,resultado,"No ha devuelto el id que acaba de crear");
+
+		//PRUEBA DE CREATE()
+		m3.setNombre("Pepsi");
 		
-		p3.setNombre("Pepsi");
-		
-		daoMarca.update(p3);
+		resultado = daoMarca.update(m3);
 		//comprobamos que funciona el update
 		assertEquals("Pepsi", daoMarca.read(3).getNombre());
-	//	assertEquals("nuevaSede", daoMarca.read(3).getSede());
+		assertEquals(3,resultado,"No ha devuelto el id de la marca que acaba de actualizar");
+
 		
+		//PRUEBA DE READALL()
 		List<TMarcas> marcaList = new ArrayList<TMarcas>();
 		
 		marcaList = daoMarca.readAll();
 		//comprobamos que lee bien el fichero
 		assertTrue(marcaList.size() == 3); //comprobamos que lea todo bien
 		
-		id = daoMarca.delete(2);
-		assertEquals(2, id); //devuelve el id que ha borrado
+		
+		//PRUEBA DE DELETE()
+		resultado = daoMarca.delete(3); //devuelve el id que ha borrado
+		assertEquals(3, resultado,"No ha devuelto el id de la marca que acaba de dar de baja");
 		//actualizamos la lista y comprobamos que se ha borrado
 		marcaList = daoMarca.readAll();
 		assertTrue(marcaList.size() == 3); //el tamaño de la lista no disminuye
-		assertTrue(marcaList.get(1).getActivo() == false);	
-	}
-	
-	@Test
-	public void erroresComunes() {
-		FactoriaIntg factoriaIntegracion = FactoriaIntg.getInstance();
-		DAOMarcas daoMarca = factoriaIntegracion.generarDAOMarcas();
-		
-		openFile();
-		
-		TMarcas p1 = new TMarcas(1, "Prueba1", true, 0,"a");
-		int id;
-		
-		//comprobamos que devuelva el id correcto
-		id = daoMarca.create(p1);
-		
-		/* mirar
-		//comprobamos que no pueda crear otro departamento con el mismo id y lanzamos una excepcion
-		assertThrowsExactly(IOException.class, () -> {
-		daoDept.create(new TDept(1, "sede", "Prueba" ,true, "Una Descripcion"));}
-				);
-		*/
+		assertTrue(marcaList.get(2).getActivo() == false);	
 	}
 	
 	

@@ -39,38 +39,42 @@ class DAOEmpImpTest{
 	
 	@Test
 	public void comportamientoBasico() {
-		FactoriaIntg factoriaIntegracion = FactoriaIntg.getInstance();
-		DAOEmpleados daoEmp = factoriaIntegracion.generarDAOEmpleados();
-		
+		int resultado;
+		DAOEmpleados daoEmp = FactoriaIntg.getInstance().generarDAOEmpleados();
 		openFile();
 		
 		//jornada == 0 -> Empleado a Tiempo Parcial
 		//jornada == 1-> Empleado a Tiempo Completo
 
-		TEmpleados p1 = new TEmpleadosTC ("Juan Alberto", "García Pradilla", "34234576N", -1, 1, 1, true, 800);
-		TEmpleados p2 = new TEmpleadosTP ("José Luis", "Perales Gutiérrez", "24563187L", -1, 0, 1, true,4 ,20 );		
-		int id;
+		TEmpleados e1 = new TEmpleadosTC ("Juan Alberto", "García Pradilla", "34234576N", -1, 1, 1, true, 800);
+		TEmpleados e2 = new TEmpleadosTP ("José Luis", "Perales Gutiérrez", "24563187L", -1, 0, 1, true,4 ,20 );		
 		
+		//PRUEBA DE CREATE()
+		resultado = daoEmp.create(e1);	
+		assertEquals(1,resultado,"No ha devuelto el id que acaba de crear");
 		//comprobamos que devuelva el id correcto
-		id = daoEmp.create(p1);
-		assertEquals(1,id,"No ha devuelto el id que acaba de crear");
-	
-		id = daoEmp.create(p2);
+		resultado = daoEmp.create(e2);
+		assertEquals(2,resultado,"No ha devuelto el id que acaba de crear");
 		
-		//deberian ser iguales el dept 1 y el que se manda a leer por el nombre
-		//assertEquals(p1,daoMarca.readByName("Prueba1"));
+		TEmpleados e3 = new TEmpleadosTC ("Laura", "Pérez Muñoz", "43662196P", -1, 1, 3, true, 1000);
 		
-		TEmpleados p3 = new TEmpleadosTC ("Laura", "Pérez Muñoz", "43662196P", -1, 1, 2, true, 1000);
+		resultado = daoEmp.create(e3);
+		assertEquals(3,resultado,"No ha devuelto el id que acaba de crear");
 		
-		daoEmp.create(p3);
+		e3.setNombre("Carmen");
+		e3.setApellidos("Jiménez López");
+		e3.setDNI("56742456D");
 		
-		p3.setNombre("ABC");
-		
-		daoEmp.update(p3);
+		//PRUEBA DE UPDATE()
+		resultado = daoEmp.update(e3);
 		//comprobamos que funciona el update
-		assertEquals("ABC", daoEmp.read(3).getNombre());
-	//	assertEquals("nuevaSede", daoMarca.read(3).getSede());
-		
+		assertEquals("Carmen", daoEmp.read(3).getNombre());
+		assertEquals("Jiménez López", daoEmp.read(3).getApellidos());
+		assertEquals("56742456D", daoEmp.read(3).getDNI());
+		assertEquals(3,resultado,"No ha devuelto el id del empleado que acaba de actualizar");
+
+
+		//PRUEBA DE READALL()
 		List<TEmpleados> empList = new ArrayList<TEmpleados>();
 		
 		empList = daoEmp.readAll();
@@ -80,9 +84,9 @@ class DAOEmpImpTest{
 		assertTrue(empList.get(0) instanceof TEmpleadosTC); //el primer empleado esta a tiempo completo
 		assertTrue(empList.get(1) instanceof TEmpleadosTP);//el segundo empleado esta a tiempo parcial 
 
-		
-		id = daoEmp.delete(2);
-		assertEquals(2, id); //devuelve el id que ha borrado
+		//PRUEBA DE DELETE()
+		resultado = daoEmp.delete(2);//devuelve el id que ha borrado
+		assertEquals(2, resultado,"No ha devuelto el id del empleado que acaba de dar de baja"); 
 		//actualizamos la lista y comprobamos que se ha borrado
 		empList = daoEmp.readAll();
 		assertTrue(empList.size() == 3); //el tamaño de la lista no disminuye

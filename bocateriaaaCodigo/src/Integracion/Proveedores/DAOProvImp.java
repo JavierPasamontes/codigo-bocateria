@@ -61,9 +61,7 @@ public class DAOProvImp implements DAOProv {
 				else
 					id = tProv.getID();
 
-				
-				//tProv.incrementarMarcas();
-				
+						
 				provList.add(tProv);
 					
 				JSONArray provs = new JSONArray();

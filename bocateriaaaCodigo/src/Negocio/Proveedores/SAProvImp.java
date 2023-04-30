@@ -15,8 +15,10 @@ public class SAProvImp implements SAProv {
 		TProveedores aux;
 		
 		DAOProv dao = FactoriaIntg.getInstance().generarDAOProv();
-
-		prov.setCont(0);
+		
+		if(prov.getCont() <= 0)
+			prov.setCont(0);
+		
 		aux = dao.readByName(prov.getNombre());
 		
 		if(aux == null) {
@@ -113,7 +115,7 @@ public class SAProvImp implements SAProv {
 		else {
 			if(aux.getCont() == 0 && aux.getActivo()) {
 				 FactoriaIntg.getInstance().generarDAOProv().delete(id);
-				 return 0;
+				 return id;
 			}
 			else {
 				return -2; // -2 -> No Borrable, marcas asignadas

@@ -62,27 +62,27 @@ public class DAOVentasImp implements DAOVentas {
 				for(TVentas venta :ventList) {
 					JSONObject o = new JSONObject();
 					o.put("ID", venta.getId());
-					o.put("ID EMP", venta.getIdEmpleado());
+					o.put("ID EMPLEADO", venta.getIdEmpleado());
 					o.put("FECHA",venta.getFechaVenta());
 										
 					JSONArray prods = new JSONArray();
 					//Añadimos la lista de productos con un JSONArray de productos(JSONObject)
-					if(venta.getListaProductos() != null) {
-						for(TProductos producto :venta.getListaProductos()) {
-							JSONObject p = new JSONObject();
-							p.put("ID", producto.getId());
-							p.put("NOMBRE", producto.getNombre());
-							p.put("CANTIDAD", producto.getCantidad());
-							p.put("PRECIO", producto.getPrecio());
-							p.put("ACTIVO", producto.getActivo());
-							p.put("ID MARCA", producto.getIDmarca());
-							
-							prods.put(p);
-						}
+					for(TProductos producto :venta.getListaProductos()) {
+						JSONObject p = new JSONObject();
+						p.put("ID", producto.getId());
+						p.put("NOMBRE", producto.getNombre());
+						p.put("CANTIDAD", producto.getCantidad());
+						p.put("PRECIO", producto.getPrecio());
+						p.put("ACTIVO", producto.getActivo());
+						p.put("ID MARCA", producto.getIDmarca());
+						
+						prods.put(p);
 					}
 													
 					o.put("PRODUCTOS", prods);				
 					o.put("PRECIO FINAL",venta.getPrecioFinal());
+					o.put("ABIERTA",venta.getAbierto());
+
 
 					//PONEMOS TODOS LOS JSON EN EL JSON GENERAL DE VENTAS
 					vents.put(o);
@@ -144,7 +144,7 @@ public class DAOVentasImp implements DAOVentas {
 					JSONObject in = vents.getJSONObject(i);
 					
 					int id = in.getInt("ID");
-					int idEmp = in.getInt("ID EMP");
+					int idEmp = in.getInt("ID EMPLEADO");;
 					String fecha = in.getString("FECHA");
 					double precioFinal = in.getDouble("PRECIO FINAL");
 					JSONArray prods = in.getJSONArray("PRODUCTOS");
@@ -163,11 +163,13 @@ public class DAOVentasImp implements DAOVentas {
 						TProductos producto = new TProductos(prodId, nombre, numProd, precio, activo, marcaId);
 						// leemos el id y lo insertamos en la lista
 						prodList.add(producto); 
-					}
+					}					
 					
-					
-					TVentas venta = new TVentas(id, idEmp, fecha,precioFinal,prodList);
+					TVentas venta = new TVentas(id,idEmp,fecha,precioFinal,prodList);
 					// leemos el id y lo insertamos en la lista
+					boolean abierto = in.getBoolean("ABIERTA"); //vemos si esta abierta o cerrada
+					venta.setAbierto(abierto);
+					
 					ventList.add(venta);
 				}
 			

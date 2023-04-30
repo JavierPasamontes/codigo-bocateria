@@ -35,90 +35,72 @@ class DAOVentasImpTest{
 	
 	@Test
 	public void comportamientoBasico() {
-		FactoriaIntg factoriaIntegracion = FactoriaIntg.getInstance();
-		DAOVentas daoVentas = factoriaIntegracion.generarDAOVentas();
+		int resultado;
+		DAOVentas daoVentas = FactoriaIntg.getInstance().generarDAOVentas();
 		
 		openFile();
+		
+		//creamos la lista de productos
 		List<TProductos> prodList = new ArrayList<TProductos>();
-
+		//ID DE MARCA =1 
 		TProductos p1 = new TProductos(-1, "Pan", 50, 1.50, true, 1);
 		TProductos p2 = new TProductos(-1, "lechuga", 100, 0.50, true, 1);
-		
+		//ID DE MARCA =2 
 		TProductos p3 = new TProductos(-1, "Coca cola Light Zero", 200, 0.89, true, 2);
 		TProductos p4 = new TProductos(-1, "Nestea", 150, 0.79, true, 2);
 		TProductos p5 = new TProductos(-1, "Aquarius Naranja", 125, 0.85, true, 2);
 
-		
 		prodList.add(p1);
 		prodList.add(p2);
 		prodList.add(p3);
 		prodList.add(p4);
 		prodList.add(p5);
 	
-
-		TVentas v1 = new TVentas(-1,"23/4/2023", 750.65, prodList);
-		TVentas v2 = new TVentas(-1,"19/2/2022", 18923.65, prodList);
+		//CREACION DE LAS VENTAS
+		TVentas v1 = new TVentas(-1,1,"23/4/2023", 750.65, prodList);
+		v1.setAbierto(true);
+		TVentas v2 = new TVentas(-1,3,"19/2/2022", 18923.65, prodList);
+		v2.setAbierto(true);
 		
-		int id;
 		
 		//PRUEBA DE CREATE()
+		resultado = daoVentas.create(v1);
+		assertEquals(1,resultado,"No ha devuelto el id que acaba de crear");
 		//comprobamos que devuelva el id correcto
-		id = daoVentas.create(v1);
-		assertEquals(1,id,"No ha devuelto el id que acaba de crear");
-	
-		id = daoVentas.create(v2);
+		resultado = daoVentas.create(v2);
+		assertEquals(2,resultado,"No ha devuelto el id que acaba de crear");
 
 		
-		TVentas v3 = new TVentas(-1,"30/8/2021", 18923.65, prodList);
-		
-		
-		daoVentas.create(v3);
-		
-		v3.setFechaVenta("22/3/2023");
-		v3.setPrecioFinal(2000000.59);
+		TVentas v3 = new TVentas(-1,3,"30/8/2021", 18923.65, prodList);
+		v3.setAbierto(true);
+
+		resultado = daoVentas.create(v3);
+		assertEquals(3,resultado,"No ha devuelto el id que acaba de crear");
 		
 		//PRUEBA DE UPDATE()
-		daoVentas.update(v3);
+		v3.setFechaVenta("22/3/2023");
+		v3.setPrecioFinal(2000000.99);
+		
+		resultado = daoVentas.update(v3);
 		//comprobamos que funciona el update
 		assertEquals("22/3/2023", daoVentas.read(3).getFechaVenta());
-		assertEquals(2000000.59, daoVentas.read(3).getPrecioFinal());
-		
+		assertEquals(2000000.99, daoVentas.read(3).getPrecioFinal());
+		assertEquals(3,resultado,"No ha devuelto el id de la venta que acaba de actualizar");
+
+		//PRUEBA DE READALL()
 		List<TVentas> ventList = new ArrayList<TVentas>();
 		
-		//PRUEBA DE READALL()
 		ventList = daoVentas.readAll();
 		//comprobamos que lee bien el fichero
 		assertTrue(ventList.size() == 3); //comprobamos que lea todo bien
 		
+		
 		//PRUEBA DE DELETE()
-		id = daoVentas.delete(2);
-		assertEquals(2, id); //devuelve el id que ha borrado
+		resultado = daoVentas.delete(2);//devuelve el id que ha borrado
+		assertEquals(2, resultado,"No ha devuelto el id de la venta que acaba de actualizar"); 
 		//actualizamos la lista y comprobamos que se ha borrado
-		
 		ventList = daoVentas.readAll();
-		assertTrue(ventList.size() == 2); //el tamaño de la lista no disminuye		
+		assertTrue(ventList.size() == 2); //el tamaño de la lista disminuye		
 	}
-	
-	@Test
-	public void erroresComunes() {
-		FactoriaIntg factoriaIntegracion = FactoriaIntg.getInstance();
-		DAOProductos daoProd = factoriaIntegracion.generarDAOProductos();
-		
-		openFile();
-		
-		TProductos p1 = new TProductos(-1, "lechuga", 50, 1.50, true, 3);
-		
-		//int id = daoProd.create(p1);
-		
-		/* mirar
-		//comprobamos que no pueda crear otro departamento con el mismo id y lanzamos una excepcion
-		assertThrowsExactly(IOException.class, () -> {
-		daoDept.create(new TDept(1, "sede", "Prueba" ,true, "Una Descripcion"));}
-				);
-		*/
-	}
-
-
-
 	
 }

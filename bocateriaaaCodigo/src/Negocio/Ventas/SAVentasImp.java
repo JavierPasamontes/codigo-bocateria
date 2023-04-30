@@ -50,10 +50,10 @@ public class SAVentasImp implements SAVentas {
 		DAOVentas daoVentas = FactoriaIntg.getInstance().generarDAOVentas();
 		
 		TVentas venta = daoVentas.read(tVenta.getId());
-		
-		if(venta != null && venta.getIdEmpleado() != tVenta.getIdEmpleado() && venta.getAbierto()) {
+		//he quitado && venta.getIdEmpleado() == tVenta.getIdEmpleado()
+		if(venta != null && venta.getAbierto()) {
 			venta.setIdEmpleado(tVenta.getIdEmpleado());
-			return daoVentas.update(venta);
+			return daoVentas.update(tVenta);
 		}
 		else
 			return -1;

@@ -34,39 +34,40 @@ class DAODeptImpTest {
 	
 	@Test
 	public void comportamientoBasico() {
-		FactoriaIntg factoriaIntegracion = FactoriaIntg.getInstance();
-		DAODept daoDept = factoriaIntegracion.generarDAODepts();
+		int resultado;
+		DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
 		
-		openFile();
+		openFile();//Funcion que vuelve a crear la Base de Datos
 		
 		TDept d1 = new TDept(-1, "Cocina", "Madrid,Getafe", true, "Departamento de Cocina");
 		TDept d2 = new TDept(-1, "El bocatín", "Sevilla", true, "El bocatín de Sevilla");
 		
-		int id;
-		
 		//PRUEBA DE CREATE()
+		resultado = daoDept.create(d1);
+		assertEquals(1,resultado,"No ha devuelto el id que acaba de crear");
 		//comprobamos que devuelva el id correcto
-		id = daoDept.create(d1);
-		assertEquals(1,id,"No ha devuelto el id que acaba de crear");
-	
-		id = daoDept.create(d2);
+		resultado = daoDept.create(d2);
+		assertEquals(2,resultado,"No ha devuelto el id que acaba de crear");
 		
 		//PRUEBA DE READBYNAME()
-		//deberian ser iguales el dept 1 y el que se manda a leer por el nombre
 		assertEquals(d1,daoDept.readByName("Cocina"));
-		
-		TDept p3 = new TDept(3, "El bocatín", "Almería", true, "El bocatín de Almería");
-		
-		daoDept.create(p3);
+		//deberian ser iguales el dept 1 y el que se manda a leer por el nombre
+
+		TDept p3 = new TDept(-1, "El bocatín Almería", "Almería", true, "El bocatín de Almería");
+
+		resultado = daoDept.create(p3);
+		assertEquals(3,resultado,"No ha devuelto el id que acaba de crear");
 		
 		p3.setNombre("Repartos");
 		p3.setSede("Alicante");
 		
 		//PRUEBA DE UPDATE()
-		daoDept.update(p3);
+		resultado = daoDept.update(p3);
 		//comprobamos que funciona el update
 		assertEquals("Repartos", daoDept.read(3).getNombre());
 		assertEquals("Alicante", daoDept.read(3).getSede());
+		assertEquals(3,resultado,"No ha devuelto el id del departamento que acaba de actualizar");
+
 		
 		List<TDept> deptList = new ArrayList<TDept>();
 		
@@ -76,36 +77,13 @@ class DAODeptImpTest {
 		assertTrue(deptList.size() == 3); //comprobamos que lea todo bien
 		
 		//PRUEBA DE DELETE()
-		id = daoDept.delete(2);
-		assertEquals(2, id); //devuelve el id que ha borrado
+		resultado = daoDept.delete(2);
+		assertEquals(2, resultado,"No ha devuelto el id del departamento que acaba de dar de baja"); //devuelve el id que ha borrado
 		//actualizamos la lista y comprobamos que se ha borrado
 		
 		deptList = daoDept.readAll();
 		assertTrue(deptList.size() == 3); //el tamaño de la lista no disminuye
 		assertTrue(deptList.get(1).getActivo() == false);//el departamento seleccionado 
 	}
-	
-	@Test
-	public void erroresComunes() {
-		FactoriaIntg factoriaIntegracion = FactoriaIntg.getInstance();
-		DAODept daoDept = factoriaIntegracion.generarDAODepts();
-		
-		openFile();
-		
-		TDept p1 = new TDept(1, "sede", "Prueba1", true, "Una Descripcion");
-		
-		int id = daoDept.create(p1);
-		
-		/* mirar
-		//comprobamos que no pueda crear otro departamento con el mismo id y lanzamos una excepcion
-		assertThrowsExactly(IOException.class, () -> {
-		daoDept.create(new TDept(1, "sede", "Prueba" ,true, "Una Descripcion"));}
-				);
-		*/
-	}
-	
-	
-	
-	
-	
+
 }
