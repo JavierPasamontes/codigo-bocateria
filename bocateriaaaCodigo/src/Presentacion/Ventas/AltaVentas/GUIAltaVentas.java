@@ -60,7 +60,7 @@ public class GUIAltaVentas extends JFrame{
 				}
 				if(correcto) {
 						Controlador.getInstance().accion(Eventos.ALTA_VENTA, 
-							new TVentas(0, Integer.parseInt(campoIdEmp.getText()), "", 0,null));
+							new TVentas(0, Integer.parseInt(campoIdEmp.getText()), "N/A", 0,null));
 						dispose();
 				}
 			}

@@ -62,20 +62,23 @@ public class DAOVentasImp implements DAOVentas {
 				for(TVentas venta :ventList) {
 					JSONObject o = new JSONObject();
 					o.put("ID", venta.getId());
+					o.put("ID EMP", venta.getIdEmpleado());
 					o.put("FECHA",venta.getFechaVenta());
 										
 					JSONArray prods = new JSONArray();
 					//Añadimos la lista de productos con un JSONArray de productos(JSONObject)
-					for(TProductos producto :venta.getListaProductos()) {
-						JSONObject p = new JSONObject();
-						p.put("ID", producto.getId());
-						p.put("NOMBRE", producto.getNombre());
-						p.put("CANTIDAD", producto.getCantidad());
-						p.put("PRECIO", producto.getPrecio());
-						p.put("ACTIVO", producto.getActivo());
-						p.put("ID MARCA", producto.getIDmarca());
-						
-						prods.put(p);
+					if(venta.getListaProductos() != null) {
+						for(TProductos producto :venta.getListaProductos()) {
+							JSONObject p = new JSONObject();
+							p.put("ID", producto.getId());
+							p.put("NOMBRE", producto.getNombre());
+							p.put("CANTIDAD", producto.getCantidad());
+							p.put("PRECIO", producto.getPrecio());
+							p.put("ACTIVO", producto.getActivo());
+							p.put("ID MARCA", producto.getIDmarca());
+							
+							prods.put(p);
+						}
 					}
 													
 					o.put("PRODUCTOS", prods);				
@@ -140,7 +143,8 @@ public class DAOVentasImp implements DAOVentas {
 				for(int i = 0; i< vents.length(); i++) {
 					JSONObject in = vents.getJSONObject(i);
 					
-					int id = in.getInt("ID");;
+					int id = in.getInt("ID");
+					int idEmp = in.getInt("ID EMP");
 					String fecha = in.getString("FECHA");
 					double precioFinal = in.getDouble("PRECIO FINAL");
 					JSONArray prods = in.getJSONArray("PRODUCTOS");
@@ -162,7 +166,7 @@ public class DAOVentasImp implements DAOVentas {
 					}
 					
 					
-					TVentas venta = new TVentas(id,fecha,precioFinal,prodList);
+					TVentas venta = new TVentas(id, idEmp, fecha,precioFinal,prodList);
 					// leemos el id y lo insertamos en la lista
 					ventList.add(venta);
 				}
@@ -185,6 +189,7 @@ public class DAOVentasImp implements DAOVentas {
 		
 		for(int i = 0; i < ventList.size();i++) {
 			if (ventList.get(i).getId() == tVenta.getId()) {
+				ventList.get(i).setIdEmpleado(tVenta.getIdEmpleado());
 				ventList.get(i).setFechaVenta(tVenta.getFechaVenta());
 				ventList.get(i).setPrecioFinal(tVenta.getPrecioFinal());
 				ventList.get(i).setListaProductos(tVenta.getListaProductos());
