@@ -21,6 +21,7 @@ public class GUICerrarVenta extends JFrame{
 	private JButton cancelar;
 	private JButton aceptar;
 	
+	
 	public GUICerrarVenta() {
 		super("Cerrar Venta");
 		initGUI();

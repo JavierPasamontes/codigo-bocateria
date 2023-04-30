@@ -27,6 +27,7 @@ public class GUIMostrarUnaVenta extends JFrame{
 	private JLabel precioMar=new JLabel("Precio: ");
 	private JLabel productos=new JLabel ("Productos: ");
 	
+	
 	public GUIMostrarUnaVenta() {
 		super("Mostrar venta por ID");
 		initGUI();

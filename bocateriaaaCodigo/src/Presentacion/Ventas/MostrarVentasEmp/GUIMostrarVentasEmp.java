@@ -26,6 +26,7 @@ public class GUIMostrarVentasEmp extends JFrame{
 	private JButton cerrar;
 	private JTextField id;
 	
+	
 	public GUIMostrarVentasEmp(){
 		super("Mostrar todas las ventas de un empleado");
 		initGUI();

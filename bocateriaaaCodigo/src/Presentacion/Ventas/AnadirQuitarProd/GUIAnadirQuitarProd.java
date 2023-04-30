@@ -70,6 +70,7 @@ public class GUIAnadirQuitarProd extends JFrame{
 				aceptar.setEnabled(true);
 				id.setEnabled(true);
 				quitarAnadir.setEnabled(true);
+				
 				mostrar.setEnabled(false);
 			}
 			

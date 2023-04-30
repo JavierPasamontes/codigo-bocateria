@@ -17,6 +17,7 @@ public class TVentas implements Serializable {
 	private Boolean abierto;
 	
 	
+	
 	public TVentas(int id, int idEmp, String fecha, double precio, List<TProductos> listaProductos){
 		this.id = id;
 		this.idEmpleado=idEmp;

@@ -23,6 +23,7 @@ public class GUIMostrarVentas extends JFrame{
 	private JButton mostrar;
 	private JButton cerrar;
 	
+	
 	public GUIMostrarVentas(){
 		super("Mostrar todas las ventas");
 		initGUI();

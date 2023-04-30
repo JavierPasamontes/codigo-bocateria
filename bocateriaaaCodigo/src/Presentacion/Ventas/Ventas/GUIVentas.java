@@ -48,6 +48,8 @@ public class GUIVentas extends JFrame{
 	private GUIMostrarProdDeVenta GUIMostrarProdDeVenta;
 	private GUIAnadirQuitarProd GUIAnadirQuitarProd;
 	
+	
+	
 	public GUIVentas() {
 		super("Ventas");
 		initGUI();

@@ -26,6 +26,7 @@ public class GUIMostrarProdDeVenta extends JFrame{
 	private JButton cerrar;
 	private JTextField id;
 	
+	
 	public GUIMostrarProdDeVenta(){
 		super("Mostrar todos los productos de una venta");
 		initGUI();

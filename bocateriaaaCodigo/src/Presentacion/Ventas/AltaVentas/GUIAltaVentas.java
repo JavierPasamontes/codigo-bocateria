@@ -21,6 +21,7 @@ public class GUIAltaVentas extends JFrame{
 	private JButton cancelar;
 	private JButton aceptar;
 	
+	
 	public GUIAltaVentas() {
 		super("Alta Venta");
 		initGUI();

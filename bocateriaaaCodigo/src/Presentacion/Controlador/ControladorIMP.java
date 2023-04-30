@@ -590,6 +590,7 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_AUX_OK, ltResultadoProdAux);
 			} else {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_AUX_KO, null);
+				
 			}
 			break;
 
