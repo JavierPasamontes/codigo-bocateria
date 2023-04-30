@@ -580,6 +580,18 @@ public class ControladorIMP extends Controlador {
 				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_VENTA_KO, null);
 			}
 			break;
+			
+		case Eventos.MOSTRAR_PRODUCTOS_AUX:
+			saProd = FactoriaNeg.getInstance().generarSAProductos();
+
+			List<TProductos> ltResultadoProdAux = saProd.readAll();
+
+			if (ltResultadoProdAux.size() > 0) {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_AUX_OK, ltResultadoProdAux);
+			} else {
+				FactoriaGUI.getInstance().actualizar(Eventos.MOSTRAR_PRODUCTOS_AUX_KO, null);
+			}
+			break;
 
 		}
 

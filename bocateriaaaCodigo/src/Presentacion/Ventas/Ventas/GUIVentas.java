@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -13,6 +14,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import Negocio.Productos.TProductos;
+import Negocio.Ventas.TVentas;
+import Presentacion.Controlador.Eventos;
+import Presentacion.Controlador.MensajeGUI;
 import Presentacion.Ventas.AltaVentas.*;
 import Presentacion.Ventas.CerrarVenta.*;
 import Presentacion.Ventas.ModificarVenta.*;
@@ -199,47 +204,72 @@ public class GUIVentas extends JFrame{
 		});
 	}
 
-	/*
+	
+	@SuppressWarnings("unchecked")
 	public void actualizar(int evento, Object datos) {
 		MensajeGUI a=new MensajeGUI();
 		switch (evento) {
-		case Eventos.ALTA_PRODUCTO_OK:
-			a.showMessage("Se ha dado de alta el producto con ID: " + (int)datos,"Alta productos", false);
+		case Eventos.ALTA_VENTA_OK:
+			a.showMessage("Se ha dado de alta la venta con ID: " + (int)datos,"Alta venta", false);
 			break;
-		case Eventos.ALTA_PRODUCTO_KO:
-			a.showMessage("No se ha podido dar de alta el producto", "Alta productos", true);
+		case Eventos.ALTA_VENTA_KO:
+			a.showMessage("No se ha podido dar de alta la venta", "Alta venta", true);
 			break;
-		case Eventos.BAJA_PRODUCTO_OK:
-			a.showMessage("Se ha dado de baja al producto con ID: "+(int)datos, "Baja productos", false);
+		case Eventos.CERRAR_VENTA_OK:
+			a.showMessage("Se ha cerrado la venta con ID: "+(int)datos, "Cerrar venta", false);
 			break;
-		case Eventos.BAJA_PRODUCTO_KO:
-			a.showMessage("No se ha podido dar de baja el producto con ID: "+(int)datos, "Baja productos", true);
+		case Eventos.CERRAR_VENTA_KO:
+			a.showMessage("No se ha podido cerrar la venta con ID: "+(int)datos, "Cerrar Venta", true);
 			break;
-		case Eventos.MODIFICAR_PRODUCTO_OK:
-			a.showMessage("Se ha modificado el producto correctamente", "Modificar producto", false);
+		case Eventos.MODIFICAR_VENTA_OK:
+			a.showMessage("Se ha modificado la venta correctamente", "Modificar venta", false);
 			break;
-		case Eventos.MODIFICAR_PRODUCTO_KO:
-			a.showMessage("No se ha podido modificar el producto", "Modificar producto", true);
+		case Eventos.MODIFICAR_VENTA_KO:
+			a.showMessage("No se ha podido modificar la venta", "Modificar venta", true);
 			break;
-		case Eventos.MOSTRAR_PRODUCTOS_OK:
-			GUIMostrarProds.actualizar((ArrayList<TProductos>)datos);
+		case Eventos.MOSTRAR_VENTAS_OK:
+			GUIMostrarVentas.actualizar((ArrayList<TVentas>)datos);
 			break;
-		case Eventos.MOSTRAR_PRODUCTOS_KO:
-			a.showMessage("No se pudo mostrar la lista de productos", "Mostrar productos", true);
+		case Eventos.MOSTRAR_VENTAS_KO:
+			a.showMessage("No se pudo mostrar la lista de ventas", "Mostrar ventas", true);
 			break;
-		case Eventos.MOSTRAR_PRODUCTO_OK:
-			GUIMostrarUnProd.actualizar((TProductos)datos);
+		case Eventos.MOSTRAR_VENTA_OK:
+			GUIMostrarUnaVenta.actualizar((TVentas)datos);
 			break;
-		case Eventos.MOSTRAR_PRODUCTO_KO:
-			a.showMessage("No se pudo mostrar el producto especificado", "Buscar producto", true);
+		case Eventos.MOSTRAR_VENTA_KO:
+			a.showMessage("No se pudo mostrar la venta especificada", "Buscar venta", true);
 			break;
-		case Eventos.MOSTRAR_PROD_DE_MARCA_OK:
-			GUIMostrarProdDeMarca.actualizar((String)datos);
+		case Eventos.MOSTRAR_PRODUCTOS_VENTA_OK:
+			GUIMostrarProdDeVenta.actualizar((ArrayList<TProductos>)datos);
 			break;
-		case Eventos.MOSTRAR_PROD_DE_MARCA_KO:
-			a.showMessage("No se pudieron mostrar los productos de la marca especificada", "Mostrar Productos de Una Marca", true);
+		case Eventos.MOSTRAR_PRODUCTOS_VENTA_KO:
+			a.showMessage("No se pudieron mostrar los productos de la venta especificada", "Mostrar productos de una venta", true);
+			break;
+		case Eventos.MOSTRAR_VENTAS_EMPLEADO_OK:
+			GUIMostrarVentasEmp.actualizar((ArrayList<TVentas>)datos);
+			break;
+		case Eventos.MOSTRAR_VENTAS_EMPLEADO_KO:
+			a.showMessage("No se pudieron mostrar las ventas del empleado especificado", "Mostrar ventas de un empleado", true);
+			break;
+		case Eventos.MOSTRAR_PRODUCTOS_AUX_OK:
+			GUIAnadirQuitarProd.actualizar((ArrayList<TProductos>)datos);
+			break;
+		case Eventos.MOSTRAR_PRODUCTOS_AUX_KO:
+			a.showMessage("Error al mostrar la lista de productos", "Anadir o quitar productos", true);
+			break;
+		case Eventos.AGREGAR_PRODUCTO_VENTA_OK:
+			a.showMessage("Se han añadido los productos correctamente", "Anadir productos", false);
+			break;
+		case Eventos.AGREGAR_PRODUCTO_VENTA_KO:
+			a.showMessage("No se han podido añadir los productos", "Anadir productos", true);
+			break;
+		case Eventos.ELIMINAR_PRODUCTO_VENTA_OK:
+			a.showMessage("Se han quitado los productos correctamente", "Quitar productos", false);
+			break;
+		case Eventos.ELIMINAR_PRODUCTO_VENTA_KO:
+			a.showMessage("No se han podido quitar los productos", "Quitar productos", true);
 			break;
 		}
 	}
-	*/
+	
 }

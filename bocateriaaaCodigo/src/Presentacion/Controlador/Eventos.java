@@ -225,6 +225,8 @@ public class Eventos {
 	public static final int MOSTRAR_VENTAS_EMPLEADO = 6090;
 	
 	public static final int MOSTRAR_PRODUCTOS_VENTA = 6100;
+	
+	public static final int MOSTRAR_PRODUCTOS_AUX = 6110;
 
 	public static final int ALTA_VENTA_OK = 6011;
 	
@@ -265,5 +267,9 @@ public class Eventos {
 	public static final int MOSTRAR_PRODUCTOS_VENTA_OK = 6101;
 	
 	public static final int MOSTRAR_PRODUCTOS_VENTA_KO = 6102;
+	
+	public static final int MOSTRAR_PRODUCTOS_AUX_OK = 6111;
+	
+	public static final int MOSTRAR_PRODUCTOS_AUX_KO = 6112;
 
 }

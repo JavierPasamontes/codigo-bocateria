@@ -11,6 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Negocio.Ventas.TVentas;
+import Presentacion.Controlador.Controlador;
+import Presentacion.Controlador.Eventos;
+
 @SuppressWarnings("serial")
 public class GUICerrarVenta extends JFrame{
 	private JTextField campoId;
@@ -54,9 +58,8 @@ public class GUICerrarVenta extends JFrame{
 					correcto=false;
 				}
 				if(correcto) {
-					Date date = new Date();
-						//Controlador.getInstance().accion(Eventos.CERRAR_VENTAS, 
-							//new TVentas(campoIdEmp.getText()));
+						Controlador.getInstance().accion(Eventos.CERRAR_VENTA, 
+							(campoId.getText()));
 						dispose();
 				}
 			}

@@ -114,8 +114,7 @@ public class GUIPrincipal extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				//GUIMostrarUnDept =new GUIMostrarUnDept();
+				Controlador.getInstance().accion(Eventos.VISTA_VENTAS, null);
 			}
 			
 			

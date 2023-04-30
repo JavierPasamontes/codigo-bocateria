@@ -66,7 +66,7 @@ public class FactoriaGUIImp extends FactoriaGUI {
 			ventanaProductos.actualizar(evento, datos);
 		}
 		if(evento>6000 && evento < 7000) {
-			//ventanaVentas.actualizar(evento, datos);
+			ventanaVentas.actualizar(evento, datos);
 		}
 	}
 
