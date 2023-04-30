@@ -1,1 +1,1 @@
-{"PROVEEDORES":[{"ACTIVO":true,"CONTMARCAS":2,"ID":1,"NOMBRE":"Prueba1","PAIS":"Italia"},{"ACTIVO":false,"CONTMARCAS":1,"COMUNIDAD":"Huelva","ID":2,"NOMBRE":"Prueba2"},{"ACTIVO":true,"CONTMARCAS":3,"ID":3,"NOMBRE":"ABC","PAIS":"Alemania"}]}
+{"PROVEEDORES":[{"ACTIVO":true,"CONTMARCAS":2,"ID":1,"NOMBRE":"Mercadona","PAIS":"España"},{"ACTIVO":true,"CONTMARCAS":0,"COMUNIDAD":"Rusia","ID":2,"NOMBRE":"Carrefour"},{"ACTIVO":true,"CONTMARCAS":1,"COMUNIDAD":"EEUU","ID":3,"NOMBRE":"Target"}]}

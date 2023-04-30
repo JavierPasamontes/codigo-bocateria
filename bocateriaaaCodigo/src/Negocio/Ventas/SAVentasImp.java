@@ -79,6 +79,7 @@ public class SAVentasImp implements SAVentas {
 			for(TProductos producto : datos.get(idVenta)) {
 				if(tVenta.getListaProductos().contains(producto)) {
 					tVenta.agregarProducto(producto);
+					tVenta.aumentarPrecio(producto.getPrecio());
 				}
 				else
 					return -1;
@@ -103,6 +104,7 @@ public class SAVentasImp implements SAVentas {
 			for(TProductos producto : datos.get(idVenta)) {
 				if(tVenta.getListaProductos().contains(producto)) {
 					tVenta.eliminarProducto(producto);
+					tVenta.disminuirPrecio(producto.getPrecio());
 				}
 				else
 					return -1;

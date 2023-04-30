@@ -67,7 +67,6 @@ public class SAEmpleadosImp implements SAEmpleados {
 
 				if (tEmp.getIdDept() != null) {
 					if (tEmp.getIdDept() != empleado.getIdDept()) {
-						empleado.setIdDept(tEmp.getIdDept());
 
 						DAODept daoDept = FactoriaIntg.getInstance().generarDAODepts();
 						TDept viejo = daoDept.read(empleado.getIdDept());
@@ -78,6 +77,8 @@ public class SAEmpleadosImp implements SAEmpleados {
 							daoDept.update(viejo);
 							nuevo.aumentarEmpleados();
 							daoDept.update(nuevo);
+							
+							empleado.setIdDept(tEmp.getIdDept());
 						} else
 							return -1;
 					}

@@ -77,6 +77,14 @@ public class TVentas implements Serializable {
 		listaProductos.remove(prod);
 	}
 	
+	public void aumentarPrecio(Double precioProd) {
+		precioFinal += precioProd;
+	}
+	
+	public void disminuirPrecio(Double precioProd) {
+		precioFinal -= precioProd;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		
