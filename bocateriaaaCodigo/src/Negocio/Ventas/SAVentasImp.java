@@ -9,6 +9,8 @@ import java.util.Map;
 
 import Integracion.Empleados.DAOEmpleados;
 import Integracion.FactoriaIntegracion.FactoriaIntg;
+import Integracion.Productos.DAOProductoImp;
+import Integracion.Productos.DAOProductos;
 import Integracion.Ventas.DAOVentas;
 import Negocio.Empleados.TEmpleados;
 import Negocio.Productos.TProductos;
@@ -79,13 +81,16 @@ public class SAVentasImp implements SAVentas {
 	@Override
 	public Integer agregarProd(Map<Integer, List<TProductos>> datos) {
 		DAOVentas daoVentas = FactoriaIntg.getInstance().generarDAOVentas();
+		DAOProductos daoProd = FactoriaIntg.getInstance().generarDAOProductos();
 		
 		Integer idVenta = (Integer)datos.keySet().toArray()[0];
 		TVentas tVenta = daoVentas.read(idVenta);
 		
 		if(tVenta != null && tVenta.getAbierto()) {
 			for(TProductos producto : datos.get(idVenta)) {
-				if(tVenta.getListaProductos().contains(producto)) {
+				if(!tVenta.getListaProductos().contains(producto) && producto.getActivo() && producto.getCantidad() > 0) {
+					producto.disminuirCantidad();
+					daoProd.update(producto);
 					tVenta.agregarProducto(producto);
 					tVenta.aumentarPrecio(producto.getPrecio());
 				}
@@ -104,6 +109,7 @@ public class SAVentasImp implements SAVentas {
 	@Override
 	public Integer eliminarProd(Map<Integer, List<TProductos>> datos) {
 		DAOVentas daoVentas = FactoriaIntg.getInstance().generarDAOVentas();
+		DAOProductos daoProd = FactoriaIntg.getInstance().generarDAOProductos();
 		
 		Integer idVenta = (Integer)datos.keySet().toArray()[0];
 		TVentas tVenta = daoVentas.read(idVenta);
@@ -111,6 +117,8 @@ public class SAVentasImp implements SAVentas {
 		if(tVenta != null && tVenta.getAbierto()) {
 			for(TProductos producto : datos.get(idVenta)) {
 				if(tVenta.getListaProductos().contains(producto)) {
+					producto.aumentarCantidad();
+					daoProd.update(producto);
 					tVenta.eliminarProducto(producto);
 					tVenta.disminuirPrecio(producto.getPrecio());
 				}

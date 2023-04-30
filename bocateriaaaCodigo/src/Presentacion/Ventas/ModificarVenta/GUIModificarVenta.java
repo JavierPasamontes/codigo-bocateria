@@ -34,7 +34,7 @@ public class GUIModificarVenta extends JFrame{
 		
 		JPanel id=new JPanel();
 		JLabel idLabel=new JLabel("ID de la venta: ");
-		campoIdEmp=new JTextField(12);
+		campoId=new JTextField(12);
 		id.add(idLabel);
 		id.add(campoId);
 		

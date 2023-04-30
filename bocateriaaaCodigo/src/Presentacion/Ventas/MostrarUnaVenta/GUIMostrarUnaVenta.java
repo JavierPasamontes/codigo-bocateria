@@ -49,6 +49,7 @@ public class GUIMostrarUnaVenta extends JFrame{
 		datos.add(empMar);
 		datos.add(fechaMar);
 		datos.add(precioMar);
+		datos.add(productos);
 		
 		JPanel botones=new JPanel();
 		cancelar=new JButton("Cancelar");
@@ -84,26 +85,12 @@ public class GUIMostrarUnaVenta extends JFrame{
 		this.pack();
 		this.setLocation(400,400);
 	}
-	
-	public static void main(String[] args) {
 
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				new GUIMostrarUnaMarca();
-			}
-		});
-
-
-	}
 	
 	public void actualizar(TVentas ven) {
 		String prod=new String();
-		prod="";
-		for(int i=0;i<ven.getListaProductos().size();i++) {
-			prod=prod+ven.getListaProductos().get(i);
-		}
+		prod="" + "" + ven.getListaProductos().size();
+
 		idMar.setText("ID: "+ven.getId());
 		empMar.setText("ID del empleado: "+ven.getIdEmpleado());
 		fechaMar.setText("Fecha: "+ven.getFechaVenta());

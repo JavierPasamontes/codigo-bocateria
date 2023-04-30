@@ -108,10 +108,10 @@ public class GUIMostrarVentasEmp extends JFrame{
 		modeloTabla.insertRow(0, new String[] {"ID", "ID Empleado", "Fecha", "Precio", "Productos"});
 		for (int i = 0; i < ven.size(); i++) {
 			String prod=new String();
-			prod="";
-			for(int j=0;i<ven.get(i).getListaProductos().size();j++) {
-				prod=prod+ven.get(i).getListaProductos().get(j);
-			}
+			prod="" + ven.get(i).getListaProductos().size();
+			//for(int j=0;j<ven.get(i).getListaProductos().size();j++) {
+			//	prod=prod+ven.get(i).getListaProductos().get(j);
+			//}
 				modeloTabla.insertRow(i+1, new Object[] 
 						{ ven.get(i).getId(), ven.get(i).getIdEmpleado(), ven.get(i).getFechaVenta(), ven.get(i).getPrecioFinal(), prod});
 		}

@@ -67,16 +67,18 @@ public class DAOVentasImp implements DAOVentas {
 										
 					JSONArray prods = new JSONArray();
 					//Añadimos la lista de productos con un JSONArray de productos(JSONObject)
-					for(TProductos producto :venta.getListaProductos()) {
-						JSONObject p = new JSONObject();
-						p.put("ID", producto.getId());
-						p.put("NOMBRE", producto.getNombre());
-						p.put("CANTIDAD", producto.getCantidad());
-						p.put("PRECIO", producto.getPrecio());
-						p.put("ACTIVO", producto.getActivo());
-						p.put("ID MARCA", producto.getIDmarca());
-						
-						prods.put(p);
+					if(venta.getListaProductos() != null) {
+						for(TProductos producto :venta.getListaProductos()) {
+							JSONObject p = new JSONObject();
+							p.put("ID", producto.getId());
+							p.put("NOMBRE", producto.getNombre());
+							p.put("CANTIDAD", producto.getCantidad());
+							p.put("PRECIO", producto.getPrecio());
+							p.put("ACTIVO", producto.getActivo());
+							p.put("ID MARCA", producto.getIDmarca());
+							
+							prods.put(p);
+						}
 					}
 													
 					o.put("PRODUCTOS", prods);				
