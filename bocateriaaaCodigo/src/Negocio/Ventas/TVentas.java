@@ -24,6 +24,7 @@ public class TVentas implements Serializable {
 		this.fechaVenta= fecha;
 		this.precioFinal = precio;
 		this.listaProductos = listaProductos;
+		this.abierto = true;
 	}
 
 

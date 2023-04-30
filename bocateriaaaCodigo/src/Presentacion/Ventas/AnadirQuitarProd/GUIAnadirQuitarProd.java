@@ -8,6 +8,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
@@ -45,7 +46,7 @@ public class GUIAnadirQuitarProd extends JFrame{
 	public void initGUI() {
 		JPanel p = new JPanel();
 		p.setLayout(new BoxLayout(p,BoxLayout.Y_AXIS));
-		productos=new ArrayList<>();
+		productos=new ArrayList<TProductos>();
 		JPanel botonPanel=new JPanel();
 		JPanel comboPanel=new JPanel();
 		prodPanel=new JPanel();
@@ -57,7 +58,7 @@ public class GUIAnadirQuitarProd extends JFrame{
 		id.setEnabled(false);
 		mostrar=new JButton("Mostrar");
 		modelo = new DefaultComboBoxModel<>();
-		modelo.addElement("Añadir");
+		modelo.addElement("Anadir");
 		modelo.addElement("Quitar");
 		quitarAnadir=new JComboBox(modelo);
 		quitarAnadir.setSelectedIndex(0);
@@ -82,10 +83,10 @@ public class GUIAnadirQuitarProd extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(!id.getText().equalsIgnoreCase("")) {
-					HashMap<Integer, ArrayList<TProductos>> map=new HashMap<>();
+					Map<Integer, ArrayList<TProductos>> map=new HashMap<>();
 					map.put(Integer.parseInt(id.getText()), productos);
 					
-					if(quitarAnadir.getSelectedItem().equals("Añadir")) {
+					if(quitarAnadir.getSelectedItem().equals("Anadir")) {
 						Controlador.getInstance().accion(Eventos.AGREGAR_PRODUCTO_VENTA, map);
 					}
 					else {
@@ -131,26 +132,28 @@ public class GUIAnadirQuitarProd extends JFrame{
 	public void actualizar (ArrayList<TProductos> prod){
 		for (int i = 0; i < prod.size(); i++) {
 			String nombre=prod.get(i).getNombre();
+			TProductos boxProducto = prod.get(i);
 			JCheckBox b = new JCheckBox(nombre);
 			b.addItemListener(new ItemListener() {
 
 				@Override
 				public void itemStateChanged(ItemEvent e) {
-					// TODO Auto-generated method stub
 					if(e.getStateChange()==ItemEvent.DESELECTED) {
-						for(int j=0;j<prod.size();j++) {
-							if(prod.get(j).getNombre().equalsIgnoreCase(nombre)) {
-								productos.remove(prod.get(j));
-							}
-						}
+						productos.remove(boxProducto);
+						//for(int j = 0; j < prod.size(); j++) {
+						//	if(prod.get(j).getNombre().equalsIgnoreCase(nombre)) {
+						//		productos.remove(prod.get(j));
+						//	}
+						//}
 					}
 					
 					if(e.getStateChange()==ItemEvent.SELECTED) {
-						for(int j=0;j<prod.size();j++) {
-							if(prod.get(j).getNombre().equalsIgnoreCase(nombre)) {
-								productos.add(prod.get(j));
-							}
-						}
+						productos.add(boxProducto);
+						//for(int j=0;j<prod.size();j++) {
+						//	if(prod.get(j).getNombre().equalsIgnoreCase(nombre)) {
+						//		productos.add(prod.get(j));
+						//	}
+						//}
 					}
 				}
 				

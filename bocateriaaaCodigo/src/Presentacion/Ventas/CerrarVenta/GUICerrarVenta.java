@@ -59,8 +59,7 @@ public class GUICerrarVenta extends JFrame{
 					correcto=false;
 				}
 				if(correcto) {
-						Controlador.getInstance().accion(Eventos.CERRAR_VENTA, 
-							(campoId.getText()));
+						Controlador.getInstance().accion(Eventos.CERRAR_VENTA, Integer.parseInt(campoId.getText()));
 						dispose();
 				}
 			}

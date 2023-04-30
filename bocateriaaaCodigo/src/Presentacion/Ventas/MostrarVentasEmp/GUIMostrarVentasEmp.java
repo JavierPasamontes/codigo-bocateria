@@ -48,7 +48,7 @@ public class GUIMostrarVentasEmp extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controlador.getInstance().accion(Eventos.MOSTRAR_VENTAS_EMPLEADO, id.getText());
+				Controlador.getInstance().accion(Eventos.MOSTRAR_VENTAS_EMPLEADO, Integer.parseInt(id.getText()));
 			}
 			
 			
