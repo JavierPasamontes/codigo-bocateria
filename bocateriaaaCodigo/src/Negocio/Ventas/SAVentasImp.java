@@ -62,8 +62,16 @@ public class SAVentasImp implements SAVentas {
 	//------------------------------------------
 
 	@Override
-	public Integer delete(Integer id) {//HABLAR A WASHINGTON
-		return 0;
+	public Integer delete(Integer id) {
+		DAOVentas daoVentas = FactoriaIntg.getInstance().generarDAOVentas();
+		
+		TVentas venta = daoVentas.read(id);
+		
+		if(venta != null && venta.getAbierto()) {
+			return daoVentas.delete(id);
+		}
+		else
+			return -1;
 	}
 	
 	//------------------------------------------

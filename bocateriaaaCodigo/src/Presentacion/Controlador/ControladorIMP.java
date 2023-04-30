@@ -21,6 +21,7 @@ import Presentacion.FactoriaGUI.FactoriaGUI;
 
 public class ControladorIMP extends Controlador {
 
+	@SuppressWarnings("unchecked")
 	public void accion(int evento, Object datos) {
 
 		int resultado;
@@ -466,7 +467,7 @@ public class ControladorIMP extends Controlador {
 			}
 			break;
 
-		case Eventos.BAJA_VENTA:// FALTA IMPLEMENTAR EL DELETE EN SAVENTAS PORQUE NO EXISTE EN EL DAOVENTAS
+		case Eventos.BAJA_VENTA:
 			saVentas = FactoriaNeg.getInstance().generarSAVentas();
 
 			resultado = saVentas.delete((Integer) datos);
@@ -511,7 +512,7 @@ public class ControladorIMP extends Controlador {
 			resultado = saVentas.agregarProd(mapaVentas);
 
 			if (resultado >= 0) {
-				FactoriaGUI.getInstance().actualizar(Eventos.AGREGAR_PRODUCTO_VENTA_OK, resultado);// QUE PARAMETRO ENVIA??
+				FactoriaGUI.getInstance().actualizar(Eventos.AGREGAR_PRODUCTO_VENTA_OK, resultado);
 			} 
 			else {
 				FactoriaGUI.getInstance().actualizar(Eventos.AGREGAR_PRODUCTO_VENTA_KO, null);
@@ -526,7 +527,7 @@ public class ControladorIMP extends Controlador {
 			resultado = saVentas.eliminarProd(mapaVentas1);
 
 			if (resultado >= 0) {
-				FactoriaGUI.getInstance().actualizar(Eventos.ELIMINAR_PRODUCTO_VENTA_OK, resultado);// QUE PARAMETRO ENVIA??
+				FactoriaGUI.getInstance().actualizar(Eventos.ELIMINAR_PRODUCTO_VENTA_OK, resultado);
 			} 
 			else {
 				FactoriaGUI.getInstance().actualizar(Eventos.ELIMINAR_PRODUCTO_VENTA_KO, null);
