@@ -12,11 +12,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import Integracion.FactoriaIntegracion.FactoriaIntg;
-import Integracion.Marcas.DAOMarcas;
-import Integracion.Productos.DAOProductos;
 import Negocio.Factoria.FactoriaNeg;
-import Negocio.Marcas.TMarcas;
 
 public class SAProductosImpTest{
 	

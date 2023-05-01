@@ -11,11 +11,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import Integracion.FactoriaIntegracion.FactoriaIntg;
-import Integracion.Proveedores.DAOProv;
-import Integracion.MarcasProv.TMarcasProv;
 import Negocio.Factoria.FactoriaNeg;
-import Negocio.Marcas.TMarcas;
 
 public class SAProvImpTest {
 	

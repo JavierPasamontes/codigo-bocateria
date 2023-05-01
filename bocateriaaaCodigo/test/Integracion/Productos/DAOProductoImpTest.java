@@ -3,21 +3,15 @@ package Integracion.Productos;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
-import Integracion.Departamentos.DAODept;
 import Integracion.FactoriaIntegracion.FactoriaIntg;
-import Negocio.Departamentos.TDept;
 import Negocio.Productos.TProductos;
 
 class DAOProductoImpTest {

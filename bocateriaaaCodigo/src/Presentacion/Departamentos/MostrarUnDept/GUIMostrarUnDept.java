@@ -12,8 +12,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-
 import Negocio.Departamentos.TDept;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;

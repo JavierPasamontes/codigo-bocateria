@@ -12,8 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-
 import Negocio.Empleados.TEmpleadosTC;
 import Negocio.Empleados.TEmpleadosTP;
 import Presentacion.Controlador.Controlador;
@@ -142,40 +140,36 @@ public class GUIModificarEmp extends JFrame{
 					correcto=false;
 				}
 				if(correcto) {
+					String nombre = campoNombre.getText();
+					String apellido = campoApellidos.getText();
+					String DNI = campoDNI.getText();
+					Integer id = Integer.parseInt(campoId.getText());
+					Integer idDept = null;
+					Integer jornada;
+					Integer salario = 0;
+					Integer horas = 0;
+					Integer eurosHora = 0;
+					if(!campoIDdept.getText().equalsIgnoreCase(""))
+						idDept = Integer.parseInt(campoIDdept.getText());
 					if(tCompleto == true) {
-						if(campoIDdept.getText().equalsIgnoreCase("")) {
-							Controlador.getInstance().accion(Eventos.MODIFICAR_EMPLEADO, 
-									new TEmpleadosTC(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),Integer.parseInt(campoId.getText()),1,null, true,Integer.parseInt(campoSalario.getText())));
-								dispose();
-						}
-						else {
-							Controlador.getInstance().accion(Eventos.MODIFICAR_EMPLEADO, 
-									new TEmpleadosTC(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),Integer.parseInt(campoId.getText()),1,Integer.parseInt(campoIDdept.getText()), true,Integer.parseInt(campoSalario.getText())));
-								dispose();
-						}
+						jornada = 1;
+						if(!campoSalario.getText().equalsIgnoreCase(""))
+							salario = Integer.parseInt(campoSalario.getText());
+						
+						Controlador.getInstance().accion(Eventos.MODIFICAR_EMPLEADO, new TEmpleadosTC(nombre,apellido, DNI, id, jornada, idDept, true, salario));
+						dispose();
 					}
 					else {
-						if(campoHoras.getText().equalsIgnoreCase("")) {
-							Controlador.getInstance().accion(Eventos.MODIFICAR_EMPLEADO, 
-									new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),Integer.parseInt(campoId.getText()),0,Integer.parseInt(campoIDdept.getText()), true, 
-											0, Integer.parseInt(campoEurosHora.getText())));
-								dispose();
-						}
-						else {
-							if(campoEurosHora.getText().equalsIgnoreCase("")) {
-								Controlador.getInstance().accion(Eventos.MODIFICAR_EMPLEADO, 
-										new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(),Integer.parseInt(campoId.getText()),0,Integer.parseInt(campoIDdept.getText()), true, 
-												Integer.parseInt(campoHoras.getText()), 0));
-									dispose();
-							}
-							else {
-								Controlador.getInstance().accion(Eventos.MODIFICAR_EMPLEADO, 
-										new TEmpleadosTP(campoNombre.getText(),campoApellidos.getText(),campoDNI.getText(), Integer.parseInt(campoId.getText()),0,Integer.parseInt(campoIDdept.getText()), true, 
-												Integer.parseInt(campoHoras.getText()), Integer.parseInt(campoEurosHora.getText())));
-									dispose();
-							}
-						}
+						jornada = 0;
+						if(!campoHoras.getText().equalsIgnoreCase(""))
+							horas = Integer.parseInt(campoHoras.getText());
+						if(!campoEurosHora.getText().equalsIgnoreCase(""))
+							eurosHora = Integer.parseInt(campoEurosHora.getText());
+						
+						Controlador.getInstance().accion(Eventos.MODIFICAR_EMPLEADO, new TEmpleadosTP(nombre,apellido, DNI, id, jornada, idDept, true, horas, eurosHora));
+						dispose();
 					}
+
 				}
 			}
 			

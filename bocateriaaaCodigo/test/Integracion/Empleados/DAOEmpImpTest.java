@@ -3,23 +3,17 @@ package Integracion.Empleados;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 import Integracion.FactoriaIntegracion.FactoriaIntg;
-import Integracion.Marcas.DAOMarcas;
 import Negocio.Empleados.TEmpleados;
 import Negocio.Empleados.TEmpleadosTP;
-import Negocio.Marcas.TMarcas;
 import Negocio.Empleados.TEmpleadosTC;
 
 

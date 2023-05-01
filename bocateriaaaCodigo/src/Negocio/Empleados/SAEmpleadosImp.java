@@ -92,7 +92,7 @@ public class SAEmpleadosImp implements SAEmpleados {
 							empleadoTP.setEurosHora(tTP.getEurosHora());
 						}
 						if (tTP.getHoras() != 0) {
-							empleadoTP.setEurosHora(tTP.getHoras());
+							empleadoTP.setHoras(tTP.getHoras());
 						}
 						return daoEmp.update(empleadoTP);
 					}

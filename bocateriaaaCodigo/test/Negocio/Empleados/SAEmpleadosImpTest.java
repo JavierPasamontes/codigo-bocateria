@@ -11,9 +11,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import Integracion.Empleados.DAOEmpleados;
-import Integracion.FactoriaIntegracion.FactoriaIntg;
-import Negocio.Departamentos.SADepartamento;
 import Negocio.Factoria.FactoriaNeg;
 
 
