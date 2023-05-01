@@ -2,7 +2,6 @@ package Presentacion.Ventas.CerrarVenta;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -11,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Negocio.Ventas.TVentas;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
 

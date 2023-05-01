@@ -26,6 +26,7 @@ import Presentacion.Ventas.MostrarUnaVenta.*;
 import Presentacion.Ventas.MostrarVentasEmp.*;
 import Presentacion.Ventas.MostrarProdDeVenta.*;
 import Presentacion.Ventas.AnadirQuitarProd.*;
+import Presentacion.Ventas.EliminarVenta.*;
 
 
 @SuppressWarnings("serial")
@@ -38,15 +39,21 @@ public class GUIVentas extends JFrame{
 	static JButton mostrarVentasEmp;
 	static JButton mostrarProdDeVenta;
 	static JButton anadirQuitarProd;
+	static JButton eliminarVenta;
 	static JButton volverBoton;
+	@SuppressWarnings("unused")
 	private GUIAltaVentas GUIAltaVentas;
+	@SuppressWarnings("unused")
 	private GUICerrarVenta GUICerrarVenta;
+	@SuppressWarnings("unused")
 	private GUIModificarVenta GUIModificarVenta;
 	private GUIMostrarVentas GUIMostrarVentas;
 	private GUIMostrarUnaVenta GUIMostrarUnaVenta;
 	private GUIMostrarVentasEmp GUIMostrarVentasEmp;
 	private GUIMostrarProdDeVenta GUIMostrarProdDeVenta;
 	private GUIAnadirQuitarProd GUIAnadirQuitarProd;
+	@SuppressWarnings("unused")
+	private GUIEliminarVenta GUIEliminarVenta;
 	
 	
 	
@@ -160,6 +167,18 @@ public class GUIVentas extends JFrame{
 			
 		});
 		
+		eliminarVenta=new JButton("Eliminar");
+		eliminarVenta.setPreferredSize(new Dimension(200,50));
+		eliminarVenta.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GUIEliminarVenta =new GUIEliminarVenta();
+			}
+			
+			
+		});
+		
 		ImageIcon icono = new ImageIcon("resources/imgs/volver.png");
 		volverBoton=new JButton(icono);
 		volverBoton.setBorderPainted(false);
@@ -182,6 +201,7 @@ public class GUIVentas extends JFrame{
 		medio.add(mostrarPorIDBoton);
 		medio2.add(mostrarProdDeVenta);
 		medio2.add(anadirQuitarProd);
+		medio2.add(eliminarVenta);
 		inferior.add(volverBoton);
 		p.add(superior, BorderLayout.PAGE_START);
 		p.add(medio, BorderLayout.CENTER);
@@ -270,6 +290,12 @@ public class GUIVentas extends JFrame{
 			break;
 		case Eventos.ELIMINAR_PRODUCTO_VENTA_KO:
 			a.showMessage("No se han podido quitar los productos", "Quitar productos", true);
+			break;
+		case Eventos.BAJA_VENTA_OK:
+			a.showMessage("Se ha eliminado la venta con ID: "+(int)datos, "Eliminar venta", false);
+			break;
+		case Eventos.BAJA_VENTA_KO:
+			a.showMessage("No se ha podido eliminar la venta", "Eliminar venta", true);
 			break;
 		}
 	}

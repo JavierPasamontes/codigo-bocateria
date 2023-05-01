@@ -9,12 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
 import Negocio.Ventas.TVentas;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
-import Presentacion.Marcas.MostrarUnaMarca.GUIMostrarUnaMarca;
 
 @SuppressWarnings("serial")
 public class GUIMostrarUnaVenta extends JFrame{
