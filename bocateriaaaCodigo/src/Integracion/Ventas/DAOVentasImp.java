@@ -39,7 +39,7 @@ public class DAOVentasImp implements DAOVentas {
 		try (BufferedWriter salida = new BufferedWriter(new FileWriter(_path))) {
 			
 			if(! ids.contains(tVenta.getId()) ) {
-				if(tVenta.getId() == null || tVenta.getId() < 1 || ventList.size() > 1) {//si el departamento no tiene id, se lo asignamos
+				if(tVenta.getId() == null || tVenta.getId() < 1) {//si el departamento no tiene id, se lo asignamos
 					
 					boolean hayID = false;
 			

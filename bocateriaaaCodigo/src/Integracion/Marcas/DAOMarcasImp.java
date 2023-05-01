@@ -40,7 +40,7 @@ public class DAOMarcasImp implements DAOMarcas {
 		try (BufferedWriter salida = new BufferedWriter(new FileWriter(_path))) {
 			
 			if(! ids.contains(tMarca.getID()) ) {
-				if(tMarca.getID() == null || tMarca.getID() < 1 || marcaList.size() > 1) {//si el departamento no tiene id, se lo asignamos
+				if(tMarca.getID() == null || tMarca.getID() < 1 ) {//si el departamento no tiene id, se lo asignamos
 					
 					boolean hayID = false;
 			

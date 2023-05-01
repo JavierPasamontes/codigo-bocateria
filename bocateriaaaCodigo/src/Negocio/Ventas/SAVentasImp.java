@@ -117,10 +117,10 @@ public class SAVentasImp implements SAVentas {
 		if(tVenta != null && tVenta.getAbierto()) {
 			for(TProductos producto : datos.get(idVenta)) {
 				if(tVenta.getListaProductos().contains(producto)) {
-					producto.aumentarCantidad();
-					daoProd.update(producto);
 					tVenta.eliminarProducto(producto);
 					tVenta.disminuirPrecio(producto.getPrecio());
+					producto.aumentarCantidad();
+					daoProd.update(producto);
 				}
 				else
 					return -1;
@@ -142,7 +142,7 @@ public class SAVentasImp implements SAVentas {
 		if(tVenta != null && tVenta.getAbierto()) {
 			tVenta.setAbierto(false);
 			
-			String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+			String timeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
 			tVenta.setFechaVenta(timeStamp);
 			
 			return daoVentas.update(tVenta);

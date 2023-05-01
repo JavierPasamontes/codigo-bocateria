@@ -52,7 +52,8 @@ public class SAProductosImpTest{
 		TProductos p3 = new TProductos(-1, "Coca cola Light Zero", 200, 0.89, true, 2);
 		TProductos p4 = new TProductos(-1, "Nestea", 150, 0.79, true, 2);
 		TProductos p5 = new TProductos(-1, "Aquarius Naranja", 125, 0.85, true, 2);
-
+		TProductos p6 = new TProductos(6, "Tomate", 75, 0.65, true, 1);
+		TProductos p7 = new TProductos(7, "Cebolla", 25, 0.85, true, 1);
 		
 		resultado = saProd.create(p3);
 		assertEquals(3,resultado,"No ha devuelto el id que acaba de crear");
@@ -60,7 +61,10 @@ public class SAProductosImpTest{
 		assertEquals(4,resultado,"No ha devuelto el id que acaba de crear");
 		resultado = saProd.create(p5);
 		assertEquals(5,resultado,"No ha devuelto el id que acaba de crear");
-
+		resultado = saProd.create(p6);
+		assertEquals(6,resultado,"No ha devuelto el id que acaba de crear");
+		resultado = saProd.create(p7);
+		assertEquals(7,resultado,"No ha devuelto el id que acaba de crear");
 		
 		//PRUEBA DE UPDATE()
 		p2.setNombre("Jamon");
@@ -77,7 +81,7 @@ public class SAProductosImpTest{
 
 		prodList = saProd.readAll();
 		//comprobamos que lee bien el fichero
-		assertTrue(prodList.size() == 5); //comprobamos que lea todo bien
+		assertTrue(prodList.size() == 7); //comprobamos que lea todo bien
 		
 		//PRUEBA DE READ PRODUCTOS DE MARCA()	
 		List<TProductos> marca2Lista = new ArrayList<TProductos>();
@@ -93,7 +97,7 @@ public class SAProductosImpTest{
 		//actualizamos la lista y comprobamos que se ha borrado
 		
 		prodList = saProd.readAll();
-		assertTrue(prodList.size() == 5); //el tamaño de la lista no disminuye
+		assertTrue(prodList.size() == 7); //el tamaño de la lista no disminuye
 		assertTrue(prodList.get(1).getActivo() == false);//el departamento seleccionado 
 	}	
 	
