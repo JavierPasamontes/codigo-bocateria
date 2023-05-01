@@ -60,28 +60,30 @@ public class DAOProv_MarcasImp implements DAOProv_Marcas{
 	@Override
 	public int desvincularMarca(TMarcasProv r) {
 		List<TMarcasProv> lista = readAll();
+		TMarcasProv eliminado = null;
 		boolean cambiado = false;
 		int i = 0;
 		while(i < lista.size() && !cambiado) {
 			if(lista.get(i).getMarca() == r.getMarca() && lista.get(i).getProv() == r.getProv()) {
 				lista.get(i).setActivo(false);
+				eliminado = lista.get(i);
 				cambiado = true;
 			}
 			i++;
 		}
 		
+		lista.remove(eliminado);
+		
 		try (BufferedWriter salida = new BufferedWriter(new FileWriter(_path))) { // sobrescribimos el archivo de texto
 			JSONObject out = new JSONObject();
 			JSONArray rels = new JSONArray();
 			for(TMarcasProv mp :lista) {
-				if(mp.getActivo()) {
-					JSONObject o = new JSONObject();
-					
-					o.put("PROVEEDOR", mp.getProv());
-					o.put("MARCA", mp.getMarca());
-					o.put("ACTIVO", mp.getActivo());
-					rels.put(o);
-				}
+				JSONObject o = new JSONObject();
+				
+				o.put("PROVEEDOR", mp.getProv());
+				o.put("MARCA", mp.getMarca());
+				o.put("ACTIVO", mp.getActivo());
+				rels.put(o);
 			}
 		
 			

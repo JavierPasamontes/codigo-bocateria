@@ -5,6 +5,7 @@ package Integracion.Departamentos;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
