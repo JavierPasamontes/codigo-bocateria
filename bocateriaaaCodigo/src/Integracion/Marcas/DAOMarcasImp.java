@@ -121,7 +121,7 @@ public class DAOMarcasImp implements DAOMarcas {
 		boolean salida = false;
 		
 		while (salida == false && i < marcaList.size()) {
-			if(marcaList.get(i).getNombre().equals(name) ) {
+			if(marcaList.get(i).getNombre().equalsIgnoreCase(name) ) {
 				marca = marcaList.get(i);
 				salida = true;
 			}

@@ -9,12 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-
 import Negocio.Productos.TProductos;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
-import Presentacion.Productos.AltaProductos.GUIAltaProductos;
 
 @SuppressWarnings("serial")
 public class GUIModificarProducto extends JFrame{

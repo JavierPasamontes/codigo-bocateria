@@ -92,7 +92,7 @@ public class GUIAnadirQuitarProd extends JFrame{
 						Controlador.getInstance().accion(Eventos.ELIMINAR_PRODUCTO_VENTA, map);
 					}
 				}
-				
+				dispose();
 			}
 			
 		});
@@ -139,20 +139,10 @@ public class GUIAnadirQuitarProd extends JFrame{
 				public void itemStateChanged(ItemEvent e) {
 					if(e.getStateChange()==ItemEvent.DESELECTED) {
 						productos.remove(boxProducto);
-						//for(int j = 0; j < prod.size(); j++) {
-						//	if(prod.get(j).getNombre().equalsIgnoreCase(nombre)) {
-						//		productos.remove(prod.get(j));
-						//	}
-						//}
 					}
 					
 					if(e.getStateChange()==ItemEvent.SELECTED) {
 						productos.add(boxProducto);
-						//for(int j=0;j<prod.size();j++) {
-						//	if(prod.get(j).getNombre().equalsIgnoreCase(nombre)) {
-						//		productos.add(prod.get(j));
-						//	}
-						//}
 					}
 				}
 				

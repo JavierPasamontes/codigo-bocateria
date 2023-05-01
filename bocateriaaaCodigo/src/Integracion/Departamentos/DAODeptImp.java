@@ -119,7 +119,7 @@ public class DAODeptImp implements DAODept {
 		boolean salida = false;
 		
 		while (salida == false && i < deptList.size()) {
-			if(deptList.get(i).getNombre().equals(nombre)) {
+			if(deptList.get(i).getNombre().equalsIgnoreCase(nombre)) {
 				departamento = deptList.get(i);
 				salida = true;
 			}

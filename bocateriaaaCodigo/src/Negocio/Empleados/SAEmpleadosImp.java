@@ -63,7 +63,10 @@ public class SAEmpleadosImp implements SAEmpleados {
 					empleado.setApellidos(tEmp.getApellidos());
 
 				if (!tEmp.getDNI().isEmpty())
-					empleado.setDNI(tEmp.getDNI());
+					if(daoEmp.readByDNI(tEmp.getDNI()) == null)
+						empleado.setDNI(tEmp.getDNI());
+					else
+						return -1;
 
 				if (tEmp.getIdDept() != null) {
 					if (tEmp.getIdDept() != empleado.getIdDept()) {

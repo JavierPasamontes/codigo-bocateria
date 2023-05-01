@@ -20,7 +20,8 @@ public class SADeptImp implements SADepartamento {
 		}
 		else{
 			if(leido.getActivo()){
-				return -1;
+				if(!leido.getSede().equalsIgnoreCase(tDept.getSede()))
+					id = daoDept.create(tDept);
 			}
 			else{
 				leido.setActivo(true);

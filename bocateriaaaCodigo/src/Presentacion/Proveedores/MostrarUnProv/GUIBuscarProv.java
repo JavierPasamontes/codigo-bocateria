@@ -7,8 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-
 import Negocio.Proveedores.TProveedores;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
@@ -19,12 +17,6 @@ import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 
-/** 
-* <!-- begin-UML-doc -->
-* <!-- end-UML-doc -->
-* @author pedro
-* @generated "UML a Java (com.ibm.xtools.transform.uml2.java5.internal.UML2JavaTransform)"
-*/
 @SuppressWarnings("serial")
 public class GUIBuscarProv extends JFrame {
 	private JTextField campoID;
@@ -52,6 +44,7 @@ public class GUIBuscarProv extends JFrame {
 		id.add(campoID);
 		
 		JPanel datos=new JPanel();
+		datos.setLayout(new BoxLayout(datos, BoxLayout.Y_AXIS));
 		datos.add(idProv);
 		datos.add(nombreProv);
 		datos.add(tipoProv);
@@ -93,18 +86,6 @@ public class GUIBuscarProv extends JFrame {
 		this.setLocation(400,400);
 	}
 	
-	public static void main(String[] args) {
-
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				new GUIBuscarProv();
-			}
-		});
-
-
-	}
 	
 	public void actualizar(TProveedores prov) {
 		idProv.setText("ID: "+prov.getID());

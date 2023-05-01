@@ -17,8 +17,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-
 import Negocio.Proveedores.TProvComunitario;
 import Negocio.Proveedores.TProvNacional;
 import Negocio.Proveedores.TProveedores;
@@ -134,16 +132,4 @@ public class GUIModProv extends JFrame {
 		this.setLocation(400,400);
 	}
 	
-	public static void main(String[] args) {
-
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				new GUIModProv();
-			}
-		});
-
-
-	}
 }

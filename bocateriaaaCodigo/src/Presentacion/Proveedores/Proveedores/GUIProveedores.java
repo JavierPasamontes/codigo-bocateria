@@ -228,6 +228,7 @@ public class GUIProveedores extends JFrame{
 			break;
 		case Eventos.BUSCAR_PROVEEDOR_KO:
 			a.showMessage("No se pudo mostrar el empleado especificado", "Buscar empleado", true);
+			break;
 		case Eventos.VINCULAR_MARCA_OK:
 			a.showMessage("Marca y proveedor vinculados correctamente", "Vincular Marca", false);
 			break;

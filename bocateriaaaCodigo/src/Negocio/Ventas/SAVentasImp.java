@@ -65,10 +65,15 @@ public class SAVentasImp implements SAVentas {
 	@Override
 	public Integer delete(Integer id) {
 		DAOVentas daoVentas = FactoriaIntg.getInstance().generarDAOVentas();
+		DAOProductos daoProd = FactoriaIntg.getInstance().generarDAOProductos();
 		
 		TVentas venta = daoVentas.read(id);
 		
 		if(venta != null && venta.getAbierto()) {
+			for(TProductos producto : venta.getListaProductos()) {
+					producto.aumentarCantidad();
+					daoProd.update(producto);
+			}
 			return daoVentas.delete(id);
 		}
 		else
