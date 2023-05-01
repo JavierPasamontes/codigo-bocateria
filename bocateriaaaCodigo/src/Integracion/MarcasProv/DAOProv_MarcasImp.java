@@ -74,12 +74,14 @@ public class DAOProv_MarcasImp implements DAOProv_Marcas{
 			JSONObject out = new JSONObject();
 			JSONArray rels = new JSONArray();
 			for(TMarcasProv mp :lista) {
-				JSONObject o = new JSONObject();
-				
-				o.put("PROVEEDOR", mp.getProv());
-				o.put("MARCA", mp.getMarca());
-				o.put("ACTIVO", mp.getActivo());
-				rels.put(o);
+				if(mp.getActivo()) {
+					JSONObject o = new JSONObject();
+					
+					o.put("PROVEEDOR", mp.getProv());
+					o.put("MARCA", mp.getMarca());
+					o.put("ACTIVO", mp.getActivo());
+					rels.put(o);
+				}
 			}
 		
 			

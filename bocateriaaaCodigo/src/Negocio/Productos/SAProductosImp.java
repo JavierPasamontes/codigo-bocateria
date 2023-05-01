@@ -75,9 +75,7 @@ public class SAProductosImp implements SAProductos {
 			if (tProd.getPrecio() != null)
 				producto.setPrecio(tProd.getPrecio());
 			
-			if (tProd.getIDmarca() != null) {
-				producto.setIDmarca(tProd.getIDmarca());
-				
+			if (tProd.getIDmarca() != null && tProd.getIDmarca() != producto.getIDmarca()) {
 				DAOMarcas daoMarcas = FactoriaIntg.getInstance().generarDAOMarcas();
 				TMarcas viejo = daoMarcas.read(producto.getIDmarca());
 				TMarcas nuevo = daoMarcas.read(tProd.getIDmarca());
@@ -87,6 +85,8 @@ public class SAProductosImp implements SAProductos {
 					daoMarcas.update(viejo);
 					nuevo.aumentarProductos();
 					daoMarcas.update(nuevo);
+					
+					producto.setIDmarca(tProd.getIDmarca());
 				}
 				else
 					return -1;

@@ -87,8 +87,18 @@ public class GUIModificarProducto extends JFrame{
 					correcto=false;
 				}
 				if(correcto) {
-						Controlador.getInstance().accion(Eventos.MODIFICAR_PRODUCTO, 
-								new TProductos(Integer.parseInt(campoId.getText()), campoNombre.getText(), Integer.parseInt(campoCantidad.getText()), Double.parseDouble(campoPrecio.getText()), true,Integer.parseInt(campoMarca.getText())));
+					Integer cantidad = null;
+					Double precio = null;
+					Integer marca = null;
+					if(!campoCantidad.getText().equalsIgnoreCase(""))
+						cantidad = Integer.parseInt(campoCantidad.getText());
+					if(!campoPrecio.getText().equalsIgnoreCase(""))
+						precio = Double.parseDouble(campoPrecio.getText());
+					if(!campoMarca.getText().equalsIgnoreCase(""))
+						marca = Integer.parseInt(campoMarca.getText());
+					
+					Controlador.getInstance().accion(Eventos.MODIFICAR_PRODUCTO, 
+							new TProductos(Integer.parseInt(campoId.getText()), campoNombre.getText(), cantidad, precio, true, marca));
 						dispose();
 				}
 			}
@@ -110,16 +120,5 @@ public class GUIModificarProducto extends JFrame{
 		this.setLocation(400,400);
 	}
 	
-	public static void main(String[] args) {
-
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				new GUIAltaProductos();
-			}
-		});
-
-
-	}
+	
 }
