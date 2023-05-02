@@ -92,6 +92,10 @@ public class SAProductosImpTest{
 		//comprobamos que lee bien el fichero(hay 3 productos de una marca con ID = 2)
 		assertTrue(marca2Lista.size() == 3); //comprobamos que lea todo bien
 		
+		marca2Lista = saProd.readProductosDeMarca(1);
+		//comprobamos que lee bien el fichero(hay 3 productos de una marca con ID = 2)
+		assertTrue(marca2Lista.size() == 4); //comprobamos que lea todo bien
+		
 		
 		//PRUEBA DE DELETE()
 		resultado = saProd.delete(2); //devuelve el id que ha borrado
@@ -101,6 +105,8 @@ public class SAProductosImpTest{
 		prodList = saProd.readAll();
 		assertTrue(prodList.size() == 9); //el tamaño de la lista no disminuye
 		assertTrue(prodList.get(1).getActivo() == false);//el departamento seleccionado 
+		//lo volvemos a dar de alta
+		saProd.create(p2);
 	}	
 	
 

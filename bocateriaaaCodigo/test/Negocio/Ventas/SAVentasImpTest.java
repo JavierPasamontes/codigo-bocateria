@@ -40,15 +40,18 @@ public class SAVentasImpTest{
 		
 		//creamos la lista de productos
 		List<TProductos> prodList = new ArrayList<TProductos>();
-	
+		double precioFinal = 0;
 		//CREACION DE LAS VENTAS
 		//ID DE MARCA =1 
 		TProductos p1 = new TProductos(1, "Pan", 50, 1.50, true, 1);
 		TProductos p2 = new TProductos(2, "lechuga", 100, 0.50, true, 1);
 		prodList.add(p1);
 		prodList.add(p2);
-
-		TVentas v1 = new TVentas(-1,1,"23/4/2023", 750.65, prodList);
+		precioFinal += p1.getPrecio() + p2.getPrecio();
+		TVentas v1 = new TVentas(-1,1,"23/4/2023", precioFinal, prodList);
+		
+		resultado = saVentas.create(v1);
+		assertEquals(1,resultado,"No ha devuelto el id que acaba de crear");
 
 		//ID DE MARCA =2 
 		TProductos p3 = new TProductos(3, "Coca cola Light Zero", 200, 0.89, true, 2);
@@ -57,29 +60,30 @@ public class SAVentasImpTest{
 		prodList.add(p3);
 		prodList.add(p4);
 		prodList.add(p5);
-		TVentas v2 = new TVentas(-1,3,"19/2/2022", 18923.65, prodList);
+		
+		precioFinal += p3.getPrecio() + p4.getPrecio()+ p5.getPrecio();
+		
+		TVentas v2 = new TVentas(-1,3,"19/2/2022", precioFinal, prodList);
 		
 		//PRUEBA DE CREATE()
-		resultado = saVentas.create(v1);
-		assertEquals(1,resultado,"No ha devuelto el id que acaba de crear");
 		//comprobamos que devuelva el id correcto
 		resultado = saVentas.create(v2);
 		assertEquals(2,resultado,"No ha devuelto el id que acaba de crear");
 
 		
-		TVentas v3 = new TVentas(-1,3,"30/8/2021", 18923.65, prodList);
+		TVentas v3 = new TVentas(-1,3,"30/8/2021", precioFinal, prodList);
 		
 		resultado = saVentas.create(v3);
 		assertEquals(3,resultado,"No ha devuelto el id que acaba de crear");
 		
 		//PRUEBA DE UPDATE()
 		v3.setFechaVenta("22/3/2023");
-		v3.setPrecioFinal(2000000.99);
+		v3.setPrecioFinal(precioFinal + 1.50);
 		
 		resultado = saVentas.update(v3);
 		//comprobamos que funciona el update
 		assertEquals("22/3/2023", saVentas.read(3).getFechaVenta());
-		assertEquals(2000000.99, saVentas.read(3).getPrecioFinal());
+		assertEquals(precioFinal + 1.50, saVentas.read(3).getPrecioFinal());
 		assertEquals(3,resultado,"No ha devuelto el id de la venta que acaba de actualizar");
 
 		//PRUEBA DE READALL()
@@ -90,7 +94,7 @@ public class SAVentasImpTest{
 		assertTrue(ventList.size() == 3); //comprobamos que lea todo bien
 		
 		//PRUEBA DE ELIMINAR PRODUCTO()
-		TVentas v4 = new TVentas(-1,1,"23/6/2021", 18923.65, prodList);
+		TVentas v4 = new TVentas(-1,1,"23/6/2021", precioFinal, prodList);
 		//creamos una nueva venta
 		resultado = saVentas.create(v4);
 		assertEquals(4,resultado,"No ha devuelto el id que acaba de crear");
@@ -128,9 +132,9 @@ public class SAVentasImpTest{
 		assertEquals(4,v4.getListaProductos().size(),"No se han agregado los productos correctamente");
 		
 		map.clear(); //al ser en una interfaz el mapa se formatea constantemente
-
+		
 		//los volvemos a añadir para ver que funciona
-		TVentas v5 = new TVentas(-1,1,"22/8/2020", 30004.90, new ArrayList<TProductos>());
+		TVentas v5 = new TVentas(-1,1,"22/8/2020",0, new ArrayList<TProductos>());
 		//creamos una nueva venta
 		resultado = saVentas.create(v5);
 		assertEquals(5,resultado,"No ha devuelto el id que acaba de crear");
