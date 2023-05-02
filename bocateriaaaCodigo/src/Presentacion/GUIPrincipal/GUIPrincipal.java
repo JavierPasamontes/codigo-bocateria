@@ -11,7 +11,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
@@ -166,17 +165,4 @@ public class GUIPrincipal extends JFrame{
 		this.pack();
 		this.setLocation(500,500);
 	}
-	
-	public static void main(String[] args) {
-
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-		public void run() {
-			new GUIPrincipal();
-			}
-		});
-	}
-
-
 }

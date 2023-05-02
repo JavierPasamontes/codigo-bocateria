@@ -39,6 +39,12 @@ public class ControladorIMP extends Controlador {
 		SAVentas saVentas;
 
 		switch (evento) {
+		
+		//GUI PRINCIPAL-----------------------------------------
+		
+		case Eventos.VISTA_PRINCIPAL:
+			FactoriaGUI.getInstance().generarGUI(evento);
+			break;
 
 		// DEPARTAMENTOS----------------------------------------
 

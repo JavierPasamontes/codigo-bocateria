@@ -2,6 +2,10 @@ package Presentacion.Controlador;
 
 
 public class Eventos {
+	
+	//GUI PRINCIPAL----------------------------------
+	
+	public static final int VISTA_PRINCIPAL = 0001;
 
 	// DEPARTAMENTOS---------------------------------
 
