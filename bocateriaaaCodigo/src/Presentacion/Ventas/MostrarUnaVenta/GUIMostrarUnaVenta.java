@@ -24,6 +24,7 @@ public class GUIMostrarUnaVenta extends JFrame{
 	private JLabel fechaMar=new JLabel("Fecha: ");
 	private JLabel precioMar=new JLabel("Precio: ");
 	private JLabel productos=new JLabel ("Productos: ");
+	private JLabel estado=new JLabel ("Estado: ");
 	
 	
 	public GUIMostrarUnaVenta() {
@@ -48,6 +49,7 @@ public class GUIMostrarUnaVenta extends JFrame{
 		datos.add(fechaMar);
 		datos.add(precioMar);
 		datos.add(productos);
+		datos.add(estado);
 		
 		JPanel botones=new JPanel();
 		cancelar=new JButton("Cancelar");
@@ -94,6 +96,7 @@ public class GUIMostrarUnaVenta extends JFrame{
 		fechaMar.setText("Fecha: "+ven.getFechaVenta());
 		precioMar.setText("Precio: "+ven.getPrecioFinal());
 		productos.setText("Productos: "+prod);
+		estado.setText("Estado: " + (ven.getAbierto()?"Abierta":"Cerrada"));
 		initGUI();
 	}
 }

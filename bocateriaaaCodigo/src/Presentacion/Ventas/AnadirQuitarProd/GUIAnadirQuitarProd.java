@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 import Negocio.Productos.TProductos;
 import Presentacion.Controlador.Controlador;
 import Presentacion.Controlador.Eventos;
+import Presentacion.Controlador.MensajeGUI;
 
 
 @SuppressWarnings("serial")
@@ -54,8 +55,7 @@ public class GUIAnadirQuitarProd extends JFrame{
 		aceptar=new JButton("Aceptar");
 		aceptar.setEnabled(false);
 		id=new JTextField(5);
-		id.setEnabled(false);
-		mostrar=new JButton("Mostrar");
+		mostrar=new JButton("Mostrar productos");
 		modelo = new DefaultComboBoxModel<>();
 		modelo.addElement("Anadir");
 		modelo.addElement("Quitar");
@@ -66,12 +66,18 @@ public class GUIAnadirQuitarProd extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Controlador.getInstance().accion(Eventos.MOSTRAR_PRODUCTOS_AUX, null);
-				aceptar.setEnabled(true);
-				id.setEnabled(true);
-				quitarAnadir.setEnabled(true);
+				if(!id.getText().isEmpty()) {
+					Controlador.getInstance().accion(Eventos.MOSTRAR_PRODUCTOS_AUX, null);
+					aceptar.setEnabled(true);
+					quitarAnadir.setEnabled(true);
+					
+					mostrar.setEnabled(false);
+				}
+				else {
+					MensajeGUI a=new MensajeGUI();
+					a.showMessage("Inserte id de venta", "Anadir Eliminar Producto", true);
+				}
 				
-				mostrar.setEnabled(false);
 			}
 			
 			
@@ -130,24 +136,27 @@ public class GUIAnadirQuitarProd extends JFrame{
 	
 	public void actualizar (ArrayList<TProductos> prod){
 		for (int i = 0; i < prod.size(); i++) {
-			String nombre=prod.get(i).getNombre();
-			TProductos boxProducto = prod.get(i);
-			JCheckBox b = new JCheckBox(nombre);
-			b.addItemListener(new ItemListener() {
+			if(prod.get(i).getActivo()) {
+				String nombre=prod.get(i).getNombre();
+				TProductos boxProducto = prod.get(i);
+				JCheckBox b = new JCheckBox(nombre);
+				b.addItemListener(new ItemListener() {
 
-				@Override
-				public void itemStateChanged(ItemEvent e) {
-					if(e.getStateChange()==ItemEvent.DESELECTED) {
-						productos.remove(boxProducto);
+					@Override
+					public void itemStateChanged(ItemEvent e) {
+						if(e.getStateChange()==ItemEvent.DESELECTED) {
+							productos.remove(boxProducto);
+						}
+						
+						if(e.getStateChange()==ItemEvent.SELECTED) {
+							productos.add(boxProducto);
+						}
 					}
 					
-					if(e.getStateChange()==ItemEvent.SELECTED) {
-						productos.add(boxProducto);
-					}
-				}
-				
-			});
-			prodPanel.add(b);
+				});
+				prodPanel.add(b);
+			}
+			
 		}
 		this.pack();
 	}

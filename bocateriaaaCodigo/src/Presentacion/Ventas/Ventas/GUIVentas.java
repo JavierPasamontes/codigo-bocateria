@@ -12,8 +12,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
 import Negocio.Productos.TProductos;
 import Negocio.Ventas.TVentas;
 import Presentacion.Controlador.Eventos;
@@ -131,7 +129,7 @@ public class GUIVentas extends JFrame{
 			
 		});
 		
-		mostrarVentasEmp=new JButton("Mostrar Ventas de Empleados");
+		mostrarVentasEmp=new JButton("<html><p>Mostrar ventas de</p><p>un empleado</p></html>");
 		mostrarVentasEmp.setPreferredSize(new Dimension(200,50));
 		mostrarVentasEmp.addActionListener(new ActionListener() {
 
@@ -143,7 +141,7 @@ public class GUIVentas extends JFrame{
 			
 		});
 		
-		mostrarProdDeVenta=new JButton("Mostrar Productos de Una venta");
+		mostrarProdDeVenta=new JButton("<html><p>Mostrar productos de</p><p>una venta</p></html>");
 		mostrarProdDeVenta.setPreferredSize(new Dimension(200,50));
 		mostrarProdDeVenta.addActionListener(new ActionListener() {
 
@@ -214,18 +212,6 @@ public class GUIVentas extends JFrame{
 		this.pack();
 		this.setLocation(400,400);
 	}
-	
-	public static void main(String[] args) {
-
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				new GUIVentas();
-			}
-		});
-	}
-
 	
 	@SuppressWarnings("unchecked")
 	public void actualizar(int evento, Object datos) {

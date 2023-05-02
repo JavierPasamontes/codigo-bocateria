@@ -12,8 +12,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
 import Negocio.Productos.TProductos;
 import Presentacion.Controlador.Eventos;
 import Presentacion.Controlador.MensajeGUI;
@@ -109,7 +107,7 @@ public class GUIProductos extends JFrame{
 			
 		});
 		
-		mostrarProdDeMarca=new JButton("Mostrar Prod. de Marca");
+		mostrarProdDeMarca=new JButton("<html><p>Mostrar productos de</p><p>una marca</p></html>");
 		mostrarProdDeMarca.setPreferredSize(new Dimension(200,50));
 		mostrarProdDeMarca.addActionListener(new ActionListener() {
 
@@ -150,17 +148,6 @@ public class GUIProductos extends JFrame{
 		this.setVisible(true);
 		this.pack();
 		this.setLocation(400,400);
-	}
-	
-	public static void main(String[] args) {
-
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				new GUIProductos();
-			}
-		});
 	}
 
 	@SuppressWarnings("unchecked")

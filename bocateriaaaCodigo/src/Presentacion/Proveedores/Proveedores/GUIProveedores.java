@@ -138,7 +138,7 @@ public class GUIProveedores extends JFrame{
 			
 		});
 		
-		mostrarMdePBoton =new JButton("Mostrar marcas de proveedor");
+		mostrarMdePBoton =new JButton("<html><p>Mostrar marcas de</p><p>un proveedor</p></html>");
 		mostrarMdePBoton.setPreferredSize(new Dimension(200,50));
 		mostrarMdePBoton.addActionListener(new ActionListener() {
 

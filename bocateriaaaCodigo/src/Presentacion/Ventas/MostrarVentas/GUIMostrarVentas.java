@@ -74,6 +74,7 @@ public class GUIMostrarVentas extends JFrame{
 		modeloTabla.addColumn("Fecha");
 		modeloTabla.addColumn("Precio");
 		modeloTabla.addColumn("Productos");
+		modeloTabla.addColumn("Estado");
 		JScrollPane scroll = new JScrollPane();
 		scroll.setViewportView (tabla);
 		tabla.setModel(modeloTabla);
@@ -97,13 +98,13 @@ public class GUIMostrarVentas extends JFrame{
 	
 	public void actualizar (ArrayList<TVentas> ven){
 		modeloTabla.setRowCount(0);
-		modeloTabla.insertRow(0, new String[] {"ID", "ID Empleado", "Fecha", "Precio", "Productos"});
+		modeloTabla.insertRow(0, new String[] {"ID", "ID Empleado", "Fecha", "Precio", "Productos","Estado"});
 		for (int i = 0; i < ven.size(); i++) {
 			String prod=new String();
 			prod="" + ven.get(i).getListaProductos().size();
 
 				modeloTabla.insertRow(i+1, new Object[] 
-						{ ven.get(i).getId(), ven.get(i).getIdEmpleado(), ven.get(i).getFechaVenta(), ven.get(i).getPrecioFinal(), prod});
+						{ ven.get(i).getId(), ven.get(i).getIdEmpleado(), ven.get(i).getFechaVenta(), ven.get(i).getPrecioFinal(), prod,(ven.get(i).getAbierto()?"Abierta":"Cerrada")});
 		}
 		tabla.setModel(modeloTabla);
 		this.pack();

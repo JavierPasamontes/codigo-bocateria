@@ -12,8 +12,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
 import Negocio.Empleados.TEmpleados;
 import Presentacion.Controlador.Eventos;
 import Presentacion.Controlador.MensajeGUI;
@@ -109,7 +107,7 @@ public class GUIEmpleados extends JFrame{
 			
 			
 		});
-		mostrarEmpDeUnDep=new JButton("Mostrar empleados de un departamento");
+		mostrarEmpDeUnDep=new JButton("<html><p>Mostrar empleados de</p><p>un departamento</p></html>");
 		mostrarEmpDeUnDep.setPreferredSize(new Dimension(200,50));
 		mostrarEmpDeUnDep.addActionListener(new ActionListener() {
 
@@ -150,17 +148,6 @@ public class GUIEmpleados extends JFrame{
 		this.setVisible(true);
 		this.pack();
 		this.setLocation(400,400);
-	}
-	
-	public static void main(String[] args) {
-
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				new GUIEmpleados();
-			}
-		});
 	}
 
 	@SuppressWarnings("unchecked")
