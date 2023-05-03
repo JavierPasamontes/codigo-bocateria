@@ -55,6 +55,7 @@ public class SAMarcasImpTest {
 		resultado = saMarca.create(m3);
 		assertEquals(3,resultado,"No ha devuelto el id que acaba de crear");
 		
+		
 		TMarcas m4 = new TMarcas(-1, "Heinz", true, 0,"Espana");		
 		resultado = saMarca.create(m4);
 		assertEquals(4,resultado,"No ha devuelto el id que acaba de crear");
