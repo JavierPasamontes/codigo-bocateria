@@ -48,10 +48,19 @@ public class SAMarcasImpTest {
 		assertEquals(2,resultado,"No ha devuelto el id que acaba de crear");
 		
 		
-		TMarcas m3 = new TMarcas(3, "El Pozo", true, 0,"Espana");		
+		TMarcas m3 = new TMarcas(-1, "El Pozo", true, 0,"Espana");		
+		
+		
 		
 		resultado = saMarca.create(m3);
 		assertEquals(3,resultado,"No ha devuelto el id que acaba de crear");
+		
+		TMarcas m4 = new TMarcas(-1, "Heinz", true, 0,"Espana");		
+		
+		
+		
+		resultado = saMarca.create(m4);
+		assertEquals(4,resultado,"No ha devuelto el id que acaba de crear");
 
 		//PRUEBA DE CREATE()
 		m3.setNombre("Pepsi");
@@ -67,7 +76,7 @@ public class SAMarcasImpTest {
 		
 		marcaList = saMarca.readAll();
 		//comprobamos que lee bien el fichero
-		assertTrue(marcaList.size() == 3); //comprobamos que lea todo bien
+		assertTrue(marcaList.size() == 4); //comprobamos que lea todo bien
 		
 		
 		//PRUEBA DE DELETE()
@@ -75,7 +84,7 @@ public class SAMarcasImpTest {
 		assertEquals(3, resultado,"No ha devuelto el id de la marca que acaba de dar de baja");
 		//actualizamos la lista y comprobamos que se ha borrado
 		marcaList = saMarca.readAll();
-		assertTrue(marcaList.size() == 3); //el tamaño de la lista no disminuye
+		assertTrue(marcaList.size() == 4); //el tamaño de la lista no disminuye
 		assertTrue(marcaList.get(2).getActivo() == false);	
 	}
 	
